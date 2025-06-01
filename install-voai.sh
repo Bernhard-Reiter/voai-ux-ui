@@ -1,0 +1,1334 @@
+#!/bin/bash
+
+# VOAI Next.js Website Installation Script
+# Dieses Script erstellt alle benötigten Dateien für die VOAI Website
+
+echo "🚀 VOAI Website Installation wird gestartet..."
+echo "================================================"
+
+# Überprüfe ob wir im richtigen Verzeichnis sind
+if [ ! -f "package.json" ]; then
+    echo "❌ Fehler: package.json nicht gefunden!"
+    echo "Bitte führe dieses Script im voai Projektordner aus."
+    exit 1
+fi
+
+# Erstelle benötigte Verzeichnisse
+echo "📁 Erstelle Verzeichnisse..."
+mkdir -p components
+mkdir -p app/upload
+mkdir -p app/status
+
+# 1. tailwind.config.ts
+echo "📝 Erstelle tailwind.config.ts..."
+cat > tailwind.config.ts << 'EOF'
+import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+      },
+      animation: {
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'gradient-shift': 'gradient 10s ease infinite',
+      },
+      keyframes: {
+        gradient: {
+          '0%, 100%': {
+            'background-position': '0% 50%',
+          },
+          '50%': {
+            'background-position': '100% 50%',
+          },
+        },
+      },
+    },
+  },
+  plugins: [],
+}
+export default config
+EOF
+
+# 2. app/globals.css
+echo "📝 Erstelle app/globals.css..."
+cat > app/globals.css << 'EOF'
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --primary: 262.1 83.3% 57.8%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --radius: 0.75rem;
+  }
+  
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--secondary));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--foreground));
+}
+
+.gradient-animated {
+  background-size: 200% 200%;
+  animation: gradient-shift 10s ease infinite;
+}
+
+.container-main {
+  @apply max-w-7xl mx-auto px-6 lg:px-8;
+}
+
+.section-padding {
+  @apply py-24;
+}
+EOF
+
+# 3. app/layout.tsx
+echo "📝 Erstelle app/layout.tsx..."
+cat > app/layout.tsx << 'EOF'
+import type { Metadata, Viewport } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
+import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+})
+
+export const metadata: Metadata = {
+  title: 'VOAI - KI-gestützte Preisverhandlungen',
+  description: 'Automatisierte Preisverhandlungen mit fortschrittlicher KI-Technologie für maximale Ersparnisse',
+  keywords: 'KI, Preisverhandlung, Automatisierung, Sparen, Verhandlung, AI',
+  authors: [{ name: 'VOAI Team' }],
+  creator: 'VOAI',
+  publisher: 'VOAI',
+  metadataBase: new URL('https://voai.ai'),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'de': '/de',
+      'en': '/en',
+    },
+  },
+  openGraph: {
+    title: 'VOAI - KI-gestützte Preisverhandlungen',
+    description: 'Sparen Sie durchschnittlich 23% mit unserer KI-Verhandlungstechnologie',
+    url: 'https://voai.ai',
+    siteName: 'VOAI',
+    locale: 'de_DE',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'VOAI - KI-gestützte Preisverhandlungen',
+    description: 'Sparen Sie durchschnittlich 23% mit unserer KI-Verhandlungstechnologie',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#1d1d1f' }
+  ],
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="de" dir="ltr" suppressHydrationWarning className={inter.variable}>
+      <body className={`${inter.className} bg-background text-foreground min-h-screen flex flex-col`}>
+        <Navigation />
+        <div className="flex-1 pt-16">
+          <main role="main" className="min-h-screen">
+            {children}
+          </main>
+        </div>
+        <Footer />
+      </body>
+    </html>
+  )
+}
+EOF
+
+# 4. app/page.tsx
+echo "📝 Erstelle app/page.tsx..."
+cat > app/page.tsx << 'EOF'
+'use client'
+
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
+import { Menu, X, Globe, Upload, Brain, TrendingUp, Shield, ArrowRight } from 'lucide-react'
+
+export default function HomePage() {
+  const [totalSavings, setTotalSavings] = useState(1234567)
+  const [isDragging, setIsDragging] = useState(false)
+  const [language, setLanguage] = useState<'de' | 'en'>('de')
+
+  // Translations
+  const t = {
+    de: {
+      hero: {
+        dropOffer: 'Angebot hier ablegen',
+        orClick: 'oder klicken zum Hochladen',
+        saved: 'gespart'
+      },
+      features: {
+        title: 'KI-gestützte Verhandlungsexzellenz',
+        subtitle: 'Nutzen Sie modernste KI-Technologie mit Verhaltensökonomie und kultureller Intelligenz',
+        ai: {
+          title: 'Fortschrittliche KI-Intelligenz',
+          desc: 'Ultimative KI mit Verhaltensökonomie, kultureller Anpassung und Marktintelligenz'
+        },
+        savings: {
+          title: 'Durchschnittlich 23% Ersparnis',
+          desc: 'Nachgewiesene Erfolgsbilanz mit über 10.000 erfolgreichen Verhandlungen'
+        },
+        security: {
+          title: 'Unternehmenssicherheit',
+          desc: 'Sicherheit auf Bankniveau mit Betrugserkennung und Compliance-Überwachung'
+        }
+      },
+      stats: {
+        totalSavings: 'Gesamtersparnis',
+        negotiations: 'Verhandlungen',
+        successRate: 'Erfolgsquote',
+        rating: 'Kundenbewertung'
+      },
+      cta: {
+        title: 'Bereit, Geld zu sparen?',
+        subtitle: 'Laden Sie Ihr Angebot hoch und lassen Sie unsere KI den besten Preis für Sie verhandeln',
+        button: 'Verhandlung starten'
+      }
+    },
+    en: {
+      hero: {
+        dropOffer: 'Drop your offer here',
+        orClick: 'or click to upload',
+        saved: 'saved'
+      },
+      features: {
+        title: 'AI-Powered Negotiation Excellence',
+        subtitle: 'Leverage cutting-edge AI technology with behavioral economics and cultural intelligence',
+        ai: {
+          title: 'Advanced AI Intelligence',
+          desc: 'Ultimate AI with behavioral economics, cultural adaptation, and market intelligence'
+        },
+        savings: {
+          title: 'Average 23% Savings',
+          desc: 'Proven track record with over 10,000 successful negotiations'
+        },
+        security: {
+          title: 'Enterprise Security',
+          desc: 'Bank-level security with fraud detection and compliance monitoring'
+        }
+      },
+      stats: {
+        totalSavings: 'Total Savings',
+        negotiations: 'Negotiations',
+        successRate: 'Success Rate',
+        rating: 'Customer Rating'
+      },
+      cta: {
+        title: 'Ready to save money?',
+        subtitle: 'Upload your offer and let our AI negotiate the best price for you',
+        button: 'Start Negotiating'
+      }
+    }
+  }[language]
+
+  // Animate savings counter
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTotalSavings(prev => prev + Math.floor(Math.random() * 100 + 50))
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault()
+    setIsDragging(true)
+  }
+
+  const handleDragLeave = () => {
+    setIsDragging(false)
+  }
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault()
+    setIsDragging(false)
+    window.location.href = '/upload'
+  }
+
+  return (
+    <div className="min-h-screen bg-white text-gray-900 overflow-hidden">
+      {/* Hero Section with Pulsating Color-Changing Circle */}
+      <section className="relative min-h-screen flex items-center justify-center">
+        {/* Subtle Background Pattern */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50/30 via-transparent to-blue-50/30" />
+
+        {/* Pulsating Circle Container */}
+        <div className="relative">
+          {/* Outer Glow Rings */}
+          <motion.div
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.1, 0.2, 0.1],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute inset-0 rounded-full"
+            style={{ 
+              width: '500px', 
+              height: '500px', 
+              left: '-250px', 
+              top: '-250px',
+              background: 'radial-gradient(circle, rgba(147, 51, 234, 0.2) 0%, transparent 70%)',
+              filter: 'blur(20px)'
+            }}
+          />
+          
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.15, 0.25, 0.15],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5,
+            }}
+            className="absolute inset-0 rounded-full"
+            style={{ 
+              width: '400px', 
+              height: '400px', 
+              left: '-200px', 
+              top: '-200px',
+              background: 'radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%)',
+              filter: 'blur(15px)'
+            }}
+          />
+
+          {/* Color Changing Center Circle */}
+          <motion.div
+            animate={{
+              background: [
+                'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+                'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
+                'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              ],
+              scale: [1, 1.02, 1],
+            }}
+            transition={{
+              background: {
+                duration: 10,
+                repeat: Infinity,
+                ease: "linear",
+              },
+              scale: {
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }
+            }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
+            className={`relative w-64 h-64 rounded-full cursor-pointer flex items-center justify-center transition-all duration-300 ${
+              isDragging ? 'scale-110' : ''
+            }`}
+            style={{
+              boxShadow: '0 20px 40px rgba(147, 51, 234, 0.3), 0 0 80px rgba(147, 51, 234, 0.2)',
+            }}
+          >
+            <div className="text-center p-8">
+              <h2 className="text-2xl font-bold text-white mb-2">
+                {t.hero.dropOffer}
+              </h2>
+              <p className="text-white/90 text-sm">
+                {t.hero.orClick}
+              </p>
+            </div>
+            <input
+              type="file"
+              onChange={(e) => {
+                if (e.target.files?.[0]) {
+                  window.location.href = '/upload'
+                }
+              }}
+              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+              accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+              aria-label="Datei hochladen"
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-24 px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-5xl font-bold text-gray-900 mb-4"
+          >
+            {t.features.title}
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-xl text-gray-600 max-w-2xl mx-auto"
+          >
+            {t.features.subtitle}
+          </motion.p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            { icon: Brain, ...t.features.ai, color: 'purple' },
+            { icon: TrendingUp, ...t.features.savings, color: 'green' },
+            { icon: Shield, ...t.features.security, color: 'blue' }
+          ].map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+            >
+              <div className={`w-16 h-16 bg-gradient-to-br ${
+                feature.color === 'purple' ? 'from-purple-100 to-purple-200' :
+                feature.color === 'green' ? 'from-green-100 to-green-200' :
+                'from-blue-100 to-blue-200'
+              } rounded-2xl flex items-center justify-center mb-6`}>
+                <feature.icon className={`w-8 h-8 ${
+                  feature.color === 'purple' ? 'text-purple-600' :
+                  feature.color === 'green' ? 'text-green-600' :
+                  'text-blue-600'
+                }`} aria-hidden="true" />
+              </div>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                {feature.title}
+              </h3>
+              <p className="text-gray-600">
+                {feature.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-24 px-6 lg:px-8 bg-gradient-to-br from-purple-50 to-blue-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+            {[
+              { value: '€50M+', label: t.stats.totalSavings },
+              { value: '10,000+', label: t.stats.negotiations },
+              { value: '87%', label: t.stats.successRate },
+              { value: '4.9/5', label: t.stats.rating }
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-8 shadow-lg"
+              >
+                <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-gray-600">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 px-6 lg:px-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="max-w-4xl mx-auto text-center"
+        >
+          <h2 className="text-5xl font-bold text-gray-900 mb-6">
+            {t.cta.title}
+          </h2>
+          <p className="text-xl text-gray-600 mb-8">
+            {t.cta.subtitle}
+          </p>
+          <Link
+            href="/upload"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            aria-label="Verhandlung starten"
+          >
+            {t.cta.button}
+            <ArrowRight className="w-5 h-5" aria-hidden="true" />
+          </Link>
+        </motion.div>
+      </section>
+    </div>
+  )
+}
+EOF
+
+# 5. app/upload/page.tsx
+echo "📝 Erstelle app/upload/page.tsx..."
+cat > app/upload/page.tsx << 'EOF'
+'use client'
+
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { ArrowLeft, Upload, Users, Briefcase, DollarSign, FileText, Zap, CheckCircle } from 'lucide-react'
+
+export default function UploadPage() {
+  const [formData, setFormData] = useState({
+    customerName: '',
+    customerEmail: '',
+    merchantName: '',
+    merchantPhone: '',
+    originalPrice: '',
+    productCategory: 'general',
+    urgencyLevel: 'medium',
+    customerNotes: '',
+    file: null as File | null
+  })
+  const [isUploading, setIsUploading] = useState(false)
+  const [uploadSuccess, setUploadSuccess] = useState(false)
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      setFormData(prev => ({ ...prev, file }))
+    }
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsUploading(true)
+    
+    // Simulate upload
+    setTimeout(() => {
+      setIsUploading(false)
+      setUploadSuccess(true)
+      setTimeout(() => {
+        window.location.href = '/status'
+      }, 2000)
+    }, 3000)
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-50 py-24 px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto">
+        <Link href="/" className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8 transition-colors">
+          <ArrowLeft className="w-5 h-5" />
+          Zurück
+        </Link>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-12"
+        >
+          <h1 className="text-5xl font-bold text-gray-900 mb-4">
+            Neue Verhandlung starten
+          </h1>
+          <p className="text-xl text-gray-600">
+            Füllen Sie die Details aus und laden Sie Ihr Angebot hoch
+          </p>
+        </motion.div>
+
+        <motion.form
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          onSubmit={handleSubmit}
+          className="bg-white rounded-3xl shadow-xl p-8 space-y-6"
+        >
+          {/* Customer Information */}
+          <fieldset className="space-y-4">
+            <legend className="text-xl font-semibold text-gray-900 flex items-center gap-2">
+              <Users className="w-5 h-5 text-purple-600" aria-hidden="true" />
+              Kundeninformationen
+            </legend>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="customerName" className="block text-sm font-medium text-gray-700 mb-2">
+                  Ihr Name *
+                </label>
+                <input
+                  type="text"
+                  id="customerName"
+                  name="customerName"
+                  required
+                  value={formData.customerName}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200"
+                  placeholder="Max Mustermann"
+                />
+              </div>
+              <div>
+                <label htmlFor="customerEmail" className="block text-sm font-medium text-gray-700 mb-2">
+                  E-Mail-Adresse *
+                </label>
+                <input
+                  type="email"
+                  id="customerEmail"
+                  name="customerEmail"
+                  required
+                  value={formData.customerEmail}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200"
+                  placeholder="max@beispiel.de"
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          {/* Merchant Information */}
+          <fieldset className="space-y-4">
+            <legend className="text-xl font-semibold text-gray-900 flex items-center gap-2">
+              <Briefcase className="w-5 h-5 text-blue-600" aria-hidden="true" />
+              Händlerinformationen
+            </legend>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="merchantName" className="block text-sm font-medium text-gray-700 mb-2">
+                  Händlername *
+                </label>
+                <input
+                  type="text"
+                  id="merchantName"
+                  name="merchantName"
+                  required
+                  value={formData.merchantName}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200"
+                  placeholder="Firma GmbH"
+                />
+              </div>
+              <div>
+                <label htmlFor="merchantPhone" className="block text-sm font-medium text-gray-700 mb-2">
+                  Händlertelefon *
+                </label>
+                <input
+                  type="tel"
+                  id="merchantPhone"
+                  name="merchantPhone"
+                  required
+                  value={formData.merchantPhone}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200"
+                  placeholder="+49 123 456789"
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          {/* Offer Details */}
+          <fieldset className="space-y-4">
+            <legend className="text-xl font-semibold text-gray-900 flex items-center gap-2">
+              <DollarSign className="w-5 h-5 text-green-600" aria-hidden="true" />
+              Angebotsdetails
+            </legend>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label htmlFor="originalPrice" className="block text-sm font-medium text-gray-700 mb-2">
+                  Originalpreis (€) *
+                </label>
+                <input
+                  type="number"
+                  id="originalPrice"
+                  name="originalPrice"
+                  required
+                  min="0"
+                  step="0.01"
+                  value={formData.originalPrice}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-200"
+                  placeholder="1000.00"
+                />
+              </div>
+              <div>
+                <label htmlFor="productCategory" className="block text-sm font-medium text-gray-700 mb-2">
+                  Produktkategorie
+                </label>
+                <select
+                  id="productCategory"
+                  name="productCategory"
+                  value={formData.productCategory}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-200"
+                >
+                  <option value="general">Allgemein</option>
+                  <option value="electronics">Elektronik</option>
+                  <option value="automotive">Automobil</option>
+                  <option value="services">Dienstleistungen</option>
+                  <option value="software">Software</option>
+                  <option value="consulting">Beratung</option>
+                </select>
+              </div>
+              <div>
+                <label htmlFor="urgencyLevel" className="block text-sm font-medium text-gray-700 mb-2">
+                  Dringlichkeit
+                </label>
+                <select
+                  id="urgencyLevel"
+                  name="urgencyLevel"
+                  value={formData.urgencyLevel}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-200"
+                >
+                  <option value="low">Niedrig</option>
+                  <option value="medium">Mittel</option>
+                  <option value="high">Hoch</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          {/* File Upload */}
+          <fieldset className="space-y-4">
+            <legend className="text-xl font-semibold text-gray-900 flex items-center gap-2">
+              <FileText className="w-5 h-5 text-orange-600" aria-hidden="true" />
+              Dokument hochladen
+            </legend>
+            <div className="relative">
+              <input
+                type="file"
+                onChange={handleFileChange}
+                accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                className="hidden"
+                id="file-upload"
+                aria-label="Datei auswählen"
+              />
+              <label
+                htmlFor="file-upload"
+                className="flex items-center justify-center w-full px-6 py-8 border-2 border-dashed border-gray-300 rounded-xl hover:border-gray-400 transition-all duration-200 cursor-pointer bg-gray-50 hover:bg-gray-100"
+              >
+                <div className="text-center">
+                  <Upload className="w-12 h-12 text-gray-400 mx-auto mb-2" aria-hidden="true" />
+                  <p className="text-gray-600">
+                    {formData.file ? formData.file.name : 'Klicken zum Hochladen oder Drag & Drop'}
+                  </p>
+                  <p className="text-sm text-gray-500 mt-1">
+                    PDF, DOC, DOCX, JPG, PNG bis zu 10MB
+                  </p>
+                </div>
+              </label>
+            </div>
+          </fieldset>
+
+          {/* Additional Notes */}
+          <div className="space-y-4">
+            <label htmlFor="customerNotes" className="block text-sm font-medium text-gray-700">
+              Zusätzliche Notizen (Optional)
+            </label>
+            <textarea
+              id="customerNotes"
+              name="customerNotes"
+              value={formData.customerNotes}
+              onChange={handleInputChange}
+              rows={4}
+              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200"
+              placeholder="Spezielle Anforderungen oder Hinweise..."
+            />
+          </div>
+
+          {/* Submit Button */}
+          <div className="pt-6">
+            <button
+              type="submit"
+              disabled={isUploading}
+              className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            >
+              {isUploading ? (
+                <>
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" aria-hidden="true" />
+                  <span>Verarbeitung läuft...</span>
+                </>
+              ) : uploadSuccess ? (
+                <>
+                  <CheckCircle className="w-5 h-5" aria-hidden="true" />
+                  <span>Erfolgreich! Weiterleitung...</span>
+                </>
+              ) : (
+                <>
+                  <Zap className="w-5 h-5" aria-hidden="true" />
+                  <span>KI-Verhandlung starten</span>
+                </>
+              )}
+            </button>
+          </div>
+        </motion.form>
+      </div>
+    </div>
+  )
+}
+EOF
+
+# 6. app/status/page.tsx
+echo "📝 Erstelle app/status/page.tsx..."
+cat > app/status/page.tsx << 'EOF'
+'use client'
+
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { ArrowLeft, Clock, CheckCircle, AlertCircle, MessageSquare, TrendingDown, RefreshCw } from 'lucide-react'
+
+interface NegotiationStep {
+  id: number
+  title: string
+  status: 'completed' | 'active' | 'pending'
+  timestamp?: string
+  description?: string
+}
+
+export default function StatusPage() {
+  const [negotiationId] = useState('NEG-2024-1234')
+  const [currentOffer, setCurrentOffer] = useState(850)
+  const [originalPrice] = useState(1000)
+  const [messages] = useState([
+    { sender: 'ai', text: 'Guten Tag, ich verhandle im Auftrag meines Kunden über das Angebot.', time: '14:32' },
+    { sender: 'merchant', text: 'Hallo, wie kann ich Ihnen helfen?', time: '14:33' },
+    { sender: 'ai', text: 'Mein Kunde ist sehr interessiert, jedoch liegt der Preis über dem Budget. Wäre ein Preisnachlass möglich?', time: '14:33' },
+    { sender: 'merchant', text: 'Ich kann Ihnen einen Rabatt von 10% anbieten.', time: '14:35' },
+    { sender: 'ai', text: 'Das ist ein guter Anfang. Basierend auf Marktanalysen wäre ein Preis von 850€ angemessen.', time: '14:36' },
+  ])
+
+  const steps: NegotiationStep[] = [
+    { id: 1, title: 'Angebot hochgeladen', status: 'completed', timestamp: '14:30' },
+    { id: 2, title: 'KI-Analyse durchgeführt', status: 'completed', timestamp: '14:31' },
+    { id: 3, title: 'Verhandlung gestartet', status: 'completed', timestamp: '14:32' },
+    { id: 4, title: 'In Verhandlung', status: 'active', description: 'KI verhandelt aktiv mit dem Händler' },
+    { id: 5, title: 'Abschluss', status: 'pending' },
+  ]
+
+  const savings = originalPrice - currentOffer
+  const savingsPercent = (savings / originalPrice) * 100
+
+  return (
+    <div className="min-h-screen bg-gray-50 py-24 px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <Link href="/" className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8 transition-colors">
+          <ArrowLeft className="w-5 h-5" />
+          Zurück zur Übersicht
+        </Link>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-8"
+        >
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">Verhandlungsstatus</h1>
+          <p className="text-gray-600">Verhandlungs-ID: {negotiationId}</p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Progress Steps */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="lg:col-span-1"
+          >
+            <div className="bg-white rounded-2xl p-6 shadow-lg">
+              <h2 className="text-xl font-semibold text-gray-900 mb-6">Fortschritt</h2>
+              <div className="space-y-4">
+                {steps.map((step, index) => (
+                  <div key={step.id} className="flex items-start gap-4">
+                    <div className="relative">
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                        step.status === 'completed' ? 'bg-green-100 text-green-600' :
+                        step.status === 'active' ? 'bg-blue-100 text-blue-600' :
+                        'bg-gray-100 text-gray-400'
+                      }`}>
+                        {step.status === 'completed' ? (
+                          <CheckCircle className="w-5 h-5" />
+                        ) : step.status === 'active' ? (
+                          <RefreshCw className="w-5 h-5 animate-spin" />
+                        ) : (
+                          <Clock className="w-5 h-5" />
+                        )}
+                      </div>
+                      {index < steps.length - 1 && (
+                        <div className={`absolute top-10 left-5 w-0.5 h-12 -translate-x-1/2 ${
+                          step.status === 'completed' ? 'bg-green-200' : 'bg-gray-200'
+                        }`} />
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className={`font-medium ${
+                        step.status === 'pending' ? 'text-gray-500' : 'text-gray-900'
+                      }`}>
+                        {step.title}
+                      </h3>
+                      {step.timestamp && (
+                        <p className="text-sm text-gray-500">{step.timestamp}</p>
+                      )}
+                      {step.description && (
+                        <p className="text-sm text-gray-600 mt-1">{step.description}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Price Overview */}
+            <div className="bg-white rounded-2xl p-6 shadow-lg mt-6">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Preisübersicht</h2>
+              <div className="space-y-3">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Originalpreis</span>
+                  <span className="font-medium">€{originalPrice}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Aktuelles Angebot</span>
+                  <span className="font-medium text-blue-600">€{currentOffer}</span>
+                </div>
+                <div className="border-t pt-3">
+                  <div className="flex justify-between">
+                    <span className="font-medium">Ersparnis</span>
+                    <div className="text-right">
+                      <span className="font-semibold text-green-600">€{savings}</span>
+                      <span className="text-sm text-green-600 ml-1">({savingsPercent.toFixed(1)}%)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Chat History */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="lg:col-span-2"
+          >
+            <div className="bg-white rounded-2xl shadow-lg h-full flex flex-col">
+              <div className="p-6 border-b border-gray-200">
+                <h2 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
+                  <MessageSquare className="w-5 h-5" />
+                  Verhandlungsverlauf
+                </h2>
+              </div>
+              
+              <div className="flex-1 p-6 overflow-y-auto space-y-4">
+                {messages.map((message, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className={`flex ${message.sender === 'ai' ? 'justify-start' : 'justify-end'}`}
+                  >
+                    <div className={`max-w-[70%] rounded-2xl px-4 py-3 ${
+                      message.sender === 'ai' 
+                        ? 'bg-gradient-to-r from-purple-100 to-blue-100 text-gray-800' 
+                        : 'bg-gray-100 text-gray-800'
+                    }`}>
+                      <p className="text-sm font-medium mb-1">
+                        {message.sender === 'ai' ? 'VOAI KI-Agent' : 'Händler'}
+                      </p>
+                      <p>{message.text}</p>
+                      <p className="text-xs text-gray-500 mt-1">{message.time}</p>
+                    </div>
+                  </motion.div>
+                ))}
+                
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="flex justify-center py-4"
+                >
+                  <div className="flex items-center gap-2 text-blue-600">
+                    <RefreshCw className="w-4 h-4 animate-spin" />
+                    <span className="text-sm font-medium">KI verhandelt weiter...</span>
+                  </div>
+                </motion.div>
+              </div>
+
+              <div className="p-6 border-t border-gray-200 bg-gray-50">
+                <div className="flex items-center gap-2 text-sm text-gray-600">
+                  <AlertCircle className="w-4 h-4" />
+                  <p>Die Verhandlung läuft vollautomatisch. Sie werden benachrichtigt, sobald ein Ergebnis vorliegt.</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  )
+}
+EOF
+
+# 7. components/Navigation.tsx
+echo "📝 Erstelle components/Navigation.tsx..."
+cat > components/Navigation.tsx << 'EOF'
+'use client'
+
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
+import { Menu, X, Globe } from 'lucide-react'
+import { usePathname } from 'next/navigation'
+
+export default function Navigation() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [totalSavings, setTotalSavings] = useState(1234567)
+  const [language, setLanguage] = useState<'de' | 'en'>('de')
+  const pathname = usePathname()
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTotalSavings(prev => prev + Math.floor(Math.random() * 100 + 50))
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const t = {
+    de: {
+      nav: {
+        home: 'Startseite',
+        upload: 'Neue Verhandlung',
+        dashboard: 'Dashboard',
+        status: 'Status verfolgen',
+        settings: 'Einstellungen'
+      },
+      saved: 'gespart'
+    },
+    en: {
+      nav: {
+        home: 'Home',
+        upload: 'New Negotiation',
+        dashboard: 'Dashboard',
+        status: 'Track Status',
+        settings: 'Settings'
+      },
+      saved: 'saved'
+    }
+  }[language]
+
+  return (
+    <>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <button
+              onClick={() => setIsMenuOpen(true)}
+              className="p-2 hover:bg-gray-100 rounded-lg transition-all duration-200"
+              aria-label="Menü öffnen"
+            >
+              <Menu className="w-6 h-6 text-gray-900" />
+            </button>
+
+            <Link href="/" className="absolute left-1/2 transform -translate-x-1/2">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                VOAI
+              </h1>
+            </Link>
+
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => setLanguage(language === 'de' ? 'en' : 'de')}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 transition-all duration-200"
+                aria-label={`Sprache wechseln zu ${language === 'de' ? 'Englisch' : 'Deutsch'}`}
+              >
+                <Globe className="w-4 h-4" aria-hidden="true" />
+                <span className="text-sm font-medium">{language.toUpperCase()}</span>
+              </button>
+
+              <div className="hidden sm:flex items-center space-x-2">
+                <motion.div
+                  key={totalSavings}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-purple-600 font-semibold"
+                >
+                  €{totalSavings.toLocaleString('de-DE')}
+                </motion.div>
+                <span className="text-gray-600 text-sm">{t.saved}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Slide-out Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMenuOpen(false)}
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-50"
+              aria-label="Menü schließen"
+            />
+            <motion.nav
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+              className="fixed left-0 top-0 bottom-0 w-80 bg-white shadow-2xl z-50"
+              aria-label="Hauptnavigation"
+            >
+              <div className="p-6">
+                <button
+                  onClick={() => setIsMenuOpen(false)}
+                  className="mb-8 p-2 hover:bg-gray-100 rounded-lg transition-all duration-200"
+                  aria-label="Menü schließen"
+                >
+                  <X className="w-6 h-6 text-gray-900" />
+                </button>
+                <ul className="space-y-2">
+                  {Object.entries(t.nav).map(([key, label]) => {
+                    const href = key === 'home' ? '/' : `/${key}`
+                    const isActive = pathname === href
+                    
+                    return (
+                      <li key={key}>
+                        <Link
+                          href={href}
+                          onClick={() => setIsMenuOpen(false)}
+                          className={`block px-4 py-3 rounded-xl text-lg font-medium transition-all duration-200 ${
+                            isActive 
+                              ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white' 
+                              : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                          }`}
+                          aria-current={isActive ? 'page' : undefined}
+                        >
+                          {label}
+                        </Link>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+            </motion.nav>
+          </>
+        )}
+      </AnimatePresence>
+    </>
+  )
+}
+EOF
+
+# 8. components/Footer.tsx
+echo "📝 Erstelle components/Footer.tsx..."
+cat > components/Footer.tsx << 'EOF'
+'use client'
+
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear()
+
+  return (
+    <footer className="bg-gray-50 border-t border-gray-200">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 className="font-bold text-lg mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              VOAI
+            </h3>
+            <p className="text-sm text-gray-600">
+              KI-gestützte Preisverhandlungen für maximale Ersparnisse.
+            </p>
+          </div>
+          
+          <div>
+            <h4 className="font-semibold mb-4 text-gray-900">Produkt</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/features" className="text-gray-600 hover:text-gray-900 transition-colors">
+                  Funktionen
+                </Link>
+              </li>
+              <li>
+                <Link href="/pricing" className="text-gray-600 hover:text-gray-900 transition-colors">
+                  Preise
+                </Link>
+              </li>
+              <li>
+                <Link href="/how-it-works" className="text-gray-600 hover:text-gray-900 transition-colors">
+                  So funktioniert's
+                </Link>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="font-semibold mb-4 text-gray-900">Unternehmen</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/about" className="text-gray-600 hover:text-gray-900 transition-colors">
+                  Über uns
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-gray-600 hover:text-gray-900 transition-colors">
+                  Kontakt
+                </Link>
+              </li>
+              <li>
+                <Link href="/careers" className="text-gray-600 hover:text-gray-900 transition-colors">
+                  Karriere
+                </Link>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="font-semibold mb-4 text-gray-900">Rechtliches</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/privacy" className="text-gray-600 hover:text-gray-900 transition-colors">
+                  Datenschutz
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="text-gray-600 hover:text-gray-900 transition-colors">
+                  AGB
+                </Link>
+              </li>
+              <li>
+                <Link href="/imprint" className="text-gray-600 hover:text-gray-900 transition-colors">
+                  Impressum
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="mt-8 pt-8 border-t border-gray-200 text-center text-sm text-gray-600"
+        >
+          <p>&copy; {currentYear} VOAI. Alle Rechte vorbehalten.</p>
+        </motion.div>
+      </div>
+    </footer>
+  )
+}
+EOF
+
+echo ""
+echo "✅ Installation abgeschlossen!"
+echo "================================================"
+echo ""
+echo "Die Website sollte jetzt unter http://localhost:3000 laufen."
+echo ""
+echo "Falls der Server nicht läuft, führe folgende Befehle aus:"
+echo "  1. Stoppe den Server mit Ctrl+C"
+echo "  2. Starte neu mit: npm run dev"
+echo ""
+echo "🎉 Viel Spaß mit deiner VOAI Website!"

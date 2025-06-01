@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+coverage
+build
+dist
+public
+*.md
+*.lock
+*.log
+.env*
+uploads
