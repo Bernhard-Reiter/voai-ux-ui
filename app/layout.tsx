@@ -6,7 +6,6 @@ import Footer from '@/components/Footer'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ErrorBoundary } from '@/components/error-boundary'
 import { ToastProvider } from '@/components/toast-provider'
-import { Analytics } from '@/components/analytics'
 
 const inter = Inter({
   subsets: ['latin'],

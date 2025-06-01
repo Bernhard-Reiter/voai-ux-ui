@@ -22,16 +22,10 @@ export function validateEmail(email: string): boolean {
 
 // SQL Injection Prevention (für parametrisierte Queries)
 export function escapeSQL(str: string): string {
-  return str.replace(/[\0\x08\x09\x1a\n\r"'\\\%]/g, (char) => {
+  return str.replace(/[\0\n\r"'\\]/g, (char) => {
     switch (char) {
       case '\0':
         return '\\0'
-      case '\x08':
-        return '\\b'
-      case '\x09':
-        return '\\t'
-      case '\x1a':
-        return '\\z'
       case '\n':
         return '\\n'
       case '\r':
@@ -39,7 +33,6 @@ export function escapeSQL(str: string): string {
       case '"':
       case "'":
       case '\\':
-      case '%':
         return '\\' + char
       default:
         return char
