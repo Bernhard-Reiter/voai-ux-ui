@@ -1,0 +1,188 @@
+
+> frontend@0.1.0 dev /Users/bernhard/voai-ux-ui/apps/frontend
+> next dev --turbopack
+
+   ▲ Next.js 15.4.1 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.178.22:3000
+
+ ✓ Starting...
+ ✓ Ready in 5.7s
+ ○ Compiling / ...
+Error: Cannot apply unknown utility class `bg-background`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    [2m[at onInvalidCandidate (/Users/bernhard/voai-ux-ui/node_modules/.pnpm/tailwindcss@4.1.11/node_modules/tailwindcss/dist/lib.js:18:1312)][0m
+    [2m[at ge (/Users/bernhard/voai-ux-ui/node_modules/.pnpm/tailwindcss@4.1.11/node_modules/tailwindcss/dist/lib.js:13:29803)][0m
+    [2m[at /Users/bernhard/voai-ux-ui/node_modules/.pnpm/tailwindcss@4.1.11/node_modules/tailwindcss/dist/lib.js:18:373][0m
+    [2m[at I (/Users/bernhard/voai-ux-ui/node_modules/.pnpm/tailwindcss@4.1.11/node_modules/tailwindcss/dist/lib.js:3:1656)][0m
+    [2m[at je (/Users/bernhard/voai-ux-ui/node_modules/.pnpm/tailwindcss@4.1.11/node_modules/tailwindcss/dist/lib.js:18:172)][0m
+    [2m[at bi (/Users/bernhard/voai-ux-ui/node_modules/.pnpm/tailwindcss@4.1.11/node_modules/tailwindcss/dist/lib.js:35:780)][0m
+    [2m[at process.processTicksAndRejections (node:internal/process/task_queues:95:5)][0m
+    [2m[at async yi (/Users/bernhard/voai-ux-ui/node_modules/.pnpm/tailwindcss@4.1.11/node_modules/tailwindcss/dist/lib.js:35:1123)][0m
+    [2m[at async _r (/Users/bernhard/voai-ux-ui/node_modules/.pnpm/@tailwindcss+node@4.1.11/node_modules/@tailwindcss/node/dist/index.js:10:3384)][0m
+    [2m[at async p (/Users/bernhard/voai-ux-ui/node_modules/.pnpm/@tailwindcss+postcss@4.1.11/node_modules/@tailwindcss/postcss/dist/index.js:10:4019)][0m
+ ✓ Compiled / in 12s
+ ⚠ [next]/internal/font/google/inter_9e72d27f.module.css
+Error while requesting resource
+Received response with status 404 when requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  [next]/internal/font/google/inter_9e72d27f.module.css
+  [next]/internal/font/google/inter_9e72d27f.js
+  ./apps/frontend/src/app/layout.tsx
+
+
+ ⚠ [next]/internal/font/google/space_grotesk_12011cc1.module.css
+Error while requesting resource
+Received response with status 404 when requesting https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap
+
+Import trace:
+  [next]/internal/font/google/space_grotesk_12011cc1.module.css
+  [next]/internal/font/google/space_grotesk_12011cc1.js
+  ./apps/frontend/src/app/layout.tsx
+
+
+ ⚠ [next]/internal/font/google/inter_9e72d27f.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  [next]/internal/font/google/inter_9e72d27f.module.css
+  [next]/internal/font/google/inter_9e72d27f.js
+  ./apps/frontend/src/app/layout.tsx
+
+
+ ⚠ [next]/internal/font/google/space_grotesk_12011cc1.module.css
+next/font: warning:
+Failed to download `Space Grotesk` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  [next]/internal/font/google/space_grotesk_12011cc1.module.css
+  [next]/internal/font/google/space_grotesk_12011cc1.js
+  ./apps/frontend/src/app/layout.tsx
+
+
+ HEAD / 200 in 12890ms
+ ⚠ [next]/internal/font/google/inter_9e72d27f.module.css
+Error while requesting resource
+Received response with status 404 when requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  [next]/internal/font/google/inter_9e72d27f.module.css
+  [next]/internal/font/google/inter_9e72d27f.js
+  ./apps/frontend/src/app/layout.tsx
+
+
+ ⚠ [next]/internal/font/google/space_grotesk_12011cc1.module.css
+Error while requesting resource
+Received response with status 404 when requesting https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap
+
+Import trace:
+  [next]/internal/font/google/space_grotesk_12011cc1.module.css
+  [next]/internal/font/google/space_grotesk_12011cc1.js
+  ./apps/frontend/src/app/layout.tsx
+
+
+ ⚠ [next]/internal/font/google/inter_9e72d27f.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  [next]/internal/font/google/inter_9e72d27f.module.css
+  [next]/internal/font/google/inter_9e72d27f.js
+  ./apps/frontend/src/app/layout.tsx
+
+
+ ⚠ [next]/internal/font/google/space_grotesk_12011cc1.module.css
+next/font: warning:
+Failed to download `Space Grotesk` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  [next]/internal/font/google/space_grotesk_12011cc1.module.css
+  [next]/internal/font/google/space_grotesk_12011cc1.js
+  ./apps/frontend/src/app/layout.tsx
+
+
+ GET / 200 in 546ms
+ ⚠ [next]/internal/font/google/inter_9e72d27f.module.css
+Error while requesting resource
+Received response with status 404 when requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  [next]/internal/font/google/inter_9e72d27f.module.css
+  [next]/internal/font/google/inter_9e72d27f.js
+  ./apps/frontend/src/app/layout.tsx
+
+
+ ⚠ [next]/internal/font/google/space_grotesk_12011cc1.module.css
+Error while requesting resource
+Received response with status 404 when requesting https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap
+
+Import trace:
+  [next]/internal/font/google/space_grotesk_12011cc1.module.css
+  [next]/internal/font/google/space_grotesk_12011cc1.js
+  ./apps/frontend/src/app/layout.tsx
+
+
+ ⚠ [next]/internal/font/google/inter_9e72d27f.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  [next]/internal/font/google/inter_9e72d27f.module.css
+  [next]/internal/font/google/inter_9e72d27f.js
+  ./apps/frontend/src/app/layout.tsx
+
+
+ ⚠ [next]/internal/font/google/space_grotesk_12011cc1.module.css
+next/font: warning:
+Failed to download `Space Grotesk` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  [next]/internal/font/google/space_grotesk_12011cc1.module.css
+  [next]/internal/font/google/space_grotesk_12011cc1.js
+  ./apps/frontend/src/app/layout.tsx
+
+
+ GET / 200 in 252ms
+ ⚠ [next]/internal/font/google/inter_9e72d27f.module.css
+Error while requesting resource
+Received response with status 404 when requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  [next]/internal/font/google/inter_9e72d27f.module.css
+  [next]/internal/font/google/inter_9e72d27f.js
+  ./apps/frontend/src/app/layout.tsx
+
+
+ ⚠ [next]/internal/font/google/space_grotesk_12011cc1.module.css
+Error while requesting resource
+Received response with status 404 when requesting https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap
+
+Import trace:
+  [next]/internal/font/google/space_grotesk_12011cc1.module.css
+  [next]/internal/font/google/space_grotesk_12011cc1.js
+  ./apps/frontend/src/app/layout.tsx
+
+
+ ⚠ [next]/internal/font/google/inter_9e72d27f.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  [next]/internal/font/google/inter_9e72d27f.module.css
+  [next]/internal/font/google/inter_9e72d27f.js
+  ./apps/frontend/src/app/layout.tsx
+
+
+ ⚠ [next]/internal/font/google/space_grotesk_12011cc1.module.css
+next/font: warning:
+Failed to download `Space Grotesk` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  [next]/internal/font/google/space_grotesk_12011cc1.module.css
+  [next]/internal/font/google/space_grotesk_12011cc1.js
+  ./apps/frontend/src/app/layout.tsx
+
+
+ GET / 200 in 174ms
+[?25h
