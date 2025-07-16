@@ -3,9 +3,18 @@
   "version": "0.0.0",
   "description": "voai CRM & Frontend Monorepo",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "prepare": "husky",
-    "commit": "cz"
+    "commit": "cz",
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\""
   },
   "keywords": [
     "monorepo",
@@ -25,6 +34,13 @@
     "@commitlint/config-conventional": "^19.8.1",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
-    "husky": "^9.1.7"
+    "husky": "^9.1.7",
+    "prettier": "^3.3.2",
+    "turbo": "^2.0.6"
+  },
+  "packageManager": "pnpm@8.15.9",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=8"
   }
 }
