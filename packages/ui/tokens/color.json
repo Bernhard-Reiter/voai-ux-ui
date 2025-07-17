@@ -1,0 +1,92 @@
+{
+  "color": {
+    "cosmic": {
+      "bg": {
+        "value": "#FFFFFF",
+        "type": "color",
+        "description": "Primary background color"
+      },
+      "bg-dark": {
+        "value": "#0F0F0F",
+        "type": "color",
+        "description": "Primary background color - dark mode"
+      },
+      "surface": {
+        "value": "#F6F6F7",
+        "type": "color",
+        "description": "Surface color for cards and elevated elements"
+      },
+      "surface-dark": {
+        "value": "#1A1A1A",
+        "type": "color",
+        "description": "Surface color - dark mode"
+      },
+      "border": {
+        "value": "#E5E7EB",
+        "type": "color",
+        "description": "Default border color"
+      },
+      "border-dark": {
+        "value": "#2D2D2D",
+        "type": "color",
+        "description": "Border color - dark mode"
+      },
+      "text-primary": {
+        "value": "#0E0E11",
+        "type": "color",
+        "description": "Primary text color"
+      },
+      "text-primary-dark": {
+        "value": "#FFFFFF",
+        "type": "color",
+        "description": "Primary text color - dark mode"
+      },
+      "text-secondary": {
+        "value": "#6B7280",
+        "type": "color",
+        "description": "Secondary text color"
+      },
+      "text-secondary-dark": {
+        "value": "#9CA3AF",
+        "type": "color",
+        "description": "Secondary text color - dark mode"
+      },
+      "accent": {
+        "value": "#4F46E5",
+        "type": "color",
+        "description": "Cosmic purple accent color"
+      },
+      "accent-dark": {
+        "value": "#6366F1",
+        "type": "color",
+        "description": "Accent color - dark mode"
+      }
+    },
+    "status": {
+      "success": {
+        "value": "#22C55E",
+        "type": "color"
+      },
+      "success-dark": {
+        "value": "#16A34A",
+        "type": "color"
+      },
+      "warning": {
+        "value": "#FACC15",
+        "type": "color"
+      },
+      "warning-dark": {
+        "value": "#CA8A04",
+        "type": "color"
+      },
+      "error": {
+        "value": "#EF4444",
+        "type": "color"
+      },
+      "error-dark": {
+        "value": "#DC2626",
+        "type": "color"
+      }
+    }
+  }
+}
