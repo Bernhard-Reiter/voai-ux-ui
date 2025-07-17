@@ -87,6 +87,9 @@ importers:
 
   apps/frontend:
     dependencies:
+      '@supabase/ssr':
+        specifier: ^0.6.1
+        version: 0.6.1(@supabase/supabase-js@2.51.0)
       '@voai/ui':
         specifier: workspace:*
         version: link:../../packages/ui
