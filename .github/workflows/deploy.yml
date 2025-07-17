@@ -1,0 +1,77 @@
+name: Deploy to Vercel
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+  SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+
+jobs:
+  deploy-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Build packages
+        run: pnpm turbo build --filter=@voai/ui
+      
+      - name: Build frontend
+        run: pnpm turbo build --filter=frontend
+        env:
+          NEXT_PUBLIC_APP_URL: ${{ secrets.FRONTEND_URL || 'https://voai.vercel.app' }}
+      
+      # Add Vercel deployment step here when ready
+      # - name: Deploy to Vercel
+      #   uses: vercel/action@v20
+      #   with:
+      #     vercel-token: ${{ secrets.VERCEL_TOKEN }}
+      #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+      #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+
+  deploy-crm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Build packages
+        run: pnpm turbo build --filter=@voai/ui
+      
+      - name: Build CRM
+        run: pnpm turbo build --filter=crm
+        env:
+          NEXT_PUBLIC_CRM_URL: ${{ secrets.CRM_URL || 'https://voai-crm.vercel.app' }}
+      
+      # Add Vercel deployment step here when ready
