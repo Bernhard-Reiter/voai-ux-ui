@@ -1,0 +1,22 @@
+{
+  "name": "storybook-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build",
+    "start": "http-server storybook-static -p 6006"
+  },
+  "dependencies": {
+    "@voai/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@storybook/react": "^8.4.7",
+    "@storybook/react-vite": "^8.4.7",
+    "@storybook/addon-essentials": "^8.4.7",
+    "@storybook/addon-interactions": "^8.4.7",
+    "@storybook/blocks": "^8.4.7",
+    "storybook": "^8.4.7",
+    "http-server": "^14.1.1"
+  }
+}

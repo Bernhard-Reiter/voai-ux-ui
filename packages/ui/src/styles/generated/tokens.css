@@ -1,0 +1,78 @@
+/**
+ * Do not edit directly
+ * Generated on Thu, 17 Jul 2025 19:39:02 GMT
+ */
+
+:root {
+  --font-letter-spacing-normal: 0;
+  --font-letter-spacing-tight: -0.02em;
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+  --font-size-4xl: 4rem;
+  --font-size-3xl: 3rem;
+  --font-size-2xl: 2.5rem;
+  --font-size-xl: 2rem;
+  --font-size-lg: 1.5rem;
+  --font-size-md: 1.125rem;
+  --font-size-sm: 1rem;
+  --font-size-xs: 0.875rem;
+  --font-family-mono: 'JetBrains Mono', 'Courier New', monospace;
+  --font-family-sans: 'Inter Variable', Inter, system-ui, -apple-system, sans-serif;
+  --radius-lg: 16px;
+  --radius-md: 8px;
+  --radius-sm: 4px;
+  --spacing-6: 4rem;
+  --spacing-5: 3rem;
+  --spacing-4: 2rem;
+  --spacing-3: 1.5rem;
+  --spacing-2: 1rem;
+  --spacing-1: 0.5rem;
+  --spacing-0: 0;
+  --easing-cosmic: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --easing-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --easing-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --easing-linear: linear;
+  --duration-glacial: 1000ms;
+  --duration-slow: 500ms;
+  --duration-standard: 300ms;
+  --duration-fast: 150ms;
+  --duration-instant: 50ms;
+  --blur-lg: 16px;
+  --blur-md: 8px;
+  --blur-sm: 4px;
+  --elevation-glow-lg: 0 0 40px rgba(79, 70, 229, 0.15);
+  --elevation-glow: 0 0 20px rgba(79, 70, 229, 0.1);
+  --elevation-5: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --elevation-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --elevation-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --elevation-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --elevation-0: none;
+  --color-highlight-dark: #9333ea;
+  --color-highlight: #a855f7;
+  --color-neutral-dark: #94a3b8;
+  --color-neutral: #64748b;
+  --color-info-dark: #2563eb;
+  --color-info: #3b82f6;
+  --color-status-error-dark: #dc2626;
+  --color-status-error: #ef4444;
+  --color-status-warning-dark: #ca8a04;
+  --color-status-warning: #facc15;
+  --color-status-success-dark: #16a34a;
+  --color-status-success: #22c55e;
+  --color-cosmic-accent-dark: #6366f1;
+  --color-cosmic-accent: #4f46e5;
+  --color-cosmic-text-secondary-dark: #9ca3af;
+  --color-cosmic-text-secondary: #6b7280;
+  --color-cosmic-text-primary-dark: #ffffff;
+  --color-cosmic-text-primary: #0e0e11;
+  --color-cosmic-border-dark: #2d2d2d;
+  --color-cosmic-border: #e5e7eb;
+  --color-cosmic-surface-dark: #1a1a1a;
+  --color-cosmic-surface: #f6f6f7;
+  --color-cosmic-bg-dark: #0f0f0f;
+  --color-cosmic-bg: #ffffff;
+}

@@ -11,12 +11,14 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "pnpm build:tokens && tsup",
+    "build:tokens": "style-dictionary build --config ./tokens/config.json",
+    "dev": "pnpm build:tokens && tsup --watch",
     "lint": "eslint . --max-warnings 0",
     "type-check": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "postinstall": "pnpm build:tokens"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -45,6 +47,7 @@
     "@tailwindcss/typography": "^0.5.10",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "style-dictionary": "^3.9.2",
     "tailwind-merge": "^2.2.0",
     "tailwindcss": "^3.4.0"
   }

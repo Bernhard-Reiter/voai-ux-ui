@@ -1,7 +1,7 @@
 {
   "name": "voai-monorepo",
   "version": "0.0.0",
-  "description": "voai CRM & Frontend Monorepo",
+  "description": "VOAI Design System - A modern UI component library",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -14,13 +14,16 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "test": "turbo test",
-    "format": "prettier --write \"**/*.{ts,tsx,md,json}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "storybook": "pnpm --filter storybook-app dev",
+    "showcase": "pnpm --filter showcase dev"
   },
   "keywords": [
-    "monorepo",
-    "voai",
-    "crm",
-    "frontend"
+    "design-system",
+    "ui-components",
+    "react",
+    "typescript",
+    "tailwind"
   ],
   "author": "voai Team",
   "license": "MIT",

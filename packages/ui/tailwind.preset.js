@@ -4,23 +4,38 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
-        serif: ['DM Serif Display', 'serif'],
+        sans: ['Inter Variable', 'Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
-        // Primary brand colors - Superhuman inspired cyan/teal
-        primary: {
-          50: '#e6ffff',
-          100: '#b3ffff',
-          200: '#80ffff',
-          300: '#4dffff',
-          400: '#1affff',
-          500: '#00f0ff', // Main brand color
-          600: '#00c0cc',
-          700: '#009099',
-          800: '#006066',
-          900: '#003033',
+        // Cosmic Guide Color System
+        cosmic: {
+          bg: {
+            light: '#FFFFFF',
+            dark: '#0F0F0F',
+          },
+          surface: {
+            light: '#F6F6F7',
+            dark: '#1A1A1A',
+          },
+          border: {
+            light: '#E5E7EB',
+            dark: '#2D2D2D',
+          },
+          text: {
+            primary: {
+              light: '#0E0E11',
+              dark: '#FFFFFF',
+            },
+            secondary: {
+              light: '#6B7280',
+              dark: '#9CA3AF',
+            },
+          },
+          accent: {
+            light: '#4F46E5',
+            dark: '#6366F1',
+          },
         },
         // Neutral grays
         gray: {
@@ -103,8 +118,8 @@ module.exports = {
         'md': '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
         'lg': '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
         'xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
-        'glow': '0 0 20px rgb(0 240 255 / 0.35)',
-        'glow-lg': '0 0 40px rgb(0 240 255 / 0.35)',
+        'glow': '0 0 20px rgb(79 70 229 / 0.1)',
+        'glow-lg': '0 0 40px rgb(79 70 229 / 0.1)',
       },
       animation: {
         'fade-in': 'fadeIn 0.2s ease-in-out',
@@ -133,11 +148,11 @@ module.exports = {
         pulseGlow: {
           '0%, 100%': {
             opacity: '1',
-            boxShadow: '0 0 20px rgb(0 240 255 / 0.35)',
+            boxShadow: '0 0 20px rgb(79 70 229 / 0.1)',
           },
           '50%': {
             opacity: '0.8',
-            boxShadow: '0 0 40px rgb(0 240 255 / 0.35)',
+            boxShadow: '0 0 40px rgb(79 70 229 / 0.1)',
           },
         },
       },
