@@ -1,60 +1,76 @@
-# voai Monorepo
+# VOAI Design System
 
-Enterprise-grade CRM & Frontend monorepo built with Next.js, TypeScript, and Turborepo.
+A modern, Superhuman-inspired UI component library built with React, TypeScript, and Tailwind CSS.
+
+## 🎨 Overview
+
+VOAI Design System provides a collection of beautiful, accessible, and performant UI components designed for building modern web applications. Inspired by Superhuman's minimalist aesthetic, our components emphasize speed, keyboard navigation, and a delightful user experience.
 
 ## 🚀 Quick Start
 
 ```bash
+# Clone the repository
+git clone https://github.com/Bernhard-Reiter/voai-ux-ui.git
+cd voai-ux-ui
+
 # Install dependencies
 pnpm install
 
-# Run development
+# Start development
 pnpm dev
-
-# Create a conventional commit
-pnpm commit
 ```
 
-## 📁 Project Structure
+## 📦 Project Structure
 
 ```
-voai-monorepo/
+voai-ux-ui/
 ├── apps/
-│   ├── frontend/    # Customer-facing Next.js app
-│   ├── crm/         # Internal CRM Next.js app
-│   └── docs/        # Documentation (Storybook + Astro)
+│   ├── showcase/        # Live demo of components
+│   └── storybook/       # Component documentation
 ├── packages/
-│   ├── ui/          # Shared React components & Tailwind
-│   ├── eslint-config/
-│   └── tsconfig/
-└── turbo.json       # Turborepo configuration
+│   └── ui/             # Core component library
+│       ├── atoms/      # Basic building blocks
+│       ├── molecules/  # Composite components
+│       └── organisms/  # Complex components
+└── docs/               # Additional documentation
 ```
 
-## 🛠️ Development Setup
+## 🛠️ Available Scripts
 
-### Prerequisites
+- `pnpm dev` - Start all apps in development mode
+- `pnpm build` - Build all packages and apps
+- `pnpm storybook` - Launch Storybook documentation
+- `pnpm showcase` - Run the showcase app
+- `pnpm lint` - Lint all packages
+- `pnpm format` - Format code with Prettier
 
-- Node.js 20 LTS
-- pnpm (`corepack enable && corepack prepare pnpm@latest --activate`)
-- Git
+## 🎯 Key Features
 
-### Initial Setup
+- **Superhuman-Inspired Design**: Clean, minimal interface with cyan accent colors
+- **Command Palette**: ⌘K powered command interface for quick navigation
+- **Atomic Design**: Organized components following atomic design principles
+- **Dark Mode**: Built-in dark mode support
+- **TypeScript**: Full type safety and excellent developer experience
+- **Tailwind CSS**: Utility-first styling with custom design tokens
+- **Accessibility**: WCAG compliant components
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Bernhard-Reiter/voai-ux-ui.git
-   cd voai-ux-ui
-   ```
+## 🧩 Components
 
-2. Install dependencies:
-   ```bash
-   pnpm install
-   ```
+### Atoms
+- Button
+- Input
+- Badge
+- Spinner
 
-3. Set up Git hooks:
-   ```bash
-   pnpm prepare
-   ```
+### Molecules
+- Card
+- Form controls
+- Notifications
+
+### Organisms
+- CommandPalette
+- Navigation
+- Modals
 
 ## 🌿 Git Workflow
 
@@ -122,53 +138,14 @@ The `main` branch is protected with:
 - ❌ Force pushes disabled
 - ❌ Deletions disabled
 
-## 🧪 Testing
-
-```bash
-# Run all tests
-pnpm test
-
-# Run tests in watch mode
-pnpm test:watch
-
-# E2E tests
-pnpm e2e
-
-# Storybook
-pnpm storybook
-```
-
-## 📦 CI/CD
-
-GitHub Actions run on every PR:
-- 🔍 Linting (ESLint + Prettier)
-- ✅ Type checking (TypeScript)
-- 🧪 Unit tests (Vitest)
-- 📝 Commit message validation
-- 🚀 Build verification
-
-## 🎨 Design System
-
-We follow a Superhuman-inspired design with:
-- Tailwind CSS for styling
-- Shared component library in `packages/ui`
-- Design tokens for consistency
-- Storybook for component documentation
-
 ## 📚 Documentation
 
-- Development docs: `/docs`
-- Component docs: Run `pnpm storybook`
-- Architecture decisions: `/docs/adrs`
+Visit our [Storybook](http://localhost:6006) for interactive component documentation and examples.
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit using conventional commits
-4. Push to your fork
-5. Create a Pull Request
+We welcome contributions! Please see our contributing guidelines for more details.
 
 ## 📄 License
 
-MIT © voai Team
+MIT © VOAI Team
