@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 17 Jul 2025 18:38:01 GMT
+ * Generated on Thu, 17 Jul 2025 19:39:02 GMT
  */
 
 export const ColorCosmicBg = "#ffffff";
@@ -21,6 +21,33 @@ export const ColorStatusWarning = "#facc15";
 export const ColorStatusWarningDark = "#ca8a04";
 export const ColorStatusError = "#ef4444";
 export const ColorStatusErrorDark = "#dc2626";
+export const ColorInfo = "#3b82f6";
+export const ColorInfoDark = "#2563eb";
+export const ColorNeutral = "#64748b";
+export const ColorNeutralDark = "#94a3b8";
+export const ColorHighlight = "#a855f7";
+export const ColorHighlightDark = "#9333ea";
+export const Elevation0 = "none";
+export const Elevation1 = "0 1px 2px 0 rgba(0, 0, 0, 0.05)";
+export const Elevation2 = "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)";
+export const Elevation3 = "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)";
+export const Elevation4 = "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)";
+export const Elevation5 = "0 25px 50px -12px rgba(0, 0, 0, 0.25)";
+export const ElevationGlow = "0 0 20px rgba(79, 70, 229, 0.1)";
+export const ElevationGlowLg = "0 0 40px rgba(79, 70, 229, 0.15)";
+export const BlurSm = "4px";
+export const BlurMd = "8px";
+export const BlurLg = "16px";
+export const DurationInstant = "50ms";
+export const DurationFast = "150ms";
+export const DurationStandard = "300ms";
+export const DurationSlow = "500ms";
+export const DurationGlacial = "1000ms";
+export const EasingLinear = "linear";
+export const EasingEaseIn = "cubic-bezier(0.4, 0, 1, 1)";
+export const EasingEaseOut = "cubic-bezier(0, 0, 0.2, 1)";
+export const EasingEaseInOut = "cubic-bezier(0.4, 0, 0.2, 1)";
+export const EasingCosmic = "cubic-bezier(0.34, 1.56, 0.64, 1)";
 export const Spacing0 = "0";
 export const Spacing1 = "0.5rem";
 export const Spacing2 = "1rem";

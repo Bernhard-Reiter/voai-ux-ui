@@ -87,6 +87,33 @@
         "value": "#DC2626",
         "type": "color"
       }
+    },
+    "info": {
+      "value": "#3B82F6",
+      "type": "color",
+      "description": "Informational states"
+    },
+    "info-dark": {
+      "value": "#2563EB",
+      "type": "color"
+    },
+    "neutral": {
+      "value": "#64748B",
+      "type": "color",
+      "description": "Neutral/inactive states"
+    },
+    "neutral-dark": {
+      "value": "#94A3B8",
+      "type": "color"
+    },
+    "highlight": {
+      "value": "#A855F7",
+      "type": "color",
+      "description": "Highlight/emphasis states"
+    },
+    "highlight-dark": {
+      "value": "#9333EA",
+      "type": "color"
     }
   }
 }
