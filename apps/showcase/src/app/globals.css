@@ -1,15 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap');
+/* Import UI Package Styles including Cosmic Tokens */
+@import '@voai/ui/src/styles/globals.css';
+
+/* Additional App-specific styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  :root {
-    --font-space-grotesk: var(--font-space-grotesk);
-    --font-inter: var(--font-inter);
-  }
-
-  body {
-    @apply bg-background text-gray-950;
-  }
-}
