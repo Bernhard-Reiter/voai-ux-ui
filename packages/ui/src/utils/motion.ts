@@ -9,7 +9,7 @@ export const cosmicMotion = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     exit: { opacity: 0 },
-    transition: { duration: 0.3, ease: [0, 0, 0.2, 1] }
+    transition: { duration: 0.3, ease: [0, 0, 0.2, 1] as [number, number, number, number] }
   },
 
   // Slide animations
@@ -17,14 +17,14 @@ export const cosmicMotion = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: -20 },
-    transition: { duration: 0.3, ease: [0, 0, 0.2, 1] }
+    transition: { duration: 0.3, ease: [0, 0, 0.2, 1] as [number, number, number, number] }
   },
 
   slideDown: {
     initial: { opacity: 0, y: -20 },
     animate: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: 20 },
-    transition: { duration: 0.3, ease: [0, 0, 0.2, 1] }
+    transition: { duration: 0.3, ease: [0, 0, 0.2, 1] as [number, number, number, number] }
   },
 
   // Scale animations
@@ -32,7 +32,7 @@ export const cosmicMotion = {
     initial: { opacity: 0, scale: 0.9 },
     animate: { opacity: 1, scale: 1 },
     exit: { opacity: 0, scale: 0.9 },
-    transition: { duration: 0.15, ease: [0, 0, 0.2, 1] }
+    transition: { duration: 0.15, ease: [0, 0, 0.2, 1] as [number, number, number, number] }
   },
 
   // Cosmic reveal
@@ -44,7 +44,7 @@ export const cosmicMotion = {
       y: 0,
       transition: {
         duration: 0.5,
-        ease: [0.34, 1.56, 0.64, 1], // Cosmic bounce
+        ease: [0.34, 1.56, 0.64, 1] as [number, number, number, number], // Cosmic bounce
       }
     },
     exit: { opacity: 0, scale: 0.95 }
@@ -94,7 +94,7 @@ export const pageTransition = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
   exit: { opacity: 0 },
-  transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] }
+  transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] }
 };
 
 // Reduced motion variants

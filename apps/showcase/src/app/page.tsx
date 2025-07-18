@@ -1,3 +1,5 @@
+'use client';
+
 import { Button, Card, Input, CommandPalette } from '@voai/ui';
 
 export default function ShowcasePage() {
@@ -5,10 +7,10 @@ export default function ShowcasePage() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <CommandPalette
         items={[
-          { id: '1', label: 'Home', href: '/' },
-          { id: '2', label: 'Components', href: '#components' },
-          { id: '3', label: 'Colors', href: '#colors' },
-          { id: '4', label: 'Typography', href: '#typography' },
+          { id: '1', title: 'Home', description: 'Go to home page', action: () => window.location.href = '/' },
+          { id: '2', title: 'Components', description: 'View all components', action: () => window.location.href = '#components' },
+          { id: '3', title: 'Colors', description: 'See color palette', action: () => window.location.href = '#colors' },
+          { id: '4', title: 'Typography', description: 'Typography examples', action: () => window.location.href = '#typography' },
         ]}
         placeholder="Search documentation..."
         emptyMessage="No results found."
@@ -35,7 +37,7 @@ export default function ShowcasePage() {
               <div className="space-y-3">
                 <Button variant="primary" size="sm">Small Button</Button>
                 <Button variant="secondary">Default Button</Button>
-                <Button variant="outline" size="lg">Large Button</Button>
+                <Button variant="ghost" size="lg">Large Button</Button>
               </div>
             </Card>
 
