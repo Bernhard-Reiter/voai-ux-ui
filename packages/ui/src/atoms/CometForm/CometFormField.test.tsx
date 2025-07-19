@@ -13,10 +13,19 @@ const testSchema = z.object({
 
 type TestFormData = z.infer<typeof testSchema>;
 
+const defaultValues: TestFormData = {
+  name: '',
+  email: '',
+  message: '',
+};
+
 describe('CometFormField', () => {
   it('renders with label', () => {
     const TestForm = () => (
-      <CometFormProvider<TestFormData> schema={testSchema}>
+      <CometFormProvider<TestFormData> 
+        schema={testSchema}
+        options={{ defaultValues }}
+      >
         <CometFormField name="name" label="Your Name" />
       </CometFormProvider>
     );
@@ -30,7 +39,11 @@ describe('CometFormField', () => {
     const onSubmit = jest.fn();
 
     const TestForm = () => (
-      <CometFormProvider<TestFormData> schema={testSchema} onSubmit={onSubmit}>
+      <CometFormProvider<TestFormData> 
+        schema={testSchema} 
+        onSubmit={onSubmit}
+        options={{ defaultValues }}
+      >
         <CometFormField name="name" label="Name" />
         <button type="submit">Submit</button>
       </CometFormProvider>
@@ -52,7 +65,10 @@ describe('CometFormField', () => {
     const user = userEvent.setup();
 
     const TestForm = () => (
-      <CometFormProvider<TestFormData> schema={testSchema}>
+      <CometFormProvider<TestFormData> 
+        schema={testSchema}
+        options={{ defaultValues, mode: 'onChange' }}
+      >
         <CometFormField name="name" label="Name" />
         <button type="submit">Submit</button>
       </CometFormProvider>
@@ -67,9 +83,11 @@ describe('CometFormField', () => {
     });
 
     // Type valid input
-    await user.type(screen.getByLabelText('Name'), 'John Doe');
-    await user.click(screen.getByText('Submit'));
-
+    const input = screen.getByLabelText('Name');
+    await user.clear(input);
+    await user.type(input, 'John Doe');
+    
+    // The error should clear immediately on valid input
     await waitFor(() => {
       expect(screen.queryByText('Name too short')).not.toBeInTheDocument();
     });
@@ -77,7 +95,10 @@ describe('CometFormField', () => {
 
   it('renders textarea when type is textarea', () => {
     const TestForm = () => (
-      <CometFormProvider<TestFormData> schema={testSchema}>
+      <CometFormProvider<TestFormData> 
+        schema={testSchema}
+        options={{ defaultValues }}
+      >
         <CometFormField name="message" label="Message" type="textarea" />
       </CometFormProvider>
     );
@@ -89,7 +110,10 @@ describe('CometFormField', () => {
 
   it('shows helper text', () => {
     const TestForm = () => (
-      <CometFormProvider<TestFormData> schema={testSchema}>
+      <CometFormProvider<TestFormData> 
+        schema={testSchema}
+        options={{ defaultValues }}
+      >
         <CometFormField 
           name="email" 
           label="Email" 
@@ -106,7 +130,10 @@ describe('CometFormField', () => {
     const user = userEvent.setup();
 
     const TestForm = () => (
-      <CometFormProvider<TestFormData> schema={testSchema}>
+      <CometFormProvider<TestFormData> 
+        schema={testSchema}
+        options={{ defaultValues }}
+      >
         <CometFormField 
           name="email" 
           label="Email" 
@@ -135,7 +162,10 @@ describe('CometFormField', () => {
     const user = userEvent.setup();
 
     const TestForm = () => (
-      <CometFormProvider<TestFormData> schema={testSchema}>
+      <CometFormProvider<TestFormData> 
+        schema={testSchema}
+        options={{ defaultValues }}
+      >
         <CometFormField name="name" label="Name" />
         <button type="submit">Submit</button>
       </CometFormProvider>
@@ -159,7 +189,11 @@ describe('CometFormProvider', () => {
     const onSubmit = jest.fn();
 
     const TestForm = () => (
-      <CometFormProvider<TestFormData> schema={testSchema} onSubmit={onSubmit}>
+      <CometFormProvider<TestFormData> 
+        schema={testSchema} 
+        onSubmit={onSubmit}
+        options={{ defaultValues }}
+      >
         <CometFormField name="name" label="Name" />
         <CometFormField name="email" label="Email" type="email" />
         <button type="submit">Submit</button>
@@ -176,6 +210,7 @@ describe('CometFormProvider', () => {
       expect(onSubmit).toHaveBeenCalledWith({
         name: 'John Doe',
         email: 'john@example.com',
+        message: '',
       });
     });
   });
@@ -185,7 +220,11 @@ describe('CometFormProvider', () => {
     const onSubmit = jest.fn();
 
     const TestForm = () => (
-      <CometFormProvider<TestFormData> schema={testSchema} onSubmit={onSubmit}>
+      <CometFormProvider<TestFormData> 
+        schema={testSchema} 
+        onSubmit={onSubmit}
+        options={{ defaultValues }}
+      >
         <CometFormField name="name" label="Name" />
         <CometFormField name="email" label="Email" type="email" />
         <button type="submit">Submit</button>

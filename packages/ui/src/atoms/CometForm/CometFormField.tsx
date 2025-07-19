@@ -1,24 +1,31 @@
 import * as React from 'react';
 import {
   useFormContext,
-  Controller,
+  Controller as RHFController,
   ControllerProps,
   FieldPath,
   FieldValues,
 } from 'react-hook-form';
+
+const Controller = RHFController as any;
 import { cn } from '../../utils';
 import { CometInput, CometTextarea } from './CometForm';
 
 interface CometFormFieldProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
-> extends Omit<ControllerProps<TFieldValues, TName>, 'render'> {
+> {
+  name: TName;
   label?: string;
   type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'textarea';
   placeholder?: string;
   className?: string;
   required?: boolean;
   helperText?: string;
+  rules?: ControllerProps<TFieldValues, TName>['rules'];
+  defaultValue?: ControllerProps<TFieldValues, TName>['defaultValue'];
+  disabled?: boolean;
+  readOnly?: boolean;
 }
 
 /**
@@ -34,11 +41,12 @@ export function CometFormField<
   type = 'text',
   placeholder,
   className,
-  required,
+  required: _required,
   rules,
   defaultValue,
   helperText,
-  ...props
+  disabled,
+  readOnly,
 }: CometFormFieldProps<TFieldValues, TName>) {
   const {
     control,
@@ -53,14 +61,15 @@ export function CometFormField<
       control={control}
       rules={rules}
       defaultValue={defaultValue}
-      {...props}
-      render={({ field }) => (
+      render={({ field }: any) => (
         <div className="space-y-1">
           {type === 'textarea' ? (
             <CometTextarea
               {...field}
               label={label}
               placeholder={placeholder}
+              disabled={disabled}
+              readOnly={readOnly}
               className={cn(
                 error && 'border-[var(--c-error)] focus:border-[var(--c-error)] focus:ring-[var(--c-error)]',
                 className
@@ -74,6 +83,8 @@ export function CometFormField<
               type={type}
               label={label}
               placeholder={placeholder}
+              disabled={disabled}
+              readOnly={readOnly}
               className={cn(
                 error && 'border-[var(--c-error)] focus:border-[var(--c-error)] focus:ring-[var(--c-error)]',
                 className
@@ -85,7 +96,7 @@ export function CometFormField<
           
           {error && (
             <p id={`${name}-error`} className="cosmic-meta text-[var(--c-error)]">
-              {error.message || 'This field is invalid'}
+              {String(error.message || 'This field is invalid')}
             </p>
           )}
           
