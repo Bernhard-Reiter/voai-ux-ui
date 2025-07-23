@@ -107,7 +107,7 @@ jobs:
         run: |
           npx serve -l 6006 packages/ui/storybook-static &
           sleep 5
-          npx test-storybook --url http://localhost:6006
+          cd packages/ui && npx test-storybook --url http://localhost:6006
 
       - name: Upload visual diffs
         if: failure()
