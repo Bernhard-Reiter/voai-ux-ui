@@ -40,7 +40,7 @@ function validateEnv() {
 }
 
 // Export validated env
-export const env = process.env.NODE_ENV === 'test' ? (process.env as Env) : validateEnv()
+export const env = process.env.NODE_ENV === 'test' ? (process.env as unknown as Env) : validateEnv()
 
 // Helper to get public runtime config
 export function getPublicEnv(): PublicEnv {
