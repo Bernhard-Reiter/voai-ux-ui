@@ -18,7 +18,7 @@
     "prepare": "husky",
     "sb:dev": "turbo run storybook --filter=@voai/ui",
     "sb:build": "turbo run build-storybook --filter=@voai/ui",
-    "visual:test": "test-storybook --coverage",
+    "visual:test": "test-storybook",
     "visual:update": "VISUAL_UPDATE=true pnpm visual:test"
   },
   "devDependencies": {

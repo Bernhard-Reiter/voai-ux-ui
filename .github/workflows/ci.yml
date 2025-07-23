@@ -100,8 +100,14 @@ jobs:
       - name: Build Storybook
         run: pnpm sb:build
 
+      - name: Install test dependencies
+        run: pnpm add -D -w serve
+
       - name: Run visual tests
-        run: pnpm visual:test
+        run: |
+          npx serve -l 6006 packages/ui/storybook-static &
+          sleep 5
+          npx test-storybook --url http://localhost:6006
 
       - name: Upload visual diffs
         if: failure()
