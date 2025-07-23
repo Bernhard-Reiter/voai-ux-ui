@@ -30,12 +30,9 @@ export class ErrorBoundary extends Component<Props, State> {
 
     // Send error to monitoring service
     if (typeof window !== 'undefined' && window.Sentry) {
-      window.Sentry.captureException(error, {
-        contexts: {
-          react: {
-            componentStack: errorInfo.componentStack,
-          },
-        },
+      window.Sentry.captureException(error)
+      window.Sentry.setContext('react', {
+        componentStack: errorInfo.componentStack,
       })
     }
   }

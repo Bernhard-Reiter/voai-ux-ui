@@ -12,7 +12,7 @@ export function useSound(
   options: UseSoundOptions = {}
 ): [() => void, { stop: () => void; isPlaying: boolean }] {
   const { volume = 1, playbackRate = 1, soundEnabled = true, interrupt = false } = options
-  
+
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const isPlayingRef = useRef(false)
 
