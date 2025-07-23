@@ -1,0 +1,17 @@
+{
+  "name": "@external/voai-ui-tokens",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "style-dictionary build --config ./config.js",
+    "build:figma": "style-dictionary build --config ./config.figma.js",
+    "sync": "node scripts/sync-figma-tokens.js",
+    "clean": "rm -rf build",
+    "watch": "nodemon --watch '*.json' --exec 'npm run build'"
+  },
+  "devDependencies": {
+    "@tokens-studio/sd-transforms": "^2.0.1",
+    "style-dictionary": "^3.9.2",
+    "token-transformer": "^0.0.33"
+  }
+}

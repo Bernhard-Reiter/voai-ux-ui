@@ -1,0 +1,12 @@
+{
+  "projectId": "chpt_xxx_placeholder",
+  "storybookBuildDir": "storybook-static",
+  "onlyChanged": true,
+  "exitZeroOnChanges": true,
+  "exitOnceUploaded": true,
+  "skip": "dependabot/**",
+  "externals": [
+    "public/**"
+  ],
+  "debug": false
+}
