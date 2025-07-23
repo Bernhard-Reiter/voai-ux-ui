@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import {
   Sidebar,
@@ -22,6 +23,7 @@ import {
   Search,
   Plus,
 } from 'lucide-react';
+import { LucideIconWrapper } from '../utils/lucide-wrapper';
 
 const meta: Meta<typeof Sidebar> = {
   title: 'Organisms/Sidebar',
@@ -62,21 +64,21 @@ export const Default: Story = {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarItem icon={<Home />} active>
+          <SidebarItem icon={<LucideIconWrapper icon={Home} />} active>
             Dashboard
           </SidebarItem>
-          <SidebarItem icon={<BarChart3 />}>Analytics</SidebarItem>
-          <SidebarItem icon={<Users />}>
+          <SidebarItem icon={<LucideIconWrapper icon={BarChart3} />}>Analytics</SidebarItem>
+          <SidebarItem icon={<LucideIconWrapper icon={Users} />}>
             Benutzer
             <Badge variant="secondary" className="ml-auto">
               23
             </Badge>
           </SidebarItem>
-          <SidebarItem icon={<Settings />}>Einstellungen</SidebarItem>
+          <SidebarItem icon={<LucideIconWrapper icon={Settings} />}>Einstellungen</SidebarItem>
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <SidebarItem icon={<LogOut />}>Abmelden</SidebarItem>
+        <SidebarItem icon={<LucideIconWrapper icon={LogOut} />}>Abmelden</SidebarItem>
       </SidebarFooter>
     </Sidebar>
   ),
@@ -91,28 +93,28 @@ export const WithGroups: Story = {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup title="Navigation">
-          <SidebarItem icon={<Home />} active>
+          <SidebarItem icon={<LucideIconWrapper icon={Home} />} active>
             Übersicht
           </SidebarItem>
-          <SidebarItem icon={<Search />}>Suche</SidebarItem>
+          <SidebarItem icon={<LucideIconWrapper icon={Search} />}>Suche</SidebarItem>
         </SidebarGroup>
         <SidebarGroup title="Workspace">
-          <SidebarItem icon={<FolderOpen />}>
+          <SidebarItem icon={<LucideIconWrapper icon={FolderOpen} />}>
             Projekte
             <Badge className="ml-auto">12</Badge>
           </SidebarItem>
-          <SidebarItem icon={<FileText />}>Dokumente</SidebarItem>
-          <SidebarItem icon={<Calendar />}>Kalender</SidebarItem>
+          <SidebarItem icon={<LucideIconWrapper icon={FileText} />}>Dokumente</SidebarItem>
+          <SidebarItem icon={<LucideIconWrapper icon={Calendar} />}>Kalender</SidebarItem>
         </SidebarGroup>
         <SidebarGroup title="System">
-          <SidebarItem icon={<Bell />}>
+          <SidebarItem icon={<LucideIconWrapper icon={Bell} />}>
             Benachrichtigungen
             <Badge variant="destructive" className="ml-auto">
               3
             </Badge>
           </SidebarItem>
-          <SidebarItem icon={<Settings />}>Einstellungen</SidebarItem>
-          <SidebarItem icon={<HelpCircle />}>Hilfe</SidebarItem>
+          <SidebarItem icon={<LucideIconWrapper icon={Settings} />}>Einstellungen</SidebarItem>
+          <SidebarItem icon={<LucideIconWrapper icon={HelpCircle} />}>Hilfe</SidebarItem>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
@@ -132,11 +134,11 @@ export const Collapsible: Story = {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarItem icon={<Home />} active>
+          <SidebarItem icon={<LucideIconWrapper icon={Home} />} active>
             Home
           </SidebarItem>
-          <SidebarItem icon={<BarChart3 />}>Reports</SidebarItem>
-          <SidebarItem icon={<Users />}>Team</SidebarItem>
+          <SidebarItem icon={<LucideIconWrapper icon={BarChart3} />}>Reports</SidebarItem>
+          <SidebarItem icon={<LucideIconWrapper icon={Users} />}>Team</SidebarItem>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
@@ -151,7 +153,7 @@ export const WithActions: Story = {
         <div className="flex items-center gap-2">
           <h2 className="text-xl font-semibold">Projects</h2>
           <button className="ml-auto rounded p-1 hover:bg-accent">
-            <Plus className="h-4 w-4" />
+            <LucideIconWrapper icon={Plus} className="h-4 w-4" />
           </button>
         </div>
       </SidebarHeader>
@@ -164,13 +166,13 @@ export const WithActions: Story = {
           />
         </div>
         <SidebarGroup title="Favoriten">
-          <SidebarItem icon={<FolderOpen />}>Website Redesign</SidebarItem>
-          <SidebarItem icon={<FolderOpen />}>Mobile App</SidebarItem>
+          <SidebarItem icon={<LucideIconWrapper icon={FolderOpen} />}>Website Redesign</SidebarItem>
+          <SidebarItem icon={<LucideIconWrapper icon={FolderOpen} />}>Mobile App</SidebarItem>
         </SidebarGroup>
         <SidebarGroup title="Alle Projekte">
-          <SidebarItem icon={<FolderOpen />}>Backend API</SidebarItem>
-          <SidebarItem icon={<FolderOpen />}>Documentation</SidebarItem>
-          <SidebarItem icon={<FolderOpen />}>Testing Suite</SidebarItem>
+          <SidebarItem icon={<LucideIconWrapper icon={FolderOpen} />}>Backend API</SidebarItem>
+          <SidebarItem icon={<LucideIconWrapper icon={FolderOpen} />}>Documentation</SidebarItem>
+          <SidebarItem icon={<LucideIconWrapper icon={FolderOpen} />}>Testing Suite</SidebarItem>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
@@ -191,12 +193,12 @@ export const Mobile: Story = {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarItem icon={<Home />} active>
+          <SidebarItem icon={<LucideIconWrapper icon={Home} />} active>
             Dashboard
           </SidebarItem>
-          <SidebarItem icon={<BarChart3 />}>Analytics</SidebarItem>
-          <SidebarItem icon={<Users />}>Users</SidebarItem>
-          <SidebarItem icon={<Settings />}>Settings</SidebarItem>
+          <SidebarItem icon={<LucideIconWrapper icon={BarChart3} />}>Analytics</SidebarItem>
+          <SidebarItem icon={<LucideIconWrapper icon={Users} />}>Users</SidebarItem>
+          <SidebarItem icon={<LucideIconWrapper icon={Settings} />}>Settings</SidebarItem>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>

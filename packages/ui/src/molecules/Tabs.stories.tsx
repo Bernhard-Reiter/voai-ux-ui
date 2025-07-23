@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../at
 import { Badge } from '../atoms/Badge';
 import { Button } from '../atoms/Button';
 import { User, CreditCard, Settings, Bell } from 'lucide-react';
+import { LucideIconWrapper } from '../utils/lucide-wrapper';
 
 const meta: Meta<typeof Tabs> = {
   title: 'Molecules/Tabs',
@@ -82,19 +83,19 @@ export const AccountSettings: Story = {
     <Tabs defaultValue="profile" className="w-full">
       <TabsList className="grid w-full grid-cols-4">
         <TabsTrigger value="profile">
-          <User className="mr-2 h-4 w-4" />
+          <LucideIconWrapper icon={User} className="mr-2 h-4 w-4" />
           Profil
         </TabsTrigger>
         <TabsTrigger value="billing">
-          <CreditCard className="mr-2 h-4 w-4" />
+          <LucideIconWrapper icon={CreditCard} className="mr-2 h-4 w-4" />
           Abrechnung
         </TabsTrigger>
         <TabsTrigger value="notifications">
-          <Bell className="mr-2 h-4 w-4" />
+          <LucideIconWrapper icon={Bell} className="mr-2 h-4 w-4" />
           Benachrichtigungen
         </TabsTrigger>
         <TabsTrigger value="security">
-          <Settings className="mr-2 h-4 w-4" />
+          <LucideIconWrapper icon={Settings} className="mr-2 h-4 w-4" />
           Sicherheit
         </TabsTrigger>
       </TabsList>

@@ -1,9 +1,11 @@
+import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { DataTable, DataTableColumnHeader } from './DataTable';
 import { ColumnDef } from '@tanstack/react-table';
 import { Badge } from '../atoms/Badge';
 import { Button } from '../atoms/Button';
 import { MoreHorizontal, ArrowUpDown } from 'lucide-react';
+import { LucideIconWrapper } from '../utils/lucide-wrapper';
 
 // Sample data type
 type Payment = {
@@ -225,7 +227,7 @@ const advancedColumns: ColumnDef<Payment>[] = [
     cell: ({ row }) => {
       return (
         <Button variant="ghost" size="icon">
-          <MoreHorizontal className="h-4 w-4" />
+          <LucideIconWrapper icon={MoreHorizontal} className="h-4 w-4" />
         </Button>
       );
     },

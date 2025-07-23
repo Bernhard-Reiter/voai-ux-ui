@@ -1,8 +1,10 @@
+import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './Card';
 import { Button } from './Button';
 import { Badge } from './Badge';
 import { CheckCircle, Clock, TrendingUp } from 'lucide-react';
+import { LucideIconWrapper } from '../utils/lucide-wrapper';
 
 const meta = {
   title: 'Atoms/Card',
@@ -72,11 +74,11 @@ export const Interactive: Story = {
       <CardContent>
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <CheckCircle className="h-4 w-4 text-green-500" />
+            <LucideIconWrapper icon={CheckCircle} className="h-4 w-4 text-green-500" />
             <span className="text-sm">5 Tasks abgeschlossen</span>
           </div>
           <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4 text-orange-500" />
+            <LucideIconWrapper icon={Clock} className="h-4 w-4 text-orange-500" />
             <span className="text-sm">3 Tasks ausstehend</span>
           </div>
         </div>
@@ -91,7 +93,7 @@ export const StatsCard: Story = {
     <Card className="w-[300px]">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm font-medium">Gesamtumsatz</CardTitle>
-        <TrendingUp className="h-4 w-4 text-muted-foreground" />
+        <LucideIconWrapper icon={TrendingUp} className="h-4 w-4 text-muted-foreground" />
       </CardHeader>
       <CardContent>
         <div className="text-2xl font-bold">€45,231.89</div>
@@ -109,7 +111,7 @@ export const FeatureCard: Story = {
     <Card className="w-[350px]">
       <CardHeader>
         <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-          <TrendingUp className="h-6 w-6 text-primary" />
+          <LucideIconWrapper icon={TrendingUp} className="h-6 w-6 text-primary" />
         </div>
         <CardTitle className="mt-4">Analytics Dashboard</CardTitle>
         <CardDescription>

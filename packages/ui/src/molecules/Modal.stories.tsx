@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import {
   Modal,
@@ -11,6 +12,7 @@ import {
 import { Button } from '../atoms/Button';
 import { Badge } from '../atoms/Badge';
 import { AlertCircle, Trash2, UserPlus, Settings } from 'lucide-react';
+import { LucideIconWrapper } from '../utils/lucide-wrapper';
 
 const meta = {
   title: 'Molecules/Modal',
@@ -64,7 +66,7 @@ export const Confirmation: Story = {
     <Modal>
       <ModalTrigger asChild>
         <Button variant="destructive">
-          <Trash2 className="mr-2 h-4 w-4" />
+          <LucideIconWrapper icon={Trash2} className="mr-2 h-4 w-4" />
           Löschen
         </Button>
       </ModalTrigger>
@@ -90,7 +92,7 @@ export const FormModal: Story = {
     <Modal>
       <ModalTrigger asChild>
         <Button>
-          <UserPlus className="mr-2 h-4 w-4" />
+          <LucideIconWrapper icon={UserPlus} className="mr-2 h-4 w-4" />
           Benutzer hinzufügen
         </Button>
       </ModalTrigger>
@@ -153,7 +155,7 @@ export const Alert: Story = {
     <Modal>
       <ModalTrigger asChild>
         <Button variant="outline">
-          <AlertCircle className="mr-2 h-4 w-4" />
+          <LucideIconWrapper icon={AlertCircle} className="mr-2 h-4 w-4" />
           Warnung anzeigen
         </Button>
       </ModalTrigger>
@@ -161,7 +163,7 @@ export const Alert: Story = {
         <ModalHeader>
           <div className="flex items-center gap-2">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-100">
-              <AlertCircle className="h-5 w-5 text-yellow-600" />
+              <LucideIconWrapper icon={AlertCircle} className="h-5 w-5 text-yellow-600" />
             </div>
             <div>
               <ModalTitle>Achtung erforderlich</ModalTitle>
@@ -196,7 +198,7 @@ export const SettingsModal: Story = {
     <Modal>
       <ModalTrigger asChild>
         <Button variant="ghost" size="icon">
-          <Settings className="h-4 w-4" />
+          <LucideIconWrapper icon={Settings} className="h-4 w-4" />
         </Button>
       </ModalTrigger>
       <ModalContent className="sm:max-w-2xl">

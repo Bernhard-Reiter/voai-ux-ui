@@ -14,6 +14,7 @@ import {
 import { ArrowUpDown, ChevronDown, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react"
 import { cn } from "../utils"
 import { Button } from "../atoms/Button"
+import { LucideIconWrapper } from "../utils/lucide-wrapper"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -75,7 +76,7 @@ export function DataTable<TData, TValue>({
                         : flexRender(
                             header.column.columnDef.header,
                             header.getContext()
-                          )}
+                          ) as React.ReactNode}
                     </th>
                   )
                 })}
@@ -95,7 +96,7 @@ export function DataTable<TData, TValue>({
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
-                      )}
+                      ) as React.ReactNode}
                     </td>
                   ))}
                 </tr>
@@ -159,7 +160,7 @@ export function DataTablePagination<TData>({
             onClick={() => table.setPageIndex(0)}
             disabled={!table.getCanPreviousPage()}
           >
-            <ChevronsLeft className="h-4 w-4" />
+            <LucideIconWrapper icon={ChevronsLeft} className="h-4 w-4" />
           </Button>
           <Button
             variant="outline"
@@ -167,7 +168,7 @@ export function DataTablePagination<TData>({
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
-            <ChevronLeft className="h-4 w-4" />
+            <LucideIconWrapper icon={ChevronLeft} className="h-4 w-4" />
           </Button>
           <Button
             variant="outline"
@@ -175,7 +176,7 @@ export function DataTablePagination<TData>({
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
-            <ChevronRight className="h-4 w-4" />
+            <LucideIconWrapper icon={ChevronRight} className="h-4 w-4" />
           </Button>
           <Button
             variant="outline"
@@ -183,7 +184,7 @@ export function DataTablePagination<TData>({
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
             disabled={!table.getCanNextPage()}
           >
-            <ChevronsRight className="h-4 w-4" />
+            <LucideIconWrapper icon={ChevronsRight} className="h-4 w-4" />
           </Button>
         </div>
       </div>
@@ -212,7 +213,7 @@ export function DataTableColumnHeader<TData, TValue>({
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
       >
         <span>{title}</span>
-        <ArrowUpDown className="h-4 w-4" />
+        <LucideIconWrapper icon={ArrowUpDown} className="h-4 w-4" />
       </button>
     </div>
   )

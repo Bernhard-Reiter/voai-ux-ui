@@ -1,6 +1,8 @@
+import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Badge } from './Badge';
 import { CheckCircle, XCircle, AlertCircle, Info } from 'lucide-react';
+import { LucideIconWrapper } from '../utils/lucide-wrapper';
 
 const meta = {
   title: 'Atoms/Badge',
@@ -80,19 +82,19 @@ export const WithIcon: Story = {
   render: () => (
     <div className="flex flex-wrap gap-2">
       <Badge variant="success">
-        <CheckCircle className="mr-1 h-3 w-3" />
+        <LucideIconWrapper icon={CheckCircle} className="mr-1 h-3 w-3" />
         Aktiv
       </Badge>
       <Badge variant="destructive">
-        <XCircle className="mr-1 h-3 w-3" />
+        <LucideIconWrapper icon={XCircle} className="mr-1 h-3 w-3" />
         Fehler
       </Badge>
       <Badge variant="warning">
-        <AlertCircle className="mr-1 h-3 w-3" />
+        <LucideIconWrapper icon={AlertCircle} className="mr-1 h-3 w-3" />
         Warnung
       </Badge>
       <Badge variant="info">
-        <Info className="mr-1 h-3 w-3" />
+        <LucideIconWrapper icon={Info} className="mr-1 h-3 w-3" />
         Info
       </Badge>
     </div>

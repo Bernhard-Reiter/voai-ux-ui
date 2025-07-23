@@ -1,8 +1,10 @@
+import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './Tooltip';
 import { Button } from './Button';
 import { Badge } from './Badge';
 import { HelpCircle, Info, Settings, User } from 'lucide-react';
+import { LucideIconWrapper } from '../utils/lucide-wrapper';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'Atoms/Tooltip',
@@ -50,7 +52,7 @@ export const WithIcon: Story = {
     <Tooltip>
       <TooltipTrigger asChild>
         <button className="inline-flex h-5 w-5 items-center justify-center rounded-full text-muted-foreground hover:text-foreground">
-          <HelpCircle className="h-4 w-4" />
+          <LucideIconWrapper icon={HelpCircle} className="h-4 w-4" />
         </button>
       </TooltipTrigger>
       <TooltipContent>
@@ -109,7 +111,7 @@ export const RichContent: Story = {
     <Tooltip>
       <TooltipTrigger asChild>
         <Button variant="outline">
-          <Info className="mr-2 h-4 w-4" />
+          <LucideIconWrapper icon={Info} className="mr-2 h-4 w-4" />
           Erweiterte Info
         </Button>
       </TooltipTrigger>
@@ -150,7 +152,7 @@ export const IconBar: Story = {
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="ghost" size="icon">
-            <User className="h-4 w-4" />
+            <LucideIconWrapper icon={User} className="h-4 w-4" />
           </Button>
         </TooltipTrigger>
         <TooltipContent>
@@ -161,7 +163,7 @@ export const IconBar: Story = {
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="ghost" size="icon">
-            <Settings className="h-4 w-4" />
+            <LucideIconWrapper icon={Settings} className="h-4 w-4" />
           </Button>
         </TooltipTrigger>
         <TooltipContent>
@@ -172,7 +174,7 @@ export const IconBar: Story = {
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="ghost" size="icon">
-            <HelpCircle className="h-4 w-4" />
+            <LucideIconWrapper icon={HelpCircle} className="h-4 w-4" />
           </Button>
         </TooltipTrigger>
         <TooltipContent>
@@ -194,7 +196,7 @@ export const FormHelper: Story = {
           </label>
           <Tooltip>
             <TooltipTrigger asChild>
-              <HelpCircle className="h-3 w-3 text-muted-foreground" />
+              <LucideIconWrapper icon={HelpCircle} className="h-3 w-3 text-muted-foreground" />
             </TooltipTrigger>
             <TooltipContent>
               <p>Mindestens 3 Zeichen, nur Buchstaben und Zahlen</p>
@@ -216,7 +218,7 @@ export const FormHelper: Story = {
           </label>
           <Tooltip>
             <TooltipTrigger asChild>
-              <HelpCircle className="h-3 w-3 text-muted-foreground" />
+              <LucideIconWrapper icon={HelpCircle} className="h-3 w-3 text-muted-foreground" />
             </TooltipTrigger>
             <TooltipContent className="max-w-xs">
               <div className="space-y-1">

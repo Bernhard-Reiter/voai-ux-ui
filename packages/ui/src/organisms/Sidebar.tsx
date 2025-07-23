@@ -2,6 +2,7 @@ import * as React from "react"
 import { cn } from "../utils"
 import { Button } from "../atoms/Button"
 import { ChevronLeft, Menu, X } from "lucide-react"
+import { LucideIconWrapper } from "../utils/lucide-wrapper"
 
 export interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
   collapsible?: boolean
@@ -84,7 +85,7 @@ export function SidebarHeader({ className, ...props }: SidebarHeaderProps) {
           className="md:hidden"
           onClick={() => setMobile(!mobile)}
         >
-          {mobile ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          {mobile ? <LucideIconWrapper icon={X} className="h-4 w-4" /> : <LucideIconWrapper icon={Menu} className="h-4 w-4" />}
         </Button>
         {!collapsed && props.children}
       </div>
@@ -95,7 +96,8 @@ export function SidebarHeader({ className, ...props }: SidebarHeaderProps) {
           className="hidden md:flex"
           onClick={() => setCollapsed(!collapsed)}
         >
-          <ChevronLeft
+          <LucideIconWrapper 
+            icon={ChevronLeft} 
             className={cn(
               "h-4 w-4 transition-transform",
               collapsed && "rotate-180"

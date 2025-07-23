@@ -1,6 +1,8 @@
+import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button';
 import { ArrowRight, Download, Heart, Loader2 } from 'lucide-react';
+import { LucideIconWrapper } from '../utils/lucide-wrapper';
 
 const meta = {
   title: 'Atoms/Button',
@@ -106,7 +108,7 @@ export const Large: Story = {
 export const Icon: Story = {
   args: {
     size: 'icon',
-    children: <Heart className="h-4 w-4" />,
+    children: <LucideIconWrapper icon={Heart} className="h-4 w-4" />,
   },
 };
 
@@ -116,7 +118,7 @@ export const WithIcon: Story = {
     children: (
       <>
         Download
-        <Download className="ml-2 h-4 w-4" />
+        <LucideIconWrapper icon={Download} className="ml-2 h-4 w-4" />
       </>
     ),
   },
@@ -126,7 +128,7 @@ export const IconLeft: Story = {
   args: {
     children: (
       <>
-        <ArrowRight className="mr-2 h-4 w-4" />
+        <LucideIconWrapper icon={ArrowRight} className="mr-2 h-4 w-4" />
         Weiter
       </>
     ),
@@ -139,7 +141,7 @@ export const Loading: Story = {
     disabled: true,
     children: (
       <>
-        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+        <LucideIconWrapper icon={Loader2} className="mr-2 h-4 w-4 animate-spin" />
         Bitte warten...
       </>
     ),
