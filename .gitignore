@@ -50,3 +50,6 @@ uploads/*
 
 # style dictionary
 packages/config/dist
+
+# external UI build artifacts (we commit these for CI/CD)
+!external/voai-ui/packages/tokens/build/

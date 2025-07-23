@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import voaiTokens from '../../external/voai-ui/packages/ui/tailwind/voai-tokens-plugin.js'
 
 const config: Config = {
   content: [
@@ -65,6 +66,7 @@ const config: Config = {
     require('@tailwindcss/forms')({
       strategy: 'class',
     }),
+    voaiTokens,
   ],
 }
 export default config
