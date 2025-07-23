@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 23 Jul 2025 14:06:04 GMT
+ * Generated on Wed, 23 Jul 2025 22:06:43 GMT
  */
 
 :root {
@@ -23,13 +23,6 @@
   --radius-lg: 16px;
   --radius-md: 8px;
   --radius-sm: 4px;
-  --spacing-6: 4rem;
-  --spacing-5: 3rem;
-  --spacing-4: 2rem;
-  --spacing-3: 1.5rem;
-  --spacing-2: 1rem;
-  --spacing-1: 0.5rem;
-  --spacing-0: 0;
   --easing-cosmic: cubic-bezier(0.34, 1.56, 0.64, 1);
   --easing-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   --easing-ease-out: cubic-bezier(0, 0, 0.2, 1);
@@ -40,6 +33,33 @@
   --duration-standard: 300ms;
   --duration-fast: 150ms;
   --duration-instant: 50ms;
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --border-radius-full: 9999;
+  --border-radius-lg: 12;
+  --border-radius-md: 8;
+  --border-radius-sm: 4;
+  --border-radius-none: 0;
+  --spacing-xl: 32;
+  --spacing-lg: 24;
+  --spacing-md: 16;
+  --spacing-sm: 8;
+  --spacing-xs: 4;
+  --spacing-6: 4rem;
+  --spacing-5: 3rem;
+  --spacing-4: 2rem;
+  --spacing-3: 1.5rem;
+  --spacing-2: 1rem;
+  --spacing-1: 0.5rem;
+  --spacing-0: 0;
+  --typography-font-size-xl: 20;
+  --typography-font-size-lg: 18;
+  --typography-font-size-base: 16;
+  --typography-font-size-sm: 14;
+  --typography-font-size-xs: 12;
+  --typography-font-family-mono: 'JetBrains Mono', Monaco, Consolas, 'Courier New', monospace;
+  --typography-font-family-sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --blur-lg: 16px;
   --blur-md: 8px;
   --blur-sm: 4px;
@@ -51,6 +71,16 @@
   --elevation-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
   --elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --elevation-0: none;
+  --color-primary-900: #0c4a6e;
+  --color-primary-800: #075985;
+  --color-primary-700: #0369a1;
+  --color-primary-600: #0284c7;
+  --color-primary-500: #0ea5e9;
+  --color-primary-400: #38bdf8;
+  --color-primary-300: #7dd3fc;
+  --color-primary-200: #bae6fd;
+  --color-primary-100: #e0f2fe;
+  --color-primary-50: #f0f9ff;
   --color-highlight-dark: #9333ea;
   --color-highlight: #a855f7;
   --color-neutral-dark: #94a3b8;
@@ -75,4 +105,8 @@
   --color-cosmic-surface: #f6f6f7;
   --color-cosmic-bg-dark: #0f0f0f;
   --color-cosmic-bg: #ffffff;
+  --color-semantic-text-secondary: {color.neutral.600};
+  --color-semantic-text-primary: {color.neutral.900};
+  --color-semantic-background-subtle: {color.neutral.100};
+  --color-semantic-background-default: {color.neutral.50};
 }

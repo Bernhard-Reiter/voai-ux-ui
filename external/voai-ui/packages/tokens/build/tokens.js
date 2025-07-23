@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 23 Jul 2025 14:06:04 GMT
+ * Generated on Wed, 23 Jul 2025 22:06:43 GMT
  */
 
 export const ColorCosmicBg = "#ffffff";
@@ -27,6 +27,20 @@ export const ColorNeutral = "#64748b";
 export const ColorNeutralDark = "#94a3b8";
 export const ColorHighlight = "#a855f7";
 export const ColorHighlightDark = "#9333ea";
+export const ColorPrimary50 = "#f0f9ff";
+export const ColorPrimary100 = "#e0f2fe";
+export const ColorPrimary200 = "#bae6fd";
+export const ColorPrimary300 = "#7dd3fc";
+export const ColorPrimary400 = "#38bdf8";
+export const ColorPrimary500 = "#0ea5e9";
+export const ColorPrimary600 = "#0284c7";
+export const ColorPrimary700 = "#0369a1";
+export const ColorPrimary800 = "#075985";
+export const ColorPrimary900 = "#0c4a6e";
+export const ColorSemanticBackgroundDefault = "#fafafa";
+export const ColorSemanticBackgroundSubtle = "#f5f5f5";
+export const ColorSemanticTextPrimary = "#171717";
+export const ColorSemanticTextSecondary = "#525252";
 export const Elevation0 = "none";
 export const Elevation1 = "0 1px 2px 0 rgba(0, 0, 0, 0.05)";
 export const Elevation2 = "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)";
@@ -38,6 +52,33 @@ export const ElevationGlowLg = "0 0 40px rgba(79, 70, 229, 0.15)";
 export const BlurSm = "4px";
 export const BlurMd = "8px";
 export const BlurLg = "16px";
+export const TypographyFontFamilySans = "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+export const TypographyFontFamilyMono = "'JetBrains Mono', Monaco, Consolas, 'Courier New', monospace";
+export const TypographyFontSizeXs = "12";
+export const TypographyFontSizeSm = "14";
+export const TypographyFontSizeBase = "16";
+export const TypographyFontSizeLg = "18";
+export const TypographyFontSizeXl = "20";
+export const Spacing0 = "0";
+export const Spacing1 = "0.5rem";
+export const Spacing2 = "1rem";
+export const Spacing3 = "1.5rem";
+export const Spacing4 = "2rem";
+export const Spacing5 = "3rem";
+export const Spacing6 = "4rem";
+export const SpacingXs = "4";
+export const SpacingSm = "8";
+export const SpacingMd = "16";
+export const SpacingLg = "24";
+export const SpacingXl = "32";
+export const BorderRadiusNone = "0";
+export const BorderRadiusSm = "4";
+export const BorderRadiusMd = "8";
+export const BorderRadiusLg = "12";
+export const BorderRadiusFull = "9999";
+export const ShadowSm = "0 1px 2px 0 rgba(0, 0, 0, 0.05)";
+export const ShadowMd = "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)";
+export const ShadowLg = "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)";
 export const DurationInstant = "50ms";
 export const DurationFast = "150ms";
 export const DurationStandard = "300ms";
@@ -48,13 +89,6 @@ export const EasingEaseIn = "cubic-bezier(0.4, 0, 1, 1)";
 export const EasingEaseOut = "cubic-bezier(0, 0, 0.2, 1)";
 export const EasingEaseInOut = "cubic-bezier(0.4, 0, 0.2, 1)";
 export const EasingCosmic = "cubic-bezier(0.34, 1.56, 0.64, 1)";
-export const Spacing0 = "0";
-export const Spacing1 = "0.5rem";
-export const Spacing2 = "1rem";
-export const Spacing3 = "1.5rem";
-export const Spacing4 = "2rem";
-export const Spacing5 = "3rem";
-export const Spacing6 = "4rem";
 export const RadiusSm = "4px";
 export const RadiusMd = "8px";
 export const RadiusLg = "16px";

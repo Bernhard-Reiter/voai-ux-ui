@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 23 Jul 2025 14:06:04 GMT
+ * Generated on Wed, 23 Jul 2025 22:06:43 GMT
  */
 
 module.exports = {
@@ -452,12 +452,152 @@ module.exports = {
       ]
     },
     "neutral": {
+      "50": {
+        "value": "#fafafa",
+        "type": "color",
+        "description": "Neutral - lightest",
+        "filePath": "figma-tokens.json",
+        "isSource": true
+      },
+      "100": {
+        "value": "#f5f5f5",
+        "type": "color",
+        "description": "Neutral - very light",
+        "filePath": "figma-tokens.json",
+        "isSource": true
+      },
+      "200": {
+        "value": "#e5e5e5",
+        "type": "color",
+        "description": "Neutral - light",
+        "filePath": "figma-tokens.json",
+        "isSource": true
+      },
+      "300": {
+        "value": "#d4d4d4",
+        "type": "color",
+        "description": "Neutral - light medium",
+        "filePath": "figma-tokens.json",
+        "isSource": true
+      },
+      "400": {
+        "value": "#a3a3a3",
+        "type": "color",
+        "description": "Neutral - medium",
+        "filePath": "figma-tokens.json",
+        "isSource": true
+      },
+      "500": {
+        "value": "#737373",
+        "type": "color",
+        "description": "Neutral - base",
+        "filePath": "figma-tokens.json",
+        "isSource": true
+      },
+      "600": {
+        "value": "#525252",
+        "type": "color",
+        "description": "Neutral - dark medium",
+        "filePath": "figma-tokens.json",
+        "isSource": true
+      },
+      "700": {
+        "value": "#404040",
+        "type": "color",
+        "description": "Neutral - dark",
+        "filePath": "figma-tokens.json",
+        "isSource": true
+      },
+      "800": {
+        "value": "#262626",
+        "type": "color",
+        "description": "Neutral - very dark",
+        "filePath": "figma-tokens.json",
+        "isSource": true
+      },
+      "900": {
+        "value": "#171717",
+        "type": "color",
+        "description": "Neutral - darkest",
+        "filePath": "figma-tokens.json",
+        "isSource": true
+      },
       "value": "#64748b",
       "type": "color",
       "description": "Neutral/inactive states",
       "filePath": "color.json",
       "isSource": true,
       "original": {
+        "50": {
+          "value": "#fafafa",
+          "type": "color",
+          "description": "Neutral - lightest",
+          "filePath": "figma-tokens.json",
+          "isSource": true
+        },
+        "100": {
+          "value": "#f5f5f5",
+          "type": "color",
+          "description": "Neutral - very light",
+          "filePath": "figma-tokens.json",
+          "isSource": true
+        },
+        "200": {
+          "value": "#e5e5e5",
+          "type": "color",
+          "description": "Neutral - light",
+          "filePath": "figma-tokens.json",
+          "isSource": true
+        },
+        "300": {
+          "value": "#d4d4d4",
+          "type": "color",
+          "description": "Neutral - light medium",
+          "filePath": "figma-tokens.json",
+          "isSource": true
+        },
+        "400": {
+          "value": "#a3a3a3",
+          "type": "color",
+          "description": "Neutral - medium",
+          "filePath": "figma-tokens.json",
+          "isSource": true
+        },
+        "500": {
+          "value": "#737373",
+          "type": "color",
+          "description": "Neutral - base",
+          "filePath": "figma-tokens.json",
+          "isSource": true
+        },
+        "600": {
+          "value": "#525252",
+          "type": "color",
+          "description": "Neutral - dark medium",
+          "filePath": "figma-tokens.json",
+          "isSource": true
+        },
+        "700": {
+          "value": "#404040",
+          "type": "color",
+          "description": "Neutral - dark",
+          "filePath": "figma-tokens.json",
+          "isSource": true
+        },
+        "800": {
+          "value": "#262626",
+          "type": "color",
+          "description": "Neutral - very dark",
+          "filePath": "figma-tokens.json",
+          "isSource": true
+        },
+        "900": {
+          "value": "#171717",
+          "type": "color",
+          "description": "Neutral - darkest",
+          "filePath": "figma-tokens.json",
+          "isSource": true
+        },
         "value": "#64748B",
         "type": "color",
         "description": "Neutral/inactive states"
@@ -530,6 +670,344 @@ module.exports = {
         "color",
         "highlight-dark"
       ]
+    },
+    "primary": {
+      "50": {
+        "value": "#f0f9ff",
+        "type": "color",
+        "description": "Primary color - lightest shade",
+        "filePath": "figma-tokens.json",
+        "isSource": true,
+        "original": {
+          "value": "#f0f9ff",
+          "type": "color",
+          "description": "Primary color - lightest shade"
+        },
+        "name": "ColorPrimary50",
+        "attributes": {
+          "category": "color",
+          "type": "primary",
+          "item": "50"
+        },
+        "path": [
+          "color",
+          "primary",
+          "50"
+        ]
+      },
+      "100": {
+        "value": "#e0f2fe",
+        "type": "color",
+        "description": "Primary color - very light",
+        "filePath": "figma-tokens.json",
+        "isSource": true,
+        "original": {
+          "value": "#e0f2fe",
+          "type": "color",
+          "description": "Primary color - very light"
+        },
+        "name": "ColorPrimary100",
+        "attributes": {
+          "category": "color",
+          "type": "primary",
+          "item": "100"
+        },
+        "path": [
+          "color",
+          "primary",
+          "100"
+        ]
+      },
+      "200": {
+        "value": "#bae6fd",
+        "type": "color",
+        "description": "Primary color - light",
+        "filePath": "figma-tokens.json",
+        "isSource": true,
+        "original": {
+          "value": "#bae6fd",
+          "type": "color",
+          "description": "Primary color - light"
+        },
+        "name": "ColorPrimary200",
+        "attributes": {
+          "category": "color",
+          "type": "primary",
+          "item": "200"
+        },
+        "path": [
+          "color",
+          "primary",
+          "200"
+        ]
+      },
+      "300": {
+        "value": "#7dd3fc",
+        "type": "color",
+        "description": "Primary color - light medium",
+        "filePath": "figma-tokens.json",
+        "isSource": true,
+        "original": {
+          "value": "#7dd3fc",
+          "type": "color",
+          "description": "Primary color - light medium"
+        },
+        "name": "ColorPrimary300",
+        "attributes": {
+          "category": "color",
+          "type": "primary",
+          "item": "300"
+        },
+        "path": [
+          "color",
+          "primary",
+          "300"
+        ]
+      },
+      "400": {
+        "value": "#38bdf8",
+        "type": "color",
+        "description": "Primary color - medium",
+        "filePath": "figma-tokens.json",
+        "isSource": true,
+        "original": {
+          "value": "#38bdf8",
+          "type": "color",
+          "description": "Primary color - medium"
+        },
+        "name": "ColorPrimary400",
+        "attributes": {
+          "category": "color",
+          "type": "primary",
+          "item": "400"
+        },
+        "path": [
+          "color",
+          "primary",
+          "400"
+        ]
+      },
+      "500": {
+        "value": "#0ea5e9",
+        "type": "color",
+        "description": "Primary color - base",
+        "filePath": "figma-tokens.json",
+        "isSource": true,
+        "original": {
+          "value": "#0ea5e9",
+          "type": "color",
+          "description": "Primary color - base"
+        },
+        "name": "ColorPrimary500",
+        "attributes": {
+          "category": "color",
+          "type": "primary",
+          "item": "500"
+        },
+        "path": [
+          "color",
+          "primary",
+          "500"
+        ]
+      },
+      "600": {
+        "value": "#0284c7",
+        "type": "color",
+        "description": "Primary color - dark medium",
+        "filePath": "figma-tokens.json",
+        "isSource": true,
+        "original": {
+          "value": "#0284c7",
+          "type": "color",
+          "description": "Primary color - dark medium"
+        },
+        "name": "ColorPrimary600",
+        "attributes": {
+          "category": "color",
+          "type": "primary",
+          "item": "600"
+        },
+        "path": [
+          "color",
+          "primary",
+          "600"
+        ]
+      },
+      "700": {
+        "value": "#0369a1",
+        "type": "color",
+        "description": "Primary color - dark",
+        "filePath": "figma-tokens.json",
+        "isSource": true,
+        "original": {
+          "value": "#0369a1",
+          "type": "color",
+          "description": "Primary color - dark"
+        },
+        "name": "ColorPrimary700",
+        "attributes": {
+          "category": "color",
+          "type": "primary",
+          "item": "700"
+        },
+        "path": [
+          "color",
+          "primary",
+          "700"
+        ]
+      },
+      "800": {
+        "value": "#075985",
+        "type": "color",
+        "description": "Primary color - very dark",
+        "filePath": "figma-tokens.json",
+        "isSource": true,
+        "original": {
+          "value": "#075985",
+          "type": "color",
+          "description": "Primary color - very dark"
+        },
+        "name": "ColorPrimary800",
+        "attributes": {
+          "category": "color",
+          "type": "primary",
+          "item": "800"
+        },
+        "path": [
+          "color",
+          "primary",
+          "800"
+        ]
+      },
+      "900": {
+        "value": "#0c4a6e",
+        "type": "color",
+        "description": "Primary color - darkest shade",
+        "filePath": "figma-tokens.json",
+        "isSource": true,
+        "original": {
+          "value": "#0c4a6e",
+          "type": "color",
+          "description": "Primary color - darkest shade"
+        },
+        "name": "ColorPrimary900",
+        "attributes": {
+          "category": "color",
+          "type": "primary",
+          "item": "900"
+        },
+        "path": [
+          "color",
+          "primary",
+          "900"
+        ]
+      }
+    },
+    "semantic": {
+      "background": {
+        "default": {
+          "value": "#fafafa",
+          "type": "color",
+          "description": "Default background color",
+          "filePath": "figma-tokens.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.neutral.50}",
+            "type": "color",
+            "description": "Default background color"
+          },
+          "name": "ColorSemanticBackgroundDefault",
+          "attributes": {
+            "category": "color",
+            "type": "semantic",
+            "item": "background",
+            "subitem": "default"
+          },
+          "path": [
+            "color",
+            "semantic",
+            "background",
+            "default"
+          ]
+        },
+        "subtle": {
+          "value": "#f5f5f5",
+          "type": "color",
+          "description": "Subtle background color",
+          "filePath": "figma-tokens.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.neutral.100}",
+            "type": "color",
+            "description": "Subtle background color"
+          },
+          "name": "ColorSemanticBackgroundSubtle",
+          "attributes": {
+            "category": "color",
+            "type": "semantic",
+            "item": "background",
+            "subitem": "subtle"
+          },
+          "path": [
+            "color",
+            "semantic",
+            "background",
+            "subtle"
+          ]
+        }
+      },
+      "text": {
+        "primary": {
+          "value": "#171717",
+          "type": "color",
+          "description": "Primary text color",
+          "filePath": "figma-tokens.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.neutral.900}",
+            "type": "color",
+            "description": "Primary text color"
+          },
+          "name": "ColorSemanticTextPrimary",
+          "attributes": {
+            "category": "color",
+            "type": "semantic",
+            "item": "text",
+            "subitem": "primary"
+          },
+          "path": [
+            "color",
+            "semantic",
+            "text",
+            "primary"
+          ]
+        },
+        "secondary": {
+          "value": "#525252",
+          "type": "color",
+          "description": "Secondary text color",
+          "filePath": "figma-tokens.json",
+          "isSource": true,
+          "original": {
+            "value": "{color.neutral.600}",
+            "type": "color",
+            "description": "Secondary text color"
+          },
+          "name": "ColorSemanticTextSecondary",
+          "attributes": {
+            "category": "color",
+            "type": "semantic",
+            "item": "text",
+            "subitem": "secondary"
+          },
+          "path": [
+            "color",
+            "semantic",
+            "text",
+            "secondary"
+          ]
+        }
+      }
     }
   },
   "elevation": {
@@ -767,6 +1245,597 @@ module.exports = {
       ]
     }
   },
+  "typography": {
+    "fontFamily": {
+      "sans": {
+        "value": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+        "type": "fontFamilies",
+        "description": "Sans-serif font stack",
+        "filePath": "figma-tokens.json",
+        "isSource": true,
+        "original": {
+          "value": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+          "type": "fontFamilies",
+          "description": "Sans-serif font stack"
+        },
+        "name": "TypographyFontFamilySans",
+        "attributes": {
+          "category": "typography",
+          "type": "fontFamily",
+          "item": "sans"
+        },
+        "path": [
+          "typography",
+          "fontFamily",
+          "sans"
+        ]
+      },
+      "mono": {
+        "value": "'JetBrains Mono', Monaco, Consolas, 'Courier New', monospace",
+        "type": "fontFamilies",
+        "description": "Monospace font stack",
+        "filePath": "figma-tokens.json",
+        "isSource": true,
+        "original": {
+          "value": "'JetBrains Mono', Monaco, Consolas, 'Courier New', monospace",
+          "type": "fontFamilies",
+          "description": "Monospace font stack"
+        },
+        "name": "TypographyFontFamilyMono",
+        "attributes": {
+          "category": "typography",
+          "type": "fontFamily",
+          "item": "mono"
+        },
+        "path": [
+          "typography",
+          "fontFamily",
+          "mono"
+        ]
+      }
+    },
+    "fontSize": {
+      "xs": {
+        "value": "12",
+        "type": "fontSizes",
+        "description": "Extra small font size",
+        "filePath": "figma-tokens.json",
+        "isSource": true,
+        "original": {
+          "value": "12",
+          "type": "fontSizes",
+          "description": "Extra small font size"
+        },
+        "name": "TypographyFontSizeXs",
+        "attributes": {
+          "category": "typography",
+          "type": "fontSize",
+          "item": "xs"
+        },
+        "path": [
+          "typography",
+          "fontSize",
+          "xs"
+        ]
+      },
+      "sm": {
+        "value": "14",
+        "type": "fontSizes",
+        "description": "Small font size",
+        "filePath": "figma-tokens.json",
+        "isSource": true,
+        "original": {
+          "value": "14",
+          "type": "fontSizes",
+          "description": "Small font size"
+        },
+        "name": "TypographyFontSizeSm",
+        "attributes": {
+          "category": "typography",
+          "type": "fontSize",
+          "item": "sm"
+        },
+        "path": [
+          "typography",
+          "fontSize",
+          "sm"
+        ]
+      },
+      "base": {
+        "value": "16",
+        "type": "fontSizes",
+        "description": "Base font size",
+        "filePath": "figma-tokens.json",
+        "isSource": true,
+        "original": {
+          "value": "16",
+          "type": "fontSizes",
+          "description": "Base font size"
+        },
+        "name": "TypographyFontSizeBase",
+        "attributes": {
+          "category": "typography",
+          "type": "fontSize",
+          "item": "base"
+        },
+        "path": [
+          "typography",
+          "fontSize",
+          "base"
+        ]
+      },
+      "lg": {
+        "value": "18",
+        "type": "fontSizes",
+        "description": "Large font size",
+        "filePath": "figma-tokens.json",
+        "isSource": true,
+        "original": {
+          "value": "18",
+          "type": "fontSizes",
+          "description": "Large font size"
+        },
+        "name": "TypographyFontSizeLg",
+        "attributes": {
+          "category": "typography",
+          "type": "fontSize",
+          "item": "lg"
+        },
+        "path": [
+          "typography",
+          "fontSize",
+          "lg"
+        ]
+      },
+      "xl": {
+        "value": "20",
+        "type": "fontSizes",
+        "description": "Extra large font size",
+        "filePath": "figma-tokens.json",
+        "isSource": true,
+        "original": {
+          "value": "20",
+          "type": "fontSizes",
+          "description": "Extra large font size"
+        },
+        "name": "TypographyFontSizeXl",
+        "attributes": {
+          "category": "typography",
+          "type": "fontSize",
+          "item": "xl"
+        },
+        "path": [
+          "typography",
+          "fontSize",
+          "xl"
+        ]
+      }
+    }
+  },
+  "spacing": {
+    "0": {
+      "value": "0",
+      "type": "spacing",
+      "filePath": "spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "0",
+        "type": "spacing"
+      },
+      "name": "Spacing0",
+      "attributes": {
+        "category": "spacing",
+        "type": "0"
+      },
+      "path": [
+        "spacing",
+        "0"
+      ]
+    },
+    "1": {
+      "value": "0.5rem",
+      "type": "spacing",
+      "description": "8px",
+      "filePath": "spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "0.5rem",
+        "type": "spacing",
+        "description": "8px"
+      },
+      "name": "Spacing1",
+      "attributes": {
+        "category": "spacing",
+        "type": "1"
+      },
+      "path": [
+        "spacing",
+        "1"
+      ]
+    },
+    "2": {
+      "value": "1rem",
+      "type": "spacing",
+      "description": "16px",
+      "filePath": "spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "1rem",
+        "type": "spacing",
+        "description": "16px"
+      },
+      "name": "Spacing2",
+      "attributes": {
+        "category": "spacing",
+        "type": "2"
+      },
+      "path": [
+        "spacing",
+        "2"
+      ]
+    },
+    "3": {
+      "value": "1.5rem",
+      "type": "spacing",
+      "description": "24px",
+      "filePath": "spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "1.5rem",
+        "type": "spacing",
+        "description": "24px"
+      },
+      "name": "Spacing3",
+      "attributes": {
+        "category": "spacing",
+        "type": "3"
+      },
+      "path": [
+        "spacing",
+        "3"
+      ]
+    },
+    "4": {
+      "value": "2rem",
+      "type": "spacing",
+      "description": "32px",
+      "filePath": "spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "2rem",
+        "type": "spacing",
+        "description": "32px"
+      },
+      "name": "Spacing4",
+      "attributes": {
+        "category": "spacing",
+        "type": "4"
+      },
+      "path": [
+        "spacing",
+        "4"
+      ]
+    },
+    "5": {
+      "value": "3rem",
+      "type": "spacing",
+      "description": "48px",
+      "filePath": "spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "3rem",
+        "type": "spacing",
+        "description": "48px"
+      },
+      "name": "Spacing5",
+      "attributes": {
+        "category": "spacing",
+        "type": "5"
+      },
+      "path": [
+        "spacing",
+        "5"
+      ]
+    },
+    "6": {
+      "value": "4rem",
+      "type": "spacing",
+      "description": "64px",
+      "filePath": "spacing.json",
+      "isSource": true,
+      "original": {
+        "value": "4rem",
+        "type": "spacing",
+        "description": "64px"
+      },
+      "name": "Spacing6",
+      "attributes": {
+        "category": "spacing",
+        "type": "6"
+      },
+      "path": [
+        "spacing",
+        "6"
+      ]
+    },
+    "xs": {
+      "value": "4",
+      "type": "spacing",
+      "description": "Extra small spacing",
+      "filePath": "figma-tokens.json",
+      "isSource": true,
+      "original": {
+        "value": "4",
+        "type": "spacing",
+        "description": "Extra small spacing"
+      },
+      "name": "SpacingXs",
+      "attributes": {
+        "category": "spacing",
+        "type": "xs"
+      },
+      "path": [
+        "spacing",
+        "xs"
+      ]
+    },
+    "sm": {
+      "value": "8",
+      "type": "spacing",
+      "description": "Small spacing",
+      "filePath": "figma-tokens.json",
+      "isSource": true,
+      "original": {
+        "value": "8",
+        "type": "spacing",
+        "description": "Small spacing"
+      },
+      "name": "SpacingSm",
+      "attributes": {
+        "category": "spacing",
+        "type": "sm"
+      },
+      "path": [
+        "spacing",
+        "sm"
+      ]
+    },
+    "md": {
+      "value": "16",
+      "type": "spacing",
+      "description": "Medium spacing",
+      "filePath": "figma-tokens.json",
+      "isSource": true,
+      "original": {
+        "value": "16",
+        "type": "spacing",
+        "description": "Medium spacing"
+      },
+      "name": "SpacingMd",
+      "attributes": {
+        "category": "spacing",
+        "type": "md"
+      },
+      "path": [
+        "spacing",
+        "md"
+      ]
+    },
+    "lg": {
+      "value": "24",
+      "type": "spacing",
+      "description": "Large spacing",
+      "filePath": "figma-tokens.json",
+      "isSource": true,
+      "original": {
+        "value": "24",
+        "type": "spacing",
+        "description": "Large spacing"
+      },
+      "name": "SpacingLg",
+      "attributes": {
+        "category": "spacing",
+        "type": "lg"
+      },
+      "path": [
+        "spacing",
+        "lg"
+      ]
+    },
+    "xl": {
+      "value": "32",
+      "type": "spacing",
+      "description": "Extra large spacing",
+      "filePath": "figma-tokens.json",
+      "isSource": true,
+      "original": {
+        "value": "32",
+        "type": "spacing",
+        "description": "Extra large spacing"
+      },
+      "name": "SpacingXl",
+      "attributes": {
+        "category": "spacing",
+        "type": "xl"
+      },
+      "path": [
+        "spacing",
+        "xl"
+      ]
+    }
+  },
+  "borderRadius": {
+    "none": {
+      "value": "0",
+      "type": "borderRadius",
+      "description": "No border radius",
+      "filePath": "figma-tokens.json",
+      "isSource": true,
+      "original": {
+        "value": "0",
+        "type": "borderRadius",
+        "description": "No border radius"
+      },
+      "name": "BorderRadiusNone",
+      "attributes": {
+        "category": "borderRadius",
+        "type": "none"
+      },
+      "path": [
+        "borderRadius",
+        "none"
+      ]
+    },
+    "sm": {
+      "value": "4",
+      "type": "borderRadius",
+      "description": "Small border radius",
+      "filePath": "figma-tokens.json",
+      "isSource": true,
+      "original": {
+        "value": "4",
+        "type": "borderRadius",
+        "description": "Small border radius"
+      },
+      "name": "BorderRadiusSm",
+      "attributes": {
+        "category": "borderRadius",
+        "type": "sm"
+      },
+      "path": [
+        "borderRadius",
+        "sm"
+      ]
+    },
+    "md": {
+      "value": "8",
+      "type": "borderRadius",
+      "description": "Medium border radius",
+      "filePath": "figma-tokens.json",
+      "isSource": true,
+      "original": {
+        "value": "8",
+        "type": "borderRadius",
+        "description": "Medium border radius"
+      },
+      "name": "BorderRadiusMd",
+      "attributes": {
+        "category": "borderRadius",
+        "type": "md"
+      },
+      "path": [
+        "borderRadius",
+        "md"
+      ]
+    },
+    "lg": {
+      "value": "12",
+      "type": "borderRadius",
+      "description": "Large border radius",
+      "filePath": "figma-tokens.json",
+      "isSource": true,
+      "original": {
+        "value": "12",
+        "type": "borderRadius",
+        "description": "Large border radius"
+      },
+      "name": "BorderRadiusLg",
+      "attributes": {
+        "category": "borderRadius",
+        "type": "lg"
+      },
+      "path": [
+        "borderRadius",
+        "lg"
+      ]
+    },
+    "full": {
+      "value": "9999",
+      "type": "borderRadius",
+      "description": "Full border radius",
+      "filePath": "figma-tokens.json",
+      "isSource": true,
+      "original": {
+        "value": "9999",
+        "type": "borderRadius",
+        "description": "Full border radius"
+      },
+      "name": "BorderRadiusFull",
+      "attributes": {
+        "category": "borderRadius",
+        "type": "full"
+      },
+      "path": [
+        "borderRadius",
+        "full"
+      ]
+    }
+  },
+  "shadow": {
+    "sm": {
+      "value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+      "type": "boxShadow",
+      "description": "Small shadow",
+      "filePath": "figma-tokens.json",
+      "isSource": true,
+      "original": {
+        "value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+        "type": "boxShadow",
+        "description": "Small shadow"
+      },
+      "name": "ShadowSm",
+      "attributes": {
+        "category": "shadow",
+        "type": "sm"
+      },
+      "path": [
+        "shadow",
+        "sm"
+      ]
+    },
+    "md": {
+      "value": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+      "type": "boxShadow",
+      "description": "Medium shadow",
+      "filePath": "figma-tokens.json",
+      "isSource": true,
+      "original": {
+        "value": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+        "type": "boxShadow",
+        "description": "Medium shadow"
+      },
+      "name": "ShadowMd",
+      "attributes": {
+        "category": "shadow",
+        "type": "md"
+      },
+      "path": [
+        "shadow",
+        "md"
+      ]
+    },
+    "lg": {
+      "value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+      "type": "boxShadow",
+      "description": "Large shadow",
+      "filePath": "figma-tokens.json",
+      "isSource": true,
+      "original": {
+        "value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+        "type": "boxShadow",
+        "description": "Large shadow"
+      },
+      "name": "ShadowLg",
+      "attributes": {
+        "category": "shadow",
+        "type": "lg"
+      },
+      "path": [
+        "shadow",
+        "lg"
+      ]
+    }
+  },
   "duration": {
     "instant": {
       "value": "50ms",
@@ -976,153 +2045,6 @@ module.exports = {
       "path": [
         "easing",
         "cosmic"
-      ]
-    }
-  },
-  "spacing": {
-    "0": {
-      "value": "0",
-      "type": "spacing",
-      "filePath": "spacing.json",
-      "isSource": true,
-      "original": {
-        "value": "0",
-        "type": "spacing"
-      },
-      "name": "Spacing0",
-      "attributes": {
-        "category": "spacing",
-        "type": "0"
-      },
-      "path": [
-        "spacing",
-        "0"
-      ]
-    },
-    "1": {
-      "value": "0.5rem",
-      "type": "spacing",
-      "description": "8px",
-      "filePath": "spacing.json",
-      "isSource": true,
-      "original": {
-        "value": "0.5rem",
-        "type": "spacing",
-        "description": "8px"
-      },
-      "name": "Spacing1",
-      "attributes": {
-        "category": "spacing",
-        "type": "1"
-      },
-      "path": [
-        "spacing",
-        "1"
-      ]
-    },
-    "2": {
-      "value": "1rem",
-      "type": "spacing",
-      "description": "16px",
-      "filePath": "spacing.json",
-      "isSource": true,
-      "original": {
-        "value": "1rem",
-        "type": "spacing",
-        "description": "16px"
-      },
-      "name": "Spacing2",
-      "attributes": {
-        "category": "spacing",
-        "type": "2"
-      },
-      "path": [
-        "spacing",
-        "2"
-      ]
-    },
-    "3": {
-      "value": "1.5rem",
-      "type": "spacing",
-      "description": "24px",
-      "filePath": "spacing.json",
-      "isSource": true,
-      "original": {
-        "value": "1.5rem",
-        "type": "spacing",
-        "description": "24px"
-      },
-      "name": "Spacing3",
-      "attributes": {
-        "category": "spacing",
-        "type": "3"
-      },
-      "path": [
-        "spacing",
-        "3"
-      ]
-    },
-    "4": {
-      "value": "2rem",
-      "type": "spacing",
-      "description": "32px",
-      "filePath": "spacing.json",
-      "isSource": true,
-      "original": {
-        "value": "2rem",
-        "type": "spacing",
-        "description": "32px"
-      },
-      "name": "Spacing4",
-      "attributes": {
-        "category": "spacing",
-        "type": "4"
-      },
-      "path": [
-        "spacing",
-        "4"
-      ]
-    },
-    "5": {
-      "value": "3rem",
-      "type": "spacing",
-      "description": "48px",
-      "filePath": "spacing.json",
-      "isSource": true,
-      "original": {
-        "value": "3rem",
-        "type": "spacing",
-        "description": "48px"
-      },
-      "name": "Spacing5",
-      "attributes": {
-        "category": "spacing",
-        "type": "5"
-      },
-      "path": [
-        "spacing",
-        "5"
-      ]
-    },
-    "6": {
-      "value": "4rem",
-      "type": "spacing",
-      "description": "64px",
-      "filePath": "spacing.json",
-      "isSource": true,
-      "original": {
-        "value": "4rem",
-        "type": "spacing",
-        "description": "64px"
-      },
-      "name": "Spacing6",
-      "attributes": {
-        "category": "spacing",
-        "type": "6"
-      },
-      "path": [
-        "spacing",
-        "6"
       ]
     }
   },
