@@ -1,0 +1,12 @@
+{
+  "name": "voai-storybook",
+  "buildCommand": "pnpm sb:build",
+  "outputDirectory": "packages/ui/storybook-static",
+  "installCommand": "pnpm install",
+  "framework": null,
+  "public": true,
+  "github": {
+    "enabled": true,
+    "autoAlias": true
+  }
+}
