@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { WorkflowStatus, N8nClient } from '@config/services'
+import { WorkflowStatus, N8nClient } from '@config'
 
 export interface UseWorkflowStatusOptions {
   client: N8nClient
