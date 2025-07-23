@@ -1,0 +1,16 @@
+{
+  "name": "@voai/config",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "build": "node build-tokens.js",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "style-dictionary": "^3.9.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5"
+  }
+}

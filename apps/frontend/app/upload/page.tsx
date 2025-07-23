@@ -42,7 +42,10 @@ export default function UploadPage() {
   const [csrfToken, setCsrfToken] = useState('')
   const [isDragging, setIsDragging] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
-  const { playClick, playSuccess, playError } = useSound()
+  // Sound effects
+  const [playClick] = useSound('/sounds/click.mp3')
+  const [playSuccess] = useSound('/sounds/success.mp3')
+  const [playError] = useSound('/sounds/error.mp3')
 
   // CSRF Token beim Laden holen
   useEffect(() => {

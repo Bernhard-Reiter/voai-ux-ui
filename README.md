@@ -1,36 +1,134 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VOAI Enterprise Frontend
 
-## Getting Started
+## 🚀 Phase 1 abgeschlossen!
 
-First, run the development server:
+Die Monorepo-Struktur ist vollständig implementiert mit:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- ✅ **Turborepo** für effizientes Build-Management
+- ✅ **Shared UI Library** mit atomaren Komponenten
+- ✅ **Style Dictionary** für Design Tokens
+- ✅ **Zod-validierte Environment Variables**
+- ✅ **Umfassende Test-Suite**
+- ✅ **GitHub Actions CI/CD Pipeline**
+
+## 📦 Projekt-Struktur
+
+```
+.
+├── apps/
+│   └── frontend/          # Next.js Frontend App
+├── packages/
+│   ├── ui/               # Shared UI Components
+│   ├── config/           # Shared Configurations & Design Tokens
+│   └── tsconfig/         # Shared TypeScript Configs
+├── turbo.json            # Turborepo Configuration
+└── pnpm-workspace.yaml   # PNPM Workspace Configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠 Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Dependencies installieren:**
+   ```bash
+   pnpm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Environment Variables einrichten:**
+   ```bash
+   cp .env.example .env.local
+   # Fülle die Werte in .env.local aus
+   ```
 
-## Learn More
+3. **Design Tokens bauen:**
+   ```bash
+   pnpm --filter @voai/config build
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# Alle Apps im Dev-Modus starten
+pnpm dev
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Nur Frontend starten
+pnpm --filter @voai/frontend dev
 
-## Deploy on Vercel
+# Tests ausführen
+pnpm test
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Linting
+pnpm lint
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Type Checking
+pnpm type-check
+
+# Build
+pnpm build
+```
+
+## 📝 Nächste Schritte (Phase 2-5)
+
+### Phase 2: UI-Komponenten vervollständigen
+- [ ] DataTable Component
+- [ ] Sidebar Shell Layout
+- [ ] Chart Components
+- [ ] Storybook Setup
+
+### Phase 3: Routing & Seitenaufbau
+- [ ] Protected Routes
+- [ ] Dashboard Layout
+- [ ] Profile Pages
+- [ ] Settings Pages
+
+### Phase 4: Supabase Integration
+- [ ] Auth Setup mit RLS
+- [ ] Realtime Subscriptions
+- [ ] Vector Store
+- [ ] File Storage
+
+### Phase 5: n8n Workflow Integration
+- [ ] REST Client
+- [ ] Webhook Handlers
+- [ ] Status Polling
+- [ ] Error Recovery
+
+## 🔐 Required Secrets
+
+Folgende Secrets müssen in GitHub und/oder .env.local gesetzt werden:
+
+```bash
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+
+# n8n
+N8N_API_URL=
+N8N_API_KEY=
+N8N_WEBHOOK_URL=
+
+# Sentry (optional)
+NEXT_PUBLIC_SENTRY_DSN=
+SENTRY_AUTH_TOKEN=
+
+# Analytics (optional)
+NEXT_PUBLIC_POSTHOG_KEY=
+NEXT_PUBLIC_POSTHOG_HOST=
+
+# Vercel
+VERCEL_TOKEN=
+VERCEL_ORG_ID=
+VERCEL_PROJECT_ID=
+```
+
+## 📚 Dokumentation
+
+- [Architekturbericht](./docs/architekturbericht.md)
+- [Phase 1 Implementation](./docs/PHASE-1-IMPLEMENTATION.md)
+
+## 🤝 Contributing
+
+Bitte erstelle einen Feature Branch und öffne einen Pull Request für Änderungen.
+
+## 📄 License
+
+Proprietary - VOAI Enterprise
