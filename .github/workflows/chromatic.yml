@@ -1,0 +1,71 @@
+name: Chromatic
+
+on:
+  pull_request:
+    paths:
+      - 'packages/ui/**'
+      - '.github/workflows/chromatic.yml'
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - 'packages/ui/**'
+
+jobs:
+  chromatic:
+    name: Run Chromatic
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+          
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Build tokens
+        run: pnpm build:tokens
+        
+      - name: Build Storybook
+        run: pnpm --filter @voai/ui build-storybook
+        
+      - name: Publish to Chromatic
+        id: chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          workingDir: packages/ui
+          storybookBuildDir: storybook-static
+          exitZeroOnChanges: true
+          exitOnceUploaded: true
+          autoAcceptChanges: main
+          
+      - name: Comment PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { issue_number } = context.payload.pull_request;
+            const { buildUrl, storybookUrl } = JSON.parse('${{ steps.chromatic.outputs.outputs }}');
+            
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue_number,
+              body: `## 🎨 Chromatic Build
+              
+              - 📚 [Storybook](${ storybookUrl })
+              - 🔍 [Visual Changes](${ buildUrl })
+              
+              Review visual changes in Chromatic before merging.`
+            });

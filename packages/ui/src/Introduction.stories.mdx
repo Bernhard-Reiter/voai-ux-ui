@@ -1,0 +1,100 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Einführung" />
+
+# VOAI Design System
+
+Willkommen im VOAI Design System! Dies ist die zentrale Dokumentation und Showcase für alle UI-Komponenten.
+
+## 🎯 Übersicht
+
+Das VOAI Design System bietet:
+
+- **Konsistente Komponenten**: Wiederverwendbare UI-Bausteine
+- **Design Tokens**: Zentral verwaltete Farben, Abstände und Typografie
+- **Best Practices**: Richtlinien für die Verwendung
+- **Barrierefreiheit**: WCAG 2.1 AA konforme Komponenten
+
+## 🏗️ Architektur
+
+Das Design System folgt dem Atomic Design Pattern:
+
+### Atoms (Atome)
+Die kleinsten Bausteine - Buttons, Badges, Inputs etc.
+
+### Molecules (Moleküle) 
+Kombinationen von Atomen - Forms, Cards mit Actions etc.
+
+### Organisms (Organismen)
+Komplexe Komponenten - Navigation, Tables, Modals etc.
+
+## 🎨 Design Tokens
+
+Unsere Design Tokens werden zentral verwaltet und automatisch aus Figma synchronisiert:
+
+- **Farben**: Primär-, Sekundär- und Semantische Farben
+- **Typografie**: Schriftgrößen, Gewichte und Zeilenhöhen
+- **Abstände**: Konsistente Spacing-Werte
+- **Schatten**: Elevation für Tiefeneffekte
+
+## 🚀 Verwendung
+
+### Installation
+
+```bash
+pnpm add @voai/ui
+```
+
+### Import
+
+```tsx
+import { Button, Card, Badge } from '@voai/ui'
+```
+
+### Beispiel
+
+```tsx
+<Card>
+  <CardHeader>
+    <CardTitle>Willkommen</CardTitle>
+    <Badge variant="success">Neu</Badge>
+  </CardHeader>
+  <CardContent>
+    <p>Inhalt der Karte</p>
+  </CardContent>
+  <CardFooter>
+    <Button>Aktion</Button>
+  </CardFooter>
+</Card>
+```
+
+## 📋 Richtlinien
+
+### Barrierefreiheit
+- Alle interaktiven Elemente sind keyboard-navigierbar
+- Farben haben ausreichenden Kontrast
+- Screen Reader Support ist implementiert
+
+### Performance
+- Komponenten sind tree-shakeable
+- Lazy Loading wo sinnvoll
+- Optimierte Bundle-Größe
+
+### Browser Support
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## 🤝 Contribution
+
+Bei Fragen oder Verbesserungsvorschlägen:
+
+1. Issue im GitHub Repository erstellen
+2. Design Review mit dem Team
+3. Pull Request mit Story erstellen
+4. Visual Review in Chromatic
+
+---
+
+Viel Spaß beim Entwickeln mit dem VOAI Design System! 🎉
