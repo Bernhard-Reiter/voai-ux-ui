@@ -47,13 +47,6 @@ const envSchema = z.object({
 })
 
 // Separate schemas for build time vs runtime
-const buildEnvSchema = envSchema.pick({
-  NODE_ENV: true,
-  SENTRY_AUTH_TOKEN: true,
-  SENTRY_ORG: true,
-  SENTRY_PROJECT: true,
-})
-
 const publicEnvSchema = envSchema.pick({
   NEXT_PUBLIC_SITE_URL: true,
   NEXT_PUBLIC_SUPABASE_URL: true,
@@ -80,7 +73,6 @@ const serverEnvSchema = envSchema.omit({
 
 // Type exports
 export type Env = z.infer<typeof envSchema>
-export type BuildEnv = z.infer<typeof buildEnvSchema>
 export type PublicEnv = z.infer<typeof publicEnvSchema>
 export type ServerEnv = z.infer<typeof serverEnvSchema>
 
@@ -98,7 +90,7 @@ function validateEnv() {
 }
 
 // Export validated env
-export const env = process.env.NODE_ENV === 'test' ? (process.env as any) : validateEnv()
+export const env = process.env.NODE_ENV === 'test' ? (process.env as Env) : validateEnv()
 
 // Helper to get public runtime config
 export function getPublicEnv(): PublicEnv {
