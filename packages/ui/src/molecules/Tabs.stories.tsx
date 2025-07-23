@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../atoms/Card';
 import { Badge } from '../atoms/Badge';
 import { Button } from '../atoms/Button';
 import { User, CreditCard, Settings, Bell } from 'lucide-react';
 
-const meta = {
+const meta: Meta<typeof Tabs> = {
   title: 'Molecules/Tabs',
   component: Tabs,
   parameters: {
@@ -24,7 +25,7 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof Tabs>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;

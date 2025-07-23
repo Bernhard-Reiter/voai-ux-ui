@@ -75,10 +75,26 @@ const meta = {
     },
   },
   tags: ['autodocs'],
+  argTypes: {
+    columns: {
+      description: 'Die Spaltendefinitionen für die Tabelle',
+    },
+    data: {
+      description: 'Die anzuzeigenden Daten',
+    },
+    pageSize: {
+      description: 'Anzahl der Einträge pro Seite',
+    },
+  },
 } satisfies Meta<typeof DataTable>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<{
+  columns: ColumnDef<Payment>[]
+  data: Payment[]
+  pageSize?: number
+  className?: string
+}>;
 
 // Basic columns
 const basicColumns: ColumnDef<Payment>[] = [
@@ -268,7 +284,11 @@ export const CustomPageSize: Story = {
 
 // With Toolbar Example
 export const WithToolbar: Story = {
-  render: () => {
+  args: {
+    columns: advancedColumns,
+    data: payments,
+  },
+  render: (args) => {
     return (
       <div className="space-y-4">
         <div className="flex items-center justify-between">
@@ -288,7 +308,7 @@ export const WithToolbar: Story = {
           </div>
           <Button>Export</Button>
         </div>
-        <DataTable columns={advancedColumns} data={payments} />
+        <DataTable {...args} />
       </div>
     );
   },

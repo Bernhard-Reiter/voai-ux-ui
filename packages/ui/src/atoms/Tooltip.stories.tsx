@@ -4,7 +4,7 @@ import { Button } from './Button';
 import { Badge } from './Badge';
 import { HelpCircle, Info, Settings, User } from 'lucide-react';
 
-const meta = {
+const meta: Meta<typeof Tooltip> = {
   title: 'Atoms/Tooltip',
   component: Tooltip,
   parameters: {
@@ -25,7 +25,7 @@ const meta = {
       </TooltipProvider>
     ),
   ],
-} satisfies Meta<typeof Tooltip>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;

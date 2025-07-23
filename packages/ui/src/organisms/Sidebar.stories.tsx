@@ -23,7 +23,7 @@ import {
   Plus,
 } from 'lucide-react';
 
-const meta = {
+const meta: Meta<typeof Sidebar> = {
   title: 'Organisms/Sidebar',
   component: Sidebar,
   parameters: {
@@ -48,7 +48,7 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof Sidebar>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
