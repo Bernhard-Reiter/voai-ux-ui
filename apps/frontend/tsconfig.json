@@ -1,6 +1,7 @@
 {
   "extends": "../../packages/tsconfig/nextjs.json",
   "compilerOptions": {
+    "baseUrl": ".",
     "plugins": [
       {
         "name": "next"
@@ -8,10 +9,12 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@voai/ui": ["../../packages/ui/src"],
-      "@voai/ui/*": ["../../packages/ui/src/*"],
-      "@voai/config": ["../../packages/config"],
-      "@voai/config/*": ["../../packages/config/*"]
+      "@ui": ["../../packages/ui/src"],
+      "@ui/*": ["../../packages/ui/src/*"],
+      "@config": ["../../packages/config"],
+      "@config/*": ["../../packages/config/*"],
+      "@tokens": ["../../packages/tokens"],
+      "@tokens/*": ["../../packages/tokens/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "VOAI Base Config",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@ui": ["packages/ui/src"],
+      "@ui/*": ["packages/ui/src/*"],
+      "@config": ["packages/config"],
+      "@config/*": ["packages/config/*"],
+      "@tokens": ["packages/tokens"],
+      "@tokens/*": ["packages/tokens/*"]
+    }
+  }
+}

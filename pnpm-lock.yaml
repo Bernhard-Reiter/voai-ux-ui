@@ -223,6 +223,9 @@ importers:
       style-dictionary:
         specifier: ^3.9.2
         version: 3.9.2
+      zod:
+        specifier: ^3.22.4
+        version: 3.25.76
     devDependencies:
       '@types/node':
         specifier: ^20.11.5
@@ -253,6 +256,9 @@ importers:
       '@tanstack/react-table':
         specifier: ^8.21.3
         version: 8.21.3(react-dom@18.3.1)(react@18.3.1)
+      '@voai/config':
+        specifier: workspace:*
+        version: link:../config
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.1
