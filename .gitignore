@@ -53,3 +53,11 @@ packages/config/dist
 
 # external UI build artifacts (we commit these for CI/CD)
 !external/voai-ui/packages/tokens/build/
+
+# visual regression
+__visual_diffs__/
+# Keep baseline snapshots
+!__image_snapshots__/
+
+# crm repo (cloned separately)
+crm-repo/

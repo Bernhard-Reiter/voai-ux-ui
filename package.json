@@ -15,7 +15,11 @@
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "type-check": "turbo run type-check",
     "clean": "turbo run clean && rm -rf node_modules",
-    "prepare": "husky"
+    "prepare": "husky",
+    "sb:dev": "turbo run storybook --filter=@voai/ui",
+    "sb:build": "turbo run build-storybook --filter=@voai/ui",
+    "visual:test": "test-storybook --coverage",
+    "visual:update": "VISUAL_UPDATE=true pnpm visual:test"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.0.1",

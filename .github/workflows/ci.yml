@@ -16,18 +16,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        
+
       - uses: pnpm/action-setup@v3
         with:
           version: 8
-          
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
-          
+
       - run: pnpm install --frozen-lockfile
-      
+
       - run: pnpm turbo run lint
 
   type-check:
@@ -35,18 +35,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        
+
       - uses: pnpm/action-setup@v3
         with:
           version: 8
-          
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
-          
+
       - run: pnpm install --frozen-lockfile
-      
+
       - run: pnpm turbo run type-check
 
   test:
@@ -58,47 +58,85 @@ jobs:
       N8N_API_URL: ${{ secrets.N8N_API_URL }}
       N8N_API_KEY: ${{ secrets.N8N_API_KEY }}
       N8N_WEBHOOK_URL: ${{ secrets.N8N_WEBHOOK_URL }}
-      
+
     steps:
       - uses: actions/checkout@v4
-        
+
       - uses: pnpm/action-setup@v3
         with:
           version: 8
-          
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
-          
+
       - run: pnpm install --frozen-lockfile
-      
+
       - run: pnpm turbo run test -- --coverage
-      
+
       - uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/lcov.info
+
+  visual-regression:
+    name: Visual Regression Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build Storybook
+        run: pnpm sb:build
+
+      - name: Run visual tests
+        run: pnpm visual:test
+
+      - name: Upload visual diffs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-diffs
+          path: __visual_diffs__/
+
+      # Chromatic placeholder - activate when team grows
+      # - name: Chromatic (activate when team grows)
+      #   if: env.CHROMATIC_PROJECT_TOKEN != ''
+      #   uses: chromaui/action@v3
+      #   with:
+      #     projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      #     storybookBuildDir: packages/ui/storybook-static
 
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        
+
       - uses: pnpm/action-setup@v3
         with:
           version: 8
-          
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
-          
+
       - run: pnpm install --frozen-lockfile
-      
+
       - run: pnpm turbo run build
-      
+
       - uses: actions/upload-artifact@v4
         with:
           name: build-output
@@ -110,7 +148,7 @@ jobs:
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
         env:

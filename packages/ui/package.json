@@ -13,7 +13,8 @@
     "clean": "rm -rf dist .turbo",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "chromatic --exit-zero-on-changes"
+    "test-storybook": "test-storybook",
+    "test-storybook:ci": "test-storybook --ci"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
