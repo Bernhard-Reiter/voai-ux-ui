@@ -12,7 +12,23 @@
         "NEXT_PUBLIC_SUPABASE_URL",
         "NEXT_PUBLIC_SUPABASE_ANON_KEY",
         "NEXT_PUBLIC_SENTRY_DSN",
-        "NEXT_PUBLIC_SITE_URL"
+        "NEXT_PUBLIC_SITE_URL",
+        "NEXT_PUBLIC_APP_URL",
+        "NEXT_PUBLIC_API_URL",
+        "N8N_API_URL",
+        "N8N_API_KEY",
+        "N8N_WEBHOOK_URL",
+        "SENTRY_ORG",
+        "SENTRY_PROJECT",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "DATABASE_URL",
+        "APP_ENCRYPTION_KEY",
+        "JWT_SECRET",
+        "NEXTAUTH_SECRET",
+        "CSRF_SECRET",
+        "PLATFORM_SECRET",
+        "ENABLE_REAL_AI",
+        "ENABLE_EMAIL_NOTIFICATIONS"
       ]
     },
     "dev": {
