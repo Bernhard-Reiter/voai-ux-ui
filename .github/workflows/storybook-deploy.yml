@@ -7,9 +7,23 @@ on:
     branches: [main]
 
 jobs:
+  check-storybook-setup:
+    name: Check Storybook Setup
+    runs-on: ubuntu-latest
+    if: ${{ secrets.VERCEL_PROJECT_ID_STORYBOOK == '' }}
+    steps:
+      - name: Info about missing configuration
+        run: |
+          echo "ℹ️ Storybook deployment is not configured yet."
+          echo "To enable Storybook deployment:"
+          echo "1. Create a new Vercel project for Storybook"
+          echo "2. Add VERCEL_PROJECT_ID_STORYBOOK to GitHub secrets"
+          echo "3. The deployment will then run automatically"
+
   deploy-storybook:
     name: Deploy Storybook to Vercel
     runs-on: ubuntu-latest
+    if: ${{ secrets.VERCEL_PROJECT_ID_STORYBOOK != '' }}
     steps:
       - uses: actions/checkout@v4
 
