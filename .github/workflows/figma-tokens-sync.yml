@@ -1,0 +1,81 @@
+name: Figma Tokens Sync
+
+on:
+  workflow_dispatch:
+    inputs:
+      figma_file_url:
+        description: 'Figma file URL'
+        required: false
+        type: string
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  push:
+    paths:
+      - 'external/voai-ui/packages/tokens/.figma-tokens.json'
+
+env:
+  FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+
+jobs:
+  sync-tokens:
+    name: Sync Figma Tokens
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+          
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Sync Figma tokens
+        run: |
+          cd external/voai-ui/packages/tokens
+          pnpm sync
+        
+      - name: Build all token formats
+        run: |
+          pnpm build:tokens
+          cd external/voai-ui/packages/tokens
+          pnpm build:figma
+        
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet || echo "changes=true" >> $GITHUB_OUTPUT
+        
+      - name: Create Pull Request
+        if: steps.changes.outputs.changes == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: update design tokens from Figma'
+          title: '🎨 Update Design Tokens from Figma'
+          body: |
+            This PR updates the design tokens from Figma.
+            
+            ## Changes
+            - Updated token values from Figma
+            - Regenerated all token formats (CSS, JS, Tailwind)
+            
+            ## Review
+            Please review the token changes and ensure they align with the design system.
+            
+            ---
+            *This PR was automatically created by the Figma Tokens Sync workflow*
+          branch: chore/update-figma-tokens
+          delete-branch: true
+          labels: |
+            design-system
+            automated
