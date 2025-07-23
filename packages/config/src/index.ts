@@ -1,5 +1,5 @@
 // Environment configuration
-export * from '../env'
+export * from './env'
 
 // Services
 export * from './services'

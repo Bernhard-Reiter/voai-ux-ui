@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { frontendEnvSchema, validateEnv as validateEnvBase, FrontendEnv } from '@config/env'
+import { frontendEnvSchema, validateEnv as validateEnvBase, FrontendEnv } from '@config'
 
 // Use the shared frontend schema
 const envSchema = frontendEnvSchema
@@ -60,4 +60,6 @@ export function getServerEnv(): ServerEnv {
   return serverEnvSchema.parse(env)
 }
 
-export { isProduction, isDevelopment, isTest } from '@config/env'
+export const isProduction = env.NODE_ENV === 'production'
+export const isDevelopment = env.NODE_ENV === 'development'
+export const isTest = env.NODE_ENV === 'test'
