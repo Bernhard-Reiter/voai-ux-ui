@@ -1,50 +1,8 @@
 import { z } from 'zod'
+import { frontendEnvSchema, validateEnv as validateEnvBase, FrontendEnv } from '@config/env'
 
-const envSchema = z.object({
-  // Node
-  NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
-
-  // URLs
-  NEXT_PUBLIC_SITE_URL: z.string().url().default('http://localhost:3000'),
-
-  // Supabase
-  NEXT_PUBLIC_SUPABASE_URL: z.string().url(),
-  NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1),
-  SUPABASE_SERVICE_ROLE_KEY: z.string().min(1).optional(),
-
-  // n8n
-  N8N_API_URL: z.string().url(),
-  N8N_API_KEY: z.string().min(1),
-  N8N_WEBHOOK_URL: z.string().url(),
-
-  // Sentry
-  NEXT_PUBLIC_SENTRY_DSN: z.string().url().optional(),
-  SENTRY_AUTH_TOKEN: z.string().optional(),
-  SENTRY_ORG: z.string().optional(),
-  SENTRY_PROJECT: z.string().optional(),
-
-  // Analytics
-  NEXT_PUBLIC_POSTHOG_KEY: z.string().optional(),
-  NEXT_PUBLIC_POSTHOG_HOST: z.string().url().optional(),
-
-  // Feature Flags
-  NEXT_PUBLIC_ENABLE_ANALYTICS: z
-    .string()
-    .transform((val) => val === 'true')
-    .default('false'),
-  NEXT_PUBLIC_ENABLE_SENTRY: z
-    .string()
-    .transform((val) => val === 'true')
-    .default('false'),
-  NEXT_PUBLIC_ENABLE_VECTOR_SEARCH: z
-    .string()
-    .transform((val) => val === 'true')
-    .default('false'),
-
-  // Vercel
-  VERCEL_URL: z.string().optional(),
-  VERCEL_ENV: z.enum(['production', 'preview', 'development']).optional(),
-})
+// Use the shared frontend schema
+const envSchema = frontendEnvSchema
 
 // Separate schemas for build time vs runtime
 const buildEnvSchema = envSchema.pick({
@@ -79,22 +37,14 @@ const serverEnvSchema = envSchema.omit({
 })
 
 // Type exports
-export type Env = z.infer<typeof envSchema>
+export type Env = FrontendEnv
 export type BuildEnv = z.infer<typeof buildEnvSchema>
 export type PublicEnv = z.infer<typeof publicEnvSchema>
 export type ServerEnv = z.infer<typeof serverEnvSchema>
 
 // Parse and validate
 function validateEnv() {
-  try {
-    return envSchema.parse(process.env)
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      console.error('❌ Invalid environment variables:', error.flatten().fieldErrors)
-      throw new Error('Invalid environment variables')
-    }
-    throw error
-  }
+  return validateEnvBase(envSchema, process.env)
 }
 
 // Export validated env
@@ -110,6 +60,4 @@ export function getServerEnv(): ServerEnv {
   return serverEnvSchema.parse(env)
 }
 
-export const isProduction = env.NODE_ENV === 'production'
-export const isDevelopment = env.NODE_ENV === 'development'
-export const isTest = env.NODE_ENV === 'test'
+export { isProduction, isDevelopment, isTest } from '@config/env'
