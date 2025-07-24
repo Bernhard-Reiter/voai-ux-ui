@@ -48,12 +48,12 @@ export const mockWorkflowList = () => ({
 
 /**
  * Create MSW handlers for n8n API
- * 
+ *
  * Usage in your app:
  * ```ts
  * import { http } from 'msw'
  * import { createN8nHandlers } from '@config/mocks/n8n-handlers'
- * 
+ *
  * const handlers = createN8nHandlers({
  *   apiUrl: process.env.N8N_API_URL,
  *   webhookUrl: process.env.N8N_WEBHOOK_URL,
@@ -72,7 +72,7 @@ export function createN8nHandlers(
       const { workflowId } = params
       const body = await request.json()
 
-      await new Promise(resolve => setTimeout(resolve, defaultDelay))
+      await new Promise((resolve) => setTimeout(resolve, defaultDelay))
 
       return new Response(
         JSON.stringify(
@@ -92,7 +92,7 @@ export function createN8nHandlers(
     http.post(`${webhookUrl}/*`, async ({ request }: any) => {
       const body = await request.json()
 
-      await new Promise(resolve => setTimeout(resolve, defaultDelay))
+      await new Promise((resolve) => setTimeout(resolve, defaultDelay))
 
       return new Response(
         JSON.stringify(
@@ -111,13 +111,13 @@ export function createN8nHandlers(
     http.get(`${apiUrl}/executions/:executionId`, async ({ params }: any) => {
       const { executionId } = params
 
-      await new Promise(resolve => setTimeout(resolve, defaultDelay))
+      await new Promise((resolve) => setTimeout(resolve, defaultDelay))
 
       // Simulate workflow progression
       const randomStatus = Math.random()
       let status = 'running'
       let progress = Math.floor(Math.random() * 100)
-      
+
       if (randomStatus > 0.7) {
         status = 'success'
         progress = 100
@@ -141,15 +141,12 @@ export function createN8nHandlers(
 
     // List workflows
     http.get(`${apiUrl}/workflows`, async () => {
-      await new Promise(resolve => setTimeout(resolve, defaultDelay))
+      await new Promise((resolve) => setTimeout(resolve, defaultDelay))
 
-      return new Response(
-        JSON.stringify(mockWorkflowList()),
-        {
-          status: 200,
-          headers: { 'Content-Type': 'application/json' },
-        }
-      )
+      return new Response(JSON.stringify(mockWorkflowList()), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      })
     }),
   ]
 }
@@ -168,10 +165,9 @@ export function createN8nScenarioHandlers(
     case 'failure':
       return [
         http.post(`${config.apiUrl}/workflows/:workflowId/execute`, () => {
-          return new Response(
-            JSON.stringify({ error: 'Workflow execution failed' }),
-            { status: 500 }
-          )
+          return new Response(JSON.stringify({ error: 'Workflow execution failed' }), {
+            status: 500,
+          })
         }),
         ...baseHandlers.slice(1),
       ]
@@ -179,7 +175,7 @@ export function createN8nScenarioHandlers(
     case 'timeout':
       return [
         http.post(`${config.apiUrl}/workflows/:workflowId/execute`, async () => {
-          await new Promise(resolve => setTimeout(resolve, 35000)) // Longer than typical timeout
+          await new Promise((resolve) => setTimeout(resolve, 35000)) // Longer than typical timeout
           return new Response(null, { status: 408 })
         }),
         ...baseHandlers.slice(1),

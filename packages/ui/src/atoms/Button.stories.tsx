@@ -1,8 +1,8 @@
-import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './Button';
-import { ArrowRight, Download, Heart, Loader2 } from 'lucide-react';
-import { LucideIconWrapper } from '../utils/lucide-wrapper';
+import * as React from 'react'
+import type { Meta, StoryObj } from '@storybook/react'
+import { Button } from './Button'
+import { ArrowRight, Download, Heart, Loader2 } from 'lucide-react'
+import { LucideIconWrapper } from '../utils/lucide-wrapper'
 
 const meta = {
   title: 'Atoms/Button',
@@ -36,59 +36,59 @@ const meta = {
       description: 'Deaktiviert den Button',
     },
   },
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Button>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 // Basic Variants
 export const Default: Story = {
   args: {
     children: 'Button',
   },
-};
+}
 
 export const Destructive: Story = {
   args: {
     variant: 'destructive',
     children: 'Löschen',
   },
-};
+}
 
 export const Outline: Story = {
   args: {
     variant: 'outline',
     children: 'Outline',
   },
-};
+}
 
 export const Secondary: Story = {
   args: {
     variant: 'secondary',
     children: 'Secondary',
   },
-};
+}
 
 export const Ghost: Story = {
   args: {
     variant: 'ghost',
     children: 'Ghost',
   },
-};
+}
 
 export const Link: Story = {
   args: {
     variant: 'link',
     children: 'Link Button',
   },
-};
+}
 
 export const Gradient: Story = {
   args: {
     variant: 'gradient',
     children: 'Gradient',
   },
-};
+}
 
 // Sizes
 export const Small: Story = {
@@ -96,21 +96,21 @@ export const Small: Story = {
     size: 'sm',
     children: 'Klein',
   },
-};
+}
 
 export const Large: Story = {
   args: {
     size: 'lg',
     children: 'Groß',
   },
-};
+}
 
 export const Icon: Story = {
   args: {
     size: 'icon',
     children: <LucideIconWrapper icon={Heart} className="h-4 w-4" />,
   },
-};
+}
 
 // With Icons
 export const WithIcon: Story = {
@@ -122,7 +122,7 @@ export const WithIcon: Story = {
       </>
     ),
   },
-};
+}
 
 export const IconLeft: Story = {
   args: {
@@ -133,7 +133,7 @@ export const IconLeft: Story = {
       </>
     ),
   },
-};
+}
 
 // States
 export const Loading: Story = {
@@ -146,14 +146,14 @@ export const Loading: Story = {
       </>
     ),
   },
-};
+}
 
 export const Disabled: Story = {
   args: {
     disabled: true,
     children: 'Deaktiviert',
   },
-};
+}
 
 // Button Group Example
 export const ButtonGroup: Story = {
@@ -163,7 +163,7 @@ export const ButtonGroup: Story = {
       <Button>Speichern</Button>
     </div>
   ),
-};
+}
 
 // All Variants Grid
 export const AllVariants: Story = {
@@ -179,4 +179,4 @@ export const AllVariants: Story = {
       <Button disabled>Disabled</Button>
     </div>
   ),
-};
+}

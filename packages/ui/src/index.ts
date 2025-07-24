@@ -13,6 +13,9 @@ export * from './molecules/Tabs'
 export * from './organisms/Sidebar'
 export * from './organisms/DataTable'
 
+// Templates
+export * from './templates'
+
 // Utils
 export * from './utils'
 

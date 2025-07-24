@@ -1,5 +1,5 @@
-import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import * as React from 'react'
+import type { Meta, StoryObj } from '@storybook/react'
 import {
   Modal,
   ModalContent,
@@ -8,11 +8,11 @@ import {
   ModalHeader,
   ModalTitle,
   ModalTrigger,
-} from './Modal';
-import { Button } from '../atoms/Button';
-import { Badge } from '../atoms/Badge';
-import { AlertCircle, Trash2, UserPlus, Settings } from 'lucide-react';
-import { LucideIconWrapper } from '../utils/lucide-wrapper';
+} from './Modal'
+import { Button } from '../atoms/Button'
+import { Badge } from '../atoms/Badge'
+import { AlertCircle, Trash2, UserPlus, Settings } from 'lucide-react'
+import { LucideIconWrapper } from '../utils/lucide-wrapper'
 
 const meta = {
   title: 'Molecules/Modal',
@@ -26,10 +26,10 @@ const meta = {
     },
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Modal>;
+} satisfies Meta<typeof Modal>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 // Basic Modal
 export const Default: Story = {
@@ -58,7 +58,7 @@ export const Default: Story = {
       </ModalContent>
     </Modal>
   ),
-};
+}
 
 // Confirmation Dialog
 export const Confirmation: Story = {
@@ -84,7 +84,7 @@ export const Confirmation: Story = {
       </ModalContent>
     </Modal>
   ),
-};
+}
 
 // Form Modal
 export const FormModal: Story = {
@@ -99,9 +99,7 @@ export const FormModal: Story = {
       <ModalContent className="sm:max-w-md">
         <ModalHeader>
           <ModalTitle>Neuen Benutzer hinzufügen</ModalTitle>
-          <ModalDescription>
-            Fügen Sie einen neuen Benutzer zu Ihrem Team hinzu.
-          </ModalDescription>
+          <ModalDescription>Fügen Sie einen neuen Benutzer zu Ihrem Team hinzu.</ModalDescription>
         </ModalHeader>
         <div className="grid gap-4 py-4">
           <div className="grid gap-2">
@@ -147,7 +145,7 @@ export const FormModal: Story = {
       </ModalContent>
     </Modal>
   ),
-};
+}
 
 // Alert Modal
 export const Alert: Story = {
@@ -175,8 +173,8 @@ export const Alert: Story = {
         </ModalHeader>
         <div className="py-4">
           <p className="text-sm">
-            Ihr Speicherplatz ist fast voll. Sie haben nur noch 15% freien Speicherplatz.
-            Bitte löschen Sie einige Dateien oder upgraden Sie Ihren Plan.
+            Ihr Speicherplatz ist fast voll. Sie haben nur noch 15% freien Speicherplatz. Bitte
+            löschen Sie einige Dateien oder upgraden Sie Ihren Plan.
           </p>
           <div className="mt-4 flex items-center gap-2">
             <Badge variant="warning">15% verfügbar</Badge>
@@ -190,7 +188,7 @@ export const Alert: Story = {
       </ModalContent>
     </Modal>
   ),
-};
+}
 
 // Settings Modal
 export const SettingsModal: Story = {
@@ -217,7 +215,13 @@ export const SettingsModal: Story = {
                   Erhalten Sie Benachrichtigungen über wichtige Updates
                 </p>
               </div>
-              <input type="checkbox" className="h-4 w-4 rounded" defaultChecked />
+              <input
+                id="notifications-setting"
+                type="checkbox"
+                className="h-4 w-4 rounded"
+                defaultChecked
+                aria-label="Benachrichtigungen aktivieren"
+              />
             </div>
             <div className="flex items-center justify-between">
               <div>
@@ -226,7 +230,12 @@ export const SettingsModal: Story = {
                   Aktivieren Sie das dunkle Farbschema
                 </p>
               </div>
-              <input type="checkbox" className="h-4 w-4 rounded" />
+              <input
+                id="darkmode-setting"
+                type="checkbox"
+                className="h-4 w-4 rounded"
+                aria-label="Dark Mode aktivieren"
+              />
             </div>
             <div className="flex items-center justify-between">
               <div>
@@ -235,7 +244,13 @@ export const SettingsModal: Story = {
                   Installieren Sie Updates automatisch
                 </p>
               </div>
-              <input type="checkbox" className="h-4 w-4 rounded" defaultChecked />
+              <input
+                id="autoupdate-setting"
+                type="checkbox"
+                className="h-4 w-4 rounded"
+                defaultChecked
+                aria-label="Automatische Updates aktivieren"
+              />
             </div>
           </div>
         </div>
@@ -246,7 +261,7 @@ export const SettingsModal: Story = {
       </ModalContent>
     </Modal>
   ),
-};
+}
 
 // Large Content Modal
 export const LargeContent: Story = {
@@ -265,7 +280,9 @@ export const LargeContent: Story = {
         <div className="overflow-y-auto py-4">
           {Array.from({ length: 10 }, (_, i) => (
             <div key={i} className="mb-4">
-              <h3 className="mb-2 font-medium">§ {i + 1} Abschnitt {i + 1}</h3>
+              <h3 className="mb-2 font-medium">
+                § {i + 1} Abschnitt {i + 1}
+              </h3>
               <p className="text-sm text-muted-foreground">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -281,4 +298,4 @@ export const LargeContent: Story = {
       </ModalContent>
     </Modal>
   ),
-};
+}

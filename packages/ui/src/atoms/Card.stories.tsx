@@ -1,10 +1,10 @@
-import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './Card';
-import { Button } from './Button';
-import { Badge } from './Badge';
-import { CheckCircle, Clock, TrendingUp } from 'lucide-react';
-import { LucideIconWrapper } from '../utils/lucide-wrapper';
+import * as React from 'react'
+import type { Meta, StoryObj } from '@storybook/react'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './Card'
+import { Button } from './Button'
+import { Badge } from './Badge'
+import { CheckCircle, Clock, TrendingUp } from 'lucide-react'
+import { LucideIconWrapper } from '../utils/lucide-wrapper'
 
 const meta = {
   title: 'Atoms/Card',
@@ -18,10 +18,10 @@ const meta = {
     },
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Card>;
+} satisfies Meta<typeof Card>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 // Basic Card
 export const Default: Story = {
@@ -36,7 +36,7 @@ export const Default: Story = {
       </CardContent>
     </Card>
   ),
-};
+}
 
 // Card with Footer
 export const WithFooter: Story = {
@@ -58,7 +58,7 @@ export const WithFooter: Story = {
       </CardFooter>
     </Card>
   ),
-};
+}
 
 // Interactive Card
 export const Interactive: Story = {
@@ -85,7 +85,7 @@ export const Interactive: Story = {
       </CardContent>
     </Card>
   ),
-};
+}
 
 // Stats Card
 export const StatsCard: Story = {
@@ -97,13 +97,11 @@ export const StatsCard: Story = {
       </CardHeader>
       <CardContent>
         <div className="text-2xl font-bold">€45,231.89</div>
-        <p className="text-xs text-muted-foreground">
-          +20.1% gegenüber letztem Monat
-        </p>
+        <p className="text-xs text-muted-foreground">+20.1% gegenüber letztem Monat</p>
       </CardContent>
     </Card>
   ),
-};
+}
 
 // Feature Card
 export const FeatureCard: Story = {
@@ -114,9 +112,7 @@ export const FeatureCard: Story = {
           <LucideIconWrapper icon={TrendingUp} className="h-6 w-6 text-primary" />
         </div>
         <CardTitle className="mt-4">Analytics Dashboard</CardTitle>
-        <CardDescription>
-          Behalten Sie Ihre wichtigsten Metriken im Blick
-        </CardDescription>
+        <CardDescription>Behalten Sie Ihre wichtigsten Metriken im Blick</CardDescription>
       </CardHeader>
       <CardContent>
         <ul className="space-y-2 text-sm text-muted-foreground">
@@ -130,7 +126,7 @@ export const FeatureCard: Story = {
       </CardFooter>
     </Card>
   ),
-};
+}
 
 // Card Grid
 export const CardGrid: Story = {
@@ -149,4 +145,4 @@ export const CardGrid: Story = {
       ))}
     </div>
   ),
-};
+}

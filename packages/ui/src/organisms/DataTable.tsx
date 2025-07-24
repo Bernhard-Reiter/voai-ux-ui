@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from 'react'
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -10,11 +10,18 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table"
-import { ArrowUpDown, ChevronDown, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react"
-import { cn } from "../utils"
-import { Button } from "../atoms/Button"
-import { LucideIconWrapper } from "../utils/lucide-wrapper"
+} from '@tanstack/react-table'
+import {
+  ArrowUpDown,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+} from 'lucide-react'
+import { cn } from '../utils'
+import { Button } from '../atoms/Button'
+import { LucideIconWrapper } from '../utils/lucide-wrapper'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -59,7 +66,7 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <div className={cn("w-full space-y-4", className)}>
+    <div className={cn('w-full space-y-4', className)}>
       <div className="rounded-md border">
         <table className="w-full">
           <thead>
@@ -73,10 +80,10 @@ export function DataTable<TData, TValue>({
                     >
                       {header.isPlaceholder
                         ? null
-                        : flexRender(
+                        : (flexRender(
                             header.column.columnDef.header,
                             header.getContext()
-                          ) as React.ReactNode}
+                          ) as React.ReactNode)}
                     </th>
                   )
                 })}
@@ -88,25 +95,19 @@ export function DataTable<TData, TValue>({
               table.getRowModel().rows.map((row) => (
                 <tr
                   key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
+                  data-state={row.getIsSelected() && 'selected'}
                   className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <td key={cell.id} className="px-4 py-3 text-sm">
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      ) as React.ReactNode}
+                      {flexRender(cell.column.columnDef.cell, cell.getContext()) as React.ReactNode}
                     </td>
                   ))}
                 </tr>
               ))
             ) : (
               <tr>
-                <td
-                  colSpan={columns.length}
-                  className="h-24 text-center text-muted-foreground"
-                >
+                <td colSpan={columns.length} className="h-24 text-center text-muted-foreground">
                   Keine Ergebnisse.
                 </td>
               </tr>
@@ -123,13 +124,11 @@ interface DataTablePaginationProps<TData> {
   table: ReturnType<typeof useReactTable<TData>>
 }
 
-export function DataTablePagination<TData>({
-  table,
-}: DataTablePaginationProps<TData>) {
+export function DataTablePagination<TData>({ table }: DataTablePaginationProps<TData>) {
   return (
     <div className="flex items-center justify-between">
       <div className="text-sm text-muted-foreground">
-        {table.getFilteredSelectedRowModel().rows.length} von{" "}
+        {table.getFilteredSelectedRowModel().rows.length} von{' '}
         {table.getFilteredRowModel().rows.length} Zeile(n) ausgewählt.
       </div>
       <div className="flex items-center space-x-2">
@@ -150,8 +149,7 @@ export function DataTablePagination<TData>({
           </select>
         </div>
         <div className="flex w-[100px] items-center justify-center text-sm font-medium">
-          Seite {table.getState().pagination.pageIndex + 1} von{" "}
-          {table.getPageCount()}
+          Seite {table.getState().pagination.pageIndex + 1} von {table.getPageCount()}
         </div>
         <div className="flex items-center space-x-2">
           <Button
@@ -207,10 +205,10 @@ export function DataTableColumnHeader<TData, TValue>({
   }
 
   return (
-    <div className={cn("flex items-center space-x-2", className)}>
+    <div className={cn('flex items-center space-x-2', className)}>
       <button
         className="flex items-center space-x-2 hover:text-foreground"
-        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
       >
         <span>{title}</span>
         <LucideIconWrapper icon={ArrowUpDown} className="h-4 w-4" />

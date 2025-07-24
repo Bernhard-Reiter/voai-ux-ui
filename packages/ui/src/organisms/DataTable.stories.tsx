@@ -1,20 +1,20 @@
-import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { DataTable, DataTableColumnHeader } from './DataTable';
-import { ColumnDef } from '@tanstack/react-table';
-import { Badge } from '../atoms/Badge';
-import { Button } from '../atoms/Button';
-import { MoreHorizontal, ArrowUpDown } from 'lucide-react';
-import { LucideIconWrapper } from '../utils/lucide-wrapper';
+import * as React from 'react'
+import type { Meta, StoryObj } from '@storybook/react'
+import { DataTable, DataTableColumnHeader } from './DataTable'
+import { ColumnDef } from '@tanstack/react-table'
+import { Badge } from '../atoms/Badge'
+import { Button } from '../atoms/Button'
+import { MoreHorizontal, ArrowUpDown } from 'lucide-react'
+import { LucideIconWrapper } from '../utils/lucide-wrapper'
 
 // Sample data type
 type Payment = {
-  id: string;
-  amount: number;
-  status: 'pending' | 'processing' | 'success' | 'failed';
-  email: string;
-  date: string;
-};
+  id: string
+  amount: number
+  status: 'pending' | 'processing' | 'success' | 'failed'
+  email: string
+  date: string
+}
 
 // Sample data
 const payments: Payment[] = [
@@ -63,7 +63,7 @@ const payments: Payment[] = [
     email: `user${i + 6}@example.com`,
     date: new Date(2024, 0, 10 - i).toISOString().split('T')[0],
   })),
-];
+]
 
 const meta = {
   title: 'Organisms/DataTable',
@@ -72,7 +72,8 @@ const meta = {
     layout: 'padded',
     docs: {
       description: {
-        component: 'Eine leistungsstarke Tabellen-Komponente mit Sortierung, Filterung und Pagination.',
+        component:
+          'Eine leistungsstarke Tabellen-Komponente mit Sortierung, Filterung und Pagination.',
       },
     },
   },
@@ -88,15 +89,15 @@ const meta = {
       description: 'Anzahl der Einträge pro Seite',
     },
   },
-} satisfies Meta<typeof DataTable>;
+} satisfies Meta<typeof DataTable>
 
-export default meta;
+export default meta
 type Story = StoryObj<{
   columns: ColumnDef<Payment>[]
   data: Payment[]
   pageSize?: number
   className?: string
-}>;
+}>
 
 // Basic columns
 const basicColumns: ColumnDef<Payment>[] = [
@@ -112,33 +113,33 @@ const basicColumns: ColumnDef<Payment>[] = [
     accessorKey: 'amount',
     header: 'Betrag',
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue('amount'));
+      const amount = parseFloat(row.getValue('amount'))
       const formatted = new Intl.NumberFormat('de-DE', {
         style: 'currency',
         currency: 'EUR',
-      }).format(amount);
-      return <div className="font-medium">{formatted}</div>;
+      }).format(amount)
+      return <div className="font-medium">{formatted}</div>
     },
   },
   {
     accessorKey: 'status',
     header: 'Status',
     cell: ({ row }) => {
-      const status = row.getValue('status') as string;
+      const status = row.getValue('status') as string
       const variant = {
         pending: 'warning',
         processing: 'info',
         success: 'success',
         failed: 'destructive',
-      }[status] as any;
-      return <Badge variant={variant}>{status}</Badge>;
+      }[status] as any
+      return <Badge variant={variant}>{status}</Badge>
     },
   },
   {
     accessorKey: 'date',
     header: 'Datum',
   },
-];
+]
 
 // Advanced columns with sorting and actions
 const advancedColumns: ColumnDef<Payment>[] = [
@@ -150,6 +151,7 @@ const advancedColumns: ColumnDef<Payment>[] = [
         checked={table.getIsAllPageRowsSelected()}
         onChange={(e) => table.toggleAllPageRowsSelected(e.target.checked)}
         className="h-4 w-4 rounded border-gray-300"
+        aria-label="Alle Zeilen auswählen"
       />
     ),
     cell: ({ row }) => (
@@ -158,6 +160,7 @@ const advancedColumns: ColumnDef<Payment>[] = [
         checked={row.getIsSelected()}
         onChange={(e) => row.toggleSelected(e.target.checked)}
         className="h-4 w-4 rounded border-gray-300"
+        aria-label={`Zeile ${row.index + 1} auswählen`}
       />
     ),
     enableSorting: false,
@@ -169,70 +172,62 @@ const advancedColumns: ColumnDef<Payment>[] = [
   },
   {
     accessorKey: 'email',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="E-Mail" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="E-Mail" />,
   },
   {
     accessorKey: 'amount',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Betrag" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Betrag" />,
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue('amount'));
+      const amount = parseFloat(row.getValue('amount'))
       const formatted = new Intl.NumberFormat('de-DE', {
         style: 'currency',
         currency: 'EUR',
-      }).format(amount);
-      return <div className="text-right font-medium">{formatted}</div>;
+      }).format(amount)
+      return <div className="text-right font-medium">{formatted}</div>
     },
   },
   {
     accessorKey: 'status',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Status" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
     cell: ({ row }) => {
-      const status = row.getValue('status') as string;
+      const status = row.getValue('status') as string
       const variant = {
         pending: 'warning',
         processing: 'info',
         success: 'success',
         failed: 'destructive',
-      }[status] as any;
+      }[status] as any
       const label = {
         pending: 'Ausstehend',
         processing: 'In Bearbeitung',
         success: 'Erfolgreich',
         failed: 'Fehlgeschlagen',
-      }[status];
-      return <Badge variant={variant}>{label}</Badge>;
+      }[status]
+      return <Badge variant={variant}>{label}</Badge>
     },
     filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id));
+      return value.includes(row.getValue(id))
     },
   },
   {
     accessorKey: 'date',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Datum" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Datum" />,
     cell: ({ row }) => {
-      const date = new Date(row.getValue('date'));
-      return new Intl.DateTimeFormat('de-DE').format(date);
+      const date = new Date(row.getValue('date'))
+      return new Intl.DateTimeFormat('de-DE').format(date)
     },
   },
   {
     id: 'actions',
     cell: ({ row }) => {
       return (
-        <Button variant="ghost" size="icon">
+        <Button variant="ghost" size="icon" aria-label="Weitere Aktionen">
           <LucideIconWrapper icon={MoreHorizontal} className="h-4 w-4" />
         </Button>
-      );
+      )
     },
   },
-];
+]
 
 // Basic Table
 export const Default: Story = {
@@ -240,7 +235,7 @@ export const Default: Story = {
     columns: basicColumns,
     data: payments,
   },
-};
+}
 
 // Advanced Table with all features
 export const Advanced: Story = {
@@ -248,7 +243,7 @@ export const Advanced: Story = {
     columns: advancedColumns,
     data: payments,
   },
-};
+}
 
 // Empty State
 export const EmptyState: Story = {
@@ -256,7 +251,7 @@ export const EmptyState: Story = {
     columns: basicColumns,
     data: [],
   },
-};
+}
 
 // Large Dataset
 export const LargeDataset: Story = {
@@ -273,7 +268,7 @@ export const LargeDataset: Story = {
     })),
     pageSize: 20,
   },
-};
+}
 
 // Custom Page Size
 export const CustomPageSize: Story = {
@@ -282,7 +277,7 @@ export const CustomPageSize: Story = {
     data: payments,
     pageSize: 5,
   },
-};
+}
 
 // With Toolbar Example
 export const WithToolbar: Story = {
@@ -312,6 +307,6 @@ export const WithToolbar: Story = {
         </div>
         <DataTable {...args} />
       </div>
-    );
+    )
   },
-};
+}

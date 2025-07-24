@@ -19,6 +19,7 @@
   "dependencies": {
     "@voai/ui": "workspace:*",
     "@voai/config": "workspace:*",
+    "@voai/shared": "workspace:*",
     "@radix-ui/react-tooltip": "^1.2.7",
     "@sentry/nextjs": "^9.24.0",
     "class-variance-authority": "^0.7.1",

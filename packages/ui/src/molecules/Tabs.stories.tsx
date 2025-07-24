@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../atoms/Card';
-import { Badge } from '../atoms/Badge';
-import { Button } from '../atoms/Button';
-import { User, CreditCard, Settings, Bell } from 'lucide-react';
-import { LucideIconWrapper } from '../utils/lucide-wrapper';
+import type { Meta, StoryObj } from '@storybook/react'
+import React from 'react'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../atoms/Card'
+import { Badge } from '../atoms/Badge'
+import { Button } from '../atoms/Button'
+import { User, CreditCard, Settings, Bell } from 'lucide-react'
+import { LucideIconWrapper } from '../utils/lucide-wrapper'
 
 const meta: Meta<typeof Tabs> = {
   title: 'Molecules/Tabs',
@@ -26,10 +26,10 @@ const meta: Meta<typeof Tabs> = {
       </div>
     ),
   ],
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 // Basic Tabs
 export const Default: Story = {
@@ -75,7 +75,7 @@ export const Default: Story = {
       </TabsContent>
     </Tabs>
   ),
-};
+}
 
 // Account Settings Example
 export const AccountSettings: Story = {
@@ -99,27 +99,31 @@ export const AccountSettings: Story = {
           Sicherheit
         </TabsTrigger>
       </TabsList>
-      
+
       <TabsContent value="profile">
         <Card>
           <CardHeader>
             <CardTitle>Profil</CardTitle>
-            <CardDescription>
-              Verwalten Sie Ihre persönlichen Informationen.
-            </CardDescription>
+            <CardDescription>Verwalten Sie Ihre persönlichen Informationen.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid gap-2">
-              <label className="text-sm font-medium">Name</label>
+              <label htmlFor="profile-name" className="text-sm font-medium">
+                Name
+              </label>
               <input
+                id="profile-name"
                 type="text"
                 defaultValue="Max Mustermann"
                 className="h-9 rounded-md border border-input bg-background px-3 text-sm"
               />
             </div>
             <div className="grid gap-2">
-              <label className="text-sm font-medium">E-Mail</label>
+              <label htmlFor="profile-email" className="text-sm font-medium">
+                E-Mail
+              </label>
               <input
+                id="profile-email"
                 type="email"
                 defaultValue="max@beispiel.de"
                 className="h-9 rounded-md border border-input bg-background px-3 text-sm"
@@ -129,14 +133,12 @@ export const AccountSettings: Story = {
           </CardContent>
         </Card>
       </TabsContent>
-      
+
       <TabsContent value="billing">
         <Card>
           <CardHeader>
             <CardTitle>Abrechnung</CardTitle>
-            <CardDescription>
-              Verwalten Sie Ihre Zahlungsmethoden und Abonnements.
-            </CardDescription>
+            <CardDescription>Verwalten Sie Ihre Zahlungsmethoden und Abonnements.</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -152,13 +154,15 @@ export const AccountSettings: Story = {
                   <p className="font-medium">Nächste Zahlung</p>
                   <p className="text-sm text-muted-foreground">€29.99 am 15. Februar 2024</p>
                 </div>
-                <Button variant="outline" size="sm">Ändern</Button>
+                <Button variant="outline" size="sm">
+                  Ändern
+                </Button>
               </div>
             </div>
           </CardContent>
         </Card>
       </TabsContent>
-      
+
       <TabsContent value="notifications">
         <Card>
           <CardHeader>
@@ -172,11 +176,15 @@ export const AccountSettings: Story = {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-medium">E-Mail-Benachrichtigungen</p>
-                  <p className="text-sm text-muted-foreground">
-                    Erhalten Sie Updates per E-Mail
-                  </p>
+                  <p className="text-sm text-muted-foreground">Erhalten Sie Updates per E-Mail</p>
                 </div>
-                <input type="checkbox" className="h-4 w-4" defaultChecked />
+                <input
+                  id="email-notifications"
+                  type="checkbox"
+                  className="h-4 w-4"
+                  defaultChecked
+                  aria-label="E-Mail-Benachrichtigungen aktivieren"
+                />
               </div>
               <div className="flex items-center justify-between">
                 <div>
@@ -185,33 +193,42 @@ export const AccountSettings: Story = {
                     Erhalten Sie Push-Benachrichtigungen
                   </p>
                 </div>
-                <input type="checkbox" className="h-4 w-4" />
+                <input
+                  id="push-notifications"
+                  type="checkbox"
+                  className="h-4 w-4"
+                  aria-label="Push-Benachrichtigungen aktivieren"
+                />
               </div>
             </div>
           </CardContent>
         </Card>
       </TabsContent>
-      
+
       <TabsContent value="security">
         <Card>
           <CardHeader>
             <CardTitle>Sicherheit</CardTitle>
-            <CardDescription>
-              Verwalten Sie Ihre Sicherheitseinstellungen.
-            </CardDescription>
+            <CardDescription>Verwalten Sie Ihre Sicherheitseinstellungen.</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <Button variant="outline" className="w-full">Passwort ändern</Button>
-              <Button variant="outline" className="w-full">Zwei-Faktor-Authentifizierung</Button>
-              <Button variant="outline" className="w-full">Aktive Sitzungen</Button>
+              <Button variant="outline" className="w-full">
+                Passwort ändern
+              </Button>
+              <Button variant="outline" className="w-full">
+                Zwei-Faktor-Authentifizierung
+              </Button>
+              <Button variant="outline" className="w-full">
+                Aktive Sitzungen
+              </Button>
             </div>
           </CardContent>
         </Card>
       </TabsContent>
     </Tabs>
   ),
-};
+}
 
 // Vertical Tabs
 export const VerticalTabs: Story = {
@@ -232,7 +249,7 @@ export const VerticalTabs: Story = {
             Einstellungen
           </TabsTrigger>
         </TabsList>
-        
+
         <div className="flex-1">
           <TabsContent value="overview">
             <Card>
@@ -244,7 +261,7 @@ export const VerticalTabs: Story = {
               </CardContent>
             </Card>
           </TabsContent>
-          
+
           <TabsContent value="analytics">
             <Card>
               <CardHeader>
@@ -255,7 +272,7 @@ export const VerticalTabs: Story = {
               </CardContent>
             </Card>
           </TabsContent>
-          
+
           <TabsContent value="reports">
             <Card>
               <CardHeader>
@@ -266,7 +283,7 @@ export const VerticalTabs: Story = {
               </CardContent>
             </Card>
           </TabsContent>
-          
+
           <TabsContent value="settings">
             <Card>
               <CardHeader>
@@ -281,39 +298,27 @@ export const VerticalTabs: Story = {
       </Tabs>
     </div>
   ),
-};
+}
 
 // Controlled Tabs
 export const Controlled: Story = {
   render: () => {
-    const [value, setValue] = React.useState("tab1");
-    
+    const [value, setValue] = React.useState('tab1')
+
     return (
       <div className="space-y-4">
         <div className="flex gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setValue("tab1")}
-          >
+          <Button variant="outline" size="sm" onClick={() => setValue('tab1')}>
             Gehe zu Tab 1
           </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setValue("tab2")}
-          >
+          <Button variant="outline" size="sm" onClick={() => setValue('tab2')}>
             Gehe zu Tab 2
           </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setValue("tab3")}
-          >
+          <Button variant="outline" size="sm" onClick={() => setValue('tab3')}>
             Gehe zu Tab 3
           </Button>
         </div>
-        
+
         <Tabs value={value} onValueChange={setValue}>
           <TabsList>
             <TabsTrigger value="tab1">Tab 1</TabsTrigger>
@@ -343,6 +348,6 @@ export const Controlled: Story = {
           </TabsContent>
         </Tabs>
       </div>
-    );
+    )
   },
-};
+}

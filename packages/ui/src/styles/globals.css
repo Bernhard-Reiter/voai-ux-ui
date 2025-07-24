@@ -1,4 +1,4 @@
-@import '../../../../external/voai-ui/packages/tokens/build/variables.css';
+@import '@voai/config/dist/css/variables.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import * as React from 'react'
+import type { Meta, StoryObj } from '@storybook/react'
 import {
   Sidebar,
   SidebarHeader,
@@ -7,8 +7,8 @@ import {
   SidebarGroup,
   SidebarItem,
   SidebarFooter,
-} from './Sidebar';
-import { Badge } from '../atoms/Badge';
+} from './Sidebar'
+import { Badge } from '../atoms/Badge'
 import {
   Home,
   BarChart3,
@@ -22,8 +22,8 @@ import {
   Bell,
   Search,
   Plus,
-} from 'lucide-react';
-import { LucideIconWrapper } from '../utils/lucide-wrapper';
+} from 'lucide-react'
+import { LucideIconWrapper } from '../utils/lucide-wrapper'
 
 const meta: Meta<typeof Sidebar> = {
   title: 'Organisms/Sidebar',
@@ -50,10 +50,10 @@ const meta: Meta<typeof Sidebar> = {
       </div>
     ),
   ],
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 // Default Sidebar
 export const Default: Story = {
@@ -82,7 +82,7 @@ export const Default: Story = {
       </SidebarFooter>
     </Sidebar>
   ),
-};
+}
 
 // With Groups
 export const WithGroups: Story = {
@@ -119,7 +119,7 @@ export const WithGroups: Story = {
       </SidebarContent>
     </Sidebar>
   ),
-};
+}
 
 // Collapsible
 export const Collapsible: Story = {
@@ -143,7 +143,7 @@ export const Collapsible: Story = {
       </SidebarContent>
     </Sidebar>
   ),
-};
+}
 
 // Custom Actions
 export const WithActions: Story = {
@@ -177,7 +177,7 @@ export const WithActions: Story = {
       </SidebarContent>
     </Sidebar>
   ),
-};
+}
 
 // Mobile Responsive
 export const Mobile: Story = {
@@ -203,4 +203,4 @@ export const Mobile: Story = {
       </SidebarContent>
     </Sidebar>
   ),
-};
+}

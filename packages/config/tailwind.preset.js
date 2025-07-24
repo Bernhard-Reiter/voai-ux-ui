@@ -1,8 +1,4 @@
-const path = require('path')
-
-// Resolve token plugin from the external directory
-const tokenPluginPath = path.resolve(__dirname, '../../external/voai-ui/packages/ui/tailwind/voai-tokens-plugin.js')
-const voaiTokens = require(tokenPluginPath)
+const voaiTokens = require('./voai-tokens-plugin')
 
 module.exports = {
   darkMode: 'class',
