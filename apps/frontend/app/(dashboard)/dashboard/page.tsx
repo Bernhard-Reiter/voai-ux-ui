@@ -1,14 +1,51 @@
 'use client'
 
-import { withAuth } from '@voai/shared'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { createClient } from '@voai/shared/lib/supabase-client'
 import { Card } from '@voai/ui'
+import type { User } from '@supabase/supabase-js'
 
-function DashboardPage() {
+export default function DashboardPage() {
+  const router = useRouter()
+  const [user, setUser] = useState<User | null>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const checkUser = async () => {
+      const supabase = createClient()
+
+      const {
+        data: { user },
+      } = await supabase.auth.getUser()
+
+      if (!user) {
+        router.push('/login')
+        return
+      }
+
+      setUser(user)
+      setLoading(false)
+    }
+
+    checkUser()
+  }, [router])
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-xl font-semibold">Loading...</h2>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-        <p className="text-muted-foreground">Welcome to your workflow automation dashboard</p>
+        <p className="text-muted-foreground">Willkommen zurück, {user?.email}</p>
       </div>
 
       {/* Main Workflow Panel Placeholder */}
@@ -32,7 +69,7 @@ function DashboardPage() {
           <div className="space-y-2">
             <h3 className="text-xl font-semibold">Main Workflow Panel</h3>
             <p className="text-sm text-muted-foreground max-w-sm">
-              Placeholder for Phase 5: Upload → n8n → Status Panel
+              Placeholder für Phase 5: Upload → n8n → Status Panel
             </p>
           </div>
           <div className="rounded-md bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
@@ -59,5 +96,3 @@ function DashboardPage() {
     </div>
   )
 }
-
-export default withAuth(DashboardPage)

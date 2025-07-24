@@ -7,12 +7,13 @@ on:
         description: 'Figma file URL'
         required: false
         type: string
-  schedule:
-    # Run daily at 2 AM UTC
-    - cron: '0 2 * * *'
-  push:
-    paths:
-      - 'external/voai-ui/packages/tokens/.figma-tokens.json'
+  # Disabled until external/voai-ui is properly set up
+  # schedule:
+  #   # Run daily at 2 AM UTC
+  #   - cron: '0 2 * * *'
+  # push:
+  #   paths:
+  #     - 'external/voai-ui/packages/tokens/.figma-tokens.json'
 
 env:
   FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}

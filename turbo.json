@@ -46,6 +46,15 @@
       "outputs": ["coverage/**"],
       "env": ["NODE_ENV"]
     },
+    "test:integration": {
+      "dependsOn": ["build"],
+      "inputs": ["$TURBO_DEFAULT$"],
+      "env": [
+        "NODE_ENV",
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY"
+      ]
+    },
     "type-check": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$"]

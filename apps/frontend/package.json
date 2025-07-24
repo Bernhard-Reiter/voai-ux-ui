@@ -13,15 +13,16 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "test:integration": "playwright test",
     "type-check": "tsc --noEmit",
     "clean": "rm -rf .next out coverage .turbo"
   },
   "dependencies": {
-    "@voai/ui": "workspace:*",
-    "@voai/config": "workspace:*",
-    "@voai/shared": "workspace:*",
     "@radix-ui/react-tooltip": "^1.2.7",
     "@sentry/nextjs": "^9.24.0",
+    "@voai/config": "workspace:*",
+    "@voai/shared": "workspace:*",
+    "@voai/ui": "workspace:*",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.15.0",
@@ -35,6 +36,7 @@
     "zod": "^3.25.42"
   },
   "devDependencies": {
+    "@playwright/test": "^1.54.1",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "^4",
