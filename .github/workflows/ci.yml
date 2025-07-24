@@ -101,7 +101,9 @@ jobs:
         run: pnpm sb:build
 
       - name: Install test dependencies
-        run: pnpm add -D -w serve
+        run: |
+          pnpm add -D -w serve
+          npx playwright install chromium
 
       - name: Run visual tests
         run: |

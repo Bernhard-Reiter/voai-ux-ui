@@ -28,13 +28,13 @@ jobs:
         run: pnpm sb:build
 
       - name: Deploy to Vercel
-        uses: vercel/action@v2
+        uses: amondnet/vercel-action@v25
         continue-on-error: true
         with:
-          token: ${{ secrets.VERCEL_TOKEN }}
-          org-id: ${{ secrets.VERCEL_ORG_ID }}
-          project-id: ${{ secrets.VERCEL_PROJECT_ID_STORYBOOK || 'dummy-project-id' }}
-          production-deploy: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_STORYBOOK || 'prj_dummy' }}
+          vercel-args: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && '--prod' || '' }}
 
       - name: Comment PR with Storybook URL
         if: github.event_name == 'pull_request'
