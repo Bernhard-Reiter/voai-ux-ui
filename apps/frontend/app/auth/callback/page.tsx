@@ -2,14 +2,14 @@
 
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { createBrowserSupabaseClient } from '@voai/shared/lib/supabase-client'
+import { createClient } from '@voai/shared/lib/supabase-client'
 
 export default function AuthCallbackPage() {
   const router = useRouter()
 
   useEffect(() => {
     const handleCallback = async () => {
-      const supabase = createBrowserSupabaseClient()
+      const supabase = createClient()
 
       // Get the code from URL
       const urlParams = new URLSearchParams(window.location.search)
