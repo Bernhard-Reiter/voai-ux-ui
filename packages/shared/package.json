@@ -15,6 +15,7 @@
   "devDependencies": {
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@voai/tsconfig": "workspace:*",
     "typescript": "^5"
   }
 }
