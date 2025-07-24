@@ -1,11 +1,12 @@
 {
-  "generatedAt": 1753360792475,
+  "generatedAt": 1753369132663,
   "userSince": 1752778302427,
   "hasCustomBabel": false,
   "hasCustomWebpack": false,
   "hasStaticDirs": true,
   "hasStorybookEslint": false,
   "refCount": 0,
+  "metaFramework": { "name": "Next", "packageName": "next", "version": "15.3.3" },
   "testPackages": {},
   "hasRouterPackage": false,
   "monorepo": "Turborepo",
