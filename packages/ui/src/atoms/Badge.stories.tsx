@@ -1,8 +1,8 @@
-import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { Badge } from './Badge';
-import { CheckCircle, XCircle, AlertCircle, Info } from 'lucide-react';
-import { LucideIconWrapper } from '../utils/lucide-wrapper';
+import * as React from 'react'
+import type { Meta, StoryObj } from '@storybook/react'
+import { Badge } from './Badge'
+import { CheckCircle, XCircle, AlertCircle, Info } from 'lucide-react'
+import { LucideIconWrapper } from '../utils/lucide-wrapper'
 
 const meta = {
   title: 'Atoms/Badge',
@@ -23,59 +23,59 @@ const meta = {
       description: 'Die visuelle Variante des Badges',
     },
   },
-} satisfies Meta<typeof Badge>;
+} satisfies Meta<typeof Badge>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 // Basic Variants
 export const Default: Story = {
   args: {
     children: 'Badge',
   },
-};
+}
 
 export const Secondary: Story = {
   args: {
     variant: 'secondary',
     children: 'Secondary',
   },
-};
+}
 
 export const Destructive: Story = {
   args: {
     variant: 'destructive',
     children: 'Destructive',
   },
-};
+}
 
 export const Outline: Story = {
   args: {
     variant: 'outline',
     children: 'Outline',
   },
-};
+}
 
 export const Success: Story = {
   args: {
     variant: 'success',
     children: 'Success',
   },
-};
+}
 
 export const Warning: Story = {
   args: {
     variant: 'warning',
     children: 'Warning',
   },
-};
+}
 
 export const InfoVariant: Story = {
   args: {
     variant: 'info',
     children: 'Info',
   },
-};
+}
 
 // With Icons
 export const WithIcon: Story = {
@@ -99,7 +99,7 @@ export const WithIcon: Story = {
       </Badge>
     </div>
   ),
-};
+}
 
 // Status Badges
 export const StatusBadges: Story = {
@@ -112,7 +112,7 @@ export const StatusBadges: Story = {
       <Badge>Veröffentlicht</Badge>
     </div>
   ),
-};
+}
 
 // Category Badges
 export const CategoryBadges: Story = {
@@ -125,7 +125,7 @@ export const CategoryBadges: Story = {
       <Badge variant="outline">Support</Badge>
     </div>
   ),
-};
+}
 
 // Priority Badges
 export const PriorityBadges: Story = {
@@ -137,7 +137,7 @@ export const PriorityBadges: Story = {
       <Badge variant="secondary">Niedrig</Badge>
     </div>
   ),
-};
+}
 
 // All Variants
 export const AllVariants: Story = {
@@ -152,4 +152,4 @@ export const AllVariants: Story = {
       <Badge variant="info">Info</Badge>
     </div>
   ),
-};
+}

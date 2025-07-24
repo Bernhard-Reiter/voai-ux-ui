@@ -5,8 +5,6 @@
   "exitZeroOnChanges": true,
   "exitOnceUploaded": true,
   "skip": "dependabot/**",
-  "externals": [
-    "public/**"
-  ],
+  "externals": ["public/**"],
   "debug": false
 }

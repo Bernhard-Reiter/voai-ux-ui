@@ -66,7 +66,7 @@ export class N8nClient {
     }
 
     const result = await response.json()
-    
+
     return {
       executionId: result.executionId || result.data?.executionId || 'unknown',
       status: result.status || 'running',
@@ -93,7 +93,7 @@ export class N8nClient {
     }
 
     const result = await response.json()
-    
+
     return {
       executionId: result.id,
       status: result.status,
@@ -119,7 +119,7 @@ export class N8nClient {
 
     while (Date.now() - startTime < maxWaitTime) {
       const status = await this.getExecutionStatus(executionId)
-      
+
       if (onProgress) {
         onProgress(status)
       }
@@ -128,7 +128,7 @@ export class N8nClient {
         return status
       }
 
-      await new Promise(resolve => setTimeout(resolve, pollInterval))
+      await new Promise((resolve) => setTimeout(resolve, pollInterval))
     }
 
     throw new Error(`Workflow execution timeout after ${maxWaitTime}ms`)

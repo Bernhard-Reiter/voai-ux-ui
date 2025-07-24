@@ -15,11 +15,7 @@ export default defineConfig({
               module: '@emotion/react',
             },
           ],
-          [
-            '@babel/plugin-transform-react-jsx',
-            { pragma: '__cssprop' },
-            'twin.macro',
-          ],
+          ['@babel/plugin-transform-react-jsx', { pragma: '__cssprop' }, 'twin.macro'],
         ],
       },
     }),
@@ -30,10 +26,6 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    include: [
-      '@emotion/react',
-      '@emotion/styled',
-      'twin.macro',
-    ],
+    include: ['@emotion/react', '@emotion/styled', 'twin.macro'],
   },
 })

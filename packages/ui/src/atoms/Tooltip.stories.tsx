@@ -1,10 +1,10 @@
-import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './Tooltip';
-import { Button } from './Button';
-import { Badge } from './Badge';
-import { HelpCircle, Info, Settings, User } from 'lucide-react';
-import { LucideIconWrapper } from '../utils/lucide-wrapper';
+import * as React from 'react'
+import type { Meta, StoryObj } from '@storybook/react'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './Tooltip'
+import { Button } from './Button'
+import { Badge } from './Badge'
+import { HelpCircle, Info, Settings, User } from 'lucide-react'
+import { LucideIconWrapper } from '../utils/lucide-wrapper'
 
 const meta: Meta<typeof Tooltip> = {
   title: 'Atoms/Tooltip',
@@ -13,7 +13,8 @@ const meta: Meta<typeof Tooltip> = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'Ein Tooltip-Component zur Anzeige von Hilfstexten und zusätzlichen Informationen.',
+        component:
+          'Ein Tooltip-Component zur Anzeige von Hilfstexten und zusätzlichen Informationen.',
       },
     },
   },
@@ -27,10 +28,10 @@ const meta: Meta<typeof Tooltip> = {
       </TooltipProvider>
     ),
   ],
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 // Basic Tooltip
 export const Default: Story = {
@@ -44,7 +45,7 @@ export const Default: Story = {
       </TooltipContent>
     </Tooltip>
   ),
-};
+}
 
 // With Icon
 export const WithIcon: Story = {
@@ -60,7 +61,7 @@ export const WithIcon: Story = {
       </TooltipContent>
     </Tooltip>
   ),
-};
+}
 
 // Different Positions
 export const Positions: Story = {
@@ -74,7 +75,7 @@ export const Positions: Story = {
           <p>Tooltip oben</p>
         </TooltipContent>
       </Tooltip>
-      
+
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="outline">Rechts</Button>
@@ -83,7 +84,7 @@ export const Positions: Story = {
           <p>Tooltip rechts</p>
         </TooltipContent>
       </Tooltip>
-      
+
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="outline">Unten</Button>
@@ -92,7 +93,7 @@ export const Positions: Story = {
           <p>Tooltip unten</p>
         </TooltipContent>
       </Tooltip>
-      
+
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="outline">Links</Button>
@@ -103,7 +104,7 @@ export const Positions: Story = {
       </Tooltip>
     </div>
   ),
-};
+}
 
 // Rich Content
 export const RichContent: Story = {
@@ -129,7 +130,7 @@ export const RichContent: Story = {
       </TooltipContent>
     </Tooltip>
   ),
-};
+}
 
 // Delayed Tooltip
 export const Delayed: Story = {
@@ -143,7 +144,7 @@ export const Delayed: Story = {
       </TooltipContent>
     </Tooltip>
   ),
-};
+}
 
 // Icon Bar Example
 export const IconBar: Story = {
@@ -159,7 +160,7 @@ export const IconBar: Story = {
           <p>Profil</p>
         </TooltipContent>
       </Tooltip>
-      
+
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="ghost" size="icon">
@@ -170,7 +171,7 @@ export const IconBar: Story = {
           <p>Einstellungen</p>
         </TooltipContent>
       </Tooltip>
-      
+
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="ghost" size="icon">
@@ -183,7 +184,7 @@ export const IconBar: Story = {
       </Tooltip>
     </div>
   ),
-};
+}
 
 // Form Field Helper
 export const FormHelper: Story = {
@@ -210,7 +211,7 @@ export const FormHelper: Story = {
           placeholder="Ihr Benutzername"
         />
       </div>
-      
+
       <div className="space-y-2">
         <div className="flex items-center gap-2">
           <label htmlFor="password" className="text-sm font-medium">
@@ -242,4 +243,4 @@ export const FormHelper: Story = {
       </div>
     </div>
   ),
-};
+}

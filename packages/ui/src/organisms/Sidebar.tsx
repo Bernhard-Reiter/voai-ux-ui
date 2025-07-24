@@ -1,8 +1,8 @@
-import * as React from "react"
-import { cn } from "../utils"
-import { Button } from "../atoms/Button"
-import { ChevronLeft, Menu, X } from "lucide-react"
-import { LucideIconWrapper } from "../utils/lucide-wrapper"
+import * as React from 'react'
+import { cn } from '../utils'
+import { Button } from '../atoms/Button'
+import { ChevronLeft, Menu, X } from 'lucide-react'
+import { LucideIconWrapper } from '../utils/lucide-wrapper'
 
 export interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
   collapsible?: boolean
@@ -45,20 +45,17 @@ export function Sidebar({
     <SidebarContext.Provider value={{ collapsed, setCollapsed, mobile, setMobile }}>
       <aside
         className={cn(
-          "relative flex h-full flex-col border-r bg-background transition-all duration-300",
-          collapsed && !mobile && "w-16",
-          !collapsed && !mobile && "w-64",
-          mobile && "fixed inset-y-0 left-0 z-50 w-64",
+          'relative flex h-full flex-col border-r bg-background transition-all duration-300',
+          collapsed && !mobile && 'w-16',
+          !collapsed && !mobile && 'w-64',
+          mobile && 'fixed inset-y-0 left-0 z-50 w-64',
           className
         )}
         {...props}
       >
         {children}
         {mobile && (
-          <div
-            className="fixed inset-0 bg-black/50 z-40"
-            onClick={() => setMobile(false)}
-          />
+          <div className="fixed inset-0 bg-black/50 z-40" onClick={() => setMobile(false)} />
         )}
       </aside>
     </SidebarContext.Provider>
@@ -72,10 +69,7 @@ export function SidebarHeader({ className, ...props }: SidebarHeaderProps) {
 
   return (
     <div
-      className={cn(
-        "flex h-16 items-center justify-between border-b px-4",
-        className
-      )}
+      className={cn('flex h-16 items-center justify-between border-b px-4', className)}
       {...props}
     >
       <div className="flex items-center gap-2">
@@ -85,7 +79,11 @@ export function SidebarHeader({ className, ...props }: SidebarHeaderProps) {
           className="md:hidden"
           onClick={() => setMobile(!mobile)}
         >
-          {mobile ? <LucideIconWrapper icon={X} className="h-4 w-4" /> : <LucideIconWrapper icon={Menu} className="h-4 w-4" />}
+          {mobile ? (
+            <LucideIconWrapper icon={X} className="h-4 w-4" />
+          ) : (
+            <LucideIconWrapper icon={Menu} className="h-4 w-4" />
+          )}
         </Button>
         {!collapsed && props.children}
       </div>
@@ -96,12 +94,9 @@ export function SidebarHeader({ className, ...props }: SidebarHeaderProps) {
           className="hidden md:flex"
           onClick={() => setCollapsed(!collapsed)}
         >
-          <LucideIconWrapper 
-            icon={ChevronLeft} 
-            className={cn(
-              "h-4 w-4 transition-transform",
-              collapsed && "rotate-180"
-            )}
+          <LucideIconWrapper
+            icon={ChevronLeft}
+            className={cn('h-4 w-4 transition-transform', collapsed && 'rotate-180')}
           />
         </Button>
       )}
@@ -112,12 +107,7 @@ export function SidebarHeader({ className, ...props }: SidebarHeaderProps) {
 export interface SidebarContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function SidebarContent({ className, ...props }: SidebarContentProps) {
-  return (
-    <div
-      className={cn("flex-1 overflow-y-auto px-2 py-4", className)}
-      {...props}
-    />
-  )
+  return <div className={cn('flex-1 overflow-y-auto px-2 py-4', className)} {...props} />
 }
 
 export interface SidebarGroupProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -128,11 +118,9 @@ export function SidebarGroup({ title, className, children, ...props }: SidebarGr
   const { collapsed } = React.useContext(SidebarContext)
 
   return (
-    <div className={cn("mb-4", className)} {...props}>
+    <div className={cn('mb-4', className)} {...props}>
       {title && !collapsed && (
-        <h3 className="mb-2 px-2 text-xs font-semibold uppercase text-muted-foreground">
-          {title}
-        </h3>
+        <h3 className="mb-2 px-2 text-xs font-semibold uppercase text-muted-foreground">{title}</h3>
       )}
       <div className="space-y-1">{children}</div>
     </div>
@@ -158,10 +146,10 @@ export function SidebarItem({
   return (
     <button
       className={cn(
-        "flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-        "hover:bg-accent hover:text-accent-foreground",
-        active && "bg-accent text-accent-foreground",
-        collapsed && "justify-center px-2",
+        'flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+        'hover:bg-accent hover:text-accent-foreground',
+        active && 'bg-accent text-accent-foreground',
+        collapsed && 'justify-center px-2',
         className
       )}
       {...props}
@@ -180,10 +168,5 @@ export function SidebarItem({
 export interface SidebarFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function SidebarFooter({ className, ...props }: SidebarFooterProps) {
-  return (
-    <div
-      className={cn("mt-auto border-t p-4", className)}
-      {...props}
-    />
-  )
+  return <div className={cn('mt-auto border-t p-4', className)} {...props} />
 }

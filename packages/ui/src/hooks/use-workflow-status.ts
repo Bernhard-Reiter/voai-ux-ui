@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { WorkflowStatus, N8nClient } from '@config'
 
@@ -52,17 +54,17 @@ export function useWorkflowStatus({
     try {
       setIsLoading(true)
       setError(null)
-      
+
       const newStatus = await client.getExecutionStatus(executionId)
-      
+
       if (!isMountedRef.current) return
-      
+
       setStatus(newStatus)
-      
+
       if (onProgress) {
         onProgress(newStatus)
       }
-      
+
       // Check if workflow is complete
       if (newStatus.status === 'success' || newStatus.status === 'failed') {
         cancel()
@@ -72,11 +74,11 @@ export function useWorkflowStatus({
       }
     } catch (err) {
       if (!isMountedRef.current) return
-      
+
       const error = err instanceof Error ? err : new Error('Failed to fetch workflow status')
       setError(error)
       cancel()
-      
+
       if (onError) {
         onError(error)
       }
@@ -112,7 +114,7 @@ export function useWorkflowStatus({
   // Cleanup on unmount
   useEffect(() => {
     isMountedRef.current = true
-    
+
     return () => {
       isMountedRef.current = false
       cancel()
@@ -136,26 +138,29 @@ export function useWorkflowExecution(client: N8nClient) {
   const [isExecuting, setIsExecuting] = useState(false)
   const [executeError, setExecuteError] = useState<Error | null>(null)
 
-  const execute = useCallback(async (workflowId: string, data?: Record<string, any>) => {
-    try {
-      setIsExecuting(true)
-      setExecuteError(null)
-      
-      const response = await client.executeWorkflow({
-        workflowId,
-        data,
-      })
-      
-      setExecutionId(response.executionId)
-      return response
-    } catch (err) {
-      const error = err instanceof Error ? err : new Error('Failed to execute workflow')
-      setExecuteError(error)
-      throw error
-    } finally {
-      setIsExecuting(false)
-    }
-  }, [client])
+  const execute = useCallback(
+    async (workflowId: string, data?: Record<string, any>) => {
+      try {
+        setIsExecuting(true)
+        setExecuteError(null)
+
+        const response = await client.executeWorkflow({
+          workflowId,
+          data,
+        })
+
+        setExecutionId(response.executionId)
+        return response
+      } catch (err) {
+        const error = err instanceof Error ? err : new Error('Failed to execute workflow')
+        setExecuteError(error)
+        throw error
+      } finally {
+        setIsExecuting(false)
+      }
+    },
+    [client]
+  )
 
   const status = useWorkflowStatus({
     client,
