@@ -1,4 +1,4 @@
-import { withAuthSsr } from '@voai/shared'
+import { withAuthSsr } from '@voai/shared/lib/with-auth-ssr'
 import { Card } from '@voai/ui'
 
 async function DashboardPage({ user }: { user: any }) {
