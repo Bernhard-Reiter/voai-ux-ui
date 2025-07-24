@@ -35,6 +35,7 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_STORYBOOK || 'prj_dummy' }}
           vercel-args: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && '--prod' || '' }}
+          working-directory: ./packages/ui
 
       - name: Comment PR with Storybook URL
         if: github.event_name == 'pull_request'

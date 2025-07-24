@@ -1,0 +1,6 @@
+{
+  "outputDirectory": "storybook-static",
+  "framework": null,
+  "buildCommand": "echo 'Already built'",
+  "installCommand": "echo 'Already installed'"
+}
