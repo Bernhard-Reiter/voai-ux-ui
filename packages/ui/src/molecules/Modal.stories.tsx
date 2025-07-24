@@ -215,7 +215,13 @@ export const SettingsModal: Story = {
                   Erhalten Sie Benachrichtigungen über wichtige Updates
                 </p>
               </div>
-              <input type="checkbox" className="h-4 w-4 rounded" defaultChecked />
+              <input
+                id="notifications-setting"
+                type="checkbox"
+                className="h-4 w-4 rounded"
+                defaultChecked
+                aria-label="Benachrichtigungen aktivieren"
+              />
             </div>
             <div className="flex items-center justify-between">
               <div>
@@ -224,7 +230,12 @@ export const SettingsModal: Story = {
                   Aktivieren Sie das dunkle Farbschema
                 </p>
               </div>
-              <input type="checkbox" className="h-4 w-4 rounded" />
+              <input
+                id="darkmode-setting"
+                type="checkbox"
+                className="h-4 w-4 rounded"
+                aria-label="Dark Mode aktivieren"
+              />
             </div>
             <div className="flex items-center justify-between">
               <div>
@@ -233,7 +244,13 @@ export const SettingsModal: Story = {
                   Installieren Sie Updates automatisch
                 </p>
               </div>
-              <input type="checkbox" className="h-4 w-4 rounded" defaultChecked />
+              <input
+                id="autoupdate-setting"
+                type="checkbox"
+                className="h-4 w-4 rounded"
+                defaultChecked
+                aria-label="Automatische Updates aktivieren"
+              />
             </div>
           </div>
         </div>

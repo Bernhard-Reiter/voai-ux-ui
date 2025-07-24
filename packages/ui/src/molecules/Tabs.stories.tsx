@@ -108,16 +108,22 @@ export const AccountSettings: Story = {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid gap-2">
-              <label className="text-sm font-medium">Name</label>
+              <label htmlFor="profile-name" className="text-sm font-medium">
+                Name
+              </label>
               <input
+                id="profile-name"
                 type="text"
                 defaultValue="Max Mustermann"
                 className="h-9 rounded-md border border-input bg-background px-3 text-sm"
               />
             </div>
             <div className="grid gap-2">
-              <label className="text-sm font-medium">E-Mail</label>
+              <label htmlFor="profile-email" className="text-sm font-medium">
+                E-Mail
+              </label>
               <input
+                id="profile-email"
                 type="email"
                 defaultValue="max@beispiel.de"
                 className="h-9 rounded-md border border-input bg-background px-3 text-sm"
@@ -172,7 +178,13 @@ export const AccountSettings: Story = {
                   <p className="font-medium">E-Mail-Benachrichtigungen</p>
                   <p className="text-sm text-muted-foreground">Erhalten Sie Updates per E-Mail</p>
                 </div>
-                <input type="checkbox" className="h-4 w-4" defaultChecked />
+                <input
+                  id="email-notifications"
+                  type="checkbox"
+                  className="h-4 w-4"
+                  defaultChecked
+                  aria-label="E-Mail-Benachrichtigungen aktivieren"
+                />
               </div>
               <div className="flex items-center justify-between">
                 <div>
@@ -181,7 +193,12 @@ export const AccountSettings: Story = {
                     Erhalten Sie Push-Benachrichtigungen
                   </p>
                 </div>
-                <input type="checkbox" className="h-4 w-4" />
+                <input
+                  id="push-notifications"
+                  type="checkbox"
+                  className="h-4 w-4"
+                  aria-label="Push-Benachrichtigungen aktivieren"
+                />
               </div>
             </div>
           </CardContent>

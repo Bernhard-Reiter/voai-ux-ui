@@ -151,6 +151,7 @@ const advancedColumns: ColumnDef<Payment>[] = [
         checked={table.getIsAllPageRowsSelected()}
         onChange={(e) => table.toggleAllPageRowsSelected(e.target.checked)}
         className="h-4 w-4 rounded border-gray-300"
+        aria-label="Alle Zeilen auswählen"
       />
     ),
     cell: ({ row }) => (
@@ -159,6 +160,7 @@ const advancedColumns: ColumnDef<Payment>[] = [
         checked={row.getIsSelected()}
         onChange={(e) => row.toggleSelected(e.target.checked)}
         className="h-4 w-4 rounded border-gray-300"
+        aria-label={`Zeile ${row.index + 1} auswählen`}
       />
     ),
     enableSorting: false,
@@ -219,7 +221,7 @@ const advancedColumns: ColumnDef<Payment>[] = [
     id: 'actions',
     cell: ({ row }) => {
       return (
-        <Button variant="ghost" size="icon">
+        <Button variant="ghost" size="icon" aria-label="Weitere Aktionen">
           <LucideIconWrapper icon={MoreHorizontal} className="h-4 w-4" />
         </Button>
       )
