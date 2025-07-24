@@ -1,7 +1,18 @@
-import { withAuthSsr } from '@voai/shared/lib/with-auth-ssr'
+import { redirect } from 'next/navigation'
+import { createServerSupabaseClient } from '@voai/shared/lib/supabase-server'
 import { Card } from '@voai/ui'
 
-async function DashboardPage({ user }: { user: any }) {
+export default async function DashboardPage() {
+  const supabase = await createServerSupabaseClient()
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+
+  if (!user) {
+    redirect('/login')
+  }
+
   return (
     <div className="space-y-6">
       <div>
@@ -57,5 +68,3 @@ async function DashboardPage({ user }: { user: any }) {
     </div>
   )
 }
-
-export default withAuthSsr(DashboardPage)
