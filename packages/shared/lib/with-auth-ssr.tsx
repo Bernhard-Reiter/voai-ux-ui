@@ -5,7 +5,7 @@ export function withAuthSsr<P extends Record<string, any>>(
   Component: React.ComponentType<P & { user: any }>
 ) {
   return async function AuthComponent(props: P) {
-    const supabase = createServerSupabaseClient()
+    const supabase = await createServerSupabaseClient()
 
     const {
       data: { user },
