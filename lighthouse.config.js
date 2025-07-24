@@ -1,9 +1,8 @@
 module.exports = {
   ci: {
     collect: {
-      startServerCommand: 'pnpm --filter @voai/frontend start',
-      startServerReadyPattern: 'ready on',
-      url: ['http://localhost:3000/', 'http://localhost:3000/dashboard'],
+      staticDistDir: 'apps/frontend/out',
+      url: ['/', '/dashboard'],
       numberOfRuns: 3,
       settings: {
         preset: 'desktop',
