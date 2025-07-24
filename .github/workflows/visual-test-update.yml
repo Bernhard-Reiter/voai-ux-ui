@@ -1,0 +1,39 @@
+name: Update Visual Snapshots
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [update-snapshots]
+
+jobs:
+  update-snapshots:
+    name: Update Visual Snapshots
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright Browsers
+        run: pnpm --filter @voai/ui playwright install --with-deps
+
+      - name: Build Storybook
+        run: pnpm sb:build
+
+      - name: Update Snapshots
+        run: pnpm visual:update
+
+      - name: Commit Updated Snapshots
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update visual snapshots'
+          file_pattern: '**/__image_snapshots__/**/*.png'

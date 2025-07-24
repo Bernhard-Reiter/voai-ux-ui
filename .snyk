@@ -1,0 +1,16 @@
+# Snyk Configuration
+version: v1.0.0
+
+# Ignore specific vulnerabilities
+ignore: {}
+
+# Patches to apply
+patch: {}
+
+# Language settings
+language-settings:
+  node:
+    enableLicensesScan: true
+    
+# Severity threshold (low, medium, high, critical)
+severity-threshold: high
