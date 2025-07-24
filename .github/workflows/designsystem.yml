@@ -15,26 +15,39 @@ jobs:
   build-tokens:
     name: Build Design Tokens
     runs-on: ubuntu-latest
-    
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, 'external/voai-ui')
+
     steps:
       - uses: actions/checkout@v4
-        
+
       - uses: pnpm/action-setup@v3
         with:
           version: 8
-          
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
-          
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        
+
+      - name: Check if external directory exists
+        id: check_external
+        run: |
+          if [ -d "external/voai-ui" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "External directory does not exist, skipping build"
+          fi
+
       - name: Build tokens
+        if: steps.check_external.outputs.exists == 'true'
         run: pnpm build:tokens
-        
+
       - name: Verify token build
+        if: steps.check_external.outputs.exists == 'true'
         run: |
           if [ ! -f "external/voai-ui/packages/tokens/build/tokens.json" ]; then
             echo "Error: tokens.json not found"
@@ -45,8 +58,9 @@ jobs:
             exit 1
           fi
           echo "Design tokens built successfully!"
-        
+
       - name: Upload token artifacts
+        if: steps.check_external.outputs.exists == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: design-tokens
