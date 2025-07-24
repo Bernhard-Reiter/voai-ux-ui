@@ -103,3 +103,6 @@ export function validateEnv<T extends z.ZodType>(
 export const isProduction = (env: { NODE_ENV?: string }) => env.NODE_ENV === 'production'
 export const isDevelopment = (env: { NODE_ENV?: string }) => env.NODE_ENV === 'development'
 export const isTest = (env: { NODE_ENV?: string }) => env.NODE_ENV === 'test'
+
+// Default env export for backward compatibility
+export const env = process.env as unknown as FrontendEnv
