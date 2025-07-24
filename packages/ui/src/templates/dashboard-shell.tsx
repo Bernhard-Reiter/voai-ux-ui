@@ -29,14 +29,17 @@ import {
 interface DashboardShellProps {
   children: React.ReactNode
   className?: string
+  onLogout?: () => void
+  userEmail?: string
 }
 
 /**
  * DashboardShell component provides a consistent layout structure for dashboard pages.
  * It includes a responsive sidebar navigation and a header with common actions.
  */
-export function DashboardShell({ children, className }: DashboardShellProps) {
+export function DashboardShell({ children, className, onLogout, userEmail }: DashboardShellProps) {
   const [sidebarOpen, setSidebarOpen] = React.useState(false)
+  const [userMenuOpen, setUserMenuOpen] = React.useState(false)
   const router = useRouter()
   const pathname = usePathname()
 
@@ -48,10 +51,15 @@ export function DashboardShell({ children, className }: DashboardShellProps) {
     { icon: Settings, label: 'Settings', href: '/settings' },
   ]
 
-  const bottomItems = [
-    { icon: HelpCircle, label: 'Help & Support', href: '/support' },
-    { icon: LogOut, label: 'Logout', href: '/logout' },
-  ]
+  const bottomItems = [{ icon: HelpCircle, label: 'Help & Support', href: '/support' }]
+
+  const handleLogout = () => {
+    if (onLogout) {
+      onLogout()
+    } else {
+      router.push('/logout')
+    }
+  }
 
   return (
     <div className={cn('min-h-screen bg-background', className)}>
@@ -93,6 +101,10 @@ export function DashboardShell({ children, className }: DashboardShellProps) {
                 <span>{item.label}</span>
               </SidebarItem>
             ))}
+            <SidebarItem onClick={handleLogout}>
+              <LucideIconWrapper icon={LogOut} className="mr-2 h-4 w-4" />
+              <span>Logout</span>
+            </SidebarItem>
           </SidebarFooter>
         </Sidebar>
       </aside>
@@ -134,10 +146,29 @@ export function DashboardShell({ children, className }: DashboardShellProps) {
                 <LucideIconWrapper icon={Bell} className="h-5 w-5" />
                 <span className="sr-only">Notifications</span>
               </Button>
-              <Button variant="ghost" size="icon">
-                <LucideIconWrapper icon={User} className="h-5 w-5" />
-                <span className="sr-only">User menu</span>
-              </Button>
+
+              {/* User menu */}
+              <div className="relative">
+                <Button variant="ghost" size="icon" onClick={() => setUserMenuOpen(!userMenuOpen)}>
+                  <LucideIconWrapper icon={User} className="h-5 w-5" />
+                  <span className="sr-only">User menu</span>
+                </Button>
+
+                {userMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-48 rounded-md bg-popover p-1 shadow-lg">
+                    {userEmail && (
+                      <div className="px-3 py-2 text-sm text-muted-foreground">{userEmail}</div>
+                    )}
+                    <button
+                      onClick={handleLogout}
+                      className="flex w-full items-center rounded-sm px-3 py-2 text-sm hover:bg-accent"
+                    >
+                      <LucideIconWrapper icon={LogOut} className="mr-2 h-4 w-4" />
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </header>

@@ -6,6 +6,7 @@ import Footer from '@/components/Footer'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ErrorBoundary } from '@/components/error-boundary'
 import { ToastProvider } from '@/components/toast-provider'
+import { AuthProvider } from '@voai/shared'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -72,23 +73,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={`${inter.className} bg-background text-foreground min-h-screen flex flex-col`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ErrorBoundary>
-            <Navigation />
-            <div className="flex-1 pt-16">
-              <main role="main" className="min-h-screen">
-                {children}
-              </main>
-            </div>
-            <Footer />
-            <ToastProvider />
-          </ErrorBoundary>
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ErrorBoundary>
+              <Navigation />
+              <div className="flex-1 pt-16">
+                <main role="main" className="min-h-screen">
+                  {children}
+                </main>
+              </div>
+              <Footer />
+              <ToastProvider />
+            </ErrorBoundary>
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   )

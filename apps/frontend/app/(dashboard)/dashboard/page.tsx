@@ -1,14 +1,12 @@
-'use client'
-
-import { withAuth } from '@voai/shared'
+import { withAuthSsr } from '@voai/shared'
 import { Card } from '@voai/ui'
 
-function DashboardPage() {
+async function DashboardPage({ user }: { user: any }) {
   return (
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-        <p className="text-muted-foreground">Welcome to your workflow automation dashboard</p>
+        <p className="text-muted-foreground">Willkommen zurück, {user.email}</p>
       </div>
 
       {/* Main Workflow Panel Placeholder */}
@@ -32,7 +30,7 @@ function DashboardPage() {
           <div className="space-y-2">
             <h3 className="text-xl font-semibold">Main Workflow Panel</h3>
             <p className="text-sm text-muted-foreground max-w-sm">
-              Placeholder for Phase 5: Upload → n8n → Status Panel
+              Placeholder für Phase 5: Upload → n8n → Status Panel
             </p>
           </div>
           <div className="rounded-md bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
@@ -60,4 +58,4 @@ function DashboardPage() {
   )
 }
 
-export default withAuth(DashboardPage)
+export default withAuthSsr(DashboardPage)
