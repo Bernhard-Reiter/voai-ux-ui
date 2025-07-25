@@ -351,6 +351,26 @@ jobs:
         run: |
           pnpm audit --audit-level=high || true
 
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build application
+        run: pnpm turbo run build
+
+      - name: Start server for ZAP scan
+        run: |
+          cd apps/frontend/out
+          python3 -m http.server 3000 &
+          sleep 5
+
       - name: Run OWASP ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.10.0
         with:
