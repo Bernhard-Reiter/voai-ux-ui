@@ -3,7 +3,7 @@ function getRequiredEnv(key: string, defaultValue?: string): string {
   const value = process.env[key]
 
   // During build time, return empty string to avoid build errors
-  if (typeof window === 'undefined' && !value) {
+  if (typeof window === 'undefined' && !value && process.env.NODE_ENV !== 'test') {
     return defaultValue || ''
   }
 

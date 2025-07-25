@@ -39,7 +39,8 @@
         "MAX_FILE_SIZE",
         "UPLOAD_DIR",
         "RATE_LIMIT_WINDOW_MS",
-        "RATE_LIMIT_MAX_REQUESTS"
+        "RATE_LIMIT_MAX_REQUESTS",
+        "SUPABASE_SERVICE_ROLE_KEY"
       ]
     },
     "dev": {

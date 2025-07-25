@@ -13,8 +13,8 @@ jest.mock('@voai/shared/lib/supabase-client', () => ({
   createClient: jest.fn(),
 }))
 
-// Mock the Card component from @voai/ui
-jest.mock('@voai/ui', () => ({
+// Mock the Card component from local components
+jest.mock('@/components/ui/card', () => ({
   Card: ({ children, className }: { children: React.ReactNode; className?: string }) => (
     <div className={className}>{children}</div>
   ),

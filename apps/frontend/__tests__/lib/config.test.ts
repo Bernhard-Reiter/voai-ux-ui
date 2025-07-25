@@ -32,13 +32,20 @@ describe('Config Module', () => {
     it('should throw error for missing required env vars in production', () => {
       ;(process.env as any).NODE_ENV = 'production'
       delete process.env.CSRF_SECRET
+      // Set window to simulate runtime
+      global.window = {} as any
 
-      // Should throw when importing config
+      // Should throw when accessing config properties
       expect(() => {
         jest.isolateModules(() => {
-          require('@/lib/config')
+          const { config } = require('@/lib/config')
+          // Access the property to trigger initialization
+          config.security.csrfSecret
         })
       }).toThrow('Missing required environment variable: CSRF_SECRET')
+
+      // Clean up
+      delete (global as any).window
     })
 
     it('should not throw for missing required env vars in test mode', () => {
