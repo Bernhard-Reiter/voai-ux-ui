@@ -18,7 +18,7 @@ describe('Config Module', () => {
 
   describe('Environment Variable Handling', () => {
     it('should use default values in development mode', () => {
-      process.env.NODE_ENV = 'development'
+      ;(process.env as any).NODE_ENV = 'development'
 
       // Re-import config after setting env
       jest.isolateModules(() => {
@@ -30,7 +30,7 @@ describe('Config Module', () => {
     })
 
     it('should throw error for missing required env vars in production', () => {
-      process.env.NODE_ENV = 'production'
+      ;(process.env as any).NODE_ENV = 'production'
       delete process.env.CSRF_SECRET
 
       // Should throw when importing config
@@ -42,7 +42,7 @@ describe('Config Module', () => {
     })
 
     it('should not throw for missing required env vars in test mode', () => {
-      process.env.NODE_ENV = 'test'
+      ;(process.env as any).NODE_ENV = 'test'
       delete process.env.CSRF_SECRET
 
       // Should not throw
@@ -241,7 +241,7 @@ describe('Config Module', () => {
 
   describe('Environment Detection', () => {
     it('should correctly detect development environment', () => {
-      process.env.NODE_ENV = 'development'
+      ;(process.env as any).NODE_ENV = 'development'
 
       jest.isolateModules(() => {
         const { config } = require('@/lib/config')
@@ -253,7 +253,7 @@ describe('Config Module', () => {
     })
 
     it('should correctly detect production environment', () => {
-      process.env.NODE_ENV = 'production'
+      ;(process.env as any).NODE_ENV = 'production'
 
       // Set required env vars for production
       process.env.CSRF_SECRET = 'prod-secret'
@@ -275,7 +275,7 @@ describe('Config Module', () => {
     })
 
     it('should correctly detect test environment', () => {
-      process.env.NODE_ENV = 'test'
+      ;(process.env as any).NODE_ENV = 'test'
 
       jest.isolateModules(() => {
         const { config } = require('@/lib/config')
