@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { ErrorBoundary } from '@/components/error-boundary'
 import { ToastProvider } from '@/components/toast-provider'
 import { AuthProvider } from '@voai/shared'
+import { CookieConsent } from '@/components/cookie-consent'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -89,6 +90,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </div>
               <Footer />
               <ToastProvider />
+              <CookieConsent />
             </ErrorBoundary>
           </ThemeProvider>
         </AuthProvider>

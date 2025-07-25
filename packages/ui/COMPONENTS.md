@@ -192,5 +192,5 @@ const MyButton: React.FC<ButtonProps> = (props) => {
 ## 📖 Weiterführende Ressourcen
 
 - [Storybook](http://localhost:6006) - Interaktive Komponenten-Dokumentation
-- [Design Tokens](../external/voai-ui/packages/tokens/README.md) - Token-Dokumentation
+- Design Tokens - Token-Dokumentation
 - [Contributing](../../CONTRIBUTING.md) - Beitragen zur Bibliothek
