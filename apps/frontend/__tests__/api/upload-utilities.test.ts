@@ -204,7 +204,8 @@ describe('Upload Utilities', () => {
       expect(ids.size).toBe(100)
 
       // IDs should be 32 characters (16 bytes as hex)
-      expect(Array.from(ids)[0].length).toBe(32)
+      const firstId = Array.from(ids)[0] as string
+      expect(firstId.length).toBe(32)
     })
 
     it('should create secure file paths', () => {
