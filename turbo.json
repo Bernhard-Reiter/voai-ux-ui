@@ -28,7 +28,18 @@
         "CSRF_SECRET",
         "PLATFORM_SECRET",
         "ENABLE_REAL_AI",
-        "ENABLE_EMAIL_NOTIFICATIONS"
+        "ENABLE_EMAIL_NOTIFICATIONS",
+        "ENCRYPTION_KEY",
+        "AI_API_KEY",
+        "AI_API_URL",
+        "EMAIL_HOST",
+        "EMAIL_PORT",
+        "EMAIL_USER",
+        "EMAIL_PASSWORD",
+        "MAX_FILE_SIZE",
+        "UPLOAD_DIR",
+        "RATE_LIMIT_WINDOW_MS",
+        "RATE_LIMIT_MAX_REQUESTS"
       ]
     },
     "dev": {
@@ -49,11 +60,7 @@
     "test:integration": {
       "dependsOn": ["build"],
       "inputs": ["$TURBO_DEFAULT$"],
-      "env": [
-        "NODE_ENV",
-        "NEXT_PUBLIC_SUPABASE_URL",
-        "NEXT_PUBLIC_SUPABASE_ANON_KEY"
-      ]
+      "env": ["NODE_ENV", "NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_ANON_KEY"]
     },
     "type-check": {
       "dependsOn": ["^build"],
