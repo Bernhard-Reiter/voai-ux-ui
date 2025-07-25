@@ -9,15 +9,21 @@ on:
 permissions:
   contents: read
   pull-requests: write
+  security-events: write
 
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+  NODE_OPTIONS: --max-old-space-size=4096
 
 jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        node-version: [20]
     steps:
       - uses: actions/checkout@v4
 
@@ -27,16 +33,30 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
 
       - run: pnpm install --frozen-lockfile
 
-      - run: pnpm turbo run lint
+      - run: pnpm turbo run lint --concurrency=2
+
+      - name: Upload lint results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-results
+          path: |
+            **/*.log
+            **/lint-results.json
+          retention-days: 3
 
   type-check:
     name: Type Check
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        node-version: [20]
     steps:
       - uses: actions/checkout@v4
 
@@ -46,16 +66,30 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
 
       - run: pnpm install --frozen-lockfile
 
-      - run: pnpm turbo run type-check
+      - run: pnpm turbo run type-check --concurrency=2
+
+      - name: Upload type-check results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: type-check-results
+          path: |
+            **/tsconfig.tsbuildinfo
+            **/*.log
+          retention-days: 3
 
   test:
-    name: Test
+    name: Unit Tests
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        node-version: [20]
     env:
       NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
       NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
@@ -72,21 +106,36 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
 
       - run: pnpm install --frozen-lockfile
 
-      - run: pnpm turbo run test -- --coverage
+      - run: pnpm turbo run test -- --coverage --maxWorkers=2
 
       - uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/lcov.info
+          fail_ci_if_error: false
+
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            **/coverage/
+            **/*.log
+          retention-days: 3
 
   integration-test:
     name: Integration Tests
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        node-version: [20]
     env:
       NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
       NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
@@ -103,7 +152,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
 
       - run: pnpm install --frozen-lockfile
@@ -112,12 +161,26 @@ jobs:
         run: npx playwright install chromium
 
       - name: Run integration tests
-        run: pnpm turbo run test:integration
+        run: pnpm turbo run test:integration -- --workers=2
+
+      - name: Upload integration test results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integration-test-results
+          path: |
+            **/test-results/
+            **/playwright-report/
+            **/*.log
+          retention-days: 3
 
   visual-regression:
     name: Visual Regression Tests
     runs-on: ubuntu-latest
     continue-on-error: true
+    strategy:
+      matrix:
+        node-version: [20]
     steps:
       - uses: actions/checkout@v4
 
@@ -127,7 +190,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
 
       - run: pnpm install --frozen-lockfile
@@ -144,14 +207,17 @@ jobs:
         run: |
           npx serve -l 6006 packages/ui/storybook-static &
           sleep 5
-          cd packages/ui && npx test-storybook --url http://localhost:6006
+          cd packages/ui && npx test-storybook --url http://localhost:6006 --maxWorkers=2
 
       - name: Upload visual diffs
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: visual-diffs
-          path: __visual_diffs__/
+          path: |
+            __visual_diffs__/
+            **/*.log
+          retention-days: 3
 
       # Chromatic placeholder - activate when team grows
       # - name: Chromatic (activate when team grows)
@@ -164,9 +230,171 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        node-version: [20]
     env:
       NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
       NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm turbo run build --concurrency=2
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: apps/frontend/out
+          retention-days: 1
+
+      - name: Upload build logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs
+          path: |
+            **/.next/
+            **/*.log
+          retention-days: 3
+
+  lighthouse:
+    name: Lighthouse Performance
+    runs-on: ubuntu-latest
+    needs: build
+    strategy:
+      matrix:
+        node-version: [20]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: build-output
+          path: apps/frontend/out
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          configPath: ./lighthouse.config.js
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      - name: Lighthouse Quality Gate
+        uses: actions/github-script@v7
+        if: always()
+        with:
+          script: |
+            const fs = require('fs');
+            const results = JSON.parse(fs.readFileSync('.lighthouseci/lhr-*.json', 'utf8'));
+            const scores = results.categories;
+
+            const thresholds = {
+              performance: 0.8,
+              accessibility: 0.9,
+              'best-practices': 0.9,
+              seo: 0.9
+            };
+
+            let failed = false;
+            for (const [category, threshold] of Object.entries(thresholds)) {
+              if (scores[category].score < threshold) {
+                console.error(`${category} score ${scores[category].score} is below threshold ${threshold}`);
+                failed = true;
+              }
+            }
+
+            if (failed) {
+              core.setFailed('Lighthouse scores below threshold');
+            }
+
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN || '' }}
+        with:
+          args: --severity-threshold=high
+
+      - name: Run npm audit
+        run: |
+          pnpm audit --audit-level=high || true
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build application
+        run: pnpm turbo run build
+
+      - name: Start server for ZAP scan
+        run: |
+          cd apps/frontend/out
+          python3 -m http.server 3000 &
+          sleep 5
+
+      - name: Run OWASP ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.10.0
+        with:
+          target: 'http://localhost:3000'
+          rules_file_name: '.zap/rules.tsv'
+          allow_issue_writing: false
+          fail_action: false
+
+      - name: Upload ZAP scan results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zap-scan-results
+          path: |
+            zap_report.html
+            zap.yaml
+          retention-days: 3
+
+  deploy-preview:
+    name: Deploy to Vercel Preview
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    needs: [lint, type-check, test, build]
+    environment: preview
     steps:
       - uses: actions/checkout@v4
 
@@ -183,22 +411,34 @@ jobs:
 
       - run: pnpm turbo run build
 
-      - uses: actions/upload-artifact@v4
+      - name: Deploy to Vercel Preview
+        uses: amondnet/vercel-action@v25
+        id: vercel-deploy
         with:
-          name: build-output
-          path: apps/frontend/out
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./
 
-  lighthouse:
-    name: Lighthouse Performance
+      - name: Comment PR with preview URL
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `Preview deployed to: ${{ steps.vercel-deploy.outputs.preview-url }}`
+            })
+
+  deploy-production:
+    name: Deploy to Vercel Production
     runs-on: ubuntu-latest
-    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: [lint, type-check, test, integration-test, build, lighthouse, security-scan]
+    environment: production
     steps:
       - uses: actions/checkout@v4
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: build-output
-          path: apps/frontend/out
 
       - uses: pnpm/action-setup@v3
         with:
@@ -211,22 +451,34 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - name: Run Lighthouse
-        uses: treosh/lighthouse-ci-action@v10
+      - run: pnpm turbo run build
+
+      - name: Deploy to Vercel Production
+        uses: amondnet/vercel-action@v25
         with:
-          configPath: ./lighthouse.config.js
-          uploadArtifacts: true
-          temporaryPublicStorage: true
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          working-directory: ./
 
-  security:
-    name: Security Scan
+  quality-gate:
+    name: Quality Gate Check
     runs-on: ubuntu-latest
-    continue-on-error: true
+    if: always()
+    needs: [lint, type-check, test, integration-test, build]
     steps:
-      - uses: actions/checkout@v4
+      - name: Check Quality Gate Status
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const jobs = ${{ toJSON(needs) }};
+            const failedJobs = Object.entries(jobs)
+              .filter(([_, job]) => job.result === 'failure')
+              .map(([name, _]) => name);
 
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@master
-        continue-on-error: true
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN || '' }}
+            if (failedJobs.length > 0) {
+              core.setFailed(`Quality gate failed. Failed jobs: ${failedJobs.join(', ')}`);
+            } else {
+              console.log('All quality gates passed!');
+            }

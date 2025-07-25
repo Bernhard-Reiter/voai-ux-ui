@@ -41,10 +41,10 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   testPathIgnorePatterns: [
-    '<rootDir>/.next/',
-    '<rootDir>/node_modules/',
-    '<rootDir>/**/tests/**/*.spec.ts',
-    '<rootDir>/**/e2e/**/*.spec.ts',
+    '/\\.next/',
+    '/node_modules/',
+    '/tests/.*\\.spec\\.ts$',
+    '/e2e/.*\\.spec\\.ts$',
   ],
   verbose: true,
 }

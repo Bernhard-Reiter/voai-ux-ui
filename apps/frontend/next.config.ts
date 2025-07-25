@@ -43,7 +43,32 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()',
+            value:
+              'camera=(), microphone=(), geolocation=(), payment=(), usb=(), screen-wake-lock=()',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.supabase.co https://accounts.google.com https://*.sentry.io https://*.sentry-cdn.com",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+              "img-src 'self' data: blob: https://*.supabase.co https://*.googleusercontent.com",
+              "font-src 'self' https://fonts.gstatic.com",
+              "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://*.sentry.io https://accounts.google.com https://api.github.com",
+              "media-src 'self'",
+              "object-src 'none'",
+              'frame-src https://accounts.google.com https://*.supabase.co',
+              "frame-ancestors 'self'",
+              "base-uri 'self'",
+              "form-action 'self'",
+              "manifest-src 'self'",
+              "worker-src 'self' blob:",
+              'upgrade-insecure-requests',
+            ].join('; '),
           },
         ],
       },

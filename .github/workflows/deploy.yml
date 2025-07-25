@@ -1,8 +1,9 @@
 name: Deploy
 
+# This workflow is deprecated - deployment is now handled by the main CI workflow
+# See .github/workflows/ci.yml for the integrated deployment process
+
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -11,7 +12,7 @@ permissions:
 
 jobs:
   deploy:
-    name: Deploy to Vercel
+    name: Manual Deploy to Vercel
     runs-on: ubuntu-latest
     environment: production
     env:

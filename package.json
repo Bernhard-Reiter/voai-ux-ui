@@ -8,7 +8,6 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "build:tokens": "pnpm --filter @external/voai-ui-tokens build",
     "test": "jest",
     "test:turbo": "turbo run test",
     "lint": "turbo run lint",
@@ -73,5 +72,11 @@
   "overrides": {
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "esbuild@<=0.24.2": ">=0.25.0",
+      "on-headers@<1.1.0": ">=1.1.0"
+    }
   }
 }

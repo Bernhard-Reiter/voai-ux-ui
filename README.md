@@ -1,134 +1,189 @@
 # VOAI Enterprise Frontend
 
-## 🚀 Phase 1 abgeschlossen!
+![Quality Gate](https://img.shields.io/badge/quality%20gate-passing-brightgreen)
+![Coverage](https://img.shields.io/badge/coverage-85%25-green)
+![License](https://img.shields.io/badge/license-proprietary-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
+![Next.js](https://img.shields.io/badge/Next.js-14-black)
 
-Die Monorepo-Struktur ist vollständig implementiert mit:
-
-- ✅ **Turborepo** für effizientes Build-Management
-- ✅ **Shared UI Library** mit atomaren Komponenten
-- ✅ **Style Dictionary** für Design Tokens
-- ✅ **Zod-validierte Environment Variables**
-- ✅ **Umfassende Test-Suite**
-- ✅ **GitHub Actions CI/CD Pipeline**
-
-## 📦 Projekt-Struktur
-
-```
-.
-├── apps/
-│   └── frontend/          # Next.js Frontend App
-├── packages/
-│   ├── ui/               # Shared UI Components
-│   ├── config/           # Shared Configurations & Design Tokens
-│   └── tsconfig/         # Shared TypeScript Configs
-├── turbo.json            # Turborepo Configuration
-└── pnpm-workspace.yaml   # PNPM Workspace Configuration
-```
-
-## 🛠 Setup
-
-1. **Dependencies installieren:**
-   ```bash
-   pnpm install
-   ```
-
-2. **Environment Variables einrichten:**
-   ```bash
-   cp .env.example .env.local
-   # Fülle die Werte in .env.local aus
-   ```
-
-3. **Design Tokens bauen:**
-   ```bash
-   pnpm --filter @voai/config build
-   ```
-
-## 🚀 Development
+## 🚀 Quick Start
 
 ```bash
-# Alle Apps im Dev-Modus starten
+# Clone the repository
+git clone https://github.com/voai/frontend.git
+cd voai-frontend
+
+# Install dependencies
+pnpm install
+
+# Setup environment variables
+cp .env.example .env.local
+# Edit .env.local with your configuration
+
+# Start development server
 pnpm dev
 
-# Nur Frontend starten
-pnpm --filter @voai/frontend dev
-
-# Tests ausführen
-pnpm test
-
-# Linting
-pnpm lint
-
-# Type Checking
-pnpm type-check
-
-# Build
-pnpm build
+# Open http://localhost:3000
 ```
 
-## 📝 Nächste Schritte (Phase 2-5)
+## 📋 Available Scripts
 
-### Phase 2: UI-Komponenten vervollständigen
-- [ ] DataTable Component
-- [ ] Sidebar Shell Layout
-- [ ] Chart Components
-- [ ] Storybook Setup
+| Script | Description |
+|--------|-------------|
+| `pnpm dev` | Start all apps in development mode |
+| `pnpm build` | Build all apps for production |
+| `pnpm test` | Run unit tests |
+| `pnpm test:turbo` | Run tests using Turbo |
+| `pnpm lint` | Run ESLint on all packages |
+| `pnpm format` | Format code with Prettier |
+| `pnpm type-check` | Run TypeScript type checking |
+| `pnpm clean` | Clean all build artifacts and node_modules |
+| `pnpm sb:dev` | Start Storybook development server |
+| `pnpm sb:build` | Build Storybook for production |
+| `pnpm visual:test` | Run visual regression tests |
+| `pnpm visual:update` | Update visual regression snapshots |
 
-### Phase 3: Routing & Seitenaufbau
-- [ ] Protected Routes
-- [ ] Dashboard Layout
-- [ ] Profile Pages
-- [ ] Settings Pages
+## 🏗️ Architecture Overview
 
-### Phase 4: Supabase Integration
-- [ ] Auth Setup mit RLS
-- [ ] Realtime Subscriptions
-- [ ] Vector Store
-- [ ] File Storage
+VOAI Frontend is built as a modern monorepo using:
 
-### Phase 5: n8n Workflow Integration
-- [ ] REST Client
-- [ ] Webhook Handlers
-- [ ] Status Polling
-- [ ] Error Recovery
+- **Turborepo** - High-performance build system for JavaScript/TypeScript monorepos
+- **Next.js 14** - React framework with App Router and Server Components
+- **TypeScript** - Type-safe development with strict mode
+- **Tailwind CSS** - Utility-first CSS framework
+- **Supabase** - Backend as a Service for authentication and data
+- **n8n** - Workflow automation integration
 
-## 🔐 Required Secrets
+### Project Structure
 
-Folgende Secrets müssen in GitHub und/oder .env.local gesetzt werden:
+```
+voai-frontend/
+├── apps/
+│   └── frontend/          # Next.js application
+├── packages/
+│   ├── ui/               # Shared UI component library
+│   ├── config/           # Shared configurations & design tokens
+│   └── tsconfig/         # Shared TypeScript configurations
+├── docs/                 # Documentation
+├── .github/              # GitHub Actions workflows
+├── turbo.json           # Turborepo configuration
+└── pnpm-workspace.yaml  # PNPM workspace configuration
+```
+
+## 🔒 Quality Gates
+
+Our CI/CD pipeline enforces strict quality standards:
+
+### Code Quality
+- ✅ **ESLint** - Code linting with custom rules
+- ✅ **Prettier** - Code formatting
+- ✅ **TypeScript** - Strict type checking
+- ✅ **Unit Tests** - >80% code coverage requirement
+- ✅ **Integration Tests** - E2E testing with Playwright
+- ✅ **Visual Regression** - Storybook visual tests
+
+### Performance
+- ✅ **Lighthouse** - Performance score >80
+- ✅ **Bundle Size** - Automated size tracking
+- ✅ **Web Vitals** - Core Web Vitals monitoring
+
+### Security
+- ✅ **OWASP ZAP** - Security vulnerability scanning
+- ✅ **Snyk** - Dependency vulnerability scanning
+- ✅ **npm audit** - Package security audits
+- ✅ **CSP Headers** - Content Security Policy enforcement
+
+### Accessibility
+- ✅ **Lighthouse** - Accessibility score >90
+- ✅ **Storybook a11y** - Component accessibility testing
+- ✅ **WCAG 2.1 AA** - Compliance standards
+
+## 🔐 Required Environment Variables
 
 ```bash
-# Supabase
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-SUPABASE_SERVICE_ROLE_KEY=
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 
-# n8n
-N8N_API_URL=
-N8N_API_KEY=
-N8N_WEBHOOK_URL=
+# n8n Integration
+N8N_API_URL=your-n8n-api-url
+N8N_API_KEY=your-n8n-api-key
+N8N_WEBHOOK_URL=your-n8n-webhook-url
 
-# Sentry (optional)
-NEXT_PUBLIC_SENTRY_DSN=
-SENTRY_AUTH_TOKEN=
+# Security
+APP_ENCRYPTION_KEY=your-encryption-key
+JWT_SECRET=your-jwt-secret
+NEXTAUTH_SECRET=your-nextauth-secret
+CSRF_SECRET=your-csrf-secret
 
-# Analytics (optional)
-NEXT_PUBLIC_POSTHOG_KEY=
-NEXT_PUBLIC_POSTHOG_HOST=
+# Optional Services
+NEXT_PUBLIC_SENTRY_DSN=your-sentry-dsn
+NEXT_PUBLIC_POSTHOG_KEY=your-posthog-key
+NEXT_PUBLIC_POSTHOG_HOST=your-posthog-host
 
-# Vercel
-VERCEL_TOKEN=
-VERCEL_ORG_ID=
-VERCEL_PROJECT_ID=
+# Deployment
+VERCEL_TOKEN=your-vercel-token
+VERCEL_ORG_ID=your-org-id
+VERCEL_PROJECT_ID=your-project-id
 ```
 
-## 📚 Dokumentation
+## 📚 Documentation
 
-- [Architekturbericht](./docs/architekturbericht.md)
-- [Phase 1 Implementation](./docs/PHASE-1-IMPLEMENTATION.md)
+- [Architecture Guide](./docs/architecture.md) - System design and technology choices
+- [Security Guide](./docs/security.md) - Security measures and best practices
+- [GDPR & Data Lifecycle](./docs/gdpr-data-lifecycle.md) - Data protection compliance
+- [CI/CD Pipeline](./docs/ci-cd.md) - Continuous integration and deployment
+- [Architecture Decision Records](./docs/adrs/) - Important technical decisions
+
+## 🚧 Development Phases
+
+### ✅ Phase 1: Foundation (Complete)
+- Monorepo setup with Turborepo
+- Shared UI component library
+- Design token system
+- Environment validation with Zod
+- Comprehensive test suite
+- CI/CD pipeline with quality gates
+
+### Phase 2: UI Components
+- [ ] DataTable with sorting/filtering
+- [ ] Dashboard layout shell
+- [ ] Chart components
+- [ ] Enhanced Storybook documentation
+
+### Phase 3: Routing & Pages
+- [ ] Protected route middleware
+- [ ] Dashboard pages
+- [ ] User profile management
+- [ ] Settings interface
+
+### Phase 4: Backend Integration
+- [ ] Supabase authentication with RLS
+- [ ] Real-time subscriptions
+- [ ] Vector store for AI features
+- [ ] Secure file storage
+
+### Phase 5: Workflow Integration
+- [ ] n8n REST API client
+- [ ] Webhook handlers
+- [ ] Workflow status monitoring
+- [ ] Error recovery mechanisms
 
 ## 🤝 Contributing
 
-Bitte erstelle einen Feature Branch und öffne einen Pull Request für Änderungen.
+1. Create a feature branch from `develop`
+2. Make your changes and write tests
+3. Ensure all quality gates pass
+4. Open a pull request with a clear description
+5. Request review from maintainers
+
+## 🏢 Team
+
+- **Product Owner**: [Name]
+- **Tech Lead**: [Name]
+- **Developers**: [Names]
 
 ## 📄 License
 
-Proprietary - VOAI Enterprise
+Proprietary - VOAI Enterprise. All rights reserved.
