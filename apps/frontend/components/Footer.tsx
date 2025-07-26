@@ -1,7 +1,4 @@
-'use client'
-
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -104,14 +101,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="mt-8 pt-8 border-t border-gray-200 text-center text-sm text-gray-600"
-        >
+        <div className="mt-8 pt-8 border-t border-gray-200 text-center text-sm text-gray-600">
           <p>&copy; {currentYear} VOAI. Alle Rechte vorbehalten.</p>
-        </motion.div>
+        </div>
       </div>
     </footer>
   )
