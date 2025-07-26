@@ -1,92 +1,43 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { createServerSupabaseClient } from '@/../../packages/shared/lib/supabase-server'
-import { AuthenticationError, handleApiError } from '@/lib/errors'
+import { createServerSupabaseClient } from '@voai/shared'
+import { NextResponse } from 'next/server'
 
-export async function DELETE(_request: NextRequest) {
+export async function DELETE() {
   try {
-    // Initialize Supabase client
     const supabase = await createServerSupabaseClient()
 
-    // Get authenticated user
+    // Get the current user
     const {
       data: { user },
-      error: authError,
+      error: userError,
     } = await supabase.auth.getUser()
 
-    if (authError || !user) {
-      throw new AuthenticationError('You must be authenticated to delete your account')
+    if (userError || !user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    // Start a transaction to ensure all data is deleted
-    const userId = user.id
-
-    // Delete user's uploaded files metadata first (if you have a files table)
-    const { error: filesError } = await supabase.from('files').delete().eq('user_id', userId)
-
-    if (filesError && filesError.code !== 'PGRST116') {
-      // PGRST116 = table doesn't exist
-      console.error('Error deleting user files:', filesError)
-    }
-
-    // Delete user's sessions
-    const { error: sessionsError } = await supabase.from('sessions').delete().eq('user_id', userId)
-
-    if (sessionsError && sessionsError.code !== 'PGRST116') {
-      console.error('Error deleting user sessions:', sessionsError)
-    }
-
-    // Delete any other user-related data from your custom tables
-    // Add more deletion queries here for your specific tables
-
-    // Delete user profile (if you have a profiles table)
-    const { error: profileError } = await supabase.from('profiles').delete().eq('id', userId)
-
-    if (profileError && profileError.code !== 'PGRST116') {
-      console.error('Error deleting user profile:', profileError)
-    }
-
-    // Finally, delete the user from auth
-    // Note: This will sign out the user and delete their auth record
-    const { error: deleteError } = await supabase.auth.admin.deleteUser(userId)
+    // Delete all user's workflow status records
+    const { error: deleteError } = await supabase
+      .from('workflow_status')
+      .delete()
+      .eq('user_id', user.id)
 
     if (deleteError) {
-      console.error('Error deleting user from auth:', deleteError)
-      throw new Error('Failed to delete user account. Please contact support.')
+      console.error('Error deleting workflow status:', deleteError)
+      return NextResponse.json({ error: 'Failed to delete user data' }, { status: 500 })
     }
 
-    // Clear auth cookies
-    const response = NextResponse.json(
-      {
-        success: true,
-        message: 'Your account and all associated data have been permanently deleted.',
-      },
-      { status: 200 }
-    )
+    // Note: Deleting the user from auth.users requires service role key
+    // This would typically be done in a separate admin function
+    // For now, we'll just sign out the user
+    await supabase.auth.signOut()
 
-    // Clear Supabase auth cookies
-    response.cookies.set('sb-access-token', '', {
-      path: '/',
-      maxAge: 0,
+    return NextResponse.json({
+      success: true,
+      message:
+        'User data deleted successfully. Please contact support to complete account deletion.',
     })
-    response.cookies.set('sb-refresh-token', '', {
-      path: '/',
-      maxAge: 0,
-    })
-
-    return response
   } catch (error) {
-    return handleApiError(error)
+    console.error('Unexpected error in DELETE /api/user/delete:', error)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
-}
-
-// OPTIONS for CORS
-export async function OPTIONS(_request: NextRequest) {
-  return new NextResponse(null, {
-    status: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'DELETE, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    },
-  })
 }

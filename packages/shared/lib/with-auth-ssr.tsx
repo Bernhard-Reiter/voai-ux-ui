@@ -1,17 +1,18 @@
-import { redirect } from 'next/navigation'
 import { createServerSupabaseClient } from './supabase-server'
+import { redirect } from 'next/navigation'
+import { ReactElement } from 'react'
 
-export function withAuthSsr<P extends Record<string, any>>(
-  Component: React.ComponentType<P & { user: any }>
+export function withAuthSsr<T extends Record<string, any>>(
+  Component: (props: T) => ReactElement | Promise<ReactElement>
 ) {
-  return async function AuthComponent(props: P) {
+  return async function AuthenticatedComponent(props: T) {
     const supabase = await createServerSupabaseClient()
-
     const {
       data: { user },
+      error,
     } = await supabase.auth.getUser()
 
-    if (!user) {
+    if (error || !user) {
       redirect('/login')
     }
 
