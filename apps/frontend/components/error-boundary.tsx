@@ -53,10 +53,10 @@ export class ErrorBoundary extends Component<Props, State> {
             <CardHeader>
               <div className="flex items-center gap-2">
                 <AlertCircle className="h-5 w-5 text-destructive" />
-                <CardTitle>Something went wrong</CardTitle>
+                <CardTitle>Etwas ist schiefgelaufen</CardTitle>
               </div>
               <CardDescription>
-                We encountered an unexpected error. Please try again.
+                Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -69,7 +69,7 @@ export class ErrorBoundary extends Component<Props, State> {
               )}
               <Button onClick={this.handleReset} className="w-full" variant="outline">
                 <RefreshCw className="mr-2 h-4 w-4" />
-                Try Again
+                Erneut versuchen
               </Button>
             </CardContent>
           </Card>

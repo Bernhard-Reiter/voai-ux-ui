@@ -3,7 +3,7 @@ import { withSentryConfig } from '@sentry/nextjs'
 
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath: process.env.NODE_ENV === 'production' ? '/voai' : '',
+  // Removed basePath - app should be served from root on Vercel
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
