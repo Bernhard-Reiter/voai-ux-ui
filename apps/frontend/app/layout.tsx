@@ -6,7 +6,7 @@ import Footer from '@/components/Footer'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ErrorBoundary } from '@/components/error-boundary'
 import { ToastProvider } from '@/components/toast-provider'
-// import { AuthProvider } from '@voai/shared'
+import { AuthProvider } from '@voai/shared'
 import { CookieConsent } from '@/components/cookie-consent'
 
 const inter = Inter({
@@ -80,17 +80,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           enableSystem
           disableTransitionOnChange
         >
-          <ErrorBoundary>
-            <Navigation />
-            <div className="flex-1 pt-16">
-              <main role="main" className="min-h-screen">
-                {children}
-              </main>
-            </div>
-            <Footer />
-            <ToastProvider />
-            <CookieConsent />
-          </ErrorBoundary>
+          <AuthProvider>
+            <ErrorBoundary>
+              <Navigation />
+              <div className="flex-1 pt-16">
+                <main role="main" className="min-h-screen">
+                  {children}
+                </main>
+              </div>
+              <Footer />
+              <ToastProvider />
+              <CookieConsent />
+            </ErrorBoundary>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

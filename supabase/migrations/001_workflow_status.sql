@@ -1,49 +1,54 @@
 -- Create workflow_status table
-CREATE TABLE IF NOT EXISTS public.workflow_status (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  workflow_id VARCHAR(255) NOT NULL,
-  status VARCHAR(50) NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'running', 'success', 'failed')),
-  progress INTEGER DEFAULT 0 CHECK (progress >= 0 AND progress <= 100),
-  message TEXT,
-  result JSONB,
-  error JSONB,
-  input_data JSONB,
-  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
+create table if not exists public.workflow_status (
+  id uuid default gen_random_uuid() primary key,
+  user_id uuid references auth.users(id) on delete cascade not null,
+  workflow_id text not null,
+  status text not null check (status in ('pending', 'running', 'completed', 'failed')),
+  progress integer default 0 check (progress >= 0 and progress <= 100),
+  result jsonb,
+  metadata jsonb,
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  updated_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 
 -- Create indexes
-CREATE INDEX idx_workflow_status_user_id ON public.workflow_status(user_id);
-CREATE INDEX idx_workflow_status_status ON public.workflow_status(status);
-CREATE INDEX idx_workflow_status_created_at ON public.workflow_status(created_at DESC);
+create index workflow_status_user_id_idx on public.workflow_status(user_id);
+create index workflow_status_workflow_id_idx on public.workflow_status(workflow_id);
+create index workflow_status_status_idx on public.workflow_status(status);
+create index workflow_status_created_at_idx on public.workflow_status(created_at desc);
 
--- Enable Row Level Security
-ALTER TABLE public.workflow_status ENABLE ROW LEVEL SECURITY;
+-- Enable RLS
+alter table public.workflow_status enable row level security;
 
--- Create RLS policies
-CREATE POLICY "Users can view their own workflow status" ON public.workflow_status
-  FOR SELECT USING (auth.uid() = user_id);
+-- Create policies
+create policy "Users can view own workflow status"
+  on public.workflow_status for select
+  using (auth.uid() = user_id);
 
-CREATE POLICY "Users can create their own workflow status" ON public.workflow_status
-  FOR INSERT WITH CHECK (auth.uid() = user_id);
+create policy "Users can create own workflow status"
+  on public.workflow_status for insert
+  with check (auth.uid() = user_id);
 
-CREATE POLICY "Service role can update any workflow status" ON public.workflow_status
-  FOR UPDATE USING (auth.jwt() ->> 'role' = 'service_role');
+create policy "Users can update own workflow status"
+  on public.workflow_status for update
+  using (auth.uid() = user_id);
+
+create policy "Users can delete own workflow status"
+  on public.workflow_status for delete
+  using (auth.uid() = user_id);
 
 -- Create updated_at trigger
-CREATE OR REPLACE FUNCTION public.handle_updated_at()
-RETURNS TRIGGER AS $$
-BEGIN
-  NEW.updated_at = NOW();
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
+create or replace function public.handle_updated_at()
+returns trigger as $$
+begin
+  new.updated_at = timezone('utc'::text, now());
+  return new;
+end;
+$$ language plpgsql security definer;
 
-CREATE TRIGGER set_updated_at
-  BEFORE UPDATE ON public.workflow_status
-  FOR EACH ROW
-  EXECUTE FUNCTION public.handle_updated_at();
+create trigger on_workflow_status_updated
+  before update on public.workflow_status
+  for each row execute procedure public.handle_updated_at();
 
--- Enable Realtime
-ALTER PUBLICATION supabase_realtime ADD TABLE public.workflow_status;
+-- Enable realtime
+alter publication supabase_realtime add table public.workflow_status;

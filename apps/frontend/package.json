@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && touch out/.nojekyll",
+    "build": "next build",
     "start": "next start",
     "lint": "echo 'Linting temporarily disabled - migrating to ESLint v9'",
     "lint:fix": "eslint . --ext ts,tsx --fix",
