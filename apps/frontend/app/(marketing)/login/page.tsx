@@ -1,12 +1,10 @@
 'use client'
 
 import { createClient } from '@voai/shared'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
-  const router = useRouter()
   const supabase = createClient()
 
   const handleGoogleLogin = async () => {

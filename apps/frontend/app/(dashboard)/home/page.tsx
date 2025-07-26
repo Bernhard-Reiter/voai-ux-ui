@@ -1,6 +1,17 @@
-import { withAuthSsr } from '@voai/shared'
+import { redirect } from 'next/navigation'
+import { createServerSupabaseClient } from '@voai/shared/lib/supabase-server'
 
-async function HomePage({ user }: { user: any }) {
+export default async function HomePage() {
+  const supabase = await createServerSupabaseClient()
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser()
+
+  if (error || !user) {
+    redirect('/login')
+  }
+
   return (
     <div className="container mx-auto py-8">
       <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
@@ -25,5 +36,3 @@ async function HomePage({ user }: { user: any }) {
     </div>
   )
 }
-
-export default withAuthSsr(HomePage)

@@ -1,4 +1,4 @@
-import { createServerSupabaseClient } from '@voai/shared'
+import { createServerSupabaseClient } from '@voai/shared/lib/supabase-server'
 import { NextResponse } from 'next/server'
 
 export async function DELETE() {
