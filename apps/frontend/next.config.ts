@@ -2,7 +2,7 @@ import type { NextConfig } from 'next'
 import { withSentryConfig } from '@sentry/nextjs'
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  // Removed output: 'export' to support dynamic auth routes
   basePath: process.env.NODE_ENV === 'production' ? '/voai' : '',
   reactStrictMode: true,
   poweredByHeader: false,
