@@ -256,7 +256,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: build-output
-          path: apps/frontend/out
+          path: apps/frontend/.next
           retention-days: 1
 
       - name: Upload build logs on failure
@@ -282,7 +282,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: build-output
-          path: apps/frontend/out
+          path: apps/frontend/.next
 
       - uses: pnpm/action-setup@v3
         with:
@@ -367,9 +367,9 @@ jobs:
 
       - name: Start server for ZAP scan
         run: |
-          cd apps/frontend/out
-          python3 -m http.server 3000 &
-          sleep 5
+          cd apps/frontend
+          pnpm dev &
+          sleep 10
 
       - name: Run OWASP ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.10.0
