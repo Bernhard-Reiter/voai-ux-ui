@@ -158,7 +158,9 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Install Playwright
-        run: npx playwright install chromium
+        run: |
+          cd apps/frontend
+          npx playwright install chromium
 
       - name: Run integration tests
         run: pnpm turbo run test:integration -- --workers=2
@@ -298,7 +300,7 @@ jobs:
       - name: Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@v10
         with:
-          configPath: ./lighthouse.config.js
+          configPath: ./lighthouserc.js
           uploadArtifacts: true
           temporaryPublicStorage: true
 
@@ -308,7 +310,13 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const results = JSON.parse(fs.readFileSync('.lighthouseci/lhr-*.json', 'utf8'));
+            const glob = require('glob');
+            const lhrFiles = glob.sync('.lighthouseci/lhr-*.json');
+            if (lhrFiles.length === 0) {
+              core.setFailed('No Lighthouse results found');
+              return;
+            }
+            const results = JSON.parse(fs.readFileSync(lhrFiles[0], 'utf8'));
             const scores = results.categories;
 
             const thresholds = {
