@@ -4,13 +4,14 @@ import Script from 'next/script'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useEffect, Suspense } from 'react'
 import { GA_MEASUREMENT_ID, pageview } from '@/lib/analytics'
+import { canUseAnalytics } from '@/lib/gdpr'
 
 function AnalyticsContent() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    if (pathname && GA_MEASUREMENT_ID) {
+    if (pathname && GA_MEASUREMENT_ID && canUseAnalytics()) {
       const url = pathname + searchParams.toString()
       pageview(url)
     }
@@ -20,7 +21,8 @@ function AnalyticsContent() {
 }
 
 export function Analytics() {
-  if (!GA_MEASUREMENT_ID) {
+  // Check for consent before loading any analytics
+  if (!GA_MEASUREMENT_ID || !canUseAnalytics()) {
     return null
   }
 
