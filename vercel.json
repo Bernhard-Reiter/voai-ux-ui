@@ -1,9 +1,8 @@
 {
   "framework": "nextjs",
-  "buildCommand": "cd ../.. && pnpm turbo run build --filter=@voai/frontend",
-  "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
-  "outputDirectory": ".next",
-  "rootDirectory": "apps/frontend",
+  "buildCommand": "pnpm turbo run build --filter=@voai/frontend",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "outputDirectory": "apps/frontend/.next",
   "ignoreCommand": "git diff HEAD^ HEAD --quiet .",
   "headers": [
     {
