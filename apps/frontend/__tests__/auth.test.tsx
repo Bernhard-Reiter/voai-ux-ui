@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { useRouter } from 'next/navigation'
-import LoginPage from '../app/(marketing)/login/page'
+import LoginPage from '../app/auth/login/page'
 import { createClient } from '@voai/shared'
 
 // Mock modules
@@ -14,6 +14,12 @@ jest.mock('@voai/shared', () => ({
   AuthProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }))
 
+jest.mock('sonner', () => ({
+  toast: {
+    error: jest.fn(),
+  },
+}))
+
 describe('Authentication', () => {
   const mockRouter = {
     push: jest.fn(),
@@ -21,7 +27,6 @@ describe('Authentication', () => {
 
   const mockSupabase = {
     auth: {
-      signInWithPassword: jest.fn(),
       signInWithOAuth: jest.fn(),
       signOut: jest.fn(),
       getSession: jest.fn(),
@@ -38,55 +43,14 @@ describe('Authentication', () => {
   })
 
   describe('Login Page', () => {
-    it('should render login form', () => {
+    it('should render login page with Google button', () => {
       render(<LoginPage />)
 
-      expect(screen.getByPlaceholderText('E-Mail-Adresse')).toBeInTheDocument()
-      expect(screen.getByPlaceholderText('Passwort')).toBeInTheDocument()
-      expect(screen.getByText('Anmelden')).toBeInTheDocument()
-    })
-
-    it('should handle email login', async () => {
-      mockSupabase.auth.signInWithPassword.mockResolvedValueOnce({ error: null })
-
-      render(<LoginPage />)
-
-      const emailInput = screen.getByPlaceholderText('E-Mail-Adresse')
-      const passwordInput = screen.getByPlaceholderText('Passwort')
-      const submitButton = screen.getByRole('button', { name: 'Anmelden' })
-
-      fireEvent.change(emailInput, { target: { value: 'test@example.com' } })
-      fireEvent.change(passwordInput, { target: { value: 'password123' } })
-      fireEvent.click(submitButton)
-
-      await waitFor(() => {
-        expect(mockSupabase.auth.signInWithPassword).toHaveBeenCalledWith({
-          email: 'test@example.com',
-          password: 'password123',
-        })
-        expect(mockRouter.push).toHaveBeenCalledWith('/dashboard')
-      })
-    })
-
-    it('should handle login error', async () => {
-      mockSupabase.auth.signInWithPassword.mockResolvedValueOnce({
-        error: { message: 'Invalid credentials' },
-      })
-
-      render(<LoginPage />)
-
-      const emailInput = screen.getByPlaceholderText('E-Mail-Adresse')
-      const passwordInput = screen.getByPlaceholderText('Passwort')
-      const submitButton = screen.getByRole('button', { name: 'Anmelden' })
-
-      fireEvent.change(emailInput, { target: { value: 'test@example.com' } })
-      fireEvent.change(passwordInput, { target: { value: 'wrongpassword' } })
-      fireEvent.click(submitButton)
-
-      await waitFor(() => {
-        expect(screen.getByText('Invalid credentials')).toBeInTheDocument()
-        expect(mockRouter.push).not.toHaveBeenCalled()
-      })
+      expect(screen.getByText('Willkommen zurück')).toBeInTheDocument()
+      expect(
+        screen.getByText('Melden Sie sich an, um auf Ihr Dashboard zuzugreifen')
+      ).toBeInTheDocument()
+      expect(screen.getByText('Mit Google fortfahren')).toBeInTheDocument()
     })
 
     it('should handle OAuth login', async () => {
@@ -94,7 +58,7 @@ describe('Authentication', () => {
 
       render(<LoginPage />)
 
-      const googleButton = screen.getByText('Mit Google anmelden')
+      const googleButton = screen.getByText('Mit Google fortfahren')
       fireEvent.click(googleButton)
 
       await waitFor(() => {
@@ -104,6 +68,24 @@ describe('Authentication', () => {
             redirectTo: expect.stringContaining('/auth/callback'),
           },
         })
+      })
+    })
+
+    it('should show error on OAuth failure', async () => {
+      const { toast } = require('sonner')
+      mockSupabase.auth.signInWithOAuth.mockResolvedValueOnce({
+        error: { message: 'OAuth error' },
+      })
+
+      render(<LoginPage />)
+
+      const googleButton = screen.getByText('Mit Google fortfahren')
+      fireEvent.click(googleButton)
+
+      await waitFor(() => {
+        expect(toast.error).toHaveBeenCalledWith(
+          'Login fehlgeschlagen. Bitte versuchen Sie es erneut.'
+        )
       })
     })
   })
