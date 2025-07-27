@@ -1,20 +1,10 @@
-# Ignore everything except what we need
-*
-!apps/
-!apps/frontend/
-!apps/frontend/**
-!packages/
-!packages/**
-!pnpm-workspace.yaml
-!pnpm-lock.yaml
-!package.json
-!turbo.json
-!vercel.json
-!.env*
-
-# But still ignore these
-apps/frontend/node_modules
-apps/frontend/.next
-apps/frontend/.turbo
-apps/frontend/coverage
-apps/frontend/.env.local
+# Ignore these specific directories
+node_modules
+.git
+.next
+.turbo
+coverage
+dist
+.env.local
+*.log
+.DS_Store
