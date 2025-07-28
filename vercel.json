@@ -6,7 +6,7 @@
   "ignoreCommand": "git diff HEAD^ HEAD --quiet .",
   "regions": ["iad1"],
   "functions": {
-    "apps/frontend/app/api/*": {
+    "apps/frontend/app/api/**/*.ts": {
       "maxDuration": 10
     }
   }
