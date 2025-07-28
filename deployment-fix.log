@@ -1,0 +1,17 @@
+Vercel CLI 44.4.1
+Loading scopes…
+Searching for existing projects…
+Linked to vi4/frontend (created .vercel)
+Deploying vi4/frontend
+Uploading [--------------------] (0.0B/849B)
+Uploading [============--------] (547.0B/849B)
+Uploading [====================] (849.0B/849B)
+Inspect: https://vercel.com/vi4/frontend/DsPeoJByVNHJbggdDQgcgTVWNqzD [2s]
+Production: https://frontend-1rdhqebci-vi4.vercel.app [2s]
+https://frontend-1rdhqebci-vi4.vercel.appQueued
+2025-07-28T20:28:17.133Z  Running build in Washington, D.C., USA (East) – iad1
+2025-07-28T20:28:17.134Z  Build machine configuration: 2 cores, 8 GB
+2025-07-28T20:28:17.151Z  Retrieving list of deployment files...
+2025-07-28T20:28:17.277Z  Previous build caches not available
+2025-07-28T20:28:17.483Z  Downloading 110 deployment files...
+Error: No Next.js version detected. Make sure your package.json has "next" in either "dependencies" or "devDependencies". Also check your Root Directory setting matches the directory of your package.json file.
