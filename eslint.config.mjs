@@ -4,6 +4,7 @@ import typescriptParser from '@typescript-eslint/parser';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import next from '@next/eslint-plugin-next';
+import prettier from 'eslint-plugin-prettier';
 
 export default [
   js.configs.recommended,
@@ -14,6 +15,7 @@ export default [
       'react': react,
       'react-hooks': reactHooks,
       '@next/next': next,
+      'prettier': prettier,
     },
     languageOptions: {
       parser: typescriptParser,
@@ -45,6 +47,14 @@ export default [
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       'no-console': ['warn', { allow: ['warn', 'error'] }],
+      'prettier/prettier': ['error', {
+        'semi': false,
+        'singleQuote': true,
+        'tabWidth': 2,
+        'trailingComma': 'es5',
+        'printWidth': 100,
+        'bracketSpacing': true
+      }],
     },
   },
   {

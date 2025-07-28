@@ -347,18 +347,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@master
-        continue-on-error: true
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN || '' }}
-        with:
-          args: --severity-threshold=high
-
-      - name: Run npm audit
-        run: |
-          pnpm audit --audit-level=high || true
-
       - uses: pnpm/action-setup@v3
         with:
           version: 8
@@ -369,6 +357,18 @@ jobs:
           cache: 'pnpm'
 
       - run: pnpm install --frozen-lockfile
+
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN || '' }}
+        with:
+          args: --severity-threshold=high
+
+      - name: Run pnpm audit
+        run: |
+          pnpm audit --audit-level=high || true
 
       - name: Build application
         run: pnpm turbo run build
