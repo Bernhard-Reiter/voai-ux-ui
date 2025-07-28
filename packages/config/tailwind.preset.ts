@@ -1,7 +1,9 @@
+import type { Config } from 'tailwindcss'
+// @ts-ignore
 import voaiTokens from './voai-tokens-plugin.js'
 
-const preset = {
-  darkMode: 'class',
+const preset: Partial<Config> = {
+  darkMode: 'class' as const,
   theme: {
     container: {
       center: true,
@@ -79,12 +81,7 @@ const preset = {
       },
     },
   },
-  plugins: [
-    (await import('@tailwindcss/forms')).default({
-      strategy: 'class',
-    }),
-    voaiTokens,
-  ],
+  plugins: [],
 }
 
 export default preset

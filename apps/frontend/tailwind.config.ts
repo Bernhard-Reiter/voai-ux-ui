@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss'
-import tailwindPreset from '@voai/config/tailwind.preset.mjs'
+import tailwindPreset from '@voai/config/tailwind.preset'
 
 const config: Config = {
   presets: [tailwindPreset],
