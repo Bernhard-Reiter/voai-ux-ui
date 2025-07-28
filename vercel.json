@@ -1,12 +1,25 @@
 {
-  "buildCommand": "pnpm turbo run build --filter=@voai/frontend",
+  "buildCommand": "pnpm turbo run build --filter=@voai/frontend --force",
   "installCommand": "pnpm install --frozen-lockfile",
-  "outputDirectory": ".next",
+  "outputDirectory": "apps/frontend/.next",
   "framework": "nextjs",
+  "devCommand": "pnpm dev --filter=@voai/frontend",
+  "nodeVersion": "20.x",
   "regions": ["iad1"],
   "functions": {
     "app/api/**/*.ts": {
       "maxDuration": 10
+    }
+  },
+  "env": {
+    "TURBO_TEAM": "vi4",
+    "TURBO_TOKEN": "@turbo-token",
+    "FORCE_COLOR": "1"
+  },
+  "build": {
+    "env": {
+      "NEXT_TELEMETRY_DISABLED": "1",
+      "NODE_ENV": "production"
     }
   }
 }
