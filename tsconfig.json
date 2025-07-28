@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "types": ["jest", "@types/jest", "@testing-library/jest-dom"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./apps/frontend/*"],
+      "@voai/ui": ["./packages/ui/src"],
+      "@voai/ui/*": ["./packages/ui/src/*"],
+      "@voai/shared": ["./packages/shared"],
+      "@voai/shared/*": ["./packages/shared/*"],
+      "@voai/config": ["./packages/config"],
+      "@voai/config/*": ["./packages/config/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", ".next", "dist"]
+}
