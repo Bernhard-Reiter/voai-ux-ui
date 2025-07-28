@@ -4,7 +4,6 @@
   "outputDirectory": "apps/frontend/.next",
   "framework": "nextjs",
   "devCommand": "pnpm dev --filter=@voai/frontend",
-  "nodeVersion": "20.x",
   "regions": ["iad1"],
   "functions": {
     "app/api/**/*.ts": {
@@ -13,7 +12,6 @@
   },
   "env": {
     "TURBO_TEAM": "vi4",
-    "TURBO_TOKEN": "@turbo-token",
     "FORCE_COLOR": "1"
   },
   "build": {
