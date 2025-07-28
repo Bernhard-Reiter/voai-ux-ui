@@ -72,7 +72,7 @@ describe('Authentication', () => {
     })
 
     it('should show error on OAuth failure', async () => {
-      const { toast } = require('sonner')
+      const toast = jest.requireMock('sonner').toast
       mockSupabase.auth.signInWithOAuth.mockResolvedValueOnce({
         error: { message: 'OAuth error' },
       })

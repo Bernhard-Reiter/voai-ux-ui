@@ -64,7 +64,7 @@ describe('GDPR Utilities', () => {
     it('should return false in non-browser environment', () => {
       // Mock window as undefined
       const originalWindow = global.window
-      // @ts-ignore
+      // @ts-expect-error - Testing non-browser environment
       delete global.window
 
       expect(canUseAnalytics()).toBe(false)
@@ -111,7 +111,7 @@ describe('GDPR Utilities', () => {
     it('should return false in non-browser environment', () => {
       // Mock window as undefined
       const originalWindow = global.window
-      // @ts-ignore
+      // @ts-expect-error - Testing non-browser environment
       delete global.window
 
       expect(canUseMarketing()).toBe(false)
@@ -186,7 +186,7 @@ describe('GDPR Utilities', () => {
     it('should return null in non-browser environment', () => {
       // Mock window as undefined
       const originalWindow = global.window
-      // @ts-ignore
+      // @ts-expect-error - Testing non-browser environment
       delete global.window
 
       expect(getConsentStatus()).toBeNull()

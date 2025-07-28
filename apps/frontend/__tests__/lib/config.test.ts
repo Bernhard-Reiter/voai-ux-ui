@@ -22,7 +22,8 @@ describe('Config Module', () => {
 
       // Re-import config after setting env
       jest.isolateModules(() => {
-        const { config } = require('@/lib/config')
+        const configModule = jest.requireActual('@/lib/config') as typeof import('@/lib/config')
+        const { config } = configModule
 
         expect(config.security.csrfSecret).toBe('dev-csrf-secret')
         expect(config.security.encryptionKey).toBe('dev-encryption-key')
@@ -38,8 +39,10 @@ describe('Config Module', () => {
       // Should throw when accessing config properties
       expect(() => {
         jest.isolateModules(() => {
-          const { config } = require('@/lib/config')
+          const configModule = jest.requireActual('@/lib/config') as typeof import('@/lib/config')
+          const { config } = configModule
           // Access the property to trigger initialization
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
           config.security.csrfSecret
         })
       }).toThrow('Missing required environment variable: CSRF_SECRET')
@@ -55,7 +58,7 @@ describe('Config Module', () => {
       // Should not throw
       expect(() => {
         jest.isolateModules(() => {
-          require('@/lib/config')
+          jest.requireActual('@/lib/config')
         })
       }).not.toThrow()
     })
@@ -78,7 +81,8 @@ describe('Config Module', () => {
       process.env.RATE_LIMIT_MAX_REQUESTS = '20'
 
       jest.isolateModules(() => {
-        const { config } = require('@/lib/config')
+        const configModule = jest.requireActual('@/lib/config') as typeof import('@/lib/config')
+        const { config } = configModule
 
         expect(config.api.url).toBe('https://api.example.com')
         expect(config.api.siteUrl).toBe('https://example.com')
@@ -194,7 +198,8 @@ describe('Config Module', () => {
       delete process.env.RATE_LIMIT_MAX_REQUESTS
 
       jest.isolateModules(() => {
-        const { config } = require('@/lib/config')
+        const configModule = jest.requireActual('@/lib/config') as typeof import('@/lib/config')
+        const { config } = configModule
 
         expect(config.api.url).toBe('http://localhost:3000/api')
         expect(config.api.siteUrl).toBe('http://localhost:3000')
@@ -213,7 +218,8 @@ describe('Config Module', () => {
       process.env.RATE_LIMIT_MAX_REQUESTS = '5'
 
       jest.isolateModules(() => {
-        const { config } = require('@/lib/config')
+        const configModule = jest.requireActual('@/lib/config') as typeof import('@/lib/config')
+        const { config } = configModule
 
         expect(config.email.port).toBe(25)
         expect(config.upload.maxFileSize).toBe(5242880)
@@ -251,7 +257,8 @@ describe('Config Module', () => {
       ;(process.env as any).NODE_ENV = 'development'
 
       jest.isolateModules(() => {
-        const { config } = require('@/lib/config')
+        const configModule = jest.requireActual('@/lib/config') as typeof import('@/lib/config')
+        const { config } = configModule
 
         expect(config.env.isDevelopment).toBe(true)
         expect(config.env.isProduction).toBe(false)
@@ -273,7 +280,8 @@ describe('Config Module', () => {
       process.env.EMAIL_PASSWORD = 'prod-password'
 
       jest.isolateModules(() => {
-        const { config } = require('@/lib/config')
+        const configModule = jest.requireActual('@/lib/config') as typeof import('@/lib/config')
+        const { config } = configModule
 
         expect(config.env.isDevelopment).toBe(false)
         expect(config.env.isProduction).toBe(true)
@@ -285,7 +293,8 @@ describe('Config Module', () => {
       ;(process.env as any).NODE_ENV = 'test'
 
       jest.isolateModules(() => {
-        const { config } = require('@/lib/config')
+        const configModule = jest.requireActual('@/lib/config') as typeof import('@/lib/config')
+        const { config } = configModule
 
         expect(config.env.isDevelopment).toBe(false)
         expect(config.env.isProduction).toBe(false)
@@ -300,7 +309,8 @@ describe('Config Module', () => {
       process.env.UPLOAD_DIR = ''
 
       jest.isolateModules(() => {
-        const { config } = require('@/lib/config')
+        const configModule = jest.requireActual('@/lib/config') as typeof import('@/lib/config')
+        const { config } = configModule
 
         // Should use default values when env var is empty string
         expect(config.api.url).toBe('http://localhost:3000/api')
@@ -313,7 +323,8 @@ describe('Config Module', () => {
       process.env.MAX_FILE_SIZE = 'invalid'
 
       jest.isolateModules(() => {
-        const { config } = require('@/lib/config')
+        const configModule = jest.requireActual('@/lib/config') as typeof import('@/lib/config')
+        const { config } = configModule
 
         // parseInt should return NaN for invalid values
         expect(isNaN(config.email.port)).toBe(true)
@@ -326,7 +337,8 @@ describe('Config Module', () => {
       process.env.RATE_LIMIT_WINDOW_MS = '2147483647' // 32-bit max
 
       jest.isolateModules(() => {
-        const { config } = require('@/lib/config')
+        const configModule = jest.requireActual('@/lib/config') as typeof import('@/lib/config')
+        const { config } = configModule
 
         expect(config.upload.maxFileSize).toBe(9007199254740991)
         expect(config.rateLimit.windowMs).toBe(2147483647)
