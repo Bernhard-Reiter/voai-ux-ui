@@ -17,8 +17,9 @@ export async function DELETE() {
     }
 
     // Call the comprehensive user data deletion function
-    const { error: deleteFunctionError } = await supabase
-      .rpc('delete_user_data', { user_id: user.id })
+    const { error: deleteFunctionError } = await supabase.rpc('delete_user_data', {
+      user_id: user.id,
+    })
 
     if (deleteFunctionError) {
       console.error('Error calling delete_user_data:', deleteFunctionError)
@@ -26,15 +27,14 @@ export async function DELETE() {
     }
 
     // Log the deletion for GDPR compliance
-    const { error: logError } = await supabase
-      .rpc('log_user_deletion', {
-        p_user_id: user.id,
-        p_deletion_type: 'user_requested',
-        p_metadata: {
-          request_ip: 'anonymized', // Don't log actual IP for privacy
-          timestamp: new Date().toISOString(),
-        }
-      })
+    const { error: logError } = await supabase.rpc('log_user_deletion', {
+      p_user_id: user.id,
+      p_deletion_type: 'user_requested',
+      p_metadata: {
+        request_ip: 'anonymized', // Don't log actual IP for privacy
+        timestamp: new Date().toISOString(),
+      },
+    })
 
     if (logError) {
       console.error('Error logging deletion:', logError)
@@ -50,8 +50,8 @@ export async function DELETE() {
         {
           auth: {
             autoRefreshToken: false,
-            persistSession: false
-          }
+            persistSession: false,
+          },
         }
       )
 
@@ -68,7 +68,7 @@ export async function DELETE() {
     } else {
       // If service role key not available, sign out user and inform them
       await supabase.auth.signOut()
-      
+
       return NextResponse.json({
         success: true,
         message: 'User data deleted. Please contact support to complete account deletion.',

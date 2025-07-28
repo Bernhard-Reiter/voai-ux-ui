@@ -12,6 +12,9 @@
     "style-dictionary": "^3.9.2",
     "zod": "^3.25.76"
   },
+  "exports": {
+    "./tailwind.preset.mjs": "./tailwind.preset.mjs"
+  },
   "devDependencies": {
     "@types/node": "^20.19.9"
   }

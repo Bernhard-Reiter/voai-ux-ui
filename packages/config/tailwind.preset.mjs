@@ -1,6 +1,6 @@
-const voaiTokens = require('./voai-tokens-plugin')
+import voaiTokens from './voai-tokens-plugin.js'
 
-module.exports = {
+export default {
   darkMode: 'class',
   theme: {
     container: {
@@ -80,7 +80,7 @@ module.exports = {
     },
   },
   plugins: [
-    require('@tailwindcss/forms')({
+    (await import('@tailwindcss/forms')).default({
       strategy: 'class',
     }),
     voaiTokens,

@@ -16,8 +16,9 @@ export async function GET() {
     }
 
     // Call the export function to get all user data
-    const { data: exportData, error: exportError } = await supabase
-      .rpc('export_user_data', { p_user_id: user.id })
+    const { data: exportData, error: exportError } = await supabase.rpc('export_user_data', {
+      p_user_id: user.id,
+    })
 
     if (exportError) {
       console.error('Error exporting user data:', exportError)
@@ -32,7 +33,7 @@ export async function GET() {
         created_at: user.created_at,
         last_sign_in_at: user.last_sign_in_at,
         // Don't include sensitive auth metadata
-      }
+      },
     }
 
     // Return data as JSON download

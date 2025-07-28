@@ -1,7 +1,8 @@
 import type { Config } from 'tailwindcss'
+import tailwindPreset from '@voai/config/tailwind.preset.mjs'
 
 const config: Config = {
-  presets: [require('@voai/config/tailwind.preset')],
+  presets: [tailwindPreset],
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',

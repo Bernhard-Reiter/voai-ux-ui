@@ -5,6 +5,7 @@ import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import next from '@next/eslint-plugin-next';
 import prettier from 'eslint-plugin-prettier';
+import globals from 'globals';
 
 export default [
   js.configs.recommended,
@@ -25,11 +26,23 @@ export default [
         ecmaFeatures: {
           jsx: true,
         },
+        project: ['./tsconfig.json', './apps/*/tsconfig.json', './packages/*/tsconfig.json'],
       },
       globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.es2021,
+        ...globals.jest,
         React: 'readable',
-        process: 'readable',
-        console: 'readable',
+        jest: 'readable',
+        describe: 'readable',
+        it: 'readable',
+        expect: 'readable',
+        beforeEach: 'readable',
+        afterEach: 'readable',
+        beforeAll: 'readable',
+        afterAll: 'readable',
+        test: 'readable',
       },
     },
     settings: {
@@ -67,6 +80,8 @@ export default [
       'storybook-static/**',
       '*.config.js',
       '*.config.mjs',
+      'jest.setup.js',
+      '**/*.setup.js',
     ],
   },
 ];
