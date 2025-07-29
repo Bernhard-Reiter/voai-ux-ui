@@ -1,6 +1,6 @@
 # Ignore these specific directories
 node_modules
-.git
+# .git removed - Turborepo needs git metadata for cache calculations
 .next
 .turbo
 coverage
