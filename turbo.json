@@ -40,7 +40,10 @@
         "UPLOAD_DIR",
         "RATE_LIMIT_WINDOW_MS",
         "RATE_LIMIT_MAX_REQUESTS",
-        "SUPABASE_SERVICE_ROLE_KEY"
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "SUPABASE_JWT_SECRET",
+        "TURBO_TEAM",
+        "FORCE_COLOR"
       ]
     },
     "dev": {

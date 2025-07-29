@@ -1,8 +1,9 @@
 import type { Config } from 'tailwindcss'
-import tailwindPreset from '@voai/config/tailwind.preset'
+// @ts-ignore - Preset is a valid JavaScript module
+import tailwindPreset from '@voai/config/tailwind.preset.mjs'
 
 const config: Config = {
-  presets: [tailwindPreset],
+  presets: [tailwindPreset as any],
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
