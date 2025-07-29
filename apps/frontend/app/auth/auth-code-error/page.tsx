@@ -1,7 +1,7 @@
 'use client'
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@voai/ui'
+import { Button } from '@voai/ui'
 import Link from 'next/link'
 import { Icons } from '../../../components/icons'
 

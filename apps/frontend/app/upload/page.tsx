@@ -19,8 +19,8 @@ import {
   X,
 } from 'lucide-react'
 import { sanitizeInput, validateEmail } from '@/lib/security'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
+import { Button } from '@voai/ui'
+import { Card, CardContent } from '@voai/ui'
 import { cn } from '@/lib/utils'
 import { useSound } from '@/hooks/use-sound'
 

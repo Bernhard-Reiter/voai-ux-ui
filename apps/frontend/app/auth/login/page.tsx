@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { createClient } from '@voai/shared/lib/supabase-client'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@voai/ui'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@voai/ui'
 import { Icons } from '../../../components/icons'
 import Link from 'next/link'
 import { toast } from 'sonner'

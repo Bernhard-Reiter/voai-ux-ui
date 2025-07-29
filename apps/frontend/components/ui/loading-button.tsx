@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Button, ButtonProps } from '@/components/ui/button'
-import { Spinner } from '@/components/ui/spinner'
+import { Button, ButtonProps } from '@voai/ui'
+import { Spinner } from '@voai/ui'
 import { cn } from '@/lib/utils'
 
 export interface LoadingButtonProps extends ButtonProps {

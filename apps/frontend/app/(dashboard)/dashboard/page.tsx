@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@voai/shared/lib/supabase-client'
-import { Card } from '@/components/ui/card'
+import { Card } from '@voai/ui'
 import type { User } from '@supabase/supabase-js'
 
 export default function DashboardPage() {

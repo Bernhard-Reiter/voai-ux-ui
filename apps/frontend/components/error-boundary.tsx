@@ -1,8 +1,8 @@
 'use client'
 
 import React, { Component, ReactNode } from 'react'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@voai/ui'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@voai/ui'
 import { AlertCircle, RefreshCw } from 'lucide-react'
 
 interface Props {
