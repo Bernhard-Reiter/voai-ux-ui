@@ -4,10 +4,5 @@
   "outputDirectory": "apps/frontend/.next",
   "framework": "nextjs",
   "devCommand": "pnpm dev --filter=@voai/frontend",
-  "regions": ["iad1"],
-  "functions": {
-    "apps/frontend/app/api/**/route.ts": {
-      "maxDuration": 10
-    }
-  }
+  "regions": ["iad1"]
 }
