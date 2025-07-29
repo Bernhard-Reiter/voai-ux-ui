@@ -536,7 +536,7 @@ export default function UploadPage() {
                                 variant="outline"
                                 size="sm"
                                 className="mt-4"
-                                onClick={(e) => {
+                                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                                   e.preventDefault()
                                   setFormData((prev) => ({ ...prev, file: null }))
                                 }}
