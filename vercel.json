@@ -1,12 +1,12 @@
 {
-  "buildCommand": "pnpm turbo run build --filter=@voai/frontend --force",
-  "installCommand": "pnpm install --frozen-lockfile --production=false",
+  "buildCommand": "pnpm turbo run build --filter=@voai/frontend",
+  "installCommand": "pnpm install --frozen-lockfile",
   "outputDirectory": "apps/frontend/.next",
-  "framework": "nextjs",
+  "framework": null,
   "devCommand": "pnpm dev --filter=@voai/frontend",
   "regions": ["iad1"],
   "functions": {
-    "app/api/**/*.ts": {
+    "apps/frontend/app/api/**/*.ts": {
       "maxDuration": 10
     }
   },
