@@ -1,8 +1,9 @@
 {
-  "buildCommand": "pnpm turbo run build --filter=@voai/frontend",
+  "buildCommand": "cd apps/frontend && pnpm build",
   "installCommand": "pnpm install --frozen-lockfile",
   "outputDirectory": "apps/frontend/.next",
   "framework": "nextjs",
-  "devCommand": "pnpm dev --filter=@voai/frontend",
-  "regions": ["iad1"]
+  "devCommand": "cd apps/frontend && pnpm dev",
+  "regions": ["iad1"],
+  "ignoreCommand": "exit 0"
 }

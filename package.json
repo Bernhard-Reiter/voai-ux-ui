@@ -52,6 +52,7 @@
     "jest-environment-jsdom": "^30.0.5",
     "jest-image-snapshot": "^6.5.1",
     "lint-staged": "^15.5.2",
+    "next": "15.3.3",
     "prettier": "^3.6.2",
     "serve": "^14.2.4",
     "storybook": "^9.0.18",
