@@ -1,7 +1,7 @@
 {
   "buildCommand": "pnpm turbo run build --filter=@voai/frontend --force",
   "installCommand": "pnpm install --frozen-lockfile --production=false",
-  "outputDirectory": "apps/frontend/.next",
+  "outputDirectory": ".next",
   "framework": "nextjs",
   "devCommand": "pnpm dev --filter=@voai/frontend",
   "regions": ["iad1"],
