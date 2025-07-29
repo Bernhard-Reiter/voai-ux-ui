@@ -1,0 +1,40 @@
+# VOAI Website - Vercel Environment Variables Cleanup Commands
+# Kopieren Sie diese Befehle und führen Sie sie im Terminal aus
+
+cd /Users/bernhard/voai-website
+
+# Option 1: Einzeln löschen (sicherer)
+vercel env rm NEXT_PUBLIC_API_URL production --yes
+vercel env rm NEXT_PUBLIC_API_URL preview --yes
+vercel env rm NEXT_PUBLIC_API_URL development --yes
+
+vercel env rm NEXT_PUBLIC_APP_URL production --yes
+vercel env rm NEXT_PUBLIC_APP_URL preview --yes
+vercel env rm NEXT_PUBLIC_APP_URL development --yes
+
+vercel env rm TURBO_TEAM production --yes
+vercel env rm TURBO_TEAM preview --yes
+vercel env rm TURBO_TEAM development --yes
+
+vercel env rm FORCE_COLOR production --yes
+vercel env rm FORCE_COLOR preview --yes
+vercel env rm FORCE_COLOR development --yes
+
+vercel env rm NEXT_TELEMETRY_DISABLED production --yes
+vercel env rm NEXT_TELEMETRY_DISABLED preview --yes
+vercel env rm NEXT_TELEMETRY_DISABLED development --yes
+
+# Option 2: Alle auf einmal (schneller)
+for env in production preview development; do
+  vercel env rm NEXT_PUBLIC_API_URL $env --yes 2>/dev/null || true
+  vercel env rm NEXT_PUBLIC_APP_URL $env --yes 2>/dev/null || true
+  vercel env rm TURBO_TEAM $env --yes 2>/dev/null || true
+  vercel env rm FORCE_COLOR $env --yes 2>/dev/null || true
+  vercel env rm NEXT_TELEMETRY_DISABLED $env --yes 2>/dev/null || true
+  vercel env rm TURBO_TOKEN $env --yes 2>/dev/null || true
+  vercel env rm TURBO_REMOTE_ONLY $env --yes 2>/dev/null || true
+done
+
+# Nach dem Cleanup:
+vercel env ls
+vercel --prod
