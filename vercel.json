@@ -6,18 +6,8 @@
   "devCommand": "pnpm dev --filter=@voai/frontend",
   "regions": ["iad1"],
   "functions": {
-    "apps/frontend/app/api/**/*.ts": {
+    "apps/frontend/app/api/**/route.ts": {
       "maxDuration": 10
-    }
-  },
-  "env": {
-    "TURBO_TEAM": "vi4",
-    "FORCE_COLOR": "1"
-  },
-  "build": {
-    "env": {
-      "NEXT_TELEMETRY_DISABLED": "1",
-      "NODE_ENV": "production"
     }
   }
 }
