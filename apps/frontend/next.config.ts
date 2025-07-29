@@ -95,6 +95,15 @@ const nextConfig: NextConfig = {
       sideEffects: false,
     }
 
+    // Ensure proper module resolution
+    config.resolve = {
+      ...config.resolve,
+      alias: {
+        ...config.resolve.alias,
+        '@': __dirname,
+      },
+    }
+
     return config
   },
 }
