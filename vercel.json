@@ -4,6 +4,6 @@
   "outputDirectory": "apps/frontend/.next",
   "framework": "nextjs",
   "devCommand": "cd apps/frontend && pnpm dev",
-  "regions": ["iad1"],
+  "regions": ["fra1"],
   "ignoreCommand": "exit 0"
 }
