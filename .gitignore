@@ -69,3 +69,4 @@ crm-repo/
 # security - never commit these
 scripts/set-vercel-env.sh
 **/set-*-env.sh
+vercel-deploy.log
