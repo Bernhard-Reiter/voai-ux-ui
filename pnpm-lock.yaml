@@ -269,6 +269,9 @@ importers:
 
   packages/config:
     dependencies:
+      '@tailwindcss/forms':
+        specifier: ^0.5.7
+        version: 0.5.10(tailwindcss@3.4.17)
       style-dictionary:
         specifier: ^3.9.2
         version: 3.9.2
@@ -5298,7 +5301,6 @@ packages:
     dependencies:
       mini-svg-data-uri: 1.4.4
       tailwindcss: 3.4.17
-    dev: true
 
   /@tailwindcss/typography@0.5.16(tailwindcss@3.4.17):
     resolution: {integrity: sha512-0wDLwCVF5V3x3b1SGXPCDcdsbDHMBe+lkFzBRaHeLvNi+nrrnZ1lA18u+OTWO8iSWU2GxUOCvlXtDuqftc1oiA==}
@@ -11211,7 +11213,6 @@ packages:
   /mini-svg-data-uri@1.4.4:
     resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
     hasBin: true
-    dev: true
 
   /minimalistic-assert@1.0.1:
     resolution: {integrity: sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==}
