@@ -6,13 +6,13 @@ global.TextEncoder = TextEncoder
 global.TextDecoder = TextDecoder as any
 
 // Mock Next.js Router
-;(global as any).jest.mock('next/navigation', () => ({
+jest.mock('next/navigation', () => ({
   useRouter() {
     return {
-      push: (global as any).jest.fn(),
-      replace: (global as any).jest.fn(),
-      prefetch: (global as any).jest.fn(),
-      back: (global as any).jest.fn(),
+      push: jest.fn(),
+      replace: jest.fn(),
+      prefetch: jest.fn(),
+      back: jest.fn(),
     }
   },
   useSearchParams() {

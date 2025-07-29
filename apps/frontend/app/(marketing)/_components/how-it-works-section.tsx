@@ -38,7 +38,7 @@ export function HowItWorksSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-            So funktioniert's
+            So funktioniert&apos;s
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             In vier einfachen Schritten zu besseren Preisen
