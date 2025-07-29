@@ -1,4 +1,5 @@
 import voaiTokens from './voai-tokens-plugin.js'
+import tailwindForms from '@tailwindcss/forms'
 
 const preset = {
   darkMode: 'class',
@@ -80,7 +81,7 @@ const preset = {
     },
   },
   plugins: [
-    (await import('@tailwindcss/forms')).default({
+    tailwindForms({
       strategy: 'class',
     }),
     voaiTokens,
