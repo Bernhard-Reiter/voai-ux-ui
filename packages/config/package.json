@@ -14,8 +14,9 @@
     "zod": "^3.25.76"
   },
   "exports": {
-    "./tailwind.preset.mjs": "./tailwind.preset.mjs",
-    "./tailwind.preset": "./tailwind.preset.ts"
+    "./tailwind.preset": "./tailwind.preset.js",
+    "./tailwind.preset.js": "./tailwind.preset.js",
+    "./tailwind.preset.mjs": "./tailwind.preset.mjs"
   },
   "devDependencies": {
     "@types/node": "^20.19.9",
