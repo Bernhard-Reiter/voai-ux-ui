@@ -1,0 +1,36 @@
+{
+  "auth": {
+    "site_url": "https://voai-website-frontend.vercel.app",
+    "redirect_urls": [
+      "https://voai-website-frontend.vercel.app/auth/callback",
+      "https://voai-website-frontend.vercel.app/auth/confirm",
+      "https://voai-website-frontend.vercel.app/auth/reset-password",
+      "http://localhost:3000/auth/callback",
+      "http://localhost:3000/auth/confirm",
+      "http://localhost:3000/auth/reset-password"
+    ],
+    "external_providers": {
+      "google": {
+        "enabled": true,
+        "client_id": "YOUR_GOOGLE_CLIENT_ID",
+        "client_secret": "YOUR_GOOGLE_CLIENT_SECRET"
+      }
+    },
+    "jwt_expiry": 3600,
+    "enable_signup": true,
+    "enable_anonymous_sign_ins": false,
+    "minimum_password_length": 8,
+    "email": {
+      "enable_signup": true,
+      "enable_email_change": true,
+      "double_confirm_changes": true,
+      "confirm_email": true,
+      "autoconfirm": false
+    },
+    "sms": {
+      "enable_signup": false,
+      "enable_phone_change": false,
+      "autoconfirm": false
+    }
+  }
+}
