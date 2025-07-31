@@ -19,9 +19,14 @@
     "sb:build": "turbo run build-storybook --filter=@voai/ui",
     "visual:test": "test-storybook --url http://localhost:6006",
     "visual:update": "VISUAL_UPDATE=true pnpm visual:test",
-    "visual:test-static": "serve packages/ui/storybook-static -p 6006 -s & sleep 5 && test-storybook --url http://localhost:6006; kill $!"
+    "visual:test-static": "serve packages/ui/storybook-static -p 6006 -s & sleep 5 && test-storybook --url http://localhost:6006; kill $!",
+    "chromatic": "chromatic --playwright --project-token=chpt_ff83d6d73a36cf9",
+    "chromatic:ci": "chromatic --playwright --exit-zero-on-changes",
+    "chromatic:usage": "node scripts/chromatic-usage.js",
+    "chromatic:dry-run": "chromatic --playwright --project-token=chpt_ff83d6d73a36cf9 --dry-run"
   },
   "devDependencies": {
+    "@chromatic-com/playwright": "^0.12.5",
     "@chromatic-com/storybook": "^4.0.1",
     "@eslint/js": "^9.32.0",
     "@next/eslint-plugin-next": "^15.4.4",
@@ -77,6 +82,7 @@
     "@supabase/auth-helpers-react": "^0.5.0",
     "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.52.1",
+    "pg": "^8.16.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "swr": "^2.3.4",

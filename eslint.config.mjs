@@ -82,6 +82,9 @@ export default [
       '*.config.mjs',
       'jest.setup.js',
       '**/*.setup.js',
+      '**/test-results/**',
+      '**/playwright-report/**',
+      'temp/**',
     ],
   },
 ];

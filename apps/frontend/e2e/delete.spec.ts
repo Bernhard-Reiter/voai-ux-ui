@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from '@chromatic-com/playwright'
 
 test.describe('Account Deletion', () => {
   test('should show delete account option in settings', async ({ page }) => {

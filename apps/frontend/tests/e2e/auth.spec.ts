@@ -1,11 +1,12 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from '@chromatic-com/playwright'
 
 test.describe('Authentication Flow', () => {
+  // Tag critical tests with @critical for CI optimization
   test.beforeEach(async ({ page }) => {
     await page.goto('/')
   })
 
-  test('should display login page when accessing protected route', async ({ page }) => {
+  test('should display login page when accessing protected route @critical', async ({ page }) => {
     // Try to access dashboard without authentication
     await page.goto('/dashboard')
 
@@ -40,7 +41,7 @@ test.describe('Authentication Flow', () => {
     await expect(page.getByRole('link', { name: /try again/i })).toBeVisible()
   })
 
-  test('should protect dashboard route', async ({ page }) => {
+  test('should protect dashboard route @critical', async ({ page }) => {
     // Direct navigation to dashboard should redirect
     await page.goto('/dashboard')
     await expect(page).toHaveURL('/login')

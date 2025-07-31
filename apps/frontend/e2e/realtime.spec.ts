@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from '@chromatic-com/playwright'
 
 test.describe('Realtime Status Updates', () => {
   test.skip('should update workflow status in realtime', async ({ page, context }) => {

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from '@chromatic-com/playwright'
 
 test.describe('Performance and Accessibility', () => {
   test('homepage should load quickly', async ({ page }) => {

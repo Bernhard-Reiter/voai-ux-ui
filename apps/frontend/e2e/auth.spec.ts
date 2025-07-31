@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from '@chromatic-com/playwright'
 
 test.describe('Authentication Flows', () => {
   test('should display login page', async ({ page }) => {

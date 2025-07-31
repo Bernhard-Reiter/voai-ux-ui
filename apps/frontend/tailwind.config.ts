@@ -1,6 +1,6 @@
 import type { Config } from 'tailwindcss'
 
-const tailwindPreset = require('@voai/config/tailwind.preset')
+import tailwindPreset from '@voai/config/tailwind.preset'
 
 const config: Config = {
   presets: [tailwindPreset],
