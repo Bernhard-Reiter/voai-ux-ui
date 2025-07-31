@@ -2,44 +2,84 @@ name: Chromatic
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
+    branches: [main, develop]
+    types: [opened, synchronize, ready_for_review]
 
 jobs:
   chromatic:
+    name: Run Chromatic
     runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'push' ||
+      (github.event_name == 'pull_request' && !github.event.pull_request.draft)
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build packages
+      - name: Build project
         run: pnpm build
 
-      - name: Run Chromatic
-        uses: chromaui/action@latest
+      - name: Check changes
+        id: check-changes
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+            
+            # Check if UI components changed
+            if echo "$CHANGED_FILES" | grep -qE "(packages/ui/|apps/showcase/|apps/storybook/)"; then
+              echo "ui_changed=true" >> $GITHUB_OUTPUT
+            else
+              echo "ui_changed=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "ui_changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run Chromatic (Free Tier)
+        if: steps.check-changes.outputs.ui_changed == 'true'
+        uses: chromaui/action@v11
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          workingDir: packages/ui
-          buildScriptName: build-storybook
-          exitZeroOnChanges: true
+          buildScriptName: build
           onlyChanged: true
+          exitZeroOnChanges: true
+          skip: 'dependabot/**'
           externals: |
-            - 'src/styles/**'
-            - '**/*.css'
-            - '**/*.scss'
+            - packages/ui/src/**
+            - apps/showcase/src/**
+          traceChanged: true
+
+      - name: Check snapshot usage
+        if: always()
+        run: pnpm chromatic:usage || true
