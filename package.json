@@ -16,7 +16,11 @@
     "test": "turbo test",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "storybook": "pnpm --filter storybook-app dev",
-    "showcase": "pnpm --filter showcase dev"
+    "showcase": "pnpm --filter showcase dev",
+    "chromatic": "chromatic --playwright --project-token=chpt_ff83d6d73a36cf9",
+    "chromatic:ci": "chromatic --playwright --exit-zero-on-changes",
+    "chromatic:usage": "node scripts/chromatic-usage.js",
+    "chromatic:dry-run": "chromatic --playwright --project-token=chpt_ff83d6d73a36cf9 --dry-run"
   },
   "keywords": [
     "design-system",
@@ -33,8 +37,10 @@
     }
   },
   "devDependencies": {
+    "@chromatic-com/playwright": "^0.12.5",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
+    "chromatic": "^13.1.2",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^9.1.7",

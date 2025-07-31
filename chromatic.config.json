@@ -1,0 +1,17 @@
+{
+  "projectToken": "chpt_ff83d6d73a36cf9",
+  "buildScriptName": "build",
+  "playwright": true,
+  "autoAcceptChanges": false,
+  "exitZeroOnChanges": true,
+  "exitOnceUploaded": true,
+  "onlyChanged": true,
+  "skip": ["dependabot/**", "renovate/**", "chore/**", "docs/**", "*.md"],
+  "externals": ["public/**", "**/*.test.ts", "**/*.spec.ts"],
+  "storybookBuildDir": "storybook-static",
+  "storybookConfigDir": ".storybook",
+  "zip": true,
+  "debug": false,
+  "junitReport": false,
+  "preserveMissingSpecs": false
+}
