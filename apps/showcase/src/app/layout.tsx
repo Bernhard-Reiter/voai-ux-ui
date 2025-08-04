@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 import { UIProvider } from "@/components/UIProvider";
-import { getVariantServer } from "@/lib/flags";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -24,13 +23,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Get variant from server-side headers
-  const variant = getVariantServer();
-  
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <body className="min-h-screen bg-background font-sans antialiased">
-        <UIProvider variant={variant}>
+        <UIProvider>
           {children}
         </UIProvider>
       </body>

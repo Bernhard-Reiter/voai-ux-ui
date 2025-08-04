@@ -11,12 +11,12 @@ interface UIProviderProps {
 export function UIProvider({ children, variant: serverVariant }: UIProviderProps) {
   const [UIComponents, setUIComponents] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [currentVariant, setCurrentVariant] = useState(serverVariant || 'A');
+  const [currentVariant, setCurrentVariant] = useState<'A' | 'B'>('A');
 
   useEffect(() => {
     // Get client-side variant
     const clientVariant = getVariantClient();
-    const variantToUse = clientVariant || serverVariant || 'A';
+    const variantToUse = clientVariant;
     setCurrentVariant(variantToUse);
     
     const uiLibrary = getUILibrary(variantToUse);

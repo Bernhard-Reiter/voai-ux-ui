@@ -1,13 +1,11 @@
-import { headers } from 'next/headers';
-
 export type Variant = 'A' | 'B';
 export type UILibrary = 'classic' | 'cosmic';
 
 // Server-side variant detection
 export function getVariantServer(): Variant {
-  const headersList = headers();
-  const variant = headersList.get('x-ui-variant') as Variant | null;
-  return variant ?? 'A';
+  // This function should only be called in server components
+  // For now, return default variant
+  return 'A';
 }
 
 // Client-side variant detection
@@ -36,13 +34,8 @@ export function getVariant(reqHeaders?: Headers): Variant {
     return variant ?? 'A';
   }
   
-  // In server components, use headers() directly
-  try {
-    return getVariantServer();
-  } catch {
-    // Fallback if headers() is not available
-    return 'A';
-  }
+  // Default to A for server-side
+  return 'A';
 }
 
 // Map variant to UI library
