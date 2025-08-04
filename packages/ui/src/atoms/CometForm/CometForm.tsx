@@ -12,7 +12,8 @@ export interface CometInputProps
  */
 export const CometInput = React.forwardRef<HTMLInputElement, CometInputProps>(
   ({ className, label, id, ...props }, ref) => {
-    const inputId = id || React.useId();
+    const generatedId = React.useId();
+    const inputId = id || generatedId;
     
     return (
       <div className="space-y-1">
@@ -54,7 +55,8 @@ export interface CometTextareaProps
 
 export const CometTextarea = React.forwardRef<HTMLTextAreaElement, CometTextareaProps>(
   ({ className, label, id, ...props }, ref) => {
-    const textareaId = id || React.useId();
+    const generatedId = React.useId();
+    const textareaId = id || generatedId;
     
     return (
       <div className="space-y-1">
