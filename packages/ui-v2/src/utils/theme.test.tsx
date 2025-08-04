@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { renderHook, act } from '@testing-library/react';
+import { renderHook } from '@testing-library/react';
 import { ThemeProvider, useTheme, ThemeToggle } from './theme';
 
 // Mock localStorage

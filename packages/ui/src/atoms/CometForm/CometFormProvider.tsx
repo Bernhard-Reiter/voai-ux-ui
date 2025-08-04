@@ -38,13 +38,13 @@ export function CometFormProvider<TFieldValues extends FieldValues = FieldValues
 
   const form = externalForm || internalForm;
 
-  const handleSubmit = onSubmit
-    ? form.handleSubmit(onSubmit as any)
-    : (e: React.FormEvent) => e.preventDefault();
-
   return (
     <FormProvider {...(form as any)}>
-      <form onSubmit={handleSubmit} className={className} noValidate>
+      <form 
+        onSubmit={onSubmit ? form.handleSubmit(onSubmit as any) : (e) => e.preventDefault()} 
+        className={className} 
+        noValidate
+      >
         {children}
       </form>
     </FormProvider>

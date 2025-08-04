@@ -82,225 +82,233 @@ const defaultItems = [
   },
 ];
 
-export const InteractiveDemo: Story = {
-  render: () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [lastAction, setLastAction] = useState("");
+const InteractiveDemoComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [lastAction, setLastAction] = useState("");
 
-    const items = defaultItems.map(item => ({
-      ...item,
-      action: () => {
-        setLastAction(`Executed: ${item.title}`);
-        setIsOpen(false);
-      },
-    }));
+  const items = defaultItems.map(item => ({
+    ...item,
+    action: () => {
+      setLastAction(`Executed: ${item.title}`);
+      setIsOpen(false);
+    },
+  }));
 
-    return (
-      <div className="w-full h-[400px] flex flex-col items-center justify-center gap-4">
-        <button
-          onClick={() => setIsOpen(true)}
-          className="px-4 py-2 bg-[var(--c-accent)] text-white rounded-[var(--radius-sm)] hover:bg-[var(--c-accent-hover)]"
-        >
-          Open Command Palette
-        </button>
-        
-        <p className="text-sm text-[var(--c-text-secondary)]">
-          Or press <kbd className="px-2 py-1 text-xs bg-gray-100 rounded">⌘K</kbd> / <kbd className="px-2 py-1 text-xs bg-gray-100 rounded">Ctrl+K</kbd>
-        </p>
+  return (
+    <div className="w-full h-[400px] flex flex-col items-center justify-center gap-4">
+      <button
+        onClick={() => setIsOpen(true)}
+        className="px-4 py-2 bg-[var(--c-accent)] text-white rounded-[var(--radius-sm)] hover:bg-[var(--c-accent-hover)]"
+      >
+        Open Command Palette
+      </button>
+      
+      <p className="text-sm text-[var(--c-text-secondary)]">
+        Or press <kbd className="px-2 py-1 text-xs bg-gray-100 rounded">⌘K</kbd> / <kbd className="px-2 py-1 text-xs bg-gray-100 rounded">Ctrl+K</kbd>
+      </p>
 
-        {lastAction && (
-          <p className="text-sm text-green-600 mt-4">{lastAction}</p>
-        )}
+      {lastAction && (
+        <p className="text-sm text-green-600 mt-4">{lastAction}</p>
+      )}
 
-        {isOpen && (
-          <div className="fixed inset-0 z-50">
-            <div
-              className="fixed inset-0 bg-black/50"
-              onClick={() => setIsOpen(false)}
-            />
-            <div className="fixed inset-x-0 top-[20vh] z-50 mx-auto max-w-2xl px-4">
-              <CommandPalette items={items} />
-            </div>
+      {isOpen && (
+        <div className="fixed inset-0 z-50">
+          <div
+            className="fixed inset-0 bg-black/50"
+            onClick={() => setIsOpen(false)}
+          />
+          <div className="fixed inset-x-0 top-[20vh] z-50 mx-auto max-w-2xl px-4">
+            <CommandPalette items={items} />
           </div>
-        )}
-      </div>
-    );
-  },
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const InteractiveDemo: Story = {
+  render: () => <InteractiveDemoComponent />,
+};
+
+const WithCategoriesComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const categorizedItems = [
+    {
+      id: "goto-home",
+      title: "Go to Home",
+      description: "Navigate to home page",
+      icon: "→",
+      action: () => alert("Navigating to home..."),
+      keywords: ["navigate", "home"],
+    },
+    {
+      id: "goto-profile",
+      title: "Go to Profile",
+      description: "Navigate to your profile",
+      icon: "→",
+      action: () => alert("Navigating to profile..."),
+      keywords: ["navigate", "profile", "account"],
+    },
+    {
+      id: "toggle-theme",
+      title: "Toggle Theme",
+      description: "Switch between light and dark mode",
+      icon: "🎨",
+      action: () => alert("Toggling theme..."),
+      keywords: ["theme", "dark", "light", "mode"],
+    },
+    {
+      id: "toggle-sidebar",
+      title: "Toggle Sidebar",
+      description: "Show or hide the sidebar",
+      icon: "📱",
+      action: () => alert("Toggling sidebar..."),
+      keywords: ["sidebar", "layout", "view"],
+    },
+    {
+      id: "help-docs",
+      title: "Documentation",
+      description: "Open the documentation",
+      icon: "📚",
+      action: () => alert("Opening docs..."),
+      keywords: ["help", "docs", "guide"],
+    },
+    {
+      id: "help-support",
+      title: "Contact Support",
+      description: "Get help from our support team",
+      icon: "💬",
+      action: () => alert("Opening support..."),
+      keywords: ["help", "support", "contact"],
+    },
+  ];
+
+  return (
+    <div className="w-full h-[400px] flex flex-col items-center justify-center">
+      <button
+        onClick={() => setIsOpen(true)}
+        className="px-4 py-2 bg-[var(--c-accent)] text-white rounded-[var(--radius-sm)] hover:bg-[var(--c-accent-hover)]"
+      >
+        Open Command Palette
+      </button>
+
+      {isOpen && (
+        <div className="fixed inset-0 z-50">
+          <div
+            className="fixed inset-0 bg-black/50"
+            onClick={() => setIsOpen(false)}
+          />
+          <div className="fixed inset-x-0 top-[20vh] z-50 mx-auto max-w-2xl px-4">
+            <CommandPalette
+              items={categorizedItems}
+              placeholder="Search for commands, navigation, or help..."
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export const WithCategories: Story = {
-  render: () => {
-    const [isOpen, setIsOpen] = useState(false);
+  render: () => <WithCategoriesComponent />,
+};
 
-    const categorizedItems = [
-      {
-        id: "goto-home",
-        title: "Go to Home",
-        description: "Navigate to home page",
-        icon: "→",
-        action: () => alert("Navigating to home..."),
-        keywords: ["navigate", "home"],
-      },
-      {
-        id: "goto-profile",
-        title: "Go to Profile",
-        description: "Navigate to your profile",
-        icon: "→",
-        action: () => alert("Navigating to profile..."),
-        keywords: ["navigate", "profile", "account"],
-      },
-      {
-        id: "toggle-theme",
-        title: "Toggle Theme",
-        description: "Switch between light and dark mode",
-        icon: "🎨",
-        action: () => alert("Toggling theme..."),
-        keywords: ["theme", "dark", "light", "mode"],
-      },
-      {
-        id: "toggle-sidebar",
-        title: "Toggle Sidebar",
-        description: "Show or hide the sidebar",
-        icon: "📱",
-        action: () => alert("Toggling sidebar..."),
-        keywords: ["sidebar", "layout", "view"],
-      },
-      {
-        id: "help-docs",
-        title: "Documentation",
-        description: "Open the documentation",
-        icon: "📚",
-        action: () => alert("Opening docs..."),
-        keywords: ["help", "docs", "guide"],
-      },
-      {
-        id: "help-support",
-        title: "Contact Support",
-        description: "Get help from our support team",
-        icon: "💬",
-        action: () => alert("Opening support..."),
-        keywords: ["help", "support", "contact"],
-      },
-    ];
+const EmptyStateComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-    return (
-      <div className="w-full h-[400px] flex flex-col items-center justify-center">
-        <button
-          onClick={() => setIsOpen(true)}
-          className="px-4 py-2 bg-[var(--c-accent)] text-white rounded-[var(--radius-sm)] hover:bg-[var(--c-accent-hover)]"
-        >
-          Open Command Palette
-        </button>
+  return (
+    <div className="w-full h-[400px] flex flex-col items-center justify-center">
+      <button
+        onClick={() => setIsOpen(true)}
+        className="px-4 py-2 bg-[var(--c-accent)] text-white rounded-[var(--radius-sm)] hover:bg-[var(--c-accent-hover)]"
+      >
+        Open Empty Command Palette
+      </button>
 
-        {isOpen && (
-          <div className="fixed inset-0 z-50">
-            <div
-              className="fixed inset-0 bg-black/50"
-              onClick={() => setIsOpen(false)}
+      {isOpen && (
+        <div className="fixed inset-0 z-50">
+          <div
+            className="fixed inset-0 bg-black/50"
+            onClick={() => setIsOpen(false)}
+          />
+          <div className="fixed inset-x-0 top-[20vh] z-50 mx-auto max-w-2xl px-4">
+            <CommandPalette
+              items={[]}
+              emptyMessage="No commands available. Try adding some!"
             />
-            <div className="fixed inset-x-0 top-[20vh] z-50 mx-auto max-w-2xl px-4">
-              <CommandPalette
-                items={categorizedItems}
-                placeholder="Search for commands, navigation, or help..."
-              />
-            </div>
           </div>
-        )}
-      </div>
-    );
-  },
+        </div>
+      )}
+    </div>
+  );
 };
 
 export const EmptyState: Story = {
-  render: () => {
-    const [isOpen, setIsOpen] = useState(false);
+  render: () => <EmptyStateComponent />,
+};
 
-    return (
-      <div className="w-full h-[400px] flex flex-col items-center justify-center">
-        <button
-          onClick={() => setIsOpen(true)}
-          className="px-4 py-2 bg-[var(--c-accent)] text-white rounded-[var(--radius-sm)] hover:bg-[var(--c-accent-hover)]"
-        >
-          Open Empty Command Palette
-        </button>
+const CustomStylingComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-        {isOpen && (
-          <div className="fixed inset-0 z-50">
-            <div
-              className="fixed inset-0 bg-black/50"
-              onClick={() => setIsOpen(false)}
+  const customItems = [
+    {
+      id: "cosmic-jump",
+      title: "Cosmic Jump",
+      description: "Teleport to another dimension",
+      icon: "🚀",
+      action: () => alert("Jumping through cosmos..."),
+      keywords: ["space", "teleport"],
+    },
+    {
+      id: "nebula-scan",
+      title: "Nebula Scan",
+      description: "Scan nearby nebulas for resources",
+      icon: "🌌",
+      action: () => alert("Scanning nebulas..."),
+      keywords: ["scan", "resources"],
+    },
+    {
+      id: "star-chart",
+      title: "Star Chart",
+      description: "View the cosmic star chart",
+      icon: "⭐",
+      action: () => alert("Opening star chart..."),
+      keywords: ["map", "navigation"],
+    },
+  ];
+
+  return (
+    <div className="w-full h-[400px] flex flex-col items-center justify-center">
+      <button
+        onClick={() => setIsOpen(true)}
+        className="px-4 py-2 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-[var(--radius-sm)] hover:from-purple-600 hover:to-indigo-700"
+      >
+        Launch Cosmic Command Center
+      </button>
+
+      {isOpen && (
+        <div className="fixed inset-0 z-50">
+          <div
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm"
+            onClick={() => setIsOpen(false)}
+          />
+          <div className="fixed inset-x-0 top-[20vh] z-50 mx-auto max-w-2xl px-4">
+            <CommandPalette
+              items={customItems}
+              placeholder="Enter cosmic command..."
+              className="bg-gradient-to-br from-purple-50 to-indigo-50 border-2 border-purple-200"
             />
-            <div className="fixed inset-x-0 top-[20vh] z-50 mx-auto max-w-2xl px-4">
-              <CommandPalette
-                items={[]}
-                emptyMessage="No commands available. Try adding some!"
-              />
-            </div>
           </div>
-        )}
-      </div>
-    );
-  },
+        </div>
+      )}
+    </div>
+  );
 };
 
 export const CustomStyling: Story = {
-  render: () => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const customItems = [
-      {
-        id: "cosmic-jump",
-        title: "Cosmic Jump",
-        description: "Teleport to another dimension",
-        icon: "🚀",
-        action: () => alert("Jumping through cosmos..."),
-        keywords: ["space", "teleport"],
-      },
-      {
-        id: "nebula-scan",
-        title: "Nebula Scan",
-        description: "Scan nearby nebulas for resources",
-        icon: "🌌",
-        action: () => alert("Scanning nebulas..."),
-        keywords: ["scan", "resources"],
-      },
-      {
-        id: "star-chart",
-        title: "Star Chart",
-        description: "View the cosmic star chart",
-        icon: "⭐",
-        action: () => alert("Opening star chart..."),
-        keywords: ["map", "navigation"],
-      },
-    ];
-
-    return (
-      <div className="w-full h-[400px] flex flex-col items-center justify-center">
-        <button
-          onClick={() => setIsOpen(true)}
-          className="px-4 py-2 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-[var(--radius-sm)] hover:from-purple-600 hover:to-indigo-700"
-        >
-          Launch Cosmic Command Center
-        </button>
-
-        {isOpen && (
-          <div className="fixed inset-0 z-50">
-            <div
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm"
-              onClick={() => setIsOpen(false)}
-            />
-            <div className="fixed inset-x-0 top-[20vh] z-50 mx-auto max-w-2xl px-4">
-              <CommandPalette
-                items={customItems}
-                placeholder="Enter cosmic command..."
-                className="bg-gradient-to-br from-purple-50 to-indigo-50 border-2 border-purple-200"
-              />
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  },
+  render: () => <CustomStylingComponent />,
 };
 
 // Note: This story demonstrates the command palette but won't show in the static Storybook view

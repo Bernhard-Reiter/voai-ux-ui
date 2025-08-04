@@ -22,7 +22,6 @@ export interface CosmicFlowProps {
   nodes?: CosmicNode[];
   connections?: CosmicConnection[];
   onNodesChange?: (nodes: CosmicNode[]) => void;
-  onConnectionsChange?: (connections: CosmicConnection[]) => void;
   width?: number;
   height?: number;
   className?: string;
@@ -45,7 +44,6 @@ export const CosmicFlow = React.forwardRef<HTMLCanvasElement, CosmicFlowProps>(
       nodes = [],
       connections = [],
       onNodesChange,
-      onConnectionsChange,
       width = 800,
       height = 600,
       className,
@@ -60,7 +58,6 @@ export const CosmicFlow = React.forwardRef<HTMLCanvasElement, CosmicFlowProps>(
       zoom: 1,
     });
     const [draggedNode, setDraggedNode] = React.useState<string | null>(null);
-    const [mousePos, setMousePos] = React.useState({ x: 0, y: 0 });
     const [isPanning, setIsPanning] = React.useState(false);
     const [panStart, setPanStart] = React.useState({ x: 0, y: 0 });
 
@@ -78,16 +75,6 @@ export const CosmicFlow = React.forwardRef<HTMLCanvasElement, CosmicFlowProps>(
       [transform]
     );
 
-    // Convert world coordinates to screen coordinates
-    const worldToScreen = React.useCallback(
-      (worldX: number, worldY: number) => {
-        return {
-          x: worldX * transform.zoom + transform.x,
-          y: worldY * transform.zoom + transform.y,
-        };
-      },
-      [transform]
-    );
 
     // Find node at position
     const getNodeAtPosition = React.useCallback(
@@ -253,7 +240,6 @@ export const CosmicFlow = React.forwardRef<HTMLCanvasElement, CosmicFlowProps>(
 
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      setMousePos({ x, y });
 
       if (draggedNode && !readOnly) {
         const worldPos = screenToWorld(x, y);

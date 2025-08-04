@@ -58,9 +58,8 @@ export const WithConnections: Story = {
   },
 };
 
-export const Interactive: Story = {
-  render: () => {
-    const [nodes, setNodes] = useState<CosmicNode[]>([
+const InteractiveComponent = () => {
+  const [nodes, setNodes] = useState<CosmicNode[]>([
       { id: '1', x: 100, y: 100, label: 'Drag Me', type: 'input' },
       { id: '2', x: 300, y: 100, label: 'Move Me' },
       { id: '3', x: 500, y: 100, label: 'Drag Me Too', type: 'output' },
@@ -91,12 +90,14 @@ export const Interactive: Story = {
         />
       </div>
     );
-  },
 };
 
-export const ComplexFlow: Story = {
-  render: () => {
-    const [nodes] = useState<CosmicNode[]>([
+export const Interactive: Story = {
+  render: InteractiveComponent,
+};
+
+const ComplexFlowComponent = () => {
+  const [nodes] = useState<CosmicNode[]>([
       { id: 'input', x: 100, y: 250, label: 'Data Source', type: 'input' },
       { id: 'parse', x: 250, y: 150, label: 'Parse' },
       { id: 'validate', x: 250, y: 350, label: 'Validate' },
@@ -127,7 +128,10 @@ export const ComplexFlow: Story = {
         height={500}
       />
     );
-  },
+};
+
+export const ComplexFlow: Story = {
+  render: ComplexFlowComponent,
 };
 
 export const ReadOnly: Story = {

@@ -58,76 +58,80 @@ export const WithConnections: Story = {
   },
 };
 
-export const Interactive: Story = {
-  render: () => {
-    const [nodes, setNodes] = useState<CosmicNode[]>([
-      { id: '1', x: 100, y: 100, label: 'Drag Me', type: 'input' },
-      { id: '2', x: 300, y: 100, label: 'Move Me' },
-      { id: '3', x: 500, y: 100, label: 'Drag Me Too', type: 'output' },
-    ]);
+const InteractiveComponent = () => {
+  const [nodes, setNodes] = useState<CosmicNode[]>([
+    { id: '1', x: 100, y: 100, label: 'Drag Me', type: 'input' },
+    { id: '2', x: 300, y: 100, label: 'Move Me' },
+    { id: '3', x: 500, y: 100, label: 'Drag Me Too', type: 'output' },
+  ]);
 
-    const [connections] = useState<CosmicConnection[]>([
-      { id: 'c1', source: '1', target: '2' },
-      { id: 'c2', source: '2', target: '3' },
-    ]);
+  const [connections] = useState<CosmicConnection[]>([
+    { id: 'c1', source: '1', target: '2' },
+    { id: 'c2', source: '2', target: '3' },
+  ]);
 
-    return (
-      <div className="space-y-4">
-        <div className="text-sm text-[var(--c-text-secondary)]">
-          <p>Try these interactions:</p>
-          <ul className="list-disc list-inside mt-2">
-            <li>Drag nodes to reposition them</li>
-            <li>Click and drag on empty space to pan</li>
-            <li>Use mouse wheel to zoom in/out</li>
-            <li>Click zoom controls in the bottom right</li>
-          </ul>
-        </div>
-        <CosmicFlow
-          nodes={nodes}
-          connections={connections}
-          onNodesChange={setNodes}
-          width={800}
-          height={400}
-        />
+  return (
+    <div className="space-y-4">
+      <div className="text-sm text-[var(--c-text-secondary)]">
+        <p>Try these interactions:</p>
+        <ul className="list-disc list-inside mt-2">
+          <li>Drag nodes to reposition them</li>
+          <li>Click and drag on empty space to pan</li>
+          <li>Use mouse wheel to zoom in/out</li>
+          <li>Click zoom controls in the bottom right</li>
+        </ul>
       </div>
-    );
-  },
-};
-
-export const ComplexFlow: Story = {
-  render: () => {
-    const [nodes] = useState<CosmicNode[]>([
-      { id: 'input', x: 100, y: 250, label: 'Data Source', type: 'input' },
-      { id: 'parse', x: 250, y: 150, label: 'Parse' },
-      { id: 'validate', x: 250, y: 350, label: 'Validate' },
-      { id: 'transform', x: 400, y: 250, label: 'Transform' },
-      { id: 'enrich', x: 550, y: 150, label: 'Enrich' },
-      { id: 'filter', x: 550, y: 350, label: 'Filter' },
-      { id: 'aggregate', x: 700, y: 250, label: 'Aggregate' },
-      { id: 'output', x: 850, y: 250, label: 'Output', type: 'output' },
-    ]);
-
-    const [connections] = useState<CosmicConnection[]>([
-      { id: 'c1', source: 'input', target: 'parse' },
-      { id: 'c2', source: 'input', target: 'validate' },
-      { id: 'c3', source: 'parse', target: 'transform' },
-      { id: 'c4', source: 'validate', target: 'transform' },
-      { id: 'c5', source: 'transform', target: 'enrich' },
-      { id: 'c6', source: 'transform', target: 'filter' },
-      { id: 'c7', source: 'enrich', target: 'aggregate' },
-      { id: 'c8', source: 'filter', target: 'aggregate' },
-      { id: 'c9', source: 'aggregate', target: 'output' },
-    ]);
-
-    return (
       <CosmicFlow
         nodes={nodes}
         connections={connections}
-        width={1000}
-        height={500}
+        onNodesChange={setNodes}
+        width={800}
+        height={400}
       />
-    );
-  },
+    </div>
+  );
+};
+
+export const Interactive: Story = {
+  render: () => <InteractiveComponent />,
+};
+
+const ComplexFlowComponent = () => {
+  const [nodes] = useState<CosmicNode[]>([
+    { id: 'input', x: 100, y: 250, label: 'Data Source', type: 'input' },
+    { id: 'parse', x: 250, y: 150, label: 'Parse' },
+    { id: 'validate', x: 250, y: 350, label: 'Validate' },
+    { id: 'transform', x: 400, y: 250, label: 'Transform' },
+    { id: 'enrich', x: 550, y: 150, label: 'Enrich' },
+    { id: 'filter', x: 550, y: 350, label: 'Filter' },
+    { id: 'aggregate', x: 700, y: 250, label: 'Aggregate' },
+    { id: 'output', x: 850, y: 250, label: 'Output', type: 'output' },
+  ]);
+
+  const [connections] = useState<CosmicConnection[]>([
+    { id: 'c1', source: 'input', target: 'parse' },
+    { id: 'c2', source: 'input', target: 'validate' },
+    { id: 'c3', source: 'parse', target: 'transform' },
+    { id: 'c4', source: 'validate', target: 'transform' },
+    { id: 'c5', source: 'transform', target: 'enrich' },
+    { id: 'c6', source: 'transform', target: 'filter' },
+    { id: 'c7', source: 'enrich', target: 'aggregate' },
+    { id: 'c8', source: 'filter', target: 'aggregate' },
+    { id: 'c9', source: 'aggregate', target: 'output' },
+  ]);
+
+  return (
+    <CosmicFlow
+      nodes={nodes}
+      connections={connections}
+      width={1000}
+      height={500}
+    />
+  );
+};
+
+export const ComplexFlow: Story = {
+  render: () => <ComplexFlowComponent />,
 };
 
 export const ReadOnly: Story = {

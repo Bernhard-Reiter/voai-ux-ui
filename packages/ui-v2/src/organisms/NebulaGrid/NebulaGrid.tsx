@@ -34,7 +34,6 @@ export interface NebulaGridProps<T = any> {
 export function NebulaGrid<T = any>({
   data,
   columns,
-  rowHeight = 48,
   headerHeight = 56,
   onRowClick,
   selectedRowIndex,
@@ -99,7 +98,7 @@ export function NebulaGrid<T = any>({
         )}
         style={{ height: headerHeight }}
       >
-        {columns.map((column, colIndex) => (
+        {columns.map((column) => (
           <div
             key={column.id}
             className={cn(
@@ -120,7 +119,6 @@ export function NebulaGrid<T = any>({
                 className="w-1 h-full cursor-col-resize hover:bg-[var(--c-accent)] ml-auto"
                 onMouseDown={(e) => {
                   const startX = e.pageX;
-                  const startWidth = columnWidths[column.id] || column.width || 150;
                   
                   const handleMouseMove = (e: MouseEvent) => {
                     handleColumnResize(column.id, e.pageX - startX);

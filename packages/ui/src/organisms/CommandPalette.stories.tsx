@@ -82,20 +82,19 @@ const defaultItems = [
   },
 ];
 
-export const InteractiveDemo: Story = {
-  render: () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [lastAction, setLastAction] = useState("");
+const InteractiveDemoComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [lastAction, setLastAction] = useState("");
 
-    const items = defaultItems.map(item => ({
-      ...item,
-      action: () => {
-        setLastAction(`Executed: ${item.title}`);
-        setIsOpen(false);
-      },
-    }));
+  const items = defaultItems.map(item => ({
+    ...item,
+    action: () => {
+      setLastAction(`Executed: ${item.title}`);
+      setIsOpen(false);
+    },
+  }));
 
-    return (
+  return (
       <div className="w-full h-[400px] flex flex-col items-center justify-center gap-4">
         <button
           onClick={() => setIsOpen(true)}
@@ -125,65 +124,67 @@ export const InteractiveDemo: Story = {
         )}
       </div>
     );
-  },
 };
 
-export const WithCategories: Story = {
-  render: () => {
-    const [isOpen, setIsOpen] = useState(false);
+export const InteractiveDemo: Story = {
+  render: InteractiveDemoComponent,
+};
 
-    const categorizedItems = [
-      {
-        id: "goto-home",
-        title: "Go to Home",
-        description: "Navigate to home page",
-        icon: "→",
-        action: () => alert("Navigating to home..."),
-        keywords: ["navigate", "home"],
-      },
-      {
-        id: "goto-profile",
-        title: "Go to Profile",
-        description: "Navigate to your profile",
-        icon: "→",
-        action: () => alert("Navigating to profile..."),
-        keywords: ["navigate", "profile", "account"],
-      },
-      {
-        id: "toggle-theme",
-        title: "Toggle Theme",
-        description: "Switch between light and dark mode",
-        icon: "🎨",
-        action: () => alert("Toggling theme..."),
-        keywords: ["theme", "dark", "light", "mode"],
-      },
-      {
-        id: "toggle-sidebar",
-        title: "Toggle Sidebar",
-        description: "Show or hide the sidebar",
-        icon: "📱",
-        action: () => alert("Toggling sidebar..."),
-        keywords: ["sidebar", "layout", "view"],
-      },
-      {
-        id: "help-docs",
-        title: "Documentation",
-        description: "Open the documentation",
-        icon: "📚",
-        action: () => alert("Opening docs..."),
-        keywords: ["help", "docs", "guide"],
-      },
-      {
-        id: "help-support",
-        title: "Contact Support",
-        description: "Get help from our support team",
-        icon: "💬",
-        action: () => alert("Opening support..."),
-        keywords: ["help", "support", "contact"],
-      },
-    ];
+const WithCategoriesComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-    return (
+  const categorizedItems = [
+    {
+      id: "goto-home",
+      title: "Go to Home",
+      description: "Navigate to home page",
+      icon: "→",
+      action: () => alert("Navigating to home..."),
+      keywords: ["navigate", "home"],
+    },
+    {
+      id: "goto-profile",
+      title: "Go to Profile",
+      description: "Navigate to your profile",
+      icon: "→",
+      action: () => alert("Navigating to profile..."),
+      keywords: ["navigate", "profile", "account"],
+    },
+    {
+      id: "toggle-theme",
+      title: "Toggle Theme",
+      description: "Switch between light and dark mode",
+      icon: "🎨",
+      action: () => alert("Toggling theme..."),
+      keywords: ["theme", "dark", "light", "mode"],
+    },
+    {
+      id: "toggle-sidebar",
+      title: "Toggle Sidebar",
+      description: "Show or hide the sidebar",
+      icon: "📱",
+      action: () => alert("Toggling sidebar..."),
+      keywords: ["sidebar", "layout", "view"],
+    },
+    {
+      id: "help-docs",
+      title: "Documentation",
+      description: "Open the documentation",
+      icon: "📚",
+      action: () => alert("Opening docs..."),
+      keywords: ["help", "docs", "guide"],
+    },
+    {
+      id: "help-support",
+      title: "Contact Support",
+      description: "Get help from our support team",
+      icon: "💬",
+      action: () => alert("Opening support..."),
+      keywords: ["help", "support", "contact"],
+    },
+  ];
+
+  return (
       <div className="w-full h-[400px] flex flex-col items-center justify-center">
         <button
           onClick={() => setIsOpen(true)}
@@ -208,14 +209,16 @@ export const WithCategories: Story = {
         )}
       </div>
     );
-  },
 };
 
-export const EmptyState: Story = {
-  render: () => {
-    const [isOpen, setIsOpen] = useState(false);
+export const WithCategories: Story = {
+  render: WithCategoriesComponent,
+};
 
-    return (
+const EmptyStateComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
       <div className="w-full h-[400px] flex flex-col items-center justify-center">
         <button
           onClick={() => setIsOpen(true)}
@@ -240,41 +243,43 @@ export const EmptyState: Story = {
         )}
       </div>
     );
-  },
 };
 
-export const CustomStyling: Story = {
-  render: () => {
-    const [isOpen, setIsOpen] = useState(false);
+export const EmptyState: Story = {
+  render: EmptyStateComponent,
+};
 
-    const customItems = [
-      {
-        id: "cosmic-jump",
-        title: "Cosmic Jump",
-        description: "Teleport to another dimension",
-        icon: "🚀",
-        action: () => alert("Jumping through cosmos..."),
-        keywords: ["space", "teleport"],
-      },
-      {
-        id: "nebula-scan",
-        title: "Nebula Scan",
-        description: "Scan nearby nebulas for resources",
-        icon: "🌌",
-        action: () => alert("Scanning nebulas..."),
-        keywords: ["scan", "resources"],
-      },
-      {
-        id: "star-chart",
-        title: "Star Chart",
-        description: "View the cosmic star chart",
-        icon: "⭐",
-        action: () => alert("Opening star chart..."),
-        keywords: ["map", "navigation"],
-      },
-    ];
+const CustomStylingComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-    return (
+  const customItems = [
+    {
+      id: "cosmic-jump",
+      title: "Cosmic Jump",
+      description: "Teleport to another dimension",
+      icon: "🚀",
+      action: () => alert("Jumping through cosmos..."),
+      keywords: ["space", "teleport"],
+    },
+    {
+      id: "nebula-scan",
+      title: "Nebula Scan",
+      description: "Scan nearby nebulas for resources",
+      icon: "🌌",
+      action: () => alert("Scanning nebulas..."),
+      keywords: ["scan", "resources"],
+    },
+    {
+      id: "star-chart",
+      title: "Star Chart",
+      description: "View the cosmic star chart",
+      icon: "⭐",
+      action: () => alert("Opening star chart..."),
+      keywords: ["map", "navigation"],
+    },
+  ];
+
+  return (
       <div className="w-full h-[400px] flex flex-col items-center justify-center">
         <button
           onClick={() => setIsOpen(true)}
@@ -300,7 +305,10 @@ export const CustomStyling: Story = {
         )}
       </div>
     );
-  },
+};
+
+export const CustomStyling: Story = {
+  render: CustomStylingComponent,
 };
 
 // Note: This story demonstrates the command palette but won't show in the static Storybook view
