@@ -178,4 +178,4 @@ export function useAnalytics() {
 }
 
 // Re-export the classic analytics hook if it exists
-export { useAnalytics as useAnalyticsClassic } from '@voai/ui/hooks/useAnalytics';
+// export { useAnalytics as useAnalyticsClassic } from '@voai/ui/hooks/useAnalytics';
