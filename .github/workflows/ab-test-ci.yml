@@ -1,0 +1,188 @@
+name: A/B Test CI
+
+on:
+  push:
+    branches: [main, develop, feat/ab-test-cosmic]
+  pull_request:
+    branches: [main, develop]
+
+env:
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+
+jobs:
+  lint-and-type-check:
+    name: Lint and Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Run linters
+        run: pnpm lint
+        
+      - name: Type check
+        run: pnpm type-check
+
+  test-variants:
+    name: Test UI Variants
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ui, ui-v2]
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Build packages
+        run: pnpm build --filter=@voai/${{ matrix.variant }}
+        
+      - name: Run tests for ${{ matrix.variant }}
+        run: pnpm test --filter=@voai/${{ matrix.variant }}
+
+  e2e-test-variants:
+    name: E2E Tests for Both Variants
+    runs-on: ubuntu-latest
+    needs: [lint-and-type-check, test-variants]
+    strategy:
+      matrix:
+        variant: [classic, cosmic]
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps
+        
+      - name: Build all packages
+        run: pnpm build
+        
+      - name: Run E2E tests for ${{ matrix.variant }}
+        run: pnpm test:e2e:variant --variant=${{ matrix.variant }}
+        env:
+          TEST_VARIANT: ${{ matrix.variant }}
+          
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report-${{ matrix.variant }}
+          path: playwright-report/
+          retention-days: 30
+
+  lighthouse-ci:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    needs: [lint-and-type-check, test-variants]
+    strategy:
+      matrix:
+        variant: [classic, cosmic]
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Build showcase app
+        run: pnpm build --filter=showcase
+        
+      - name: Run Lighthouse CI for ${{ matrix.variant }}
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          urls: |
+            http://localhost:3000/?variant=${{ matrix.variant }}
+            http://localhost:3000/cosmic?variant=${{ matrix.variant }}
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          configPath: ./apps/showcase/lighthouserc.js
+        env:
+          LHCI_BUILD_CONTEXT__CURRENT_BRANCH: ${{ github.ref_name }}
+          LHCI_BUILD_CONTEXT__COMMIT_SHA: ${{ github.sha }}
+          UI_VARIANT: ${{ matrix.variant }}
+
+  deploy-preview:
+    name: Deploy Preview
+    runs-on: ubuntu-latest
+    needs: [e2e-test-variants, lighthouse-ci]
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+        
+      - name: Pull Vercel Environment
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        
+      - name: Build for both variants
+        run: |
+          # Build Classic variant
+          UI_VARIANT=A vercel build --prod
+          mv .vercel/output classic-output
+          
+          # Build Cosmic variant  
+          UI_VARIANT=B vercel build --prod
+          mv .vercel/output cosmic-output
+          
+      - name: Deploy both variants
+        run: |
+          # Deploy Classic
+          mv classic-output .vercel/output
+          CLASSIC_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})
+          
+          # Deploy Cosmic
+          mv cosmic-output .vercel/output
+          COSMIC_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})
+          
+          echo "Classic Preview: $CLASSIC_URL" >> $GITHUB_STEP_SUMMARY
+          echo "Cosmic Preview: $COSMIC_URL" >> $GITHUB_STEP_SUMMARY

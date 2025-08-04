@@ -1,0 +1,214 @@
+{
+  "$themes": [],
+  "$metadata": {
+    "tokenSetOrder": [
+      "global",
+      "light",
+      "dark"
+    ]
+  },
+  "global": {
+    "spacing": {
+      "0": {
+        "value": "0",
+        "type": "spacing"
+      },
+      "1": {
+        "value": "8",
+        "type": "spacing"
+      },
+      "2": {
+        "value": "16",
+        "type": "spacing"  
+      },
+      "3": {
+        "value": "24",
+        "type": "spacing"
+      },
+      "4": {
+        "value": "32",
+        "type": "spacing"
+      },
+      "5": {
+        "value": "48",
+        "type": "spacing"
+      },
+      "6": {
+        "value": "64",
+        "type": "spacing"
+      }
+    },
+    "fontFamilies": {
+      "sans": {
+        "value": "Inter Variable",
+        "type": "fontFamilies"
+      },
+      "mono": {
+        "value": "JetBrains Mono",
+        "type": "fontFamilies"
+      }
+    },
+    "fontSizes": {
+      "xs": {
+        "value": "12",
+        "type": "fontSizes"
+      },
+      "sm": {
+        "value": "14",
+        "type": "fontSizes"
+      },
+      "base": {
+        "value": "16",
+        "type": "fontSizes"
+      },
+      "lg": {
+        "value": "18",
+        "type": "fontSizes"
+      },
+      "xl": {
+        "value": "20",
+        "type": "fontSizes"
+      },
+      "2xl": {
+        "value": "24",
+        "type": "fontSizes"
+      },
+      "3xl": {
+        "value": "30",
+        "type": "fontSizes"
+      },
+      "4xl": {
+        "value": "36",
+        "type": "fontSizes"
+      },
+      "5xl": {
+        "value": "48",
+        "type": "fontSizes"
+      },
+      "6xl": {
+        "value": "60",
+        "type": "fontSizes"
+      }
+    },
+    "fontWeights": {
+      "regular": {
+        "value": "400",
+        "type": "fontWeights"
+      },
+      "medium": {
+        "value": "500",
+        "type": "fontWeights"
+      },
+      "semibold": {
+        "value": "600",
+        "type": "fontWeights"
+      },
+      "bold": {
+        "value": "700",
+        "type": "fontWeights"
+      }
+    },
+    "borderRadius": {
+      "sm": {
+        "value": "4",
+        "type": "borderRadius"
+      },
+      "md": {
+        "value": "8",
+        "type": "borderRadius"
+      },
+      "lg": {
+        "value": "16",
+        "type": "borderRadius"
+      }
+    }
+  },
+  "light": {
+    "colors": {
+      "bg": {
+        "value": "#FFFFFF",
+        "type": "color"
+      },
+      "surface": {
+        "value": "#F6F6F7",
+        "type": "color"
+      },
+      "border": {
+        "value": "#E5E7EB",
+        "type": "color"
+      },
+      "text": {
+        "primary": {
+          "value": "#0E0E11",
+          "type": "color"
+        },
+        "secondary": {
+          "value": "#6B7280",
+          "type": "color"
+        }
+      },
+      "accent": {
+        "value": "#4F46E5",
+        "type": "color"
+      },
+      "status": {
+        "success": {
+          "value": "#22C55E",
+          "type": "color"
+        },
+        "warning": {
+          "value": "#FACC15",
+          "type": "color"
+        },
+        "error": {
+          "value": "#EF4444",
+          "type": "color"
+        }
+      }
+    }
+  },
+  "dark": {
+    "colors": {
+      "bg": {
+        "value": "#0F0F0F",
+        "type": "color"
+      },
+      "surface": {
+        "value": "#1A1A1A",
+        "type": "color"
+      },
+      "border": {
+        "value": "#2D2D2D",
+        "type": "color"
+      },
+      "text": {
+        "primary": {
+          "value": "#FFFFFF",
+          "type": "color"
+        },
+        "secondary": {
+          "value": "#9CA3AF",
+          "type": "color"
+        }
+      },
+      "accent": {
+        "value": "#6366F1",
+        "type": "color"
+      },
+      "status": {
+        "success": {
+          "value": "#16A34A",
+          "type": "color"
+        },
+        "warning": {
+          "value": "#CA8A04",
+          "type": "color"
+        },
+        "error": {
+          "value": "#DC2626",
+          "type": "color"
+        }
+      }
+    }
+  }
+}
