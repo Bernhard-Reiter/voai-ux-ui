@@ -24,7 +24,7 @@ describe('CometFormField', () => {
     const TestForm = () => (
       <CometFormProvider<TestFormData> 
         schema={testSchema}
-        options={{ defaultValues }}
+        options={{ defaultValues, mode: 'onSubmit' }}
       >
         <CometFormField name="name" label="Your Name" />
       </CometFormProvider>
@@ -42,7 +42,7 @@ describe('CometFormField', () => {
       <CometFormProvider<TestFormData> 
         schema={testSchema} 
         onSubmit={onSubmit}
-        options={{ defaultValues }}
+        options={{ defaultValues, mode: 'onSubmit' }}
       >
         <CometFormField name="name" label="Name" />
         <button type="submit">Submit</button>
@@ -63,10 +63,12 @@ describe('CometFormField', () => {
 
   it('clears errors on valid input', async () => {
     const user = userEvent.setup();
+    const onSubmit = jest.fn();
 
     const TestForm = () => (
       <CometFormProvider<TestFormData> 
         schema={testSchema}
+        onSubmit={onSubmit}
         options={{ defaultValues, mode: 'onChange' }}
       >
         <CometFormField name="name" label="Name" />
@@ -128,10 +130,12 @@ describe('CometFormField', () => {
 
   it('hides helper text when error is shown', async () => {
     const user = userEvent.setup();
+    const onSubmit = jest.fn();
 
     const TestForm = () => (
       <CometFormProvider<TestFormData> 
         schema={testSchema}
+        onSubmit={onSubmit}
         options={{ defaultValues }}
       >
         <CometFormField 
@@ -160,10 +164,12 @@ describe('CometFormField', () => {
 
   it('applies error styling to input', async () => {
     const user = userEvent.setup();
+    const onSubmit = jest.fn();
 
     const TestForm = () => (
       <CometFormProvider<TestFormData> 
         schema={testSchema}
+        onSubmit={onSubmit}
         options={{ defaultValues }}
       >
         <CometFormField name="name" label="Name" />
@@ -186,7 +192,11 @@ describe('CometFormField', () => {
 describe('CometFormProvider', () => {
   it('handles form submission', async () => {
     const user = userEvent.setup();
-    const onSubmit = jest.fn();
+    let submittedData: any = null;
+    
+    const onSubmit = (data: TestFormData) => {
+      submittedData = data;
+    };
 
     const TestForm = () => (
       <CometFormProvider<TestFormData> 
@@ -207,7 +217,7 @@ describe('CometFormProvider', () => {
     await user.click(screen.getByText('Submit'));
 
     await waitFor(() => {
-      expect(onSubmit).toHaveBeenCalledWith({
+      expect(submittedData).toEqual({
         name: 'John Doe',
         email: 'john@example.com',
         message: '',
@@ -250,7 +260,9 @@ describe('CometFormProvider', () => {
         resolver: zodResolver(testSchema),
         defaultValues: {
           name: 'Default Name',
-        },
+          email: '',
+          message: '',
+        } as TestFormData,
       });
 
       return (

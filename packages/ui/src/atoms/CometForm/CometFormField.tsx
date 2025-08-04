@@ -53,7 +53,17 @@ export function CometFormField<
     formState: { errors },
   } = useFormContext<TFieldValues>();
 
-  const error = errors[name];
+  // Handle nested error paths
+  const getError = (name: string) => {
+    const keys = name.split('.');
+    let error: any = errors;
+    for (const key of keys) {
+      error = error?.[key];
+    }
+    return error;
+  };
+
+  const error = getError(name as string);
 
   return (
     <Controller
