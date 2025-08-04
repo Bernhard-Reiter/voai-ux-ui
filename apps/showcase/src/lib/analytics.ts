@@ -3,7 +3,7 @@ import { getVariant, getUILibrary, type Variant } from './flags';
 // Analytics event types
 export type AnalyticsEvent = {
   event: string;
-  properties?: Record<string, any>;
+  properties?: Record<string, unknown>;
   variant?: Variant;
   uiLibrary?: string;
 };
@@ -67,7 +67,7 @@ export function trackInteraction(
 }
 
 // Track conversions (e.g., contact created)
-export function trackConversion(conversionType: string, metadata?: Record<string, any>) {
+export function trackConversion(conversionType: string, metadata?: Record<string, unknown>) {
   const variant = typeof window !== 'undefined' ? getVariant() : 'A';
   const uiLibrary = getUILibrary(variant);
   

@@ -1,9 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+// Analytics event body type
+interface AnalyticsEventBody {
+  event: string;
+  properties?: Record<string, unknown>;
+  variant?: string;
+  uiLibrary?: string;
+  sessionId?: string;
+  userAgent?: string;
+  referrer?: string;
+  timestamp?: string;
+}
+
 // In production, this would send to your analytics service (Supabase, etc.)
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    const body: AnalyticsEventBody = await request.json();
     
     // Log for development
     if (process.env.NODE_ENV === 'development') {
