@@ -112,62 +112,66 @@ export const NonVirtualized: Story = {
   },
 };
 
-export const DensityOptions: Story = {
-  render: () => {
-    const [density, setDensity] = useState<"compact" | "normal" | "spacious">("normal");
-    
-    return (
-      <div className="space-y-4">
-        <div className="flex gap-2">
-          <button
-            onClick={() => setDensity("compact")}
-            className={`px-3 py-1 rounded ${density === "compact" ? "bg-[var(--c-accent)] text-white" : "bg-gray-100"}`}
-          >
-            Compact
-          </button>
-          <button
-            onClick={() => setDensity("normal")}
-            className={`px-3 py-1 rounded ${density === "normal" ? "bg-[var(--c-accent)] text-white" : "bg-gray-100"}`}
-          >
-            Normal
-          </button>
-          <button
-            onClick={() => setDensity("spacious")}
-            className={`px-3 py-1 rounded ${density === "spacious" ? "bg-[var(--c-accent)] text-white" : "bg-gray-100"}`}
-          >
-            Spacious
-          </button>
-        </div>
-        
-        <NebulaGrid
-          data={sampleData.slice(0, 10)}
-          columns={columns}
-          density={density}
-        />
+const DensityOptionsComponent = () => {
+  const [density, setDensity] = useState<"compact" | "normal" | "spacious">("normal");
+  
+  return (
+    <div className="space-y-4">
+      <div className="flex gap-2">
+        <button
+          onClick={() => setDensity("compact")}
+          className={`px-3 py-1 rounded ${density === "compact" ? "bg-[var(--c-accent)] text-white" : "bg-gray-100"}`}
+        >
+          Compact
+        </button>
+        <button
+          onClick={() => setDensity("normal")}
+          className={`px-3 py-1 rounded ${density === "normal" ? "bg-[var(--c-accent)] text-white" : "bg-gray-100"}`}
+        >
+          Normal
+        </button>
+        <button
+          onClick={() => setDensity("spacious")}
+          className={`px-3 py-1 rounded ${density === "spacious" ? "bg-[var(--c-accent)] text-white" : "bg-gray-100"}`}
+        >
+          Spacious
+        </button>
       </div>
-    );
-  },
+      
+      <NebulaGrid
+        data={sampleData.slice(0, 10)}
+        columns={columns}
+        density={density}
+      />
+    </div>
+  );
+};
+
+export const DensityOptions: Story = {
+  render: () => <DensityOptionsComponent />,
+};
+
+const WithSelectionComponent = () => {
+  const [selectedRows, setSelectedRows] = useState<Set<string | number>>(new Set());
+  
+  return (
+    <div className="space-y-4">
+      <div className="text-sm text-[var(--c-text-secondary)]">
+        Selected: {selectedRows.size} rows
+      </div>
+      
+      <NebulaGrid
+        data={sampleData.slice(0, 10)}
+        columns={columns}
+        selectedRows={selectedRows}
+        onSelectionChange={setSelectedRows}
+      />
+    </div>
+  );
 };
 
 export const WithSelection: Story = {
-  render: () => {
-    const [selectedRows, setSelectedRows] = useState<Set<string | number>>(new Set());
-    
-    return (
-      <div className="space-y-4">
-        <div className="text-sm text-[var(--c-text-secondary)]">
-          Selected: {selectedRows.size} rows
-        </div>
-        
-        <NebulaGrid
-          data={sampleData.slice(0, 10)}
-          columns={columns}
-          selectedRows={selectedRows}
-          onSelectionChange={setSelectedRows}
-        />
-      </div>
-    );
-  },
+  render: () => <WithSelectionComponent />,
 };
 
 export const CustomCellRenderers: Story = {
