@@ -28,8 +28,6 @@ export function UIProvider({ children, variant: serverVariant }: UIProviderProps
         if (uiLibrary === 'cosmic') {
           // Import Cosmic Guide (ui-v2)
           ui = await import('@voai/ui-v2');
-          // Also import Cosmic styles
-          await import('@voai/ui-v2/styles.css');
         } else {
           // Import Classic (ui)
           ui = await import('@voai/ui');

@@ -8,8 +8,17 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist/**"
+    "dist/**",
+    "src/styles/**/*.css"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
   "scripts": {
     "build": "pnpm build:tokens && tsup",
     "build:tokens": "style-dictionary build --config ./tokens/config.json",
