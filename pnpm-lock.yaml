@@ -40,7 +40,7 @@ importers:
     dependencies:
       '@voai/ui':
         specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../../packages/ui-v2
       next:
         specifier: 15.4.1
         version: 15.4.1(@playwright/test@1.54.1)(react-dom@19.1.0)(react@19.1.0)
@@ -83,7 +83,7 @@ importers:
     dependencies:
       '@voai/ui':
         specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../../packages/ui-v2
     devDependencies:
       '@storybook/addon-essentials':
         specifier: ^8.4.7
@@ -131,6 +131,124 @@ importers:
   packages/tsconfig: {}
 
   packages/ui:
+    dependencies:
+      '@hookform/resolvers':
+        specifier: ^5.1.1
+        version: 5.1.1(react-hook-form@7.60.0)
+      '@tailwindcss/typography':
+        specifier: ^0.5.10
+        version: 0.5.16(tailwindcss@3.4.17)
+      '@tanstack/react-virtual':
+        specifier: ^3.13.12
+        version: 3.13.12(react-dom@18.3.1)(react@18.3.1)
+      class-variance-authority:
+        specifier: ^0.7.0
+        version: 0.7.1
+      clsx:
+        specifier: ^2.1.0
+        version: 2.1.1
+      framer-motion:
+        specifier: ^12.23.6
+        version: 12.23.6(react-dom@18.3.1)(react@18.3.1)
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.3.1(react@18.3.1)
+      react-hook-form:
+        specifier: ^7.60.0
+        version: 7.60.0(react@18.3.1)
+      style-dictionary:
+        specifier: ^3.9.2
+        version: 3.9.2
+      tailwind-merge:
+        specifier: ^2.2.0
+        version: 2.6.0
+      tailwindcss:
+        specifier: ^3.4.0
+        version: 3.4.17
+      zod:
+        specifier: ^4.0.5
+        version: 4.0.5
+    devDependencies:
+      '@storybook/addon-essentials':
+        specifier: ^8.6.14
+        version: 8.6.14(@types/react@18.3.23)(storybook@9.0.17)
+      '@storybook/addon-interactions':
+        specifier: ^8.6.14
+        version: 8.6.14(storybook@9.0.17)
+      '@storybook/addon-links':
+        specifier: ^9.0.17
+        version: 9.0.17(react@18.3.1)(storybook@9.0.17)
+      '@storybook/blocks':
+        specifier: ^8.6.14
+        version: 8.6.14(react-dom@18.3.1)(react@18.3.1)(storybook@9.0.17)
+      '@storybook/react':
+        specifier: ^9.0.17
+        version: 9.0.17(react-dom@18.3.1)(react@18.3.1)(storybook@9.0.17)(typescript@5.8.3)
+      '@storybook/react-vite':
+        specifier: ^9.0.17
+        version: 9.0.17(react-dom@18.3.1)(react@18.3.1)(storybook@9.0.17)(typescript@5.8.3)(vite@7.0.4)
+      '@storybook/test':
+        specifier: ^8.6.14
+        version: 8.6.14(storybook@9.0.17)
+      '@testing-library/jest-dom':
+        specifier: ^6.6.3
+        version: 6.6.3
+      '@testing-library/react':
+        specifier: ^16.3.0
+        version: 16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@18.3.7)(@types/react@18.3.23)(react-dom@18.3.1)(react@18.3.1)
+      '@testing-library/user-event':
+        specifier: ^14.6.1
+        version: 14.6.1(@testing-library/dom@10.4.0)
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/react':
+        specifier: ^18.2.0
+        version: 18.3.23
+      '@types/react-dom':
+        specifier: ^18.2.0
+        version: 18.3.7(@types/react@18.3.23)
+      '@voai/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@voai/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      chromatic:
+        specifier: ^13.1.2
+        version: 13.1.2(@chromatic-com/playwright@0.12.5)
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.1
+      identity-obj-proxy:
+        specifier: ^3.0.0
+        version: 3.0.0
+      jest:
+        specifier: ^30.0.4
+        version: 30.0.4(@types/node@20.19.8)
+      jest-environment-jsdom:
+        specifier: ^30.0.4
+        version: 30.0.4
+      react:
+        specifier: ^18.2.0
+        version: 18.3.1
+      storybook:
+        specifier: ^9.0.17
+        version: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      ts-jest:
+        specifier: ^29.4.0
+        version: 29.4.0(@babel/core@7.28.0)(esbuild@0.25.6)(jest@30.0.4)(typescript@5.8.3)
+      tsup:
+        specifier: ^8.0.0
+        version: 8.5.0(postcss@8.5.6)(typescript@5.8.3)
+      typescript:
+        specifier: ^5.4.0
+        version: 5.8.3
+      vite:
+        specifier: ^7.0.4
+        version: 7.0.4(@types/node@20.19.8)
+
+  packages/ui-v2:
     dependencies:
       '@hookform/resolvers':
         specifier: ^5.1.1
