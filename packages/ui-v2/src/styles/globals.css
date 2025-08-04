@@ -1,0 +1,132 @@
+/* Import Inter Variable Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Import Cosmic Tokens */
+@import './cosmic-tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Reset & Base Styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-family);
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--c-bg);
+    color: var(--c-text-primary);
+    line-height: 1.6;
+    transition: background-color var(--transition-base), color var(--transition-base);
+  }
+
+  /* Focus Visible Only */
+  :focus {
+    outline: none;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--c-accent);
+    outline-offset: 2px;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: var(--c-accent);
+    color: white;
+  }
+
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--c-surface);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--c-border);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--c-text-secondary);
+  }
+}
+
+@layer components {
+  /* Cosmic Typography Classes */
+  .cosmic-headline {
+    @apply cosmic-h1 text-[var(--c-text-primary)];
+  }
+
+  .cosmic-section {
+    @apply cosmic-h2 text-[var(--c-text-primary)];
+  }
+
+  .cosmic-title {
+    @apply cosmic-h3 text-[var(--c-text-primary)];
+  }
+
+  .cosmic-text {
+    @apply cosmic-body text-[var(--c-text-primary)];
+  }
+
+  .cosmic-meta {
+    @apply cosmic-small text-[var(--c-text-secondary)];
+  }
+
+  /* Cosmic Layout Classes */
+  .cosmic-block {
+    padding: var(--space-5) 0;
+  }
+
+  .cosmic-surface {
+    background-color: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-md);
+  }
+}
+
+@layer utilities {
+  /* Cosmic Utilities */
+  .cosmic-glow {
+    box-shadow: 0 0 40px rgba(79, 70, 229, 0.1);
+  }
+
+  .cosmic-gradient {
+    background: linear-gradient(135deg, var(--c-bg) 0%, var(--c-surface) 100%);
+  }
+
+  .cosmic-border {
+    border: 1px solid var(--c-border);
+  }
+
+  /* Animation Utilities */
+  .cosmic-fade {
+    animation: cosmicFade var(--transition-base) ease-out;
+  }
+
+  @keyframes cosmicFade {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
