@@ -95,39 +95,42 @@ const InteractiveDemoComponent = () => {
   }));
 
   return (
-    <div className="w-full h-[400px] flex flex-col items-center justify-center gap-4">
-      <button
-        onClick={() => setIsOpen(true)}
-        className="px-4 py-2 bg-[var(--c-accent)] text-white rounded-[var(--radius-sm)] hover:bg-[var(--c-accent-hover)]"
-      >
-        Open Command Palette
-      </button>
-      
-      <p className="text-sm text-[var(--c-text-secondary)]">
-        Or press <kbd className="px-2 py-1 text-xs bg-gray-100 rounded">⌘K</kbd> / <kbd className="px-2 py-1 text-xs bg-gray-100 rounded">Ctrl+K</kbd>
-      </p>
+      <div className="w-full h-[400px] flex flex-col items-center justify-center gap-4">
+        <button
+          onClick={() => setIsOpen(true)}
+          className="px-4 py-2 bg-[var(--c-accent)] text-white rounded-[var(--radius-sm)] hover:bg-[var(--c-accent-hover)]"
+        >
+          Open Command Palette
+        </button>
+        
+        <p className="text-sm text-[var(--c-text-secondary)]">
+          Or press <kbd className="px-2 py-1 text-xs bg-gray-100 rounded">⌘K</kbd> / <kbd className="px-2 py-1 text-xs bg-gray-100 rounded">Ctrl+K</kbd>
+        </p>
 
-      {lastAction && (
-        <p className="text-sm text-green-600 mt-4">{lastAction}</p>
-      )}
+        {lastAction && (
+          <p className="text-sm text-green-600 mt-4">{lastAction}</p>
+        )}
 
-      {isOpen && (
-        <div className="fixed inset-0 z-50">
-          <div
-            className="fixed inset-0 bg-black/50"
-            onClick={() => setIsOpen(false)}
-          />
-          <div className="fixed inset-x-0 top-[20vh] z-50 mx-auto max-w-2xl px-4">
-            <CommandPalette items={items} />
+        {isOpen && (
+          <div className="fixed inset-0 z-50">
+            <div
+              className="fixed inset-0 bg-black/50"
+              onClick={() => setIsOpen(false)}
+            />
+            <div className="fixed inset-x-0 top-[20vh] z-50 mx-auto max-w-2xl px-4">
+              <CommandPalette items={items} />
+            </div>
           </div>
-        </div>
-      )}
-    </div>
-  );
+        )}
+      </div>
+    );
 };
 
 export const InteractiveDemo: Story = {
-  render: () => <InteractiveDemoComponent />,
+  args: {
+    items: [],
+  },
+  render: InteractiveDemoComponent,
 };
 
 const WithCategoriesComponent = () => {
@@ -185,68 +188,74 @@ const WithCategoriesComponent = () => {
   ];
 
   return (
-    <div className="w-full h-[400px] flex flex-col items-center justify-center">
-      <button
-        onClick={() => setIsOpen(true)}
-        className="px-4 py-2 bg-[var(--c-accent)] text-white rounded-[var(--radius-sm)] hover:bg-[var(--c-accent-hover)]"
-      >
-        Open Command Palette
-      </button>
+      <div className="w-full h-[400px] flex flex-col items-center justify-center">
+        <button
+          onClick={() => setIsOpen(true)}
+          className="px-4 py-2 bg-[var(--c-accent)] text-white rounded-[var(--radius-sm)] hover:bg-[var(--c-accent-hover)]"
+        >
+          Open Command Palette
+        </button>
 
-      {isOpen && (
-        <div className="fixed inset-0 z-50">
-          <div
-            className="fixed inset-0 bg-black/50"
-            onClick={() => setIsOpen(false)}
-          />
-          <div className="fixed inset-x-0 top-[20vh] z-50 mx-auto max-w-2xl px-4">
-            <CommandPalette
-              items={categorizedItems}
-              placeholder="Search for commands, navigation, or help..."
+        {isOpen && (
+          <div className="fixed inset-0 z-50">
+            <div
+              className="fixed inset-0 bg-black/50"
+              onClick={() => setIsOpen(false)}
             />
+            <div className="fixed inset-x-0 top-[20vh] z-50 mx-auto max-w-2xl px-4">
+              <CommandPalette
+                items={categorizedItems}
+                placeholder="Search for commands, navigation, or help..."
+              />
+            </div>
           </div>
-        </div>
-      )}
-    </div>
-  );
+        )}
+      </div>
+    );
 };
 
 export const WithCategories: Story = {
-  render: () => <WithCategoriesComponent />,
+  args: {
+    items: [],
+  },
+  render: WithCategoriesComponent,
 };
 
 const EmptyStateComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="w-full h-[400px] flex flex-col items-center justify-center">
-      <button
-        onClick={() => setIsOpen(true)}
-        className="px-4 py-2 bg-[var(--c-accent)] text-white rounded-[var(--radius-sm)] hover:bg-[var(--c-accent-hover)]"
-      >
-        Open Empty Command Palette
-      </button>
+      <div className="w-full h-[400px] flex flex-col items-center justify-center">
+        <button
+          onClick={() => setIsOpen(true)}
+          className="px-4 py-2 bg-[var(--c-accent)] text-white rounded-[var(--radius-sm)] hover:bg-[var(--c-accent-hover)]"
+        >
+          Open Empty Command Palette
+        </button>
 
-      {isOpen && (
-        <div className="fixed inset-0 z-50">
-          <div
-            className="fixed inset-0 bg-black/50"
-            onClick={() => setIsOpen(false)}
-          />
-          <div className="fixed inset-x-0 top-[20vh] z-50 mx-auto max-w-2xl px-4">
-            <CommandPalette
-              items={[]}
-              emptyMessage="No commands available. Try adding some!"
+        {isOpen && (
+          <div className="fixed inset-0 z-50">
+            <div
+              className="fixed inset-0 bg-black/50"
+              onClick={() => setIsOpen(false)}
             />
+            <div className="fixed inset-x-0 top-[20vh] z-50 mx-auto max-w-2xl px-4">
+              <CommandPalette
+                items={[]}
+                emptyMessage="No commands available. Try adding some!"
+              />
+            </div>
           </div>
-        </div>
-      )}
-    </div>
-  );
+        )}
+      </div>
+    );
 };
 
 export const EmptyState: Story = {
-  render: () => <EmptyStateComponent />,
+  args: {
+    items: [],
+  },
+  render: EmptyStateComponent,
 };
 
 const CustomStylingComponent = () => {
@@ -280,39 +289,45 @@ const CustomStylingComponent = () => {
   ];
 
   return (
-    <div className="w-full h-[400px] flex flex-col items-center justify-center">
-      <button
-        onClick={() => setIsOpen(true)}
-        className="px-4 py-2 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-[var(--radius-sm)] hover:from-purple-600 hover:to-indigo-700"
-      >
-        Launch Cosmic Command Center
-      </button>
+      <div className="w-full h-[400px] flex flex-col items-center justify-center">
+        <button
+          onClick={() => setIsOpen(true)}
+          className="px-4 py-2 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-[var(--radius-sm)] hover:from-purple-600 hover:to-indigo-700"
+        >
+          Launch Cosmic Command Center
+        </button>
 
-      {isOpen && (
-        <div className="fixed inset-0 z-50">
-          <div
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm"
-            onClick={() => setIsOpen(false)}
-          />
-          <div className="fixed inset-x-0 top-[20vh] z-50 mx-auto max-w-2xl px-4">
-            <CommandPalette
-              items={customItems}
-              placeholder="Enter cosmic command..."
-              className="bg-gradient-to-br from-purple-50 to-indigo-50 border-2 border-purple-200"
+        {isOpen && (
+          <div className="fixed inset-0 z-50">
+            <div
+              className="fixed inset-0 bg-black/70 backdrop-blur-sm"
+              onClick={() => setIsOpen(false)}
             />
+            <div className="fixed inset-x-0 top-[20vh] z-50 mx-auto max-w-2xl px-4">
+              <CommandPalette
+                items={customItems}
+                placeholder="Enter cosmic command..."
+                className="bg-gradient-to-br from-purple-50 to-indigo-50 border-2 border-purple-200"
+              />
+            </div>
           </div>
-        </div>
-      )}
-    </div>
-  );
+        )}
+      </div>
+    );
 };
 
 export const CustomStyling: Story = {
-  render: () => <CustomStylingComponent />,
+  args: {
+    items: [],
+  },
+  render: CustomStylingComponent,
 };
 
 // Note: This story demonstrates the command palette but won't show in the static Storybook view
 export const KeyboardShortcut: Story = {
+  args: {
+    items: [],
+  },
   render: () => (
     <div className="w-full h-[400px] flex flex-col items-center justify-center gap-4 text-center">
       <div className="space-y-2">
@@ -327,7 +342,4 @@ export const KeyboardShortcut: Story = {
       </p>
     </div>
   ),
-  args: {
-    items: defaultItems,
-  },
 };

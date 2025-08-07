@@ -127,6 +127,9 @@ const InteractiveDemoComponent = () => {
 };
 
 export const InteractiveDemo: Story = {
+  args: {
+    items: [],
+  },
   render: InteractiveDemoComponent,
 };
 
@@ -212,6 +215,9 @@ const WithCategoriesComponent = () => {
 };
 
 export const WithCategories: Story = {
+  args: {
+    items: [],
+  },
   render: WithCategoriesComponent,
 };
 
@@ -246,6 +252,9 @@ const EmptyStateComponent = () => {
 };
 
 export const EmptyState: Story = {
+  args: {
+    items: [],
+  },
   render: EmptyStateComponent,
 };
 
@@ -308,11 +317,17 @@ const CustomStylingComponent = () => {
 };
 
 export const CustomStyling: Story = {
+  args: {
+    items: [],
+  },
   render: CustomStylingComponent,
 };
 
 // Note: This story demonstrates the command palette but won't show in the static Storybook view
 export const KeyboardShortcut: Story = {
+  args: {
+    items: [],
+  },
   render: () => (
     <div className="w-full h-[400px] flex flex-col items-center justify-center gap-4 text-center">
       <div className="space-y-2">
@@ -327,7 +342,4 @@ export const KeyboardShortcut: Story = {
       </p>
     </div>
   ),
-  args: {
-    items: defaultItems,
-  },
 };

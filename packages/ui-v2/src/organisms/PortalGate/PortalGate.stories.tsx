@@ -63,7 +63,12 @@ const ModalComponent = () => {
 };
 
 export const Modal: Story = {
-  render: () => <ModalComponent />,
+  args: {
+    open: false,
+    onClose: () => {},
+    children: null,
+  },
+  render: ModalComponent,
 };
 
 const ModalSizesComponent = () => {
@@ -100,7 +105,12 @@ const ModalSizesComponent = () => {
 };
 
 export const ModalSizes: Story = {
-  render: () => <ModalSizesComponent />,
+  args: {
+    open: false,
+    onClose: () => {},
+    children: null,
+  },
+  render: ModalSizesComponent,
 };
 
 const DrawerLeftComponent = () => {
@@ -133,7 +143,12 @@ const DrawerLeftComponent = () => {
 };
 
 export const DrawerLeft: Story = {
-  render: () => <DrawerLeftComponent />,
+  args: {
+    open: false,
+    onClose: () => {},
+    children: null,
+  },
+  render: DrawerLeftComponent,
 };
 
 const DrawerRightComponent = () => {
@@ -175,7 +190,12 @@ const DrawerRightComponent = () => {
 };
 
 export const DrawerRight: Story = {
-  render: () => <DrawerRightComponent />,
+  args: {
+    open: false,
+    onClose: () => {},
+    children: null,
+  },
+  render: DrawerRightComponent,
 };
 
 const DrawerBottomComponent = () => {
@@ -237,7 +257,12 @@ const DrawerBottomComponent = () => {
 };
 
 export const DrawerBottom: Story = {
-  render: () => <DrawerBottomComponent />,
+  args: {
+    open: false,
+    onClose: () => {},
+    children: null,
+  },
+  render: DrawerBottomComponent,
 };
 
 const NoBackdropCloseComponent = () => {
@@ -280,7 +305,12 @@ const NoBackdropCloseComponent = () => {
 };
 
 export const NoBackdropClose: Story = {
-  render: () => <NoBackdropCloseComponent />,
+  args: {
+    open: false,
+    onClose: () => {},
+    children: null,
+  },
+  render: NoBackdropCloseComponent,
 };
 
 const NoCloseButtonComponent = () => {
@@ -322,7 +352,12 @@ const NoCloseButtonComponent = () => {
 };
 
 export const NoCloseButton: Story = {
-  render: () => <NoCloseButtonComponent />,
+  args: {
+    open: false,
+    onClose: () => {},
+    children: null,
+  },
+  render: NoCloseButtonComponent,
 };
 
 const WithFormComponent = () => {
@@ -398,7 +433,12 @@ const WithFormComponent = () => {
 };
 
 export const WithForm: Story = {
-  render: () => <WithFormComponent />,
+  args: {
+    open: false,
+    onClose: () => {},
+    children: null,
+  },
+  render: WithFormComponent,
 };
 
 const DarkModeComponent = () => {
@@ -429,6 +469,11 @@ const DarkModeComponent = () => {
 };
 
 export const DarkMode: Story = {
+  args: {
+    open: false,
+    onClose: () => {},
+    children: null,
+  },
   parameters: {
     backgrounds: { default: 'dark' },
   },
@@ -439,5 +484,5 @@ export const DarkMode: Story = {
       </div>
     ),
   ],
-  render: () => <DarkModeComponent />,
+  render: DarkModeComponent,
 };

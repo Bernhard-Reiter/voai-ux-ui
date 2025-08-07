@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { NebulaGrid, type NebulaColumn } from "./NebulaGrid";
+import { NebulaGrid, type NebulaGridColumn } from "./NebulaGrid";
 import { useState } from "react";
 
 const meta = {
@@ -39,52 +39,58 @@ const sampleData: User[] = Array.from({ length: 100 }, (_, i) => ({
   lastActive: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toLocaleDateString(),
 }));
 
-const columns: NebulaColumn<User>[] = [
+const columns: NebulaGridColumn<any>[] = [
   {
-    key: "id",
+    id: "id",
     header: "ID",
+    accessor: (row) => row.id,
     width: 60,
   },
   {
-    key: "name",
+    id: "name",
     header: "Name",
+    accessor: (row) => row.name,
     width: 150,
   },
   {
-    key: "email",
+    id: "email",
     header: "Email",
+    accessor: (row) => row.email,
     width: 200,
   },
   {
-    key: "role",
+    id: "role",
     header: "Role",
+    accessor: (row) => row.role,
     width: 100,
   },
   {
-    key: "status",
+    id: "status",
     header: "Status",
-    width: 100,
-    render: (value) => {
-      const statusColors = {
+    accessor: (row) => {
+      const statusColors: Record<string, string> = {
         active: "text-green-600 bg-green-50",
         inactive: "text-gray-600 bg-gray-50",
         pending: "text-amber-600 bg-amber-50",
       };
       return (
-        <span className={`px-2 py-1 rounded-full text-xs font-medium ${statusColors[value as keyof typeof statusColors]}`}>
-          {value}
+        <span className={`px-2 py-1 rounded-full text-xs font-medium ${statusColors[row.status] || ''}`}>
+          {row.status}
         </span>
       );
     },
+    width: 100,
   },
   {
-    key: "joinDate",
+    id: "joinDate",
     header: "Join Date",
+    accessor: (row) => row.joinDate,
     width: 120,
   },
   {
-    key: "lastActive",
+    id: "lastActive",
     header: "Last Active",
+    accessor: (row) => row.lastActive,
     width: 120,
   },
 ];
@@ -114,64 +120,72 @@ export const NonVirtualized: Story = {
 
 const DensityOptionsComponent = () => {
   const [density, setDensity] = useState<"compact" | "normal" | "spacious">("normal");
-  
-  return (
-    <div className="space-y-4">
-      <div className="flex gap-2">
-        <button
-          onClick={() => setDensity("compact")}
-          className={`px-3 py-1 rounded ${density === "compact" ? "bg-[var(--c-accent)] text-white" : "bg-gray-100"}`}
-        >
-          Compact
-        </button>
-        <button
-          onClick={() => setDensity("normal")}
-          className={`px-3 py-1 rounded ${density === "normal" ? "bg-[var(--c-accent)] text-white" : "bg-gray-100"}`}
-        >
-          Normal
-        </button>
-        <button
-          onClick={() => setDensity("spacious")}
-          className={`px-3 py-1 rounded ${density === "spacious" ? "bg-[var(--c-accent)] text-white" : "bg-gray-100"}`}
-        >
-          Spacious
-        </button>
+    
+    return (
+      <div className="space-y-4">
+        <div className="flex gap-2">
+          <button
+            onClick={() => setDensity("compact")}
+            className={`px-3 py-1 rounded ${density === "compact" ? "bg-[var(--c-accent)] text-white" : "bg-gray-100"}`}
+          >
+            Compact
+          </button>
+          <button
+            onClick={() => setDensity("normal")}
+            className={`px-3 py-1 rounded ${density === "normal" ? "bg-[var(--c-accent)] text-white" : "bg-gray-100"}`}
+          >
+            Normal
+          </button>
+          <button
+            onClick={() => setDensity("spacious")}
+            className={`px-3 py-1 rounded ${density === "spacious" ? "bg-[var(--c-accent)] text-white" : "bg-gray-100"}`}
+          >
+            Spacious
+          </button>
+        </div>
+        
+        <NebulaGrid
+          data={sampleData.slice(0, 10)}
+          columns={columns}
+          density={density}
+        />
       </div>
-      
-      <NebulaGrid
-        data={sampleData.slice(0, 10)}
-        columns={columns}
-        density={density}
-      />
-    </div>
-  );
+    );
 };
 
 export const DensityOptions: Story = {
-  render: () => <DensityOptionsComponent />,
+  args: {
+    data: [],
+    columns: [],
+  },
+  render: DensityOptionsComponent,
 };
 
 const WithSelectionComponent = () => {
-  const [selectedRows, setSelectedRows] = useState<Set<string | number>>(new Set());
+  const [selectedRowIndex, setSelectedRowIndex] = useState<number | undefined>();
   
   return (
-    <div className="space-y-4">
-      <div className="text-sm text-[var(--c-text-secondary)]">
-        Selected: {selectedRows.size} rows
+      <div className="space-y-4">
+        <div className="text-sm text-[var(--c-text-secondary)]">
+          Selected row: {selectedRowIndex !== undefined ? selectedRowIndex + 1 : 'none'}
+        </div>
+        
+        <NebulaGrid
+          data={sampleData.slice(0, 10)}
+          columns={columns}
+          selectedRowIndex={selectedRowIndex}
+          onRowClick={(row, index) => setSelectedRowIndex(index)}
+        />
       </div>
-      
-      <NebulaGrid
-        data={sampleData.slice(0, 10)}
-        columns={columns}
-        selectedRows={selectedRows}
-        onSelectionChange={setSelectedRows}
-      />
-    </div>
-  );
+    );
 };
 
 export const WithSelection: Story = {
-  render: () => <WithSelectionComponent />,
+  args: {
+    data: [],
+    columns: [],
+  },
+  render: WithSelectionComponent,
 };
 
 export const CustomCellRenderers: Story = {
@@ -184,32 +198,32 @@ export const CustomCellRenderers: Story = {
     ],
     columns: [
       {
-        key: "id",
+        id: "id",
         header: "ID",
+        accessor: (row: any) => row.id,
         width: 60,
       },
       {
-        key: "product",
+        id: "product",
         header: "Product",
+        accessor: (row: any) => (
+          <span className="font-medium text-[var(--c-accent)]">{row.product}</span>
+        ),
         width: 200,
-        render: (value) => (
-          <span className="font-medium text-[var(--c-accent)]">{value}</span>
-        ),
       },
       {
-        key: "price",
+        id: "price",
         header: "Price",
-        width: 100,
-        render: (value) => (
-          <span className="font-mono">${(value as number).toFixed(2)}</span>
+        accessor: (row: any) => (
+          <span className="font-mono">${row.price.toFixed(2)}</span>
         ),
+        width: 100,
       },
       {
-        key: "stock",
+        id: "stock",
         header: "Stock",
-        width: 100,
-        render: (value) => {
-          const stock = value as number;
+        accessor: (row: any) => {
+          const stock = row.stock;
           return (
             <div className="flex items-center gap-2">
               <div className={`w-2 h-2 rounded-full ${stock > 10 ? "bg-green-500" : stock > 0 ? "bg-amber-500" : "bg-red-500"}`} />
@@ -217,10 +231,12 @@ export const CustomCellRenderers: Story = {
             </div>
           );
         },
+        width: 100,
       },
       {
-        key: "category",
+        id: "category",
         header: "Category",
+        accessor: (row: any) => row.category,
         width: 120,
       },
     ],
@@ -252,9 +268,8 @@ export const DarkMode: Story = {
   },
 };
 
-export const LoadingState: Story = {
-  render: () => {
-    const loadingData = Array.from({ length: 5 }, (_, i) => ({
+const LoadingStateComponent = () => {
+  const loadingData = Array.from({ length: 5 }, (_, i) => ({
       id: i + 1,
       name: "...",
       email: "...",
@@ -276,5 +291,12 @@ export const LoadingState: Story = {
         />
       </div>
     );
+};
+
+export const LoadingState: Story = {
+  args: {
+    data: [],
+    columns: [],
   },
+  render: LoadingStateComponent,
 };

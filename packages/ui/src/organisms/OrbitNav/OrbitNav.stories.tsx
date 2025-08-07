@@ -12,12 +12,7 @@ const meta = {
     },
   },
   tags: ["autodocs"],
-  argTypes: {
-    orientation: {
-      control: "radio",
-      options: ["horizontal", "vertical"],
-    },
-  },
+  argTypes: {},
 } satisfies Meta<typeof OrbitNav>;
 
 export default meta;
@@ -34,23 +29,18 @@ const defaultItems = [
 export const Default: Story = {
   args: {
     items: defaultItems,
-    activeItem: "components",
   },
 };
 
 export const Horizontal: Story = {
   args: {
     items: defaultItems,
-    activeItem: "home",
-    orientation: "horizontal",
   },
 };
 
 export const Vertical: Story = {
   args: {
     items: defaultItems,
-    activeItem: "docs",
-    orientation: "vertical",
   },
 };
 
@@ -109,8 +99,6 @@ export const WithIcons: Story = {
         ),
       },
     ],
-    activeItem: "dashboard",
-    orientation: "vertical",
   },
 };
 
@@ -132,8 +120,6 @@ export const NavigationBar: Story = {
   ],
   args: {
     items: defaultItems,
-    activeItem: "components",
-    orientation: "horizontal",
   },
 };
 
@@ -164,15 +150,12 @@ export const Sidebar: Story = {
       { id: "examples", label: "Examples", href: "#examples" },
       { id: "troubleshooting", label: "Troubleshooting", href: "#troubleshooting" },
     ],
-    activeItem: "components",
-    orientation: "vertical",
   },
 };
 
 export const WithCustomStyling: Story = {
   args: {
     items: defaultItems,
-    activeItem: "examples",
     className: "bg-gradient-to-r from-purple-50 to-indigo-50 p-2 rounded-lg",
   },
 };
@@ -194,8 +177,6 @@ export const MobileResponsive: Story = {
   ],
   args: {
     items: defaultItems.slice(0, 3),
-    activeItem: "home",
-    orientation: "vertical",
   },
 };
 
@@ -212,6 +193,5 @@ export const DarkMode: Story = {
   ],
   args: {
     items: defaultItems,
-    activeItem: "docs",
   },
 };

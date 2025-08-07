@@ -1,0 +1,264 @@
+/* ================================================================
+   Circula Global Styles
+   ================================================================ */
+
+/* Import Inter Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Import Design Tokens */
+@import './circula-tokens.css';
+
+/* ================ Base Reset ================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--circula-font-sans);
+  font-size: 16px;
+  line-height: var(--circula-leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--circula-white);
+  color: var(--circula-gray-900);
+  font-size: var(--circula-text-base);
+}
+
+/* ================ Typography ================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--circula-font-semibold);
+  letter-spacing: var(--circula-tracking-tight);
+  color: var(--circula-gray-900);
+  line-height: var(--circula-leading-tight);
+}
+
+h1 {
+  font-size: var(--circula-text-4xl);
+  font-weight: var(--circula-font-bold);
+}
+
+h2 {
+  font-size: var(--circula-text-2xl);
+}
+
+h3 {
+  font-size: var(--circula-text-xl);
+}
+
+h4 {
+  font-size: var(--circula-text-lg);
+}
+
+p {
+  color: var(--circula-gray-700);
+  line-height: var(--circula-leading-normal);
+}
+
+/* ================ Links ================ */
+
+a {
+  color: var(--circula-gray-700);
+  text-decoration: underline;
+  text-decoration-color: var(--circula-gray-300);
+  text-underline-offset: 2px;
+  transition: all var(--circula-transition-fast);
+}
+
+a:hover {
+  color: var(--circula-gray-900);
+  text-decoration-color: var(--circula-gray-900);
+}
+
+/* ================ Focus States ================ */
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--circula-black);
+  outline-offset: 2px;
+}
+
+/* ================ Selection ================ */
+
+::selection {
+  background-color: var(--circula-gray-200);
+  color: var(--circula-gray-900);
+}
+
+/* ================ Scrollbar ================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--circula-gray-50);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--circula-gray-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--circula-gray-400);
+}
+
+/* ================ Utility Classes ================ */
+
+.circula-container {
+  max-width: var(--circula-container-max);
+  margin: 0 auto;
+  padding: 0 var(--circula-container-padding);
+}
+
+/* Typography Utilities */
+.circula-text-headline {
+  font-size: var(--circula-text-4xl);
+  font-weight: var(--circula-font-bold);
+  letter-spacing: var(--circula-tracking-tight);
+  line-height: var(--circula-leading-tight);
+}
+
+.circula-text-title {
+  font-size: var(--circula-text-2xl);
+  font-weight: var(--circula-font-semibold);
+  letter-spacing: var(--circula-tracking-tight);
+}
+
+.circula-text-subtitle {
+  font-size: var(--circula-text-xl);
+  font-weight: var(--circula-font-semibold);
+}
+
+.circula-text-body {
+  font-size: var(--circula-text-base);
+  color: var(--circula-gray-700);
+}
+
+.circula-text-small {
+  font-size: var(--circula-text-sm);
+  color: var(--circula-gray-600);
+}
+
+.circula-text-meta {
+  font-size: var(--circula-text-xs);
+  color: var(--circula-gray-500);
+  font-weight: var(--circula-font-medium);
+}
+
+/* Layout Utilities */
+.circula-flex {
+  display: flex;
+}
+
+.circula-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circula-grid {
+  display: grid;
+  gap: var(--circula-space-5);
+}
+
+/* Spacing Utilities */
+.circula-mt-1 { margin-top: var(--circula-space-1); }
+.circula-mt-2 { margin-top: var(--circula-space-2); }
+.circula-mt-3 { margin-top: var(--circula-space-3); }
+.circula-mt-4 { margin-top: var(--circula-space-4); }
+.circula-mt-5 { margin-top: var(--circula-space-5); }
+.circula-mt-6 { margin-top: var(--circula-space-6); }
+
+.circula-mb-1 { margin-bottom: var(--circula-space-1); }
+.circula-mb-2 { margin-bottom: var(--circula-space-2); }
+.circula-mb-3 { margin-bottom: var(--circula-space-3); }
+.circula-mb-4 { margin-bottom: var(--circula-space-4); }
+.circula-mb-5 { margin-bottom: var(--circula-space-5); }
+.circula-mb-6 { margin-bottom: var(--circula-space-6); }
+
+/* ================ Animations ================ */
+
+@keyframes circula-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes circula-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.circula-animate-fade-in {
+  animation: circula-fade-in var(--circula-transition-base) ease-out;
+}
+
+/* ================ Loading States ================ */
+
+.circula-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--circula-gray-200) 25%,
+    var(--circula-gray-100) 50%,
+    var(--circula-gray-200) 75%
+  );
+  background-size: 200% 100%;
+  animation: circula-shimmer 1.5s infinite;
+  border-radius: var(--circula-radius-sm);
+}
+
+/* ================ Responsive ================ */
+
+@media (max-width: 768px) {
+  :root {
+    --circula-container-padding: var(--circula-space-4);
+  }
+  
+  h1 { font-size: var(--circula-text-3xl); }
+  h2 { font-size: var(--circula-text-xl); }
+  h3 { font-size: var(--circula-text-lg); }
+}
+
+/* ================ Print ================ */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+/* ================ Motion Preferences ================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

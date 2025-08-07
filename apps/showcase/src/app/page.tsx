@@ -1,8 +1,26 @@
 'use client';
 
-import { Button, Card, Input, CommandPalette } from '@voai/ui';
+import { useUIComponents } from '@/components/UIProvider';
+import { useEffect, useState } from 'react';
 
 export default function ShowcasePage() {
+  const components = useUIComponents();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted || !components) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-pulse text-lg">Loading components...</div>
+      </div>
+    );
+  }
+
+  const { Button, Card, Input, CommandPalette } = components;
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <CommandPalette

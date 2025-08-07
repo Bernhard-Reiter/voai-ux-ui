@@ -75,7 +75,6 @@ export function useVariant() {
   const flags = getFeatureFlags(variant);
   
   return {
-    variant,
     ...flags,
   };
 }
