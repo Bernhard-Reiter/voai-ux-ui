@@ -38,11 +38,11 @@ export default function CosmicShowcase() {
   const Nav = components.OrbitNav || null;
 
   // Add cosmic classes for the cosmic variant
-  const cosmicClasses = components.WaypointBtn ? 'cosmic-gradient nebula-effect portal-gate' : '';
+  const cosmicClasses = Boolean(components.WaypointBtn) ? 'cosmic-gradient nebula-effect portal-gate' : '';
 
   return (
     <div className={`min-h-screen bg-[var(--c-bg)] cosmic-fade ${cosmicClasses}`}>
-      {Nav && (
+      {Nav !== null && (
         <Nav 
           items={navItems}
           onItemClick={(item: any) => setActiveNav(item.id)}
@@ -63,7 +63,7 @@ export default function CosmicShowcase() {
         {/* Quick Demo */}
         <div className="cosmic-grid mb-[var(--space-6)]">
           <Card className="col-span-12 md:col-span-4" glow>
-            {CardHeader && CardTitle && CardDescription && CardContent ? (
+            {CardHeader !== null && CardTitle !== null && CardDescription !== null && CardContent !== null ? (
               <>
                 <CardHeader>
                   <CardTitle>Launch CRM</CardTitle>
@@ -95,7 +95,7 @@ export default function CosmicShowcase() {
           </Card>
 
           <Card className="col-span-12 md:col-span-4">
-            {CardHeader && CardTitle && CardDescription && CardContent ? (
+            {CardHeader !== null && CardTitle !== null && CardDescription !== null && CardContent !== null ? (
               <>
                 <CardHeader>
                   <CardTitle>Quick Actions</CardTitle>
@@ -131,7 +131,7 @@ export default function CosmicShowcase() {
           </Card>
 
           <Card className="col-span-12 md:col-span-4">
-            {CardHeader && CardTitle && CardDescription && CardContent ? (
+            {CardHeader !== null && CardTitle !== null && CardDescription !== null && CardContent !== null ? (
               <>
                 <CardHeader>
                   <CardTitle>Connect</CardTitle>
@@ -203,7 +203,7 @@ export default function CosmicShowcase() {
           </h2>
           
           <Card className="space-y-[var(--space-3)]">
-            {CardContent ? (
+            {CardContent !== null ? (
               <CardContent>
                 <h1 className="cosmic-h1">Cosmic Headline</h1>
                 <h2 className="cosmic-h2">Section Title</h2>
