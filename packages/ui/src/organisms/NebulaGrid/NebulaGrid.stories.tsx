@@ -39,7 +39,7 @@ const sampleData: User[] = Array.from({ length: 100 }, (_, i) => ({
   lastActive: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toLocaleDateString(),
 }));
 
-const columns: NebulaGridColumn<User>[] = [
+const columns: NebulaGridColumn<any>[] = [
   {
     id: "id",
     header: "ID",
