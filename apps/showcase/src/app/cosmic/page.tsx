@@ -45,7 +45,7 @@ export default function CosmicShowcase() {
       {Nav !== null && (
         <Nav 
           items={navItems}
-          onItemClick={(item: any) => setActiveNav(item.id)}
+          onItemClick={(item: { id: string }) => setActiveNav(item.id)}
         />
       )}
       
