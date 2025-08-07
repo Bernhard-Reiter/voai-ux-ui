@@ -11,11 +11,11 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'outline', 'ghost'],
+      options: ['primary', 'secondary', 'ghost', 'danger'],
     },
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['sm', 'md', 'lg', 'icon'],
     },
   },
 } satisfies Meta<typeof Button>;
@@ -37,17 +37,17 @@ export const Secondary: Story = {
   },
 };
 
-export const Outline: Story = {
-  args: {
-    children: 'Outline Button',
-    variant: 'outline',
-  },
-};
-
 export const Ghost: Story = {
   args: {
     children: 'Ghost Button',
     variant: 'ghost',
+  },
+};
+
+export const Danger: Story = {
+  args: {
+    children: 'Danger Button',
+    variant: 'danger',
   },
 };
 
@@ -66,18 +66,20 @@ export const Large: Story = {
 };
 
 export const AllVariants: Story = {
+  args: {},
   render: () => (
     <div className="flex flex-col gap-4">
       <div className="flex gap-4">
         <Button variant="primary">Primary</Button>
         <Button variant="secondary">Secondary</Button>
-        <Button variant="outline">Outline</Button>
         <Button variant="ghost">Ghost</Button>
+        <Button variant="danger">Danger</Button>
       </div>
       <div className="flex gap-4 items-center">
         <Button size="sm">Small</Button>
         <Button size="md">Medium</Button>
         <Button size="lg">Large</Button>
+        <Button size="icon">🚀</Button>
       </div>
     </div>
   ),

@@ -98,14 +98,14 @@ const columns: NebulaGridColumn<User>[] = [
 export const Default: Story = {
   args: {
     data: sampleData.slice(0, 10),
-    columns: columns,
+    columns: columns as any,
   },
 };
 
 export const VirtualizedLargeDataset: Story = {
   args: {
     data: sampleData,
-    columns: columns,
+    columns: columns as any,
     virtualize: true,
   },
 };
@@ -113,7 +113,7 @@ export const VirtualizedLargeDataset: Story = {
 export const NonVirtualized: Story = {
   args: {
     data: sampleData.slice(0, 20),
-    columns: columns,
+    columns: columns as any,
     virtualize: false,
   },
 };
@@ -154,6 +154,10 @@ const DensityOptionsComponent = () => {
 };
 
 export const DensityOptions: Story = {
+  args: {
+    data: [],
+    columns: [],
+  },
   render: DensityOptionsComponent,
 };
 
@@ -177,6 +181,10 @@ const WithSelectionComponent = () => {
 };
 
 export const WithSelection: Story = {
+  args: {
+    data: [],
+    columns: [],
+  },
   render: WithSelectionComponent,
 };
 
@@ -192,13 +200,13 @@ export const CustomCellRenderers: Story = {
       {
         id: "id",
         header: "ID",
-        accessor: (row) => row.id,
+        accessor: (row: any) => row.id,
         width: 60,
       },
       {
         id: "product",
         header: "Product",
-        accessor: (row) => (
+        accessor: (row: any) => (
           <span className="font-medium text-[var(--c-accent)]">{row.product}</span>
         ),
         width: 200,
@@ -206,7 +214,7 @@ export const CustomCellRenderers: Story = {
       {
         id: "price",
         header: "Price",
-        accessor: (row) => (
+        accessor: (row: any) => (
           <span className="font-mono">${row.price.toFixed(2)}</span>
         ),
         width: 100,
@@ -214,7 +222,7 @@ export const CustomCellRenderers: Story = {
       {
         id: "stock",
         header: "Stock",
-        accessor: (row) => {
+        accessor: (row: any) => {
           const stock = row.stock;
           return (
             <div className="flex items-center gap-2">
@@ -228,7 +236,7 @@ export const CustomCellRenderers: Story = {
       {
         id: "category",
         header: "Category",
-        accessor: (row) => row.category,
+        accessor: (row: any) => row.category,
         width: 120,
       },
     ],
@@ -238,7 +246,7 @@ export const CustomCellRenderers: Story = {
 export const EmptyState: Story = {
   args: {
     data: [],
-    columns: columns,
+    columns: columns as any,
     emptyMessage: "No cosmic data found in this nebula",
   },
 };
@@ -256,7 +264,7 @@ export const DarkMode: Story = {
   ],
   args: {
     data: sampleData.slice(0, 10),
-    columns: columns,
+    columns: columns as any,
   },
 };
 
@@ -286,5 +294,9 @@ const LoadingStateComponent = () => {
 };
 
 export const LoadingState: Story = {
+  args: {
+    data: [],
+    columns: [],
+  },
   render: LoadingStateComponent,
 };
