@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 07 Aug 2025 18:16:18 GMT
+ * Generated on Thu, 07 Aug 2025 18:23:33 GMT
  */
 
 export const ColorCosmicBg = "#ffffff";
