@@ -9,7 +9,7 @@ interface UIProviderProps {
 }
 
 export function UIProvider({ children, variant: serverVariant }: UIProviderProps) {
-  const [UIComponents, setUIComponents] = useState<any>(null);
+  const [UIComponents, setUIComponents] = useState<typeof import('@voai/ui') | typeof import('@voai/ui-v2') | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [currentVariant, setCurrentVariant] = useState<'A' | 'B'>('A');
 
@@ -88,7 +88,7 @@ export function UIProvider({ children, variant: serverVariant }: UIProviderProps
 
 // Export a hook to access UI components in child components
 export function useUIComponents() {
-  const [components, setComponents] = useState<any>(null);
+  const [components, setComponents] = useState<typeof import('@voai/ui') | typeof import('@voai/ui-v2') | null>(null);
   const variant = getVariantClient();
   const uiLibrary = getUILibrary(variant);
 
