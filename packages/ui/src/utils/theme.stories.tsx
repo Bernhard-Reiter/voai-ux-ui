@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeToggle, ThemeProvider } from "./theme";
 
-const meta = {
+const meta: Meta<typeof ThemeToggle> = {
   title: "Utils/ThemeToggle",
   component: ThemeToggle,
   parameters: {
@@ -19,7 +19,7 @@ const meta = {
       </ThemeProvider>
     ),
   ],
-} satisfies Meta<typeof ThemeToggle>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
