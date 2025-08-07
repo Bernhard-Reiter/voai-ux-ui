@@ -342,7 +342,4 @@ export const KeyboardShortcut: Story = {
       </p>
     </div>
   ),
-  args: {
-    items: defaultItems,
-  },
 };
