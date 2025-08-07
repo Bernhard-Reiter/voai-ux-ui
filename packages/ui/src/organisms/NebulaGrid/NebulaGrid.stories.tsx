@@ -39,7 +39,7 @@ const sampleData: User[] = Array.from({ length: 100 }, (_, i) => ({
   lastActive: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toLocaleDateString(),
 }));
 
-const columns: NebulaGridColumn<User>[] = [
+const columns: NebulaGridColumn<any>[] = [
   {
     id: "id",
     header: "ID",
@@ -68,13 +68,13 @@ const columns: NebulaGridColumn<User>[] = [
     id: "status",
     header: "Status",
     accessor: (row) => {
-      const statusColors = {
+      const statusColors: Record<string, string> = {
         active: "text-green-600 bg-green-50",
         inactive: "text-gray-600 bg-gray-50",
         pending: "text-amber-600 bg-amber-50",
       };
       return (
-        <span className={`px-2 py-1 rounded-full text-xs font-medium ${statusColors[row.status]}`}>
+        <span className={`px-2 py-1 rounded-full text-xs font-medium ${statusColors[row.status] || ''}`}>
           {row.status}
         </span>
       );
