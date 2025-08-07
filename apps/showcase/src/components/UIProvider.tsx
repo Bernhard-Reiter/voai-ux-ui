@@ -66,7 +66,9 @@ export function UIProvider({ children, variant: serverVariant }: UIProviderProps
   }
 
   // Create a context provider if the UI library has one
-  const { ThemeProvider } = UIComponents;
+  const ThemeProvider = UIComponents && 'ThemeProvider' in UIComponents 
+    ? (UIComponents as { ThemeProvider?: React.ComponentType<{ defaultTheme?: string; variant?: string; children: React.ReactNode }> }).ThemeProvider
+    : undefined;
   
   if (ThemeProvider) {
     return (
