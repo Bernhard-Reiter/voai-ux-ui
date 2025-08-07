@@ -12,12 +12,7 @@ const meta = {
     },
   },
   tags: ["autodocs"],
-  argTypes: {
-    orientation: {
-      control: "radio",
-      options: ["horizontal", "vertical"],
-    },
-  },
+  argTypes: {},
 } satisfies Meta<typeof OrbitNav>;
 
 export default meta;
@@ -33,24 +28,19 @@ const defaultItems = [
 
 export const Default: Story = {
   args: {
-    items: defaultItems,
-    activeItem: "components",
+    items: defaultItems.map(item => item.id === "components" ? { ...item, active: true } : item),
   },
 };
 
 export const Horizontal: Story = {
   args: {
-    items: defaultItems,
-    activeItem: "home",
-    orientation: "horizontal",
+    items: defaultItems.map(item => item.id === "home" ? { ...item, active: true } : item),
   },
 };
 
 export const Vertical: Story = {
   args: {
-    items: defaultItems,
-    activeItem: "docs",
-    orientation: "vertical",
+    items: defaultItems.map(item => item.id === "docs" ? { ...item, active: true } : item),
   },
 };
 
@@ -108,9 +98,7 @@ export const WithIcons: Story = {
           </svg>
         ),
       },
-    ],
-    activeItem: "dashboard",
-    orientation: "vertical",
+    ].map(item => item.id === "dashboard" ? { ...item, active: true } : item),
   },
 };
 
@@ -131,9 +119,7 @@ export const NavigationBar: Story = {
     ),
   ],
   args: {
-    items: defaultItems,
-    activeItem: "components",
-    orientation: "horizontal",
+    items: defaultItems.map(item => item.id === "components" ? { ...item, active: true } : item),
   },
 };
 
@@ -163,16 +149,13 @@ export const Sidebar: Story = {
       { id: "api-reference", label: "API Reference", href: "#api-reference" },
       { id: "examples", label: "Examples", href: "#examples" },
       { id: "troubleshooting", label: "Troubleshooting", href: "#troubleshooting" },
-    ],
-    activeItem: "components",
-    orientation: "vertical",
+    ].map(item => item.id === "components" ? { ...item, active: true } : item),
   },
 };
 
 export const WithCustomStyling: Story = {
   args: {
-    items: defaultItems,
-    activeItem: "examples",
+    items: defaultItems.map(item => item.id === "examples" ? { ...item, active: true } : item),
     className: "bg-gradient-to-r from-purple-50 to-indigo-50 p-2 rounded-lg",
   },
 };
@@ -193,9 +176,7 @@ export const MobileResponsive: Story = {
     ),
   ],
   args: {
-    items: defaultItems.slice(0, 3),
-    activeItem: "home",
-    orientation: "vertical",
+    items: defaultItems.slice(0, 3).map(item => item.id === "home" ? { ...item, active: true } : item),
   },
 };
 
@@ -211,7 +192,6 @@ export const DarkMode: Story = {
     ),
   ],
   args: {
-    items: defaultItems,
-    activeItem: "docs",
+    items: defaultItems.map(item => item.id === "docs" ? { ...item, active: true } : item),
   },
 };

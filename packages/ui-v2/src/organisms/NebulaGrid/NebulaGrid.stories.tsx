@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { NebulaGrid, type NebulaColumn } from "./NebulaGrid";
+import { NebulaGrid, type NebulaGridColumn } from "./NebulaGrid";
 import { useState } from "react";
 
 const meta = {

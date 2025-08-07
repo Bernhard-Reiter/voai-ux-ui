@@ -11,7 +11,7 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'outline', 'ghost'],
+      options: ['primary', 'secondary', 'ghost', 'danger'],
     },
     size: {
       control: 'select',
@@ -37,10 +37,10 @@ export const Secondary: Story = {
   },
 };
 
-export const Outline: Story = {
+export const Danger: Story = {
   args: {
-    children: 'Outline Button',
-    variant: 'outline',
+    children: 'Danger Button',
+    variant: 'danger',
   },
 };
 
@@ -66,12 +66,13 @@ export const Large: Story = {
 };
 
 export const AllVariants: Story = {
+  args: {},
   render: () => (
     <div className="flex flex-col gap-4">
       <div className="flex gap-4">
         <Button variant="primary">Primary</Button>
         <Button variant="secondary">Secondary</Button>
-        <Button variant="outline">Outline</Button>
+        <Button variant="danger">Danger</Button>
         <Button variant="ghost">Ghost</Button>
       </div>
       <div className="flex gap-4 items-center">
