@@ -27,9 +27,11 @@ export function UIProvider({ children, variant: serverVariant }: UIProviderProps
         let ui;
         if (uiLibrary === 'cosmic') {
           // Import Cosmic Guide (ui-v2)
+          console.log('Loading Cosmic UI (ui-v2)...');
           ui = await import('@voai/ui-v2');
         } else {
           // Import Classic (ui)
+          console.log('Loading Classic UI...');
           ui = await import('@voai/ui');
         }
         
@@ -45,9 +47,16 @@ export function UIProvider({ children, variant: serverVariant }: UIProviderProps
         }
       } catch (error) {
         console.error('Failed to load UI library:', error);
+        console.error('UI Library:', uiLibrary);
+        console.error('Variant:', variantToUse);
         // Fallback to classic UI
-        const fallbackUI = await import('@voai/ui');
-        setUIComponents(fallbackUI);
+        try {
+          console.log('Attempting fallback to classic UI...');
+          const fallbackUI = await import('@voai/ui');
+          setUIComponents(fallbackUI);
+        } catch (fallbackError) {
+          console.error('Fallback also failed:', fallbackError);
+        }
       } finally {
         setIsLoading(false);
       }
