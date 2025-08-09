@@ -1,7 +1,7 @@
-/* Import UI Package Styles including Cosmic Tokens */
-@import '@voai/ui/src/styles/globals.css';
-
-/* Additional App-specific styles */
+/* Tailwind Directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Import UI Package Styles including Cosmic Tokens - AFTER Tailwind */
+@import '@voai/ui/src/styles/globals.css';

@@ -81,8 +81,9 @@
   --c-highlight: #9333EA;
 }
 
-/* Typography Styles */
-.cosmic-h1 {
+/* Typography Styles - Use Tailwind's @layer to avoid conflicts */
+@layer components {
+  .cosmic-h1 {
   font-size: var(--font-size-2xl);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -131,9 +132,11 @@
   font-weight: 400;
   line-height: 1.5;
 }
+}
 
 /* Utility Classes */
-.cosmic-container {
+@layer utilities {
+  .cosmic-container {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--space-3);
@@ -158,4 +161,5 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
 }

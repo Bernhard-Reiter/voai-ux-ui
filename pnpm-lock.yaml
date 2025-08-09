@@ -72,6 +72,9 @@ importers:
       '@types/react-dom':
         specifier: ^19
         version: 19.1.6(@types/react@19.1.8)
+      autoprefixer:
+        specifier: ^10.4.21
+        version: 10.4.21(postcss@8.5.6)
       axe-playwright:
         specifier: ^2.0.0
         version: 2.1.0(playwright@1.54.1)
@@ -114,7 +117,7 @@ importers:
         version: 14.1.1
       storybook:
         specifier: ^8.4.7
-        version: 8.6.14(prettier@3.6.2)
+        version: 8.6.14
 
   packages/eslint-config:
     dependencies:
@@ -225,7 +228,7 @@ importers:
         version: link:../tsconfig
       chromatic:
         specifier: ^13.1.2
-        version: 13.1.2(@chromatic-com/playwright@0.12.5)
+        version: 13.1.2
       eslint:
         specifier: ^8.57.0
         version: 8.57.1
@@ -234,7 +237,7 @@ importers:
         version: 3.0.0
       jest:
         specifier: ^30.0.4
-        version: 30.0.4(@types/node@20.19.8)
+        version: 30.0.4
       jest-environment-jsdom:
         specifier: ^30.0.4
         version: 30.0.4
@@ -243,7 +246,7 @@ importers:
         version: 18.3.1
       storybook:
         specifier: ^9.0.17
-        version: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+        version: 9.0.17(@testing-library/dom@10.4.0)
       ts-jest:
         specifier: ^29.4.0
         version: 29.4.0(@babel/core@7.28.0)(esbuild@0.25.6)(jest@30.0.4)(typescript@5.8.3)
@@ -255,7 +258,7 @@ importers:
         version: 5.8.3
       vite:
         specifier: ^7.0.4
-        version: 7.0.4(@types/node@20.19.8)
+        version: 7.0.4
 
   packages/ui-v2:
     dependencies:
@@ -343,7 +346,7 @@ importers:
         version: link:../tsconfig
       chromatic:
         specifier: ^13.1.2
-        version: 13.1.2(@chromatic-com/playwright@0.12.5)
+        version: 13.1.2
       eslint:
         specifier: ^8.57.0
         version: 8.57.1
@@ -352,7 +355,7 @@ importers:
         version: 3.0.0
       jest:
         specifier: ^30.0.4
-        version: 30.0.4(@types/node@20.19.8)
+        version: 30.0.4
       jest-environment-jsdom:
         specifier: ^30.0.4
         version: 30.0.4
@@ -361,7 +364,7 @@ importers:
         version: 18.3.1
       storybook:
         specifier: ^9.0.17
-        version: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+        version: 9.0.17(@testing-library/dom@10.4.0)
       ts-jest:
         specifier: ^29.4.0
         version: 29.4.0(@babel/core@7.28.0)(esbuild@0.25.6)(jest@30.0.4)(typescript@5.8.3)
@@ -373,7 +376,7 @@ importers:
         version: 5.8.3
       vite:
         specifier: ^7.0.4
-        version: 7.0.4(@types/node@20.19.8)
+        version: 7.0.4
 
 packages:
 
@@ -1806,7 +1809,7 @@ packages:
       magic-string: 0.27.0
       react-docgen-typescript: 2.4.0(typescript@5.8.3)
       typescript: 5.8.3
-      vite: 6.3.5(@types/node@20.19.8)
+      vite: 6.3.5
     dev: true
 
   /@joshwooding/vite-plugin-react-docgen-typescript@0.6.1(typescript@5.8.3)(vite@7.0.4):
@@ -1822,7 +1825,7 @@ packages:
       magic-string: 0.30.17
       react-docgen-typescript: 2.4.0(typescript@5.8.3)
       typescript: 5.8.3
-      vite: 7.0.4(@types/node@20.19.8)
+      vite: 7.0.4
     dev: true
 
   /@jridgewell/gen-mapping@0.3.12:
@@ -2273,7 +2276,7 @@ packages:
       '@types/uuid': 9.0.8
       dequal: 2.0.3
       polished: 4.3.1
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
       uuid: 9.0.1
     dev: true
 
@@ -2286,7 +2289,7 @@ packages:
       '@types/uuid': 9.0.8
       dequal: 2.0.3
       polished: 4.3.1
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
       uuid: 9.0.1
     dev: true
 
@@ -2308,7 +2311,7 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
       memoizerific: 1.11.3
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
       ts-dedent: 2.2.0
     dev: true
 
@@ -2319,7 +2322,7 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
       memoizerific: 1.11.3
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
       ts-dedent: 2.2.0
     dev: true
 
@@ -2341,7 +2344,7 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
       dequal: 2.0.3
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
       ts-dedent: 2.2.0
     dev: true
 
@@ -2352,7 +2355,7 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
       dequal: 2.0.3
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
       ts-dedent: 2.2.0
     dev: true
 
@@ -2384,7 +2387,7 @@ packages:
       '@storybook/react-dom-shim': 8.6.14(react-dom@19.1.0)(react@18.3.1)(storybook@9.0.17)
       react: 18.3.1
       react-dom: 19.1.0(react@18.3.1)
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@types/react'
@@ -2401,7 +2404,7 @@ packages:
       '@storybook/react-dom-shim': 8.6.14(react-dom@19.1.0)(react@18.3.1)(storybook@8.6.14)
       react: 18.3.1
       react-dom: 19.1.0(react@18.3.1)
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@types/react'
@@ -2441,7 +2444,7 @@ packages:
       '@storybook/addon-outline': 8.6.14(storybook@9.0.17)
       '@storybook/addon-toolbars': 8.6.14(storybook@9.0.17)
       '@storybook/addon-viewport': 8.6.14(storybook@9.0.17)
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@types/react'
@@ -2461,7 +2464,7 @@ packages:
       '@storybook/addon-outline': 8.6.14(storybook@8.6.14)
       '@storybook/addon-toolbars': 8.6.14(storybook@8.6.14)
       '@storybook/addon-viewport': 8.6.14(storybook@8.6.14)
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@types/react'
@@ -2482,7 +2485,7 @@ packages:
       storybook: ^8.6.14
     dependencies:
       '@storybook/global': 5.0.0
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
     dev: true
 
   /@storybook/addon-highlight@8.6.14(storybook@9.0.17):
@@ -2491,7 +2494,7 @@ packages:
       storybook: ^8.6.14
     dependencies:
       '@storybook/global': 5.0.0
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
     dev: true
 
   /@storybook/addon-interactions@8.6.14(storybook@8.6.14):
@@ -2503,7 +2506,7 @@ packages:
       '@storybook/instrumenter': 8.6.14(storybook@8.6.14)
       '@storybook/test': 8.6.14(storybook@8.6.14)
       polished: 4.3.1
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
       ts-dedent: 2.2.0
     dev: true
 
@@ -2516,7 +2519,7 @@ packages:
       '@storybook/instrumenter': 8.6.14(storybook@9.0.17)
       '@storybook/test': 8.6.14(storybook@9.0.17)
       polished: 4.3.1
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
       ts-dedent: 2.2.0
     dev: true
 
@@ -2531,7 +2534,7 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
       react: 18.3.1
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
     dev: true
 
   /@storybook/addon-measure@8.5.8(storybook@8.5.8):
@@ -2550,7 +2553,7 @@ packages:
       storybook: ^8.6.14
     dependencies:
       '@storybook/global': 5.0.0
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
       tiny-invariant: 1.3.3
     dev: true
 
@@ -2560,7 +2563,7 @@ packages:
       storybook: ^8.6.14
     dependencies:
       '@storybook/global': 5.0.0
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
       tiny-invariant: 1.3.3
     dev: true
 
@@ -2580,7 +2583,7 @@ packages:
       storybook: ^8.6.14
     dependencies:
       '@storybook/global': 5.0.0
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
       ts-dedent: 2.2.0
     dev: true
 
@@ -2590,7 +2593,7 @@ packages:
       storybook: ^8.6.14
     dependencies:
       '@storybook/global': 5.0.0
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
       ts-dedent: 2.2.0
     dev: true
 
@@ -2607,7 +2610,7 @@ packages:
     peerDependencies:
       storybook: ^8.6.14
     dependencies:
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
     dev: true
 
   /@storybook/addon-toolbars@8.6.14(storybook@9.0.17):
@@ -2615,7 +2618,7 @@ packages:
     peerDependencies:
       storybook: ^8.6.14
     dependencies:
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
     dev: true
 
   /@storybook/addon-viewport@8.5.8(storybook@8.5.8):
@@ -2633,7 +2636,7 @@ packages:
       storybook: ^8.6.14
     dependencies:
       memoizerific: 1.11.3
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
     dev: true
 
   /@storybook/addon-viewport@8.6.14(storybook@9.0.17):
@@ -2642,7 +2645,7 @@ packages:
       storybook: ^8.6.14
     dependencies:
       memoizerific: 1.11.3
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
     dev: true
 
   /@storybook/blocks@8.5.8(react-dom@19.1.0)(react@18.3.1)(storybook@8.5.8):
@@ -2680,7 +2683,7 @@ packages:
       '@storybook/icons': 1.4.0(react-dom@18.3.1)(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
       ts-dedent: 2.2.0
     dev: true
 
@@ -2699,7 +2702,7 @@ packages:
       '@storybook/icons': 1.4.0(react-dom@19.1.0)(react@18.3.1)
       react: 18.3.1
       react-dom: 19.1.0(react@18.3.1)
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
       ts-dedent: 2.2.0
     dev: true
 
@@ -2718,7 +2721,7 @@ packages:
       '@storybook/icons': 1.4.0(react-dom@19.1.0)(react@18.3.1)
       react: 18.3.1
       react-dom: 19.1.0(react@18.3.1)
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
       ts-dedent: 2.2.0
     dev: true
 
@@ -2730,9 +2733,9 @@ packages:
     dependencies:
       '@storybook/csf-plugin': 8.6.14(storybook@8.6.14)
       browser-assert: 1.2.1
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
       ts-dedent: 2.2.0
-      vite: 6.3.5(@types/node@20.19.8)
+      vite: 6.3.5
     dev: true
 
   /@storybook/builder-vite@9.0.17(storybook@9.0.17)(vite@7.0.4):
@@ -2742,9 +2745,9 @@ packages:
       vite: ^5.0.0 || ^6.0.0 || ^7.0.0
     dependencies:
       '@storybook/csf-plugin': 9.0.17(storybook@9.0.17)
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
       ts-dedent: 2.2.0
-      vite: 7.0.4(@types/node@20.19.8)
+      vite: 7.0.4
     dev: true
 
   /@storybook/builder-webpack5@8.5.8(esbuild@0.25.6)(storybook@8.5.8)(typescript@5.8.3):
@@ -2803,7 +2806,7 @@ packages:
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
     dev: true
 
   /@storybook/core-webpack@8.5.8(storybook@8.5.8):
@@ -2841,7 +2844,7 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@storybook/core@8.6.14(prettier@3.6.2)(storybook@8.6.14):
+  /@storybook/core@8.6.14(storybook@8.6.14):
     resolution: {integrity: sha512-1P/w4FSNRqP8j3JQBOi3yGt8PVOgSRbP66Ok520T78eJBeqx9ukCfl912PQZ7SPbW3TIunBwLXMZOjZwBB/JmA==}
     peerDependencies:
       prettier: ^2 || ^3
@@ -2855,7 +2858,6 @@ packages:
       esbuild: 0.25.6
       esbuild-register: 3.6.0(esbuild@0.25.6)
       jsdoc-type-pratt-parser: 4.1.0
-      prettier: 3.6.2
       process: 0.11.10
       recast: 0.23.11
       semver: 7.7.2
@@ -2882,7 +2884,7 @@ packages:
     peerDependencies:
       storybook: ^8.6.14
     dependencies:
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
       unplugin: 1.16.1
     dev: true
 
@@ -2891,7 +2893,7 @@ packages:
     peerDependencies:
       storybook: ^8.6.14
     dependencies:
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
       unplugin: 1.16.1
     dev: true
 
@@ -2900,7 +2902,7 @@ packages:
     peerDependencies:
       storybook: ^9.0.17
     dependencies:
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
       unplugin: 1.16.1
     dev: true
 
@@ -2949,7 +2951,7 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
       '@vitest/utils': 2.1.9
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
     dev: true
 
   /@storybook/instrumenter@8.6.14(storybook@9.0.17):
@@ -2959,7 +2961,7 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
       '@vitest/utils': 2.1.9
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
     dev: true
 
   /@storybook/manager-api@8.5.8(storybook@8.5.8):
@@ -2975,7 +2977,7 @@ packages:
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
     dev: true
 
   /@storybook/preset-server-webpack@8.5.8(storybook@8.5.8):
@@ -3006,7 +3008,7 @@ packages:
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
     dev: true
 
   /@storybook/react-dom-shim@8.5.8(react-dom@19.1.0)(react@18.3.1)(storybook@8.5.8):
@@ -3030,7 +3032,7 @@ packages:
     dependencies:
       react: 18.3.1
       react-dom: 19.1.0(react@18.3.1)
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
     dev: true
 
   /@storybook/react-dom-shim@8.6.14(react-dom@19.1.0)(react@18.3.1)(storybook@9.0.17):
@@ -3042,7 +3044,7 @@ packages:
     dependencies:
       react: 18.3.1
       react-dom: 19.1.0(react@18.3.1)
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
     dev: true
 
   /@storybook/react-dom-shim@9.0.17(react-dom@18.3.1)(react@18.3.1)(storybook@9.0.17):
@@ -3054,7 +3056,7 @@ packages:
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
     dev: true
 
   /@storybook/react-vite@8.6.14(react-dom@19.1.0)(react@18.3.1)(storybook@8.6.14)(typescript@5.8.3)(vite@6.3.5):
@@ -3080,9 +3082,9 @@ packages:
       react-docgen: 7.1.1
       react-dom: 19.1.0(react@18.3.1)
       resolve: 1.22.10
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
       tsconfig-paths: 4.2.0
-      vite: 6.3.5(@types/node@20.19.8)
+      vite: 6.3.5
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -3108,9 +3110,9 @@ packages:
       react-docgen: 8.0.0
       react-dom: 18.3.1(react@18.3.1)
       resolve: 1.22.10
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
       tsconfig-paths: 4.2.0
-      vite: 7.0.4(@types/node@20.19.8)
+      vite: 7.0.4
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -3140,7 +3142,7 @@ packages:
       '@storybook/theming': 8.6.14(storybook@8.6.14)
       react: 18.3.1
       react-dom: 19.1.0(react@18.3.1)
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
       typescript: 5.8.3
     dev: true
 
@@ -3160,7 +3162,7 @@ packages:
       '@storybook/react-dom-shim': 9.0.17(react-dom@18.3.1)(react@18.3.1)(storybook@9.0.17)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
       typescript: 5.8.3
     dev: true
 
@@ -3212,7 +3214,7 @@ packages:
       '@testing-library/user-event': 14.5.2(@testing-library/dom@10.4.0)
       '@vitest/expect': 2.0.5
       '@vitest/spy': 2.0.5
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
     dev: true
 
   /@storybook/test@8.6.14(storybook@9.0.17):
@@ -3227,7 +3229,7 @@ packages:
       '@testing-library/user-event': 14.5.2(@testing-library/dom@10.4.0)
       '@vitest/expect': 2.0.5
       '@vitest/spy': 2.0.5
-      storybook: 9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2)
+      storybook: 9.0.17(@testing-library/dom@10.4.0)
     dev: true
 
   /@storybook/theming@8.5.8(storybook@8.5.8):
@@ -3243,7 +3245,7 @@ packages:
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
-      storybook: 8.6.14(prettier@3.6.2)
+      storybook: 8.6.14
     dev: true
 
   /@swc/helpers@0.5.15:
@@ -4439,6 +4441,22 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
+  /autoprefixer@10.4.21(postcss@8.5.6):
+    resolution: {integrity: sha512-O+A6LWV5LDHSJD3LjHYoNi4VLsj/Whi7k6zG12xTYaU4cQ8oxQGckXNX8cRHK5yOZ/ppVHe0ZBXGzSV9jXdVbQ==}
+    engines: {node: ^10 || ^12 || >=14}
+    hasBin: true
+    peerDependencies:
+      postcss: ^8.1.0
+    dependencies:
+      browserslist: 4.25.1
+      caniuse-lite: 1.0.30001727
+      fraction.js: 4.3.7
+      normalize-range: 0.1.2
+      picocolors: 1.1.1
+      postcss: 8.5.6
+      postcss-value-parser: 4.2.0
+    dev: true
+
   /available-typed-arrays@1.0.7:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
@@ -4833,6 +4851,19 @@ packages:
   /chownr@3.0.0:
     resolution: {integrity: sha512-+IxzY9BZOQd/XuYPRmrvEVjF/nqj5kgT4kEq7VofrDoM1MxoRjEWkrCC3EtLi59TVawxTAn+orJwFQcrqEN1+g==}
     engines: {node: '>=18'}
+    dev: true
+
+  /chromatic@13.1.2:
+    resolution: {integrity: sha512-jgVptQabJHOnzmmvLjbtfutREkWGhDDk2gVqMH6N+V7z56oIy4Sd2/U7ZxNvnVFPinZQMSjSdUce4b6JIP64Dg==}
+    hasBin: true
+    peerDependencies:
+      '@chromatic-com/cypress': ^0.*.* || ^1.0.0
+      '@chromatic-com/playwright': ^0.*.* || ^1.0.0
+    peerDependenciesMeta:
+      '@chromatic-com/cypress':
+        optional: true
+      '@chromatic-com/playwright':
+        optional: true
     dev: true
 
   /chromatic@13.1.2(@chromatic-com/playwright@0.12.5):
@@ -6276,6 +6307,10 @@ packages:
       webpack: 5.101.0(esbuild@0.25.6)
     dev: true
 
+  /fraction.js@4.3.7:
+    resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
+    dev: true
+
   /framer-motion@12.23.6(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-dsJ389QImVE3lQvM8Mnk99/j8tiZDM/7706PCqvkQ8sSCnpmWxsgX+g0lj7r5OBVL0U36pIecCTBoIWcM2RuKw==}
     peerDependencies:
@@ -7224,7 +7259,7 @@ packages:
       - supports-color
     dev: true
 
-  /jest-cli@30.0.4(@types/node@20.19.8):
+  /jest-cli@30.0.4:
     resolution: {integrity: sha512-3dOrP3zqCWBkjoVG1zjYJpD9143N9GUCbwaF2pFF5brnIgRLHmKcCIw+83BvF1LxggfMWBA0gxkn6RuQVuRhIQ==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
     hasBin: true
@@ -7606,7 +7641,7 @@ packages:
       supports-color: 8.1.1
     dev: true
 
-  /jest@30.0.4(@types/node@20.19.8):
+  /jest@30.0.4:
     resolution: {integrity: sha512-9QE0RS4WwTj/TtTC4h/eFVmFAhGNVerSB9XpJh8sqaXlP73ILcPcZ7JWjjEtJJe2m8QyBLKKfPQuK+3F+Xij/g==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
     hasBin: true
@@ -7619,7 +7654,7 @@ packages:
       '@jest/core': 30.0.4
       '@jest/types': 30.0.1
       import-local: 3.2.0
-      jest-cli: 30.0.4(@types/node@20.19.8)
+      jest-cli: 30.0.4
     transitivePeerDependencies:
       - '@types/node'
       - babel-plugin-macros
@@ -8330,6 +8365,11 @@ packages:
   /normalize-path@3.0.0:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
+
+  /normalize-range@0.1.2:
+    resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==}
+    engines: {node: '>=0.10.0'}
+    dev: true
 
   /npm-run-path@4.0.1:
     resolution: {integrity: sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==}
@@ -9544,7 +9584,7 @@ packages:
       - utf-8-validate
     dev: true
 
-  /storybook@8.6.14(prettier@3.6.2):
+  /storybook@8.6.14:
     resolution: {integrity: sha512-sVKbCj/OTx67jhmauhxc2dcr1P+yOgz/x3h0krwjyMgdc5Oubvxyg4NYDZmzAw+ym36g/lzH8N0Ccp4dwtdfxw==}
     hasBin: true
     peerDependencies:
@@ -9553,15 +9593,14 @@ packages:
       prettier:
         optional: true
     dependencies:
-      '@storybook/core': 8.6.14(prettier@3.6.2)(storybook@8.6.14)
-      prettier: 3.6.2
+      '@storybook/core': 8.6.14(storybook@8.6.14)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
       - utf-8-validate
     dev: true
 
-  /storybook@9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2):
+  /storybook@9.0.17(@testing-library/dom@10.4.0):
     resolution: {integrity: sha512-O+9jgJ+Trlq9VGD1uY4OBLKQWHHDKM/A/pA8vMW6PVehhGHNvpzcIC1bngr6mL5gGHZP2nBv+9XG8pTMcggMmg==}
     hasBin: true
     peerDependencies:
@@ -9578,7 +9617,6 @@ packages:
       better-opn: 3.0.2
       esbuild: 0.25.6
       esbuild-register: 3.6.0(esbuild@0.25.6)
-      prettier: 3.6.2
       recast: 0.23.11
       semver: 7.7.2
       ws: 8.18.3
@@ -10086,7 +10124,7 @@ packages:
       ejs: 3.1.10
       esbuild: 0.25.6
       fast-json-stable-stringify: 2.1.0
-      jest: 30.0.4(@types/node@20.19.8)
+      jest: 30.0.4
       json5: 2.2.3
       lodash.memoize: 4.1.2
       make-error: 1.3.6
@@ -10435,7 +10473,7 @@ packages:
       convert-source-map: 2.0.0
     dev: true
 
-  /vite@6.3.5(@types/node@20.19.8):
+  /vite@6.3.5:
     resolution: {integrity: sha512-cZn6NDFE7wdTpINgs++ZJ4N49W2vRp8LCKrn3Ob1kYNtOo21vfDoaV5GzBfLU4MovSAB8uNRm4jgzVQZ+mBzPQ==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
@@ -10475,7 +10513,6 @@ packages:
       yaml:
         optional: true
     dependencies:
-      '@types/node': 20.19.8
       esbuild: 0.25.6
       fdir: 6.4.6(picomatch@4.0.3)
       picomatch: 4.0.3
@@ -10486,7 +10523,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vite@7.0.4(@types/node@20.19.8):
+  /vite@7.0.4:
     resolution: {integrity: sha512-SkaSguuS7nnmV7mfJ8l81JGBFV7Gvzp8IzgE8A8t23+AxuNX61Q5H1Tpz5efduSN7NHC8nQXD3sKQKZAu5mNEA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
@@ -10526,7 +10563,6 @@ packages:
       yaml:
         optional: true
     dependencies:
-      '@types/node': 20.19.8
       esbuild: 0.25.6
       fdir: 6.4.6(picomatch@4.0.3)
       picomatch: 4.0.3

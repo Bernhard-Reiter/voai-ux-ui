@@ -7,6 +7,9 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "../../packages/ui/src/**/*.{js,ts,jsx,tsx}",
+    "../../packages/ui-v2/src/**/*.{js,ts,jsx,tsx}",
+    "../../packages/ui/src/styles/*.css",
+    "../../packages/ui-v2/src/styles/*.css",
   ],
 };
 
