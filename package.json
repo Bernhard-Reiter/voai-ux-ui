@@ -25,5 +25,9 @@
     "overrides": {
       "@babel/core": "^7.25.0"
     }
+  },
+  "engines": {
+    "node": ">=18 <21",
+    "pnpm": "8"
   }
 }
