@@ -20,6 +20,14 @@ export default function ShowcasePage() {
   }
 
   const { Button, Card, Input, CommandPalette } = components;
+  
+  // Determine which design system is active
+  const isCirculaDesign = window.location.pathname.includes('circula') || 
+                          document.querySelector('[data-ui-library="cosmic"]') !== null;
+  const designSystemName = isCirculaDesign ? 'Circula Design System' : 'VOAI Design System';
+  const designSystemDescription = isCirculaDesign 
+    ? 'A minimalist black & white design system with green accents'
+    : 'A modern, Superhuman-inspired UI component library';
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -37,10 +45,10 @@ export default function ShowcasePage() {
       <main className="container mx-auto px-4 py-12">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            VOAI Design System
+            {designSystemName}
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400">
-            A modern, Superhuman-inspired UI component library
+            {designSystemDescription}
           </p>
         </div>
 

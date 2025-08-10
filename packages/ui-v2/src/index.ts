@@ -1,3 +1,6 @@
+// Import Circula Styles
+import './styles/index.css';
+
 // Atoms
 export * from "./atoms";
 

@@ -17,7 +17,8 @@
       "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": "./dist/styles.css",
+    "./styles/*": "./src/styles/*"
   },
   "scripts": {
     "build": "pnpm build:tokens && tsup",
