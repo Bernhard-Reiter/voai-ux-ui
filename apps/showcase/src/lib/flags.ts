@@ -3,9 +3,13 @@ export type UILibrary = 'classic' | 'cosmic';
 
 // Server-side variant detection
 export function getVariantServer(): Variant {
-  // This function should only be called in server components
-  // For now, return default variant
-  return 'A';
+  // Check environment variable first
+  const envVariant = process.env.UI_VARIANT as Variant | undefined;
+  if (envVariant === 'A' || envVariant === 'B') {
+    return envVariant;
+  }
+  // Default to B for Circula Design
+  return 'B';
 }
 
 // Client-side variant detection
@@ -20,7 +24,8 @@ export function getVariantClient(): Variant {
     .find(row => row.startsWith('ui-variant='));
   
   const variant = cookie?.split('=')?.[1] as Variant | undefined;
-  return variant ?? 'A';
+  // Default to B for Circula Design
+  return variant ?? 'B';
 }
 
 // Universal variant detection
@@ -34,8 +39,8 @@ export function getVariant(reqHeaders?: Headers): Variant {
     return variant ?? 'A';
   }
   
-  // Default to A for server-side
-  return 'A';
+  // Default to B for Circula Design
+  return 'B';
 }
 
 // Map variant to UI library

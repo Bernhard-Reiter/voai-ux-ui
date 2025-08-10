@@ -3,5 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import UI Package Styles including Cosmic Tokens - AFTER Tailwind */
+/* Import UI Package Styles - AFTER Tailwind */
+/* Classic UI Styles */
 @import '@voai/ui/src/styles/globals.css';
+
+/* Circula Design System Styles */
+@import '@voai/ui-v2/src/styles/circula-globals.css';
+@import '@voai/ui-v2/src/styles/circula-tokens.css';
