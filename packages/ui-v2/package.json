@@ -18,7 +18,8 @@
       "types": "./dist/index.d.ts"
     },
     "./styles.css": "./dist/styles.css",
-    "./styles/*": "./src/styles/*"
+    "./styles": "./dist/styles.css",
+    "./styles/*": "./dist/styles/*"
   },
   "scripts": {
     "build": "pnpm build:tokens && tsup",

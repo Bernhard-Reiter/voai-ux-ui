@@ -14,10 +14,12 @@
     "build-storybook": "turbo build-storybook"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@playwright/test": "^1.40.0",
     "@voai/eslint-config": "workspace:*",
     "@voai/tsconfig": "workspace:*",
-    "turbo": "^2.0.0",
-    "@playwright/test": "^1.40.0"
+    "turbo": "^2.0.0"
   },
   "pnpm": {
     "overrides": {
