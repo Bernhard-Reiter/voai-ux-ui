@@ -1,12 +1,14 @@
-/* Import UI Package Styles - Must come BEFORE Tailwind directives */
-/* Classic UI Styles */
-@import '@voai/ui/src/styles/globals.css';
+/* Import font - must come first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* Circula Design System Styles */
-@import '@voai/ui-v2/styles/circula-tokens.css';
-@import '@voai/ui-v2/styles/circula-globals.css';
-
-/* Tailwind Directives - Must come AFTER all @import statements */
+/* Tailwind Directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Global styles */
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+}
