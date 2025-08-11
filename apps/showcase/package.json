@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test:e2e": "playwright test",
-    "test:e2e:variant": "playwright test tests/ab-test.spec.ts"
+    "test:e2e:variant": "playwright test tests/basic.spec.ts"
   },
   "dependencies": {
     "@voai/ui": "workspace:*",
