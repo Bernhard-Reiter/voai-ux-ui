@@ -1,9 +1,4 @@
 {
-  "functions": {
-    "app/api/analytics/route.ts": {
-      "maxDuration": 10
-    }
-  },
   "rewrites": [
     {
       "source": "/cosmic",
