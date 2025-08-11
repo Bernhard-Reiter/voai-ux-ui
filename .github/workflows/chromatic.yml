@@ -75,6 +75,7 @@ jobs:
           storybookBuildDir: apps/storybook/storybook-static
           onlyChanged: true
           exitZeroOnChanges: true
+          autoAcceptChanges: true
           skip: 'dependabot/**'
           externals: |
             - packages/ui/src/**
