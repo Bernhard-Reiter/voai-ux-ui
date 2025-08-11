@@ -1,11 +1,11 @@
-/* Tailwind Directives */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Import UI Package Styles - AFTER Tailwind */
+/* Import UI Package Styles - Must come BEFORE Tailwind directives */
 /* Classic UI Styles */
 @import '@voai/ui/src/styles/globals.css';
 
 /* Circula Design System Styles */
 @import '@voai/ui-v2/styles.css';
+
+/* Tailwind Directives - Must come AFTER all @import statements */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
