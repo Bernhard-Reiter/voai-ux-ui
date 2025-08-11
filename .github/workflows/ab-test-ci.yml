@@ -91,7 +91,9 @@ jobs:
         run: pnpm build
         
       - name: Run E2E tests for ${{ matrix.variant }}
-        run: pnpm test:e2e:variant --variant=${{ matrix.variant }}
+        run: |
+          cd apps/showcase
+          TEST_VARIANT=${{ matrix.variant }} pnpm test:e2e:variant
         env:
           TEST_VARIANT: ${{ matrix.variant }}
           
@@ -131,8 +133,8 @@ jobs:
         uses: treosh/lighthouse-ci-action@v10
         with:
           urls: |
-            http://localhost:3000/?variant=${{ matrix.variant }}
-            http://localhost:3000/cosmic?variant=${{ matrix.variant }}
+            http://localhost:3002/?variant=${{ matrix.variant }}
+            http://localhost:3002/cosmic?variant=${{ matrix.variant }}
           uploadArtifacts: true
           temporaryPublicStorage: true
           configPath: ./apps/showcase/lighthouserc.js
