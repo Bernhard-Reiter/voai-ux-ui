@@ -1,5 +1,5 @@
 {
-  "installCommand": "corepack enable && pnpm -C ../../ install --frozen-lockfile",
+  "installCommand": "corepack enable && cp ../../pnpm-lock.yaml ./pnpm-lock.yaml && pnpm install --frozen-lockfile",
   "buildCommand": "pnpm -C ../../ build --filter=showcase",
   "framework": "nextjs",
   "outputDirectory": ".next",
