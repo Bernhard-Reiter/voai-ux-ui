@@ -1,5 +1,4 @@
-/* Import Inter Variable Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* Use next/font on app level; no Google Fonts import here */
 
 /* Import Cosmic Tokens */
 @import './cosmic-tokens.css';
@@ -41,10 +40,7 @@
   }
 
   /* Selection */
-  ::selection {
-    background-color: var(--c-accent);
-    color: white;
-  }
+  ::selection { background-color: var(--c-accent); color: white; }
 
   /* Scrollbar Styling */
   ::-webkit-scrollbar {

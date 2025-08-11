@@ -2,8 +2,7 @@
    Circula Global Styles
    ================================================================ */
 
-/* Import Inter Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* Use next/font on app level; no Google Fonts import here */
 
 /* Import Design Tokens */
 @import './circula-tokens.css';
