@@ -3,7 +3,8 @@
 @import '@voai/ui/src/styles/globals.css';
 
 /* Circula Design System Styles */
-@import '@voai/ui-v2/styles.css';
+@import '@voai/ui-v2/styles/circula-tokens.css';
+@import '@voai/ui-v2/styles/circula-globals.css';
 
 /* Tailwind Directives - Must come AFTER all @import statements */
 @tailwind base;
