@@ -1,12 +1,12 @@
 /* Import Inter Variable Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+/* Import Cosmic Tokens */
+@import './cosmic-tokens.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import Cosmic Tokens - After Tailwind layers */
-@import './cosmic-tokens.css';
 
 @layer base {
   /* Reset & Base Styles */
