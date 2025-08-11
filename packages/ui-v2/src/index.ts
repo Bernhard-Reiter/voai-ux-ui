@@ -1,5 +1,5 @@
-// Import Circula Styles
-import './styles/index.css';
+// Consumers should import styles explicitly if needed:
+// import '@voai/ui-v2/styles.css'
 
 // Atoms
 export * from "./atoms";
