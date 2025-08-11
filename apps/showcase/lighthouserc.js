@@ -2,12 +2,13 @@ module.exports = {
   ci: {
     collect: {
       startServerCommand: 'pnpm dev',
-      startServerReadyPattern: 'ready on',
+      startServerReadyPattern: 'Ready',
+      startServerReadyTimeout: 30000,
       url: [
-        'http://localhost:3000',
-        'http://localhost:3000/?variant=classic',
-        'http://localhost:3000/?variant=cosmic',
-        'http://localhost:3000/cosmic',
+        'http://localhost:3002',
+        'http://localhost:3002/?variant=classic',
+        'http://localhost:3002/?variant=cosmic',
+        'http://localhost:3002/cosmic',
       ],
       numberOfRuns: 3,
       settings: {

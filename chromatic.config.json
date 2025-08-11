@@ -6,12 +6,11 @@
   "exitZeroOnChanges": true,
   "exitOnceUploaded": true,
   "onlyChanged": true,
-  "skip": ["dependabot/**", "renovate/**", "chore/**", "docs/**", "*.md"],
+  "skip": "dependabot/**",
   "externals": ["public/**", "**/*.test.ts", "**/*.spec.ts"],
   "storybookBuildDir": "storybook-static",
   "storybookConfigDir": ".storybook",
   "zip": true,
   "debug": false,
-  "junitReport": false,
-  "preserveMissingSpecs": false
+  "junitReport": false
 }
