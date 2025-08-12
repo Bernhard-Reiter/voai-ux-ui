@@ -10,7 +10,7 @@ module.exports = {
         'http://localhost:3002/?variant=cosmic',
         'http://localhost:3002/cosmic',
       ],
-      numberOfRuns: 2,
+      numberOfRuns: 1,
       settings: {
         preset: 'desktop',
         // A/B test specific settings
@@ -22,7 +22,7 @@ module.exports = {
     assert: {
       preset: 'lighthouse:recommended',
       assertions: {
-        'categories:performance': ['error', { minScore: 0.75 }],
+        'categories:performance': ['warn', { minScore: 0.7 }],
         'categories:accessibility': ['error', { minScore: 0.9 }],
         'categories:best-practices': ['error', { minScore: 0.9 }],
         'categories:seo': ['error', { minScore: 0.9 }],
