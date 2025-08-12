@@ -6,9 +6,6 @@ module.exports = {
       startServerReadyTimeout: 90000,
       url: [
         'http://localhost:3002',
-        'http://localhost:3002/?variant=classic',
-        'http://localhost:3002/?variant=cosmic',
-        'http://localhost:3002/cosmic',
       ],
       numberOfRuns: 1,
       settings: {
