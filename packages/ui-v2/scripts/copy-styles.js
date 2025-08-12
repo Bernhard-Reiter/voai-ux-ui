@@ -32,8 +32,3 @@ if (fs.existsSync(cssSrc)) {
 console.log('Styles copied to dist');
 
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/main
