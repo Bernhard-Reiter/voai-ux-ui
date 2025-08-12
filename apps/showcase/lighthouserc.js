@@ -7,7 +7,11 @@ module.exports = {
       url: [
         'http://localhost:3002',
       ],
+<<<<<<< HEAD
+      numberOfRuns: 2,
+=======
       numberOfRuns: 1,
+>>>>>>> origin/main
       settings: {
         preset: 'desktop',
         // A/B test specific settings
@@ -19,7 +23,11 @@ module.exports = {
     assert: {
       preset: 'lighthouse:recommended',
       assertions: {
+<<<<<<< HEAD
+        'categories:performance': ['error', { minScore: 0.75 }],
+=======
         'categories:performance': ['warn', { minScore: 0.7 }],
+>>>>>>> origin/main
         'categories:accessibility': ['error', { minScore: 0.9 }],
         'categories:best-practices': ['error', { minScore: 0.9 }],
         'categories:seo': ['error', { minScore: 0.9 }],
