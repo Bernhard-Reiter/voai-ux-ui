@@ -1,5 +1,5 @@
 export type Variant = 'A' | 'B';
-export type UILibrary = 'classic' | 'cosmic';
+export type UILibrary = 'circula';
 
 // Server-side variant detection
 export function getVariantServer(): Variant {
@@ -8,8 +8,7 @@ export function getVariantServer(): Variant {
   if (envVariant === 'A' || envVariant === 'B') {
     return envVariant;
   }
-  // Default to B for Circula Design
-  return 'B';
+  return 'A';
 }
 
 // Client-side variant detection
@@ -24,8 +23,7 @@ export function getVariantClient(): Variant {
     .find(row => row.startsWith('ui-variant='));
   
   const variant = cookie?.split('=')?.[1] as Variant | undefined;
-  // Default to B for Circula Design
-  return variant ?? 'B';
+  return variant ?? 'A';
 }
 
 // Universal variant detection
@@ -39,14 +37,11 @@ export function getVariant(reqHeaders?: Headers): Variant {
     return variant ?? 'A';
   }
   
-  // Default to B for Circula Design
-  return 'B';
+  return 'A';
 }
 
 // Map variant to UI library
-export function getUILibrary(variant: Variant): UILibrary {
-  return variant === 'B' ? 'cosmic' : 'classic';
-}
+export function getUILibrary(_variant: Variant): UILibrary { return 'circula'; }
 
 // Feature flags based on variant
 export function getFeatureFlags(variant: Variant) {
@@ -56,14 +51,14 @@ export function getFeatureFlags(variant: Variant) {
     variant,
     uiLibrary,
     // Feature-specific flags
-    useCosmicAnimations: variant === 'B',
-    useGradientBackgrounds: variant === 'B',
-    useNebulaEffects: variant === 'B',
-    useClassicMinimalism: variant === 'A',
+    useCosmicAnimations: false,
+    useGradientBackgrounds: false,
+    useNebulaEffects: false,
+    useClassicMinimalism: true,
     // Component availability
-    hasPortalGate: variant === 'B',
-    hasNebulaGrid: variant === 'B',
-    hasThemeToggle: variant === 'B',
+    hasPortalGate: false,
+    hasNebulaGrid: false,
+    hasThemeToggle: false,
     // Analytics flags
     trackInteractions: true,
     trackPerformance: true,

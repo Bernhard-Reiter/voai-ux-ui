@@ -9,7 +9,7 @@ interface UIProviderProps {
 }
 
 export function UIProvider({ children, variant: serverVariant }: UIProviderProps) {
-  const [UIComponents, setUIComponents] = useState<typeof import('@voai/ui') | typeof import('@voai/ui-v2') | null>(null);
+  const [UIComponents, setUIComponents] = useState<typeof import('@voai/ui-v2') | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [currentVariant, setCurrentVariant] = useState<'A' | 'B'>('A');
 
@@ -24,16 +24,7 @@ export function UIProvider({ children, variant: serverVariant }: UIProviderProps
     // Dynamically import the appropriate UI library
     const loadUI = async () => {
       try {
-        let ui;
-        if (uiLibrary === 'cosmic') {
-          // Import Cosmic Guide (ui-v2)
-          console.log('Loading Cosmic UI (ui-v2)...');
-          ui = await import('@voai/ui-v2');
-        } else {
-          // Import Classic (ui)
-          console.log('Loading Classic UI...');
-          ui = await import('@voai/ui');
-        }
+        const ui = await import('@voai/ui-v2');
         
         setUIComponents(ui);
         
@@ -49,14 +40,7 @@ export function UIProvider({ children, variant: serverVariant }: UIProviderProps
         console.error('Failed to load UI library:', error);
         console.error('UI Library:', uiLibrary);
         console.error('Variant:', variantToUse);
-        // Fallback to classic UI
-        try {
-          console.log('Attempting fallback to classic UI...');
-          const fallbackUI = await import('@voai/ui');
-          setUIComponents(fallbackUI);
-        } catch (fallbackError) {
-          console.error('Fallback also failed:', fallbackError);
-        }
+        // Kein Fallback nötig im Circula-only Modus
       } finally {
         setIsLoading(false);
       }
@@ -99,19 +83,14 @@ export function UIProvider({ children, variant: serverVariant }: UIProviderProps
 
 // Export a hook to access UI components in child components
 export function useUIComponents() {
-  const [components, setComponents] = useState<typeof import('@voai/ui') | typeof import('@voai/ui-v2') | null>(null);
+  const [components, setComponents] = useState<typeof import('@voai/ui-v2') | null>(null);
   const variant = getVariantClient();
   const uiLibrary = getUILibrary(variant);
 
   useEffect(() => {
     const loadComponents = async () => {
-      if (uiLibrary === 'cosmic') {
-        const ui = await import('@voai/ui-v2');
-        setComponents(ui);
-      } else {
-        const ui = await import('@voai/ui');
-        setComponents(ui);
-      }
+      const ui = await import('@voai/ui-v2');
+      setComponents(ui);
     };
 
     loadComponents();
