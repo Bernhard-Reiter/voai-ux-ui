@@ -6,16 +6,16 @@ export interface StarCardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * StarCard - Cosmic content container
- * Groups related content in the cosmic interface
+ * StarCard - Content container (Circula)
+ * Groups related content
  */
 export const StarCard = React.forwardRef<HTMLDivElement, StarCardProps>(
   ({ className, glow = false, ...props }, ref) => (
     <div
       ref={ref}
       className={cn(
-        'cosmic-surface p-[var(--space-3)] transition-all duration-300',
-        glow && 'cosmic-glow hover:shadow-lg',
+        'bg-[var(--c-surface)] border border-[var(--c-border)] rounded-[var(--radius-md)] p-[var(--space-3)] transition-all duration-300',
+        glow && 'shadow-[0_0_20px_rgba(79,70,229,0.1)] hover:shadow-lg',
         className
       )}
       {...props}
@@ -44,7 +44,7 @@ export const StarCardTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <h3
     ref={ref}
-    className={cn('cosmic-title', className)}
+    className={cn('text-[var(--c-text-primary)] font-semibold', className)}
     {...props}
   />
 ));
@@ -57,7 +57,7 @@ export const StarCardDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn('cosmic-meta mt-1', className)}
+    className={cn('text-[var(--c-text-secondary)] text-xs mt-1', className)}
     {...props}
   />
 ));
@@ -68,7 +68,7 @@ export const StarCardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn('cosmic-text', className)} {...props} />
+  <div ref={ref} className={cn('text-[var(--c-text-primary)] text-sm', className)} {...props} />
 ));
 
 StarCardContent.displayName = 'StarCardContent';
