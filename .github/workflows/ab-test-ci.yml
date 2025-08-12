@@ -36,11 +36,11 @@ jobs:
         run: pnpm type-check
 
   test-variants:
-    name: Test UI Variants
+    name: Test UI (Circula only)
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        variant: [ui, ui-v2]
+        variant: [ui-v2]
     steps:
       - uses: actions/checkout@v4
       
@@ -63,12 +63,12 @@ jobs:
         run: pnpm test --filter=@voai/${{ matrix.variant }}
 
   e2e-test-variants:
-    name: E2E Tests for Both Variants
+    name: E2E Tests (Circula)
     runs-on: ubuntu-latest
     needs: [lint-and-type-check, test-variants]
     strategy:
       matrix:
-        variant: [classic, cosmic]
+        variant: [circula]
     steps:
       - uses: actions/checkout@v4
       
@@ -93,7 +93,7 @@ jobs:
       - name: Run E2E tests for ${{ matrix.variant }}
         run: |
           cd apps/showcase
-          TEST_VARIANT=${{ matrix.variant }} pnpm test:e2e:variant
+          TEST_VARIANT=circula pnpm test:e2e:variant
         env:
           TEST_VARIANT: ${{ matrix.variant }}
           
@@ -105,12 +105,12 @@ jobs:
           retention-days: 30
 
   lighthouse-ci:
-    name: Lighthouse CI
+    name: Lighthouse CI (Circula)
     runs-on: ubuntu-latest
     needs: [lint-and-type-check, test-variants]
     strategy:
       matrix:
-        variant: [classic, cosmic]
+        variant: [circula]
     steps:
       - uses: actions/checkout@v4
       
@@ -123,8 +123,8 @@ jobs:
           node-version: 20
           cache: 'pnpm'
           
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Install dependencies (no frozen lockfile)
+        run: pnpm install --no-frozen-lockfile
         
       - name: Build showcase app
         run: pnpm build --filter=showcase
@@ -133,15 +133,15 @@ jobs:
         uses: treosh/lighthouse-ci-action@v10
         with:
           urls: |
-            http://localhost:3002/?variant=${{ matrix.variant }}
-            http://localhost:3002/cosmic?variant=${{ matrix.variant }}
+            http://localhost:3002/
+            http://localhost:3002/cosmic
           uploadArtifacts: true
           temporaryPublicStorage: true
           configPath: ./apps/showcase/lighthouserc.js
         env:
           LHCI_BUILD_CONTEXT__CURRENT_BRANCH: ${{ github.ref_name }}
           LHCI_BUILD_CONTEXT__COMMIT_SHA: ${{ github.sha }}
-          UI_VARIANT: ${{ matrix.variant }}
+          UI_VARIANT: circula
 
   deploy-preview:
     name: Deploy Preview

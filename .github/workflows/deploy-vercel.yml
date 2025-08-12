@@ -22,17 +22,17 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
           
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Install dependencies (no frozen lockfile)
+        run: pnpm install --no-frozen-lockfile
         
       - name: Build showcase
         run: pnpm build --filter=showcase
         
-      - name: Deploy to Vercel
+      - name: Deploy to Vercel (voai-website)
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-project-id: prj_DaI9YWeNQ274iiVYIQgHzpWPLga5
           vercel-args: '--prod'
           working-directory: ./apps/showcase

@@ -1,8 +1,8 @@
-name: A/B Test CI (Temporary)
+name: Circula CI (Temporary)
 
 on:
   push:
-    branches: [main, develop, feat/ab-test-cosmic]
+    branches: [main, develop]
   pull_request:
     branches: [main, develop]
 
