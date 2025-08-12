@@ -7,7 +7,7 @@ export interface CometInputProps
 }
 
 /**
- * CometInput - Cosmic form input
+ * CometInput - Form input (Circula)
  * 2-state border transitions from neutral to accent on focus
  */
 export const CometInput = React.forwardRef<HTMLInputElement, CometInputProps>(
@@ -20,7 +20,7 @@ export const CometInput = React.forwardRef<HTMLInputElement, CometInputProps>(
         {label && (
           <label 
             htmlFor={inputId} 
-            className="cosmic-meta block"
+            className="text-[var(--c-text-secondary)] text-xs block"
           >
             {label}
           </label>
@@ -63,7 +63,7 @@ export const CometTextarea = React.forwardRef<HTMLTextAreaElement, CometTextarea
         {label && (
           <label 
             htmlFor={textareaId} 
-            className="cosmic-meta block"
+            className="text-[var(--c-text-secondary)] text-xs block"
           >
             {label}
           </label>

@@ -1,6 +1,6 @@
 /**
- * Cosmic Motion System - Framer Motion Variants
- * Consistent animations across the cosmic interface
+ * Circula Motion System - Framer Motion Variants
+ * Consistent animations across the interface
  */
 
 export const cosmicMotion = {
@@ -35,7 +35,7 @@ export const cosmicMotion = {
     transition: { duration: 0.15, ease: [0, 0, 0.2, 1] as [number, number, number, number] }
   },
 
-  // Cosmic reveal
+  // Reveal
   cosmicReveal: {
     initial: { opacity: 0, scale: 0.8, y: 20 },
     animate: { 
@@ -44,7 +44,7 @@ export const cosmicMotion = {
       y: 0,
       transition: {
         duration: 0.5,
-        ease: [0.34, 1.56, 0.64, 1] as [number, number, number, number], // Cosmic bounce
+        ease: [0.34, 1.56, 0.64, 1] as [number, number, number, number],
       }
     },
     exit: { opacity: 0, scale: 0.95 }

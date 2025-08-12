@@ -95,13 +95,13 @@ export function CometFormField<
           )}
           
           {error && (
-            <p id={`${name}-error`} className="cosmic-meta text-[var(--c-error)]">
+            <p id={`${name}-error`} className="text-[var(--c-error)] text-xs">
               {String(error.message || 'This field is invalid')}
             </p>
           )}
           
           {helperText && !error && (
-            <p id={`${name}-helper`} className="cosmic-meta text-[var(--c-text-secondary)]">
+            <p id={`${name}-helper`} className="text-[var(--c-text-secondary)] text-xs">
               {helperText}
             </p>
           )}
