@@ -8,7 +8,7 @@ module.exports = {
         mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
-        // Primary palette (Green)
+        // Circula palette (monochrome + success green)
         primary: {
           50: '#f0fdf4',
           100: '#dcfce7',
@@ -20,35 +20,6 @@ module.exports = {
           700: '#15803d',
           800: '#166534',
           900: '#14532d',
-        },
-        // Cosmic Guide Color System
-        cosmic: {
-          bg: {
-            light: '#FFFFFF',
-            dark: '#0F0F0F',
-          },
-          surface: {
-            light: '#F6F6F7',
-            dark: '#1A1A1A',
-          },
-          border: {
-            light: '#E5E7EB',
-            dark: '#2D2D2D',
-          },
-          text: {
-            primary: {
-              light: '#0E0E11',
-              dark: '#FFFFFF',
-            },
-            secondary: {
-              light: '#6B7280',
-              dark: '#9CA3AF',
-            },
-          },
-          accent: {
-            light: '#4F46E5',
-            dark: '#6366F1',
-          },
         },
         // Neutral grays
         gray: {

@@ -13,14 +13,8 @@
   ],
   "bin": {},
   "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./styles.css": "./dist/styles.css",
-    "./styles.css?inline": "./dist/styles.css",
-    "./styles": "./dist/styles.css",
-    "./styles/*": "./dist/styles/*"
+    ".": "./src/index.ts",
+    "./styles/*": "./src/styles/*"
   },
   "scripts": {
     "build": "pnpm build:tokens && tsup",
