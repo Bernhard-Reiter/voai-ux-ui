@@ -11,13 +11,13 @@ interface ThemeContextValue {
 const ThemeContext = React.createContext<ThemeContextValue | undefined>(undefined);
 
 /**
- * Theme Provider for Cosmic Guide Design System
+ * Theme Provider for Circula Design System
  * Manages light/dark mode with system preference support
  */
 export function ThemeProvider({ 
   children,
   defaultTheme = 'system',
-  storageKey = 'cosmic-theme'
+  storageKey = 'circula-theme'
 }: {
   children: React.ReactNode;
   defaultTheme?: Theme;

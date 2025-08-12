@@ -10,6 +10,6 @@ export default defineConfig({
   external: ["react", "react-dom"],
   // Bundle CSS with JS
   injectStyle: true,
-  // Also copy styles to dist
-  onSuccess: "cp -r src/styles dist/ && cp src/styles.css dist/",
+  // Also copy styles to dist (cross-platform via Node)
+  onSuccess: "node scripts/copy-styles.js",
 });

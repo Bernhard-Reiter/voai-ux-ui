@@ -108,7 +108,7 @@ export const NavigationBar: Story = {
       <nav className="w-full bg-[var(--c-surface)] border-b border-[var(--c-border)] px-6 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-8">
-            <h1 className="text-xl font-bold text-[var(--c-accent)]">Cosmic UI</h1>
+            <h1 className="text-xl font-bold text-[var(--c-text-primary)]">Circula UI</h1>
             <Story />
           </div>
           <button className="px-4 py-2 bg-[var(--c-accent)] text-white rounded-[var(--radius-sm)] hover:bg-[var(--c-accent-hover)]">
@@ -128,11 +128,11 @@ export const Sidebar: Story = {
     (Story) => (
       <div className="flex h-[600px]">
         <aside className="w-64 bg-[var(--c-surface)] border-r border-[var(--c-border)] p-4">
-          <h2 className="cosmic-subtitle mb-4 px-3">Navigation</h2>
+          <h2 className="text-[var(--c-text-secondary)] font-medium mb-4 px-3">Navigation</h2>
           <Story />
         </aside>
         <main className="flex-1 p-8">
-          <h1 className="cosmic-title mb-4">Main Content</h1>
+          <h1 className="text-[var(--c-text-primary)] font-semibold mb-4">Main Content</h1>
           <p className="text-[var(--c-text-secondary)]">
             Select a navigation item from the sidebar to see the OrbitNav component in action.
           </p>

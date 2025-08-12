@@ -1,9 +1,5 @@
 {
-  "functions": {
-    "app/api/analytics/route.ts": {
-      "maxDuration": 10
-    }
-  },
+  "framework": "nextjs",
   "rewrites": [
     {
       "source": "/cosmic",

@@ -16,7 +16,7 @@ export interface OrbitNavProps {
 }
 
 /**
- * OrbitNav - Cosmic navigation system
+ * OrbitNav - Navigation (Circula)
  * Minimal top-bar with active accent indicators
  */
 export const OrbitNav: React.FC<OrbitNavProps> = ({
@@ -25,8 +25,8 @@ export const OrbitNav: React.FC<OrbitNavProps> = ({
   className,
 }) => {
   return (
-    <nav className={cn('cosmic-surface border-b', className)}>
-      <div className="cosmic-container">
+  <nav className={cn('bg-[var(--c-surface)] border-b border-[var(--c-border)]', className)}>
+      <div className="max-w-[var(--circula-container-max)] mx-auto px-[var(--circula-container-padding)]">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center space-x-1">
             {items.map((item) => (
@@ -76,7 +76,7 @@ export const OrbitSideNav: React.FC<OrbitSideNavProps> = ({
   return (
     <aside
       className={cn(
-        'cosmic-surface h-full transition-all duration-300',
+      'bg-[var(--c-surface)] h-full transition-all duration-300',
         collapsed ? 'w-16' : 'w-64',
         className
       )}

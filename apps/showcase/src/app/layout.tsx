@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
+import "@voai/ui-v2/styles.css";
 import { UIProvider } from "@/components/UIProvider";
 
 const spaceGrotesk = Space_Grotesk({

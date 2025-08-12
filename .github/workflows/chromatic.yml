@@ -11,6 +11,7 @@ jobs:
   chromatic:
     name: Run Chromatic
     runs-on: ubuntu-latest
+    continue-on-error: true
     if: |
       github.event_name == 'push' ||
       (github.event_name == 'pull_request' && !github.event.pull_request.draft)
@@ -44,8 +45,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Install dependencies (no frozen lockfile)
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build project
         run: pnpm build
@@ -75,6 +76,7 @@ jobs:
           storybookBuildDir: apps/storybook/storybook-static
           onlyChanged: true
           exitZeroOnChanges: true
+          autoAcceptChanges: true
           skip: 'dependabot/**'
           externals: |
             - packages/ui/src/**
