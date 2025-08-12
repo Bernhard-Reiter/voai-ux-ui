@@ -1,6 +1,6 @@
 {
   "name": "@voai/ui-v2",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "license": "MIT",
   "sideEffects": ["**/*.css"],
@@ -8,14 +8,19 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist/**",
-    "src/styles/**/*.css"
+    "dist",
+    "tailwind.preset.js",
+    "src/styles/globals.css",
+    "src/styles/circula-tokens.css",
+    "src/styles/generated/*"
   ],
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     },
+    "./tailwind.preset": "./tailwind.preset.js",
+    "./src/styles/globals.css": "./src/styles/globals.css",
     "./styles.css": "./dist/styles.css",
     "./styles": "./dist/styles.css",
     "./styles/*": "./dist/styles/*"

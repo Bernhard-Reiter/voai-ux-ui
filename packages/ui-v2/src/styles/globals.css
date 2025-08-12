@@ -1,16 +1,5 @@
-<<<<<<< HEAD
-/* Use next/font on app level; no Google Fonts import here */
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Import Cosmic Tokens - After Tailwind layers */
-@import './cosmic-tokens.css';
-
-=======
 /* Circula utilities and helpers only; no Tailwind base here */
->>>>>>> origin/main
+
 @layer base {
   /* Reset & Base Styles */
   * {
@@ -20,51 +9,53 @@
   }
 
   html {
-    font-family: var(--font-family);
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    background-color: var(--c-bg);
-    color: var(--c-text-primary);
+    font-family: var(--font-sans);
     line-height: 1.6;
-    transition: background-color var(--transition-base), color var(--transition-base);
+    color: var(--fg);
+    background: var(--bg);
+  }
+}
+
+@layer components {
+  /* Circula Component Styles */
+  .circula-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
   }
 
-  /* Focus Visible Only */
-  :focus {
-    outline: none;
+  .circula-button {
+    @apply px-4 py-2 rounded-xl font-medium transition-all;
+    @apply bg-g2 text-fg hover:bg-g3 active:bg-g4;
   }
 
-  :focus-visible {
-    outline: 3px solid var(--c-accent);
-    outline-offset: 2px;
+  .circula-card {
+    @apply p-6 rounded-2xl border border-g2 bg-g1;
   }
 
-  /* Selection */
-  ::selection {
-    background-color: var(--c-accent);
-    color: white;
+  .circula-input {
+    @apply px-4 py-2 rounded-xl border border-g2 bg-bg text-fg;
+    @apply focus:outline-none focus:ring-2 focus:ring-success focus:border-transparent;
+  }
+}
+
+@layer utilities {
+  /* Circula Utility Classes */
+  .text-gradient {
+    @apply bg-gradient-to-r from-fg to-g4 bg-clip-text text-transparent;
   }
 
-  /* Scrollbar Styling */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  .glass {
+    @apply bg-g1/80 backdrop-blur-lg;
   }
 
-  ::-webkit-scrollbar-track {
-    background: var(--c-surface);
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: var(--c-border);
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--c-text-secondary);
+  .glow {
+    box-shadow: 0 0 20px rgba(65, 163, 68, 0.3);
   }
 }
