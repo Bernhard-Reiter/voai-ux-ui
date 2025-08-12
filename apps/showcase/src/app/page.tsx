@@ -22,12 +22,9 @@ export default function ShowcasePage() {
   const { Button, Card, Input, CommandPalette } = components;
   
   // Determine which design system is active
-  const isCirculaDesign = window.location.pathname.includes('circula') || 
-                          document.querySelector('[data-ui-library="cosmic"]') !== null;
-  const designSystemName = isCirculaDesign ? 'Circula Design System' : 'VOAI Design System';
-  const designSystemDescription = isCirculaDesign 
-    ? 'A minimalist black & white design system with green accents'
-    : 'A modern, Superhuman-inspired UI component library';
+  const isCirculaDesign = true;
+  const designSystemName = 'Circula Design System';
+  const designSystemDescription = 'A minimalist black & white design system with green accents';
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -90,9 +87,9 @@ export default function ShowcasePage() {
             Color Palette
           </h2>
           
-          <div className="grid gap-4 grid-cols-2 md:grid-cols-4">
+           <div className="grid gap-4 grid-cols-2 md:grid-cols-4">
             <div className="space-y-2">
-              <div className="h-20 bg-primary-500 rounded-lg"></div>
+               <div className="h-20 bg-primary-500 rounded-lg"></div>
               <p className="text-sm font-medium">Primary</p>
             </div>
             <div className="space-y-2">
