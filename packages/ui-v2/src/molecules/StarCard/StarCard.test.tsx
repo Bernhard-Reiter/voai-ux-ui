@@ -44,7 +44,7 @@ describe('StarCard', () => {
     );
     
     const card = container.firstChild;
-    expect(card).toHaveClass('cosmic-glow', 'hover:shadow-lg');
+    expect(card).toHaveClass('hover:shadow-lg');
   });
 
   it('does not apply glow effect by default', () => {
@@ -78,7 +78,7 @@ describe('StarCard', () => {
     
     const card = container.firstChild;
     expect(card).toHaveClass(
-      'cosmic-surface',
+      'bg-[var(--c-surface)]',
       'p-[var(--space-3)]',
       'transition-all',
       'duration-300'
@@ -122,7 +122,7 @@ describe('StarCardTitle', () => {
     
     const title = screen.getByText('Card Title');
     expect(title.tagName).toBe('H3');
-    expect(title).toHaveClass('cosmic-title');
+    expect(title).toHaveClass('font-semibold');
   });
 });
 
@@ -132,12 +132,12 @@ describe('StarCardDescription', () => {
     
     const description = screen.getByText('Card Description');
     expect(description.tagName).toBe('P');
-    expect(description).toHaveClass('cosmic-meta', 'mt-1');
+    expect(description).toHaveClass('text-xs', 'mt-1');
   });
 });
 
 describe('StarCardContent', () => {
-  it('renders with cosmic-text class', () => {
+  it('renders Circula text class', () => {
     render(
       <StarCardContent>
         <div>Content Area</div>
@@ -145,6 +145,6 @@ describe('StarCardContent', () => {
     );
     
     const content = screen.getByText('Content Area').parentElement;
-    expect(content).toHaveClass('cosmic-text');
+    expect(content).toHaveClass('text-sm');
   });
 });

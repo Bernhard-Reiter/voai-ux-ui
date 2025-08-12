@@ -20,7 +20,7 @@ export interface PortalGateProps {
 }
 
 /**
- * PortalGate - Cosmic modal/drawer system
+ * PortalGate - Modal/Drawer (Circula)
  * Focus-trapped overlays for important interactions
  */
 export const PortalGate: React.FC<PortalGateProps> = ({
@@ -188,12 +188,12 @@ export const PortalGate: React.FC<PortalGateProps> = ({
               <div className="flex items-center justify-between p-[var(--space-3)] border-b border-[var(--c-border)]">
                 <div>
                   {title && (
-                    <h2 id="portal-title" className="cosmic-title">
+                    <h2 id="portal-title" className="text-[var(--c-text-primary)] font-semibold">
                       {title}
                     </h2>
                   )}
                   {description && (
-                    <p id="portal-description" className="cosmic-meta mt-1">
+                    <p id="portal-description" className="text-[var(--c-text-secondary)] text-xs mt-1">
                       {description}
                     </p>
                   )}

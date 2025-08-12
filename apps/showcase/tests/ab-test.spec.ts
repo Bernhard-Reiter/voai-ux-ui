@@ -1,21 +1,14 @@
 import { test, expect } from '@playwright/test';
 import { injectAxe, checkA11y } from 'axe-playwright';
 
-const variants = ['classic', 'cosmic'] as const;
+const variants = ['circula'] as const;
 
 test.describe('A/B Test Variants', () => {
   variants.forEach((variant) => {
     test.describe(`${variant} variant`, () => {
       test.beforeEach(async ({ page, context }) => {
         // Set variant cookie
-        await context.addCookies([
-          {
-            name: 'ui-variant',
-            value: variant === 'classic' ? 'A' : 'B',
-            domain: 'localhost',
-            path: '/',
-          },
-        ]);
+        await context.addCookies([{ name: 'ui-variant', value: 'A', domain: 'localhost', path: '/' }] );
       });
 
       test('should load correct UI library', async ({ page }) => {
@@ -23,15 +16,11 @@ test.describe('A/B Test Variants', () => {
         
         // Check data attributes
         const uiProvider = page.locator('[data-ui-variant]');
-        await expect(uiProvider).toHaveAttribute('data-ui-variant', variant === 'classic' ? 'A' : 'B');
-        await expect(uiProvider).toHaveAttribute('data-ui-library', variant);
+        await expect(uiProvider).toHaveAttribute('data-ui-variant', 'A');
+        await expect(uiProvider).toHaveAttribute('data-ui-library', 'circula');
         
         // Check for variant-specific elements
-        if (variant === 'cosmic') {
-          // Look for Cosmic-specific components
-          const cosmicElements = page.locator('.cosmic-gradient, .nebula-effect, .portal-gate');
-          await expect(cosmicElements.first()).toBeVisible({ timeout: 10000 });
-        }
+        // No Cosmic-specific assertions in Circula-only mode
       });
 
       test('should track analytics events with variant', async ({ page }) => {
@@ -50,16 +39,16 @@ test.describe('A/B Test Variants', () => {
         // Check that analytics includes variant info
         const pageViewEvent = analyticsRequests.find(r => r.event === 'page_view');
         expect(pageViewEvent).toBeDefined();
-        expect(pageViewEvent.variant).toBe(variant === 'classic' ? 'A' : 'B');
-        expect(pageViewEvent.properties.uiLibrary).toBe(variant);
+        expect(pageViewEvent.variant).toBe('A');
+        expect(pageViewEvent.properties.uiLibrary).toBe('circula');
       });
 
       test('should maintain variant across navigation', async ({ page }) => {
         await page.goto('/');
         
         // Navigate to another page
-        await page.click('a[href="/cosmic"]');
-        await page.waitForURL('**/cosmic');
+        await page.click('a[href="/"]');
+        await page.waitForURL('**/');
         
         // Check variant is maintained
         const uiProvider = page.locator('[data-ui-variant]');
@@ -122,35 +111,5 @@ test.describe('A/B Test Variants', () => {
     });
   });
 
-  test('should split traffic 50/50', async ({ context }) => {
-    const results = { A: 0, B: 0 };
-    const iterations = 100;
-    
-    for (let i = 0; i < iterations; i++) {
-      // Clear cookies for fresh assignment
-      await context.clearCookies();
-      
-      const page = await context.newPage();
-      await page.goto('/');
-      
-      // Get assigned variant
-      const cookies = await context.cookies();
-      const variantCookie = cookies.find(c => c.name === 'ui-variant');
-      
-      if (variantCookie?.value === 'A') {
-        results.A++;
-      } else if (variantCookie?.value === 'B') {
-        results.B++;
-      }
-      
-      await page.close();
-    }
-    
-    // Check distribution is roughly 50/50 (allowing 20% deviation)
-    const expectedCount = iterations / 2;
-    expect(results.A).toBeGreaterThan(expectedCount * 0.3);
-    expect(results.A).toBeLessThan(expectedCount * 1.7);
-    expect(results.B).toBeGreaterThan(expectedCount * 0.3);
-    expect(results.B).toBeLessThan(expectedCount * 1.7);
-  });
+  // Traffic split test removed in Circula-only mode
 });

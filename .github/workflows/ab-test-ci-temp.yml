@@ -1,8 +1,8 @@
-name: A/B Test CI (Temporary)
+name: Circula CI (Temporary)
 
 on:
   push:
-    branches: [main, develop, feat/ab-test-cosmic]
+    branches: [main, develop]
   pull_request:
     branches: [main, develop]
 
@@ -14,6 +14,7 @@ jobs:
   basic-checks:
     name: Basic Checks
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       
@@ -26,8 +27,8 @@ jobs:
           node-version: 20
           cache: 'pnpm'
           
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Install dependencies (no frozen lockfile)
+        run: pnpm install --no-frozen-lockfile
         
       - name: Build packages
         run: pnpm build

@@ -1,37 +1,25 @@
-# @voai/ui - Cosmic Guide Design System
+# @voai/ui-v2 – Circula Design System (Cosmic archiviert)
 
-> **Purpose**: Unify marketing site, web-app & docs under a single, narrative-driven UX/UI framework that fuses x.ai's cosmic minimalism with Attio's enterprise usability.
+> Standard-Theme: Circula (Schwarz/Weiß; Grün nur für Success). Das frühere „Cosmic“-Theme wurde nach `_archive/cosmic/` verschoben und ist nicht mehr Bestandteil des Buildpfads.
 
 ## 🚀 Quick Start
 
-```bash
-# Install the package
-pnpm add @voai/ui
-
-# Import components
-import { WaypointBtn, NebulaGrid, OrbitNav } from '@voai/ui';
+```ts
+// Styles laden (Circula)
+import '@voai/ui-v2/styles/index.css';
 ```
 
-## 🌌 Design Principles
+## Design-Prinzipien (Circula)
 
-1. **Storytelling · Cosmic Guide** – every surface whispers exploration & clarity
-2. **Monochrome ＋ 1 Accent** – zero chrome-noise, pure focus
-3. **Benchmarking · x.ai × Attio** – visual fascination *and* business efficiency
-4. **Accessibility & Performance First** – WCAG 2.2 AA / LCP < 1.5s
+1. Monochrom + Grün als Success
+2. Fokus auf Lesbarkeit und Geschwindigkeit
+3. WCAG 2.2 AA
 
-## 📚 Component Glossary
+## Komponenten
 
-| Component | Cosmic Alias | Purpose |
-|-----------|--------------|---------|
-| Navigation | OrbitNav | Primary navigation system |
-| Button | WaypointBtn | Call-to-action & quick actions |
-| DataGrid | NebulaGrid | Data-dense tables |
-| Card | StarCard | Content containers |
-| Modal | PortalGate | Overlays & dialogs |
-| Form | CometForm | Input collections |
-| Workflow | CosmicFlow | Visual workflow builder |
+Kernkomponenten bleiben erhalten; visuelle Tokens richten sich ausschließlich nach Circula.
 
-## 🎨 Color Tokens
+## Color Tokens (Auszug)
 
 ```css
 /* Core Palette */
@@ -40,7 +28,7 @@ import { WaypointBtn, NebulaGrid, OrbitNav } from '@voai/ui';
 --c-border: #E5E7EB;
 --c-text-primary: #0E0E11;
 --c-text-secondary: #6B7280;
---c-accent: #4F46E5; /* Single accent color */
+--circula-success: #22c55e; /* Success-Gruen */
 ```
 
 ## 📦 Development

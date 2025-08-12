@@ -13,6 +13,7 @@
   ],
   "bin": {},
   "exports": {
+<<<<<<< HEAD
     ".": {
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
@@ -21,6 +22,10 @@
     "./styles.css?inline": "./dist/styles.css",
     "./styles": "./dist/styles.css",
     "./styles/*": "./dist/styles/*"
+=======
+    ".": "./src/index.ts",
+    "./styles/*": "./src/styles/*"
+>>>>>>> origin/main
   },
   "scripts": {
     "build": "pnpm build:tokens && tsup",

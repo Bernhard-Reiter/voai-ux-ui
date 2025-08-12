@@ -8,7 +8,11 @@ module.exports = {
         mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
+<<<<<<< HEAD
         // Primary palette (Green)
+=======
+        // Circula palette (monochrome + success green)
+>>>>>>> origin/main
         primary: {
           50: '#f0fdf4',
           100: '#dcfce7',
@@ -20,6 +24,7 @@ module.exports = {
           700: '#15803d',
           800: '#166534',
           900: '#14532d',
+<<<<<<< HEAD
         },
         // Cosmic Guide Color System
         cosmic: {
@@ -49,6 +54,8 @@ module.exports = {
             light: '#4F46E5',
             dark: '#6366F1',
           },
+=======
+>>>>>>> origin/main
         },
         // Neutral grays
         gray: {
