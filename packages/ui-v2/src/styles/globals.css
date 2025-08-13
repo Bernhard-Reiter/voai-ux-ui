@@ -17,8 +17,8 @@
   body {
     font-family: var(--font-sans);
     line-height: 1.6;
-    color: var(--fg);
-    background: var(--bg);
+    color: var(--c-foreground, var(--fg));
+    background: var(--c-bg, var(--bg));
   }
 }
 

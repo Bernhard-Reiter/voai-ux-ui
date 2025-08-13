@@ -25,8 +25,8 @@ html {
 }
 
 body {
-  background-color: var(--circula-white);
-  color: var(--circula-gray-900);
+  background-color: var(--c-bg, var(--circula-black));
+  color: var(--c-foreground, var(--circula-white));
   font-size: var(--circula-text-base);
 }
 

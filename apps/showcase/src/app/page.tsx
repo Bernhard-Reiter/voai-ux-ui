@@ -27,7 +27,7 @@ export default function ShowcasePage() {
   const designSystemDescription = 'A minimalist black & white design system with green accents';
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-[var(--c-bg)] text-[var(--c-foreground)]">
       <CommandPalette
         items={[
           { id: '1', title: 'Home', description: 'Go to home page', action: () => window.location.href = '/' },
@@ -41,16 +41,16 @@ export default function ShowcasePage() {
       
       <main className="container mx-auto px-4 py-12">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-5xl font-bold text-[var(--c-foreground)] mb-4">
             {designSystemName}
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400">
+          <p className="text-xl text-[var(--c-text-secondary)]">
             {designSystemDescription}
           </p>
         </div>
 
         <section id="components" className="mb-20">
-          <h2 className="text-3xl font-semibold mb-8 text-gray-900 dark:text-white">
+          <h2 className="text-3xl font-semibold mb-8 text-[var(--c-foreground)]">
             Components
           </h2>
           
@@ -75,7 +75,7 @@ export default function ShowcasePage() {
 
             <Card className="p-6">
               <h3 className="font-semibold mb-4">Cards</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-[var(--c-text-secondary)]">
                 Cards are versatile containers for grouping related content and actions.
               </p>
             </Card>
@@ -83,7 +83,7 @@ export default function ShowcasePage() {
         </section>
 
         <section id="colors" className="mb-20">
-          <h2 className="text-3xl font-semibold mb-8 text-gray-900 dark:text-white">
+          <h2 className="text-3xl font-semibold mb-8 text-[var(--c-foreground)]">
             Color Palette
           </h2>
           
@@ -93,7 +93,7 @@ export default function ShowcasePage() {
               <p className="text-sm font-medium">Primary</p>
             </div>
             <div className="space-y-2">
-              <div className="h-20 bg-gray-900 dark:bg-gray-100 rounded-lg"></div>
+              <div className="h-20 bg-[var(--c-foreground)] rounded-lg"></div>
               <p className="text-sm font-medium">Gray</p>
             </div>
             <div className="space-y-2">
@@ -108,7 +108,7 @@ export default function ShowcasePage() {
         </section>
 
         <section id="typography" className="mb-20">
-          <h2 className="text-3xl font-semibold mb-8 text-gray-900 dark:text-white">
+          <h2 className="text-3xl font-semibold mb-8 text-[var(--c-foreground)]">
             Typography
           </h2>
           
@@ -122,7 +122,7 @@ export default function ShowcasePage() {
             <p>
               Regular paragraph text for body content. This is the default text size used throughout the application.
             </p>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-[var(--c-text-secondary)]">
               Small text for secondary information and metadata.
             </p>
           </Card>
