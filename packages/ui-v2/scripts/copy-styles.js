@@ -22,11 +22,36 @@ function copyRecursiveSync(src, dest) {
   }
 }
 
+// Copy all style files
 copyRecursiveSync(stylesDir, path.join(distDir, 'styles'));
 
-const cssSrc = path.join(srcDir, 'styles.css');
-if (fs.existsSync(cssSrc)) {
-  fs.copyFileSync(cssSrc, path.join(distDir, 'styles.css'));
+// Create a concatenated styles.css file that includes all imports inline
+const circulaTokensPath = path.join(stylesDir, 'circula-tokens.css');
+const circulaGlobalsPath = path.join(stylesDir, 'circula-globals.css');
+
+if (fs.existsSync(circulaTokensPath) && fs.existsSync(circulaGlobalsPath)) {
+  const circulaTokens = fs.readFileSync(circulaTokensPath, 'utf8');
+  const circulaGlobals = fs.readFileSync(circulaGlobalsPath, 'utf8');
+  
+  const combinedStyles = `/* Circula Design System - Combined Styles */
+/* This file is auto-generated, do not edit directly */
+
+/* ========== Circula Tokens ========== */
+${circulaTokens}
+
+/* ========== Circula Globals ========== */
+${circulaGlobals}
+`;
+  
+  // Write the combined styles file
+  fs.writeFileSync(path.join(distDir, 'styles.css'), combinedStyles);
+  console.log('Created combined styles.css with inlined imports');
+} else {
+  // Fallback: just copy the original file
+  const cssSrc = path.join(srcDir, 'styles.css');
+  if (fs.existsSync(cssSrc)) {
+    fs.copyFileSync(cssSrc, path.join(distDir, 'styles.css'));
+  }
 }
 
 console.log('Styles copied to dist');

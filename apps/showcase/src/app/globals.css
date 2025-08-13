@@ -1,3 +1,6 @@
+/* Import Circula Design System first */
+@import "@voai/ui-v2/styles.css";
+
 /* Tailwind Directives */
 @tailwind base;
 @tailwind components;

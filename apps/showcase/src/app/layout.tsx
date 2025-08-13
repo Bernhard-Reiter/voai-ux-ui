@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
-import "@voai/ui-v2/styles.css";
 import "./globals.css";
 import { UIProvider } from "@/components/UIProvider";
 
