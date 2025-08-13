@@ -4,8 +4,4 @@
 @tailwind utilities;
 
 /* Global styles */
-@layer base {
-  body {
-    font-family: 'Inter', sans-serif;
-  }
-}
+/* Keine globalen Overrides der UI-V2 Variablen/Fonts hier */
