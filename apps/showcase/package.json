@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prebuild": "pnpm -w -F @voai/ui-v2 build",
     "dev": "next dev --turbopack --port 3002",
     "build": "next build",
     "start": "next start",
