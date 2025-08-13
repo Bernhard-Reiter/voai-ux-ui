@@ -121,4 +121,24 @@
   --circula-z-modal: 1050;
   --circula-z-popover: 1060;
   --circula-z-tooltip: 1070;
+
+  /* ================================================================
+     Tailwind v4 shorthand tokens (shadcn-style aliases)
+     Maps Circula tokens to --c-* variables used by utilities like
+     bg-[var(--c-bg)], text-[var(--c-text-secondary)], etc.
+     ================================================================ */
+  --c-bg: var(--circula-black);
+  --c-foreground: var(--circula-white);
+  --c-surface: var(--circula-gray-900);
+  --c-accent: var(--circula-gray-900);
+  --c-success: var(--circula-success);
+  --c-error: var(--circula-error);
+  --c-text-secondary: var(--circula-gray-600);
+
+  /* Radius + Spacing aliases for utility usage */
+  --radius-md: var(--circula-radius-md);
+  --radius-lg: var(--circula-radius-lg);
+  --space-3: var(--circula-space-3);
+  --space-4: var(--circula-space-4);
+  --space-6: var(--circula-space-6);
 }
