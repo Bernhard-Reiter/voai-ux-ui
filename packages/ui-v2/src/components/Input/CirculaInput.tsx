@@ -159,8 +159,6 @@ export const CirculaSelect = React.forwardRef<HTMLSelectElement, CirculaSelectPr
     const generatedId = React.useId();
     const selectId = id || generatedId;
     
-    const chevronSvg = `data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m3 4.5 3 3 3-3'/%3E%3C/svg%3E`;
-    
     return (
       <div className="w-full">
         {label && (
@@ -171,36 +169,43 @@ export const CirculaSelect = React.forwardRef<HTMLSelectElement, CirculaSelectPr
             {label}
           </label>
         )}
-        <select
-          id={selectId}
-          ref={ref}
-          className={cn(
-            'w-full px-4 py-3 pr-12',
-            'border rounded-[var(--circula-radius-sm)]',
-            'bg-[var(--circula-white)] text-[var(--circula-gray-900)]',
-            'text-[var(--circula-text-base)]',
-            'transition-all duration-[var(--circula-transition-fast)]',
-            'appearance-none cursor-pointer',
-            `bg-[url("${chevronSvg}")] bg-[right_16px_center] bg-no-repeat`,
-            // Normal state
-            'border-[var(--circula-gray-300)]',
-            'hover:border-[var(--circula-gray-400)]',
-            // Focus state
-            'focus:border-[var(--circula-black)] focus:outline-none',
-            'focus:ring-2 focus:ring-[var(--circula-black)] focus:ring-opacity-10',
-            // Error state
-            error && [
-              'border-[var(--circula-error)]',
-              'focus:border-[var(--circula-error)] focus:ring-[var(--circula-error)]',
-            ],
-            // Disabled state
-            'disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-[var(--circula-gray-50)]',
-            className
-          )}
-          {...props}
-        >
-          {children}
-        </select>
+        <div className="relative">
+          <select
+            id={selectId}
+            ref={ref}
+            className={cn(
+              'w-full px-4 py-3 pr-12',
+              'border rounded-[var(--circula-radius-sm)]',
+              'bg-[var(--circula-white)] text-[var(--circula-gray-900)]',
+              'text-[var(--circula-text-base)]',
+              'transition-all duration-[var(--circula-transition-fast)]',
+              'appearance-none cursor-pointer',
+              // Normal state
+              'border-[var(--circula-gray-300)]',
+              'hover:border-[var(--circula-gray-400)]',
+              // Focus state
+              'focus:border-[var(--circula-black)] focus:outline-none',
+              'focus:ring-2 focus:ring-[var(--circula-black)] focus:ring-opacity-10',
+              // Error state
+              error && [
+                'border-[var(--circula-error)]',
+                'focus:border-[var(--circula-error)] focus:ring-[var(--circula-error)]',
+              ],
+              // Disabled state
+              'disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-[var(--circula-gray-50)]',
+              className
+            )}
+            {...props}
+          >
+            {children}
+          </select>
+          {/* Chevron icon */}
+          <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+            <svg className="w-3 h-3 text-[var(--circula-gray-600)]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 12 12">
+              <path d="m3 4.5 3 3 3-3" />
+            </svg>
+          </div>
+        </div>
         {(helper || errorMessage) && (
           <p
             className={cn(
