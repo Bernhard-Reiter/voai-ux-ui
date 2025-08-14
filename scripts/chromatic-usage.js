@@ -6,7 +6,7 @@
 
 const https = require('https')
 
-const CHROMATIC_TOKEN = process.env.CHROMATIC_PROJECT_TOKEN || 'chpt_ff83d6d73a36cf9'
+const CHROMATIC_TOKEN = process.env.CHROMATIC_PROJECT_TOKEN
 const FREE_TIER_LIMIT = 5000
 const WARNING_THRESHOLD = 0.8 // Warn at 80% usage
 
@@ -41,6 +41,11 @@ async function getUsageStats() {
 
 async function checkUsage() {
   try {
+    if (!CHROMATIC_TOKEN) {
+      console.error('❌ Error: CHROMATIC_PROJECT_TOKEN environment variable is not set')
+      process.exit(1)
+    }
+
     console.log('🔍 Checking Chromatic usage...\n')
 
     // Note: This is a placeholder - Chromatic API might differ
