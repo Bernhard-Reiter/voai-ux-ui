@@ -82,7 +82,6 @@ jobs:
             - packages/ui/src/**
             - apps/showcase/src/**
           traceChanged: true
-          storybookFlags: '--webpack-stats-json'
 
       - name: Check snapshot usage
         if: always()
