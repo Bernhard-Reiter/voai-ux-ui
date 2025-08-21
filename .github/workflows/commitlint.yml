@@ -15,15 +15,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 8
+          node-version: '22'
+          cache: 'npm'
 
       - name: Install dependencies (no frozen lockfile)
-        run: pnpm install --no-frozen-lockfile
+        run: npm ci
 
       - name: Validate PR title
         run: echo "${{ github.event.pull_request.title }}" | npx commitlint
