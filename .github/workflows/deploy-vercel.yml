@@ -1,39 +1,36 @@
-name: Deploy to Vercel
-
+name: Deploy (Prebuilt) to Vercel
 on:
   push:
     branches: [main]
-  workflow_dispatch:
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
   deploy:
-    if: github.repository == 'Bernhard-Reiter/voai-website'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          version: 8
-          
-      - name: Setup Node.js
+          fetch-depth: 1
+
+      - name: Use Node 22
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'pnpm'
-          
-      - name: Install dependencies (no frozen lockfile)
-        run: pnpm install --no-frozen-lockfile
-        
-      - name: Build showcase
-        run: pnpm build --filter=showcase
-        
-      - name: Deploy to Vercel (voai-website)
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: prj_DaI9YWeNQ274iiVYIQgHzpWPLga5
-          vercel-args: '--prod'
-          working-directory: ./apps/showcase
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies (npm workspaces)
+        run: npm ci --workspaces --include-workspace-root=false
+
+      - name: Pull Vercel env (Production)
+        run: npx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      # WICHTIG: vercel build am Repo-Root ausführen
+      - name: Build with Vercel (produces .vercel/output)
+        run: npx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy prebuilt to Production
+        run: npx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
