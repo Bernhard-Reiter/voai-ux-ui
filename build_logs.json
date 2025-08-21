@@ -1,0 +1,258 @@
+[
+    {
+        "type": "stdout",
+        "created": 1755779184690,
+        "payload": {
+            "deploymentId": "dpl_AkPvGfCyKtknVAunFfTyGw3qvG3B",
+            "info": {
+                "type": "build",
+                "name": "bld_e1cg937zk",
+                "entrypoint": "."
+            },
+            "text": "Running build in Washington, D.C., USA (East) \u2013 iad1",
+            "id": "1755779184690218707002800000",
+            "date": 1755779184690,
+            "serial": "1755779184690218707002800000"
+        }
+    },
+    {
+        "type": "stdout",
+        "created": 1755779184690,
+        "payload": {
+            "deploymentId": "dpl_AkPvGfCyKtknVAunFfTyGw3qvG3B",
+            "info": {
+                "type": "build",
+                "name": "bld_e1cg937zk",
+                "entrypoint": "."
+            },
+            "text": "Build machine configuration: 2 cores, 8 GB",
+            "id": "1755779184690218707002800001",
+            "date": 1755779184690,
+            "serial": "1755779184690218707002800001"
+        }
+    },
+    {
+        "type": "stdout",
+        "created": 1755779184711,
+        "payload": {
+            "deploymentId": "dpl_AkPvGfCyKtknVAunFfTyGw3qvG3B",
+            "info": {
+                "type": "build",
+                "name": "bld_e1cg937zk",
+                "entrypoint": "."
+            },
+            "text": "Retrieving list of deployment files...",
+            "id": "1755779184711218707002800000",
+            "date": 1755779184711,
+            "serial": "1755779184711218707002800000"
+        }
+    },
+    {
+        "type": "stdout",
+        "created": 1755779184714,
+        "payload": {
+            "deploymentId": "dpl_AkPvGfCyKtknVAunFfTyGw3qvG3B",
+            "info": {
+                "type": "build",
+                "name": "bld_e1cg937zk",
+                "entrypoint": "."
+            },
+            "text": "Skipping build cache, deployment was triggered without cache.",
+            "id": "1755779184714218707002800001",
+            "date": 1755779184714,
+            "serial": "1755779184714218707002800001"
+        }
+    },
+    {
+        "type": "stdout",
+        "created": 1755779185196,
+        "payload": {
+            "deploymentId": "dpl_AkPvGfCyKtknVAunFfTyGw3qvG3B",
+            "info": {
+                "type": "build",
+                "name": "bld_e1cg937zk",
+                "entrypoint": "."
+            },
+            "text": "Downloading 303 deployment files...",
+            "id": "1755779185196218707002800001",
+            "date": 1755779185196,
+            "serial": "1755779185196218707002800001"
+        }
+    },
+    {
+        "type": "stdout",
+        "created": 1755779186802,
+        "payload": {
+            "deploymentId": "dpl_AkPvGfCyKtknVAunFfTyGw3qvG3B",
+            "info": {
+                "type": "build",
+                "name": "bld_e1cg937zk",
+                "entrypoint": "."
+            },
+            "text": "Running \"vercel build\"",
+            "id": "1755779186802822413147700001",
+            "date": 1755779186802,
+            "serial": "1755779186802822413147700001"
+        }
+    },
+    {
+        "type": "stderr",
+        "created": 1755779187235,
+        "payload": {
+            "deploymentId": "dpl_AkPvGfCyKtknVAunFfTyGw3qvG3B",
+            "info": {
+                "type": "build",
+                "name": "bld_e1cg937zk",
+                "entrypoint": "."
+            },
+            "text": "Vercel CLI 46.0.2",
+            "id": "1755779187235822413147700000",
+            "date": 1755779187235,
+            "serial": "1755779187235822413147700000"
+        }
+    },
+    {
+        "type": "stderr",
+        "created": 1755779187401,
+        "payload": {
+            "deploymentId": "dpl_AkPvGfCyKtknVAunFfTyGw3qvG3B",
+            "info": {
+                "type": "build",
+                "name": "bld_e1cg937zk",
+                "entrypoint": "."
+            },
+            "text": "> Detected Turbo. Adjusting default settings...",
+            "id": "1755779187401822413147700000",
+            "date": 1755779187401,
+            "serial": "1755779187401822413147700000"
+        }
+    },
+    {
+        "type": "stderr",
+        "created": 1755779187432,
+        "payload": {
+            "deploymentId": "dpl_AkPvGfCyKtknVAunFfTyGw3qvG3B",
+            "info": {
+                "type": "build",
+                "name": "bld_e1cg937zk",
+                "entrypoint": "."
+            },
+            "text": "> Detected ENABLE_EXPERIMENTAL_COREPACK=1 and \"npm@10.8.1\" in package.json",
+            "id": "1755779187432822413147700000",
+            "date": 1755779187432,
+            "serial": "1755779187432822413147700000"
+        }
+    },
+    {
+        "type": "stderr",
+        "created": 1755779187586,
+        "payload": {
+            "deploymentId": "dpl_AkPvGfCyKtknVAunFfTyGw3qvG3B",
+            "info": {
+                "type": "build",
+                "name": "bld_e1cg937zk",
+                "entrypoint": "."
+            },
+            "text": "Build Completed in /vercel/output [157ms]",
+            "id": "1755779187586822413147700000",
+            "date": 1755779187586,
+            "serial": "1755779187586822413147700000"
+        }
+    },
+    {
+        "type": "stdout",
+        "created": 1755779187690,
+        "payload": {
+            "deploymentId": "dpl_AkPvGfCyKtknVAunFfTyGw3qvG3B",
+            "info": {
+                "type": "build",
+                "name": "bld_e1cg937zk",
+                "entrypoint": "."
+            },
+            "text": "Deploying outputs...",
+            "id": "1755779187690822413147700000",
+            "date": 1755779187690,
+            "serial": "1755779187690822413147700000"
+        }
+    },
+    {
+        "type": "stdout",
+        "created": 1755779190083,
+        "payload": {
+            "deploymentId": "dpl_AkPvGfCyKtknVAunFfTyGw3qvG3B",
+            "info": {
+                "type": "build",
+                "name": "bld_e1cg937zk",
+                "entrypoint": "."
+            },
+            "text": "Deployment completed",
+            "id": "1755779190083822413147700000",
+            "date": 1755779190083,
+            "serial": "1755779190083822413147700000"
+        }
+    },
+    {
+        "type": "stdout",
+        "created": 1755779190875,
+        "payload": {
+            "deploymentId": "dpl_AkPvGfCyKtknVAunFfTyGw3qvG3B",
+            "info": {
+                "type": "build",
+                "name": "bld_e1cg937zk",
+                "entrypoint": "."
+            },
+            "text": "Creating build cache...",
+            "id": "1755779190875822413147700000",
+            "date": 1755779190875,
+            "serial": "1755779190875822413147700000"
+        }
+    },
+    {
+        "type": "stdout",
+        "created": 1755779191102,
+        "payload": {
+            "deploymentId": "dpl_AkPvGfCyKtknVAunFfTyGw3qvG3B",
+            "info": {
+                "type": "build",
+                "name": "bld_e1cg937zk",
+                "entrypoint": "."
+            },
+            "text": "Created build cache: 220.807ms",
+            "id": "1755779191102822413147700000",
+            "date": 1755779191102,
+            "serial": "1755779191102822413147700000"
+        }
+    },
+    {
+        "type": "stdout",
+        "created": 1755779191102,
+        "payload": {
+            "deploymentId": "dpl_AkPvGfCyKtknVAunFfTyGw3qvG3B",
+            "info": {
+                "type": "build",
+                "name": "bld_e1cg937zk",
+                "entrypoint": "."
+            },
+            "text": "Uploading build cache [4.00 kB]",
+            "id": "1755779191102822413147700003",
+            "date": 1755779191102,
+            "serial": "1755779191102822413147700003"
+        }
+    },
+    {
+        "type": "stdout",
+        "created": 1755779191173,
+        "payload": {
+            "deploymentId": "dpl_AkPvGfCyKtknVAunFfTyGw3qvG3B",
+            "info": {
+                "type": "build",
+                "name": "bld_e1cg937zk",
+                "entrypoint": "."
+            },
+            "text": "Build cache uploaded: 76.064ms",
+            "id": "1755779191173822413147700000",
+            "date": 1755779191173,
+            "serial": "1755779191173822413147700000"
+        }
+    }
+]

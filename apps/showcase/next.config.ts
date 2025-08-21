@@ -12,6 +12,8 @@ const nextConfig: NextConfig = {
       'res.cloudinary.com'
     ],
   },
+  // Force dynamic rendering to work with middleware
+  output: 'standalone',
 };
 
 export default nextConfig;

@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from 'next/server';
 interface AnalyticsEventBody {
   event: string;
   properties?: Record<string, unknown>;
-  variant?: string;
   uiLibrary?: string;
   sessionId?: string;
   userAgent?: string;
@@ -38,7 +37,6 @@ export async function POST(request: NextRequest) {
         body: JSON.stringify({
           event_name: body.event,
           event_properties: body.properties,
-          variant: body.variant,
           ui_library: body.uiLibrary,
           session_id: body.sessionId,
           user_agent: body.userAgent,
