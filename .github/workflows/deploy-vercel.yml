@@ -25,17 +25,16 @@ jobs:
       - name: Install dependencies (npm workspaces)
         run: npm ci --workspaces --include-workspace-root=false
 
-      - name: Setup Vercel Project
+      # Deploy direkt ohne Pull, da das Projekt bereits existiert
+      - name: Build Project  
         run: |
-          mkdir -p .vercel
-          echo '{"projectId":"${{ secrets.VERCEL_PROJECT_ID }}","orgId":"${{ secrets.VERCEL_ORG_ID }}"}' > .vercel/project.json
+          cd apps/showcase
+          npm run build
+          cd ../..
 
-      - name: Pull Vercel env (Production)
-        run: npx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-
-      # WICHTIG: vercel build am Repo-Root ausführen
-      - name: Build with Vercel (produces .vercel/output)
-        run: npx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Deploy prebuilt to Production
-        run: npx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy to Vercel
+        run: |
+          npx vercel deploy apps/showcase \
+            --token=${{ secrets.VERCEL_TOKEN }} \
+            --prod \
+            --yes
