@@ -17,8 +17,10 @@
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
+    "@nx/js": "^17.2.8",
     "@playwright/test": "^1.40.0",
     "@voai/eslint-config": "file:./packages/eslint-config",
+    "@voai/eslint-config-custom": "workspace:*",
     "@voai/tsconfig": "file:./packages/tsconfig",
     "turbo": "^2.0.0"
   },
