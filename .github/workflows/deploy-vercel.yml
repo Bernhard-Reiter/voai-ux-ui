@@ -34,7 +34,10 @@ jobs:
 
       - name: Deploy to Vercel
         run: |
-          npx vercel deploy apps/showcase \
+          cd apps/showcase
+          npx vercel deploy . \
             --token=${{ secrets.VERCEL_TOKEN }} \
             --prod \
-            --yes
+            --yes \
+            --name=voai-website \
+            --scope=${{ secrets.VERCEL_ORG_ID }}
