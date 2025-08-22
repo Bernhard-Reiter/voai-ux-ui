@@ -21,7 +21,8 @@
     "@playwright/test": "^1.40.0",
     "@voai/eslint-config": "file:./packages/eslint-config",
     "@voai/tsconfig": "file:./packages/tsconfig",
-    "turbo": "^2.0.0"
+    "turbo": "^2.0.0",
+    "@chromatic-com/playwright": "1.0.0"
   },
   "overrides": {
     "@babel/core": "^7.25.0"
