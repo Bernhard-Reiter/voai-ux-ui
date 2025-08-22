@@ -21,10 +21,10 @@ importers:
         specifier: ^1.40.0
         version: 1.54.1
       '@voai/eslint-config':
-        specifier: workspace:*
+        specifier: '*'
         version: link:packages/eslint-config
       '@voai/tsconfig':
-        specifier: workspace:*
+        specifier: '*'
         version: link:packages/tsconfig
       turbo:
         specifier: ^2.0.0
@@ -33,10 +33,10 @@ importers:
   apps/showcase:
     dependencies:
       '@voai/ui':
-        specifier: workspace:*
+        specifier: '*'
         version: link:../../packages/ui
       '@voai/ui-v2':
-        specifier: workspace:*
+        specifier: '*'
         version: link:../../packages/ui-v2
       next:
         specifier: 15.4.1
@@ -85,7 +85,7 @@ importers:
   apps/storybook:
     dependencies:
       '@voai/ui':
-        specifier: workspace:*
+        specifier: '*'
         version: link:../../packages/ui
     devDependencies:
       '@storybook/addon-essentials':
@@ -206,10 +206,10 @@ importers:
         specifier: ^19.0.0
         version: 19.1.6(@types/react@19.1.8)
       '@voai/eslint-config':
-        specifier: workspace:*
+        specifier: '*'
         version: link:../eslint-config
       '@voai/tsconfig':
-        specifier: workspace:*
+        specifier: '*'
         version: link:../tsconfig
       chromatic:
         specifier: ^13.1.2
@@ -324,10 +324,10 @@ importers:
         specifier: ^19.0.0
         version: 19.1.6(@types/react@19.1.8)
       '@voai/eslint-config':
-        specifier: workspace:*
+        specifier: '*'
         version: link:../eslint-config
       '@voai/tsconfig':
-        specifier: workspace:*
+        specifier: '*'
         version: link:../tsconfig
       chromatic:
         specifier: ^13.1.2

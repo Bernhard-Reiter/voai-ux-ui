@@ -15,7 +15,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: 8
+          version: 9
           
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -23,17 +23,20 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
           
-      - name: Install dependencies (no frozen lockfile)
-        run: pnpm install --no-frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
         
-      - name: Build showcase
-        run: pnpm build --filter=showcase
+      - name: Install Vercel CLI
+        run: pnpm add -g vercel@latest
         
-      - name: Deploy to Vercel (voai-website)
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: prj_DaI9YWeNQ274iiVYIQgHzpWPLga5
-          vercel-args: '--prod'
-          working-directory: ./apps/showcase
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        
+      - name: Build Project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+          TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+        
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}

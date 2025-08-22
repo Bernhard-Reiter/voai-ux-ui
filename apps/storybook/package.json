@@ -8,7 +8,7 @@
     "start": "http-server storybook-static -p 6006"
   },
   "dependencies": {
-    "@voai/ui": "workspace:*"
+    "@voai/ui": "*"
   },
   "devDependencies": {
     "@storybook/react": "^8.4.7",

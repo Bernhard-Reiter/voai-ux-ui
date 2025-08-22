@@ -12,8 +12,8 @@
     "test:e2e:variant": "playwright test tests/basic.spec.ts"
   },
   "dependencies": {
-    "@voai/ui": "workspace:*",
-    "@voai/ui-v2": "workspace:*",
+    "@voai/ui": "*",
+    "@voai/ui-v2": "*",
     "next": "15.4.1",
     "react": "19.1.0",
     "react-dom": "19.1.0"
