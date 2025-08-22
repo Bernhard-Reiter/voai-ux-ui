@@ -13,7 +13,10 @@
     "test:e2e:variant": "turbo test:e2e:variant",
     "storybook": "turbo storybook",
     "build-storybook": "turbo build-storybook",
-    "chromatic:usage": "node scripts/chromatic-usage.js"
+    "chromatic:usage": "node scripts/chromatic-usage.js",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "pnpm build && changeset publish"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
