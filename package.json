@@ -12,14 +12,15 @@
     "test:e2e": "turbo test:e2e",
     "test:e2e:variant": "turbo test:e2e:variant",
     "storybook": "turbo storybook",
-    "build-storybook": "turbo build-storybook"
+    "build-storybook": "turbo build-storybook",
+    "chromatic:usage": "node scripts/chromatic-usage.js"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@playwright/test": "^1.40.0",
-    "@voai/eslint-config": "workspace:*",
-    "@voai/tsconfig": "workspace:*",
+    "@voai/eslint-config": "*",
+    "@voai/tsconfig": "*",
     "turbo": "^2.0.0"
   },
   "pnpm": {
