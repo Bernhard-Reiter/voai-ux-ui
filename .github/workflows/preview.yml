@@ -1,0 +1,36 @@
+name: preview
+on:
+  pull_request:
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install (npm workspaces)
+        run: npm ci
+
+      - name: Pull (preview)
+        run: npx vercel pull --yes --environment=preview
+        env: 
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build (prebuilt)
+        run: npx vercel build
+        env: 
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy (prebuilt → preview)
+        run: npx vercel deploy --prebuilt
+        env: 
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
