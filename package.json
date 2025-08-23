@@ -2,7 +2,7 @@
   "name": "voai-ux-ui",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@8.15.1",
+  "packageManager": "npm@10.8.1",
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
@@ -16,23 +16,24 @@
     "chromatic:usage": "node scripts/chromatic-usage.js",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "pnpm build && changeset publish"
+    "release": "npm run build && changeset publish"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@playwright/test": "^1.40.0",
-    "@voai/eslint-config": "*",
-    "@voai/tsconfig": "*",
+    "@voai/eslint-config": "file:./packages/eslint-config",
+    "@voai/tsconfig": "file:./packages/tsconfig",
     "turbo": "^2.0.0"
   },
-  "pnpm": {
-    "overrides": {
-      "@babel/core": "^7.25.0"
-    }
+  "overrides": {
+    "@babel/core": "^7.25.0"
   },
   "engines": {
-    "node": ">=18 <21",
-    "pnpm": "8"
-  }
+    "node": ">=22"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
 }
