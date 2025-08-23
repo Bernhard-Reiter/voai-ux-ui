@@ -1,22 +1,19 @@
-import { getVariant, getUILibrary, type Variant } from './flags';
+import { getUILibrary } from './flags';
 
 // Analytics event types
 export type AnalyticsEvent = {
   event: string;
   properties?: Record<string, unknown>;
-  variant?: Variant;
   uiLibrary?: string;
 };
 
-// Track page views with variant info
+// Track page views
 export function trackPageView(path: string) {
-  const variant = typeof window !== 'undefined' ? getVariant() : 'A';
-  const uiLibrary = getUILibrary(variant);
+  const uiLibrary = getUILibrary();
   
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', 'page_view', {
       page_path: path,
-      ui_variant: variant,
       ui_library: uiLibrary,
       timestamp: new Date().toISOString(),
     });
@@ -27,7 +24,6 @@ export function trackPageView(path: string) {
     event: 'page_view',
     properties: {
       path,
-      variant,
       uiLibrary,
     },
   });
@@ -40,15 +36,13 @@ export function trackInteraction(
   label?: string,
   value?: number
 ) {
-  const variant = typeof window !== 'undefined' ? getVariant() : 'A';
-  const uiLibrary = getUILibrary(variant);
+  const uiLibrary = getUILibrary();
   
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', action, {
       event_category: category,
       event_label: label,
       value: value,
-      ui_variant: variant,
       ui_library: uiLibrary,
     });
   }
@@ -60,7 +54,6 @@ export function trackInteraction(
       category,
       label,
       value,
-      variant,
       uiLibrary,
     },
   });
@@ -68,13 +61,11 @@ export function trackInteraction(
 
 // Track conversions (e.g., contact created)
 export function trackConversion(conversionType: string, metadata?: Record<string, unknown>) {
-  const variant = typeof window !== 'undefined' ? getVariant() : 'A';
-  const uiLibrary = getUILibrary(variant);
+  const uiLibrary = getUILibrary();
   
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', 'conversion', {
       conversion_type: conversionType,
-      ui_variant: variant,
       ui_library: uiLibrary,
       ...metadata,
     });
@@ -84,7 +75,6 @@ export function trackConversion(conversionType: string, metadata?: Record<string
     event: 'conversion',
     properties: {
       type: conversionType,
-      variant,
       uiLibrary,
       ...metadata,
     },
@@ -97,15 +87,13 @@ export function trackPerformance(metrics: {
   value: number;
   unit?: string;
 }) {
-  const variant = typeof window !== 'undefined' ? getVariant() : 'A';
-  const uiLibrary = getUILibrary(variant);
+  const uiLibrary = getUILibrary();
   
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', 'performance', {
       metric_name: metrics.metric,
       metric_value: metrics.value,
       metric_unit: metrics.unit,
-      ui_variant: variant,
       ui_library: uiLibrary,
     });
   }
@@ -114,7 +102,6 @@ export function trackPerformance(metrics: {
     event: 'performance',
     properties: {
       ...metrics,
-      variant,
       uiLibrary,
     },
   });
@@ -172,8 +159,7 @@ export function useAnalytics() {
     trackInteraction,
     trackConversion,
     trackPerformance,
-    variant: typeof window !== 'undefined' ? getVariant() : 'A',
-    uiLibrary: typeof window !== 'undefined' ? getUILibrary(getVariant()) : 'classic',
+    uiLibrary: typeof window !== 'undefined' ? getUILibrary() : 'circula',
   };
 }
 

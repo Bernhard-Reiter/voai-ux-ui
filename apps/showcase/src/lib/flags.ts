@@ -1,54 +1,15 @@
-export type Variant = 'A' | 'B';
 export type UILibrary = 'circula';
 
-// Server-side variant detection
-export function getVariantServer(): Variant {
-  // Check environment variable first
-  const envVariant = process.env.UI_VARIANT as Variant | undefined;
-  if (envVariant === 'A' || envVariant === 'B') {
-    return envVariant;
-  }
-  return 'A';
+// Get UI library - always returns circula now
+export function getUILibrary(): UILibrary { 
+  return 'circula'; 
 }
 
-// Client-side variant detection
-export function getVariantClient(): Variant {
-  if (typeof window === 'undefined') {
-    console.warn('getVariantClient called on server side');
-    return 'A';
-  }
-  
-  const cookie = document.cookie
-    .split('; ')
-    .find(row => row.startsWith('ui-variant='));
-  
-  const variant = cookie?.split('=')?.[1] as Variant | undefined;
-  return variant ?? 'A';
-}
-
-// Universal variant detection
-export function getVariant(reqHeaders?: Headers): Variant {
-  if (typeof window !== 'undefined') {
-    return getVariantClient();
-  }
-  
-  if (reqHeaders) {
-    const variant = reqHeaders.get('x-ui-variant') as Variant | null;
-    return variant ?? 'A';
-  }
-  
-  return 'A';
-}
-
-// Map variant to UI library
-export function getUILibrary(_variant: Variant): UILibrary { return 'circula'; }
-
-// Feature flags based on variant
-export function getFeatureFlags(variant: Variant) {
-  const uiLibrary = getUILibrary(variant);
+// Feature flags - simplified without A/B testing
+export function getFeatureFlags() {
+  const uiLibrary = getUILibrary();
   
   return {
-    variant,
     uiLibrary,
     // Feature-specific flags
     useCosmicAnimations: false,
@@ -71,8 +32,7 @@ export function useVariant() {
     throw new Error('useVariant can only be used in client components');
   }
   
-  const variant = getVariantClient();
-  const flags = getFeatureFlags(variant);
+  const flags = getFeatureFlags();
   
   return {
     ...flags,

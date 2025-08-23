@@ -1,34 +1,29 @@
-name: Commit Lint
+name: Commitlint
 
 on:
   pull_request:
-    types: [opened, synchronize, edited]
+    types: [opened, synchronize, reopened, edited]
 
 jobs:
   commitlint:
     runs-on: ubuntu-latest
-    
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          
-      - uses: pnpm/action-setup@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          version: 9
-          
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'pnpm'
-          
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-        
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies (no frozen lockfile)
+        run: npm ci
+
       - name: Validate PR title
-        uses: amannn/action-semantic-pull-request@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Validate commits
-        run: pnpm exec commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
+        run: echo "${{ github.event.pull_request.title }}" | npx commitlint
+
+      # Optional: Nur PR-Titel prüfen, um rebase/squash-Varianten zu tolerieren
+      # - name: Validate commits
+      #   run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose || true

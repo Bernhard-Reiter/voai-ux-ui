@@ -17,23 +17,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 8
-          
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'pnpm'
+          node-version: 22
+          cache: 'npm'
           
       - name: Install dependencies (no frozen lockfile)
-        run: pnpm install --no-frozen-lockfile
+        run: npm ci
         
       - name: Run linters
-        run: pnpm lint
+        run: npm run lint
         
       - name: Type check
-        run: pnpm type-check
+        run: npm run type-check
 
   test-variants:
     name: Test UI (Circula only)
@@ -44,23 +40,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 8
-          
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'pnpm'
+          node-version: 22
+          cache: 'npm'
           
       - name: Install dependencies (no frozen lockfile)
-        run: pnpm install --no-frozen-lockfile
+        run: npm ci
         
       - name: Build packages
-        run: pnpm build --filter=@voai/${{ matrix.variant }}
+        run: npm run build --workspace=@voai/${{ matrix.variant }}
         
       - name: Run tests for ${{ matrix.variant }}
-        run: pnpm test --filter=@voai/${{ matrix.variant }}
+        run: npm run test --workspace=@voai/${{ matrix.variant }}
 
   e2e-test-variants:
     name: E2E Tests (Circula)
@@ -72,28 +64,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 8
-          
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'pnpm'
+          node-version: 22
+          cache: 'npm'
           
       - name: Install dependencies (no frozen lockfile)
-        run: pnpm install --no-frozen-lockfile
+        run: npm ci
         
       - name: Install Playwright browsers
-        run: pnpm exec playwright install --with-deps
+        run: npm exec playwright install --with-deps
         
       - name: Build all packages
-        run: pnpm build
+        run: npm run build
         
       - name: Run E2E tests for ${{ matrix.variant }}
         run: |
           cd apps/showcase
-          TEST_VARIANT=circula pnpm test:e2e:variant
+          TEST_VARIANT=circula npm run test:e2e:variant
         env:
           TEST_VARIANT: ${{ matrix.variant }}
           
@@ -114,20 +102,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 8
-          
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'pnpm'
+          node-version: 22
+          cache: 'npm'
           
       - name: Install dependencies (no frozen lockfile)
-        run: pnpm install --no-frozen-lockfile
+        run: npm ci
         
       - name: Build showcase app
-        run: pnpm build --filter=showcase
+        run: npm run build --workspace=showcase
         
       - name: Run Lighthouse CI for ${{ matrix.variant }}
         uses: treosh/lighthouse-ci-action@v10
@@ -150,14 +134,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 8
-          
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'pnpm'
+          node-version: 22
+          cache: 'npm'
           
       - name: Install Vercel CLI
         run: npm install -g vercel

@@ -136,6 +136,12 @@ VERCEL_PROJECT_ID=your-project-id
 - [CI/CD Pipeline](./docs/ci-cd.md) - Continuous integration and deployment
 - [Architecture Decision Records](./docs/adrs/) - Important technical decisions
 
+### 🚀 Deployment Documentation
+
+- [**Quick Start Deployment**](./docs/QUICK_START_DEPLOYMENT.md) - 5-Minuten Setup für Vercel
+- [**Deployment Guide (Golden Path)**](./docs/DEPLOYMENT.md) - Vollständige Deployment-Anleitung
+- [**Deployment Checklist**](./.github/DEPLOYMENT_CHECKLIST.md) - Pre/Post-Deployment Checkliste
+
 ## 🚧 Development Phases
 
 ### ✅ Phase 1: Foundation (Complete)

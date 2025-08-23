@@ -13,9 +13,9 @@
     "tailwind.preset.js"
   ],
   "scripts": {
-    "build": "pnpm build:tokens && tsup",
+    "build": "npm run build:tokens && tsup",
     "build:tokens": "style-dictionary build --config ./tokens/config.json",
-    "dev": "pnpm build:tokens && tsup --watch",
+    "dev": "npm run build:tokens && tsup --watch",
     "lint": "eslint . --max-warnings 0",
     "type-check": "tsc --noEmit",
     "test": "jest",
@@ -24,7 +24,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "chromatic --exit-zero-on-changes",
-    "postinstall": "pnpm build:tokens"
+    "postinstall": "npm run build:tokens"
   },
   "peerDependencies": {
     "react": ">=18 <20 || ^19",

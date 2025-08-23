@@ -1,53 +1,34 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { getVariantClient, getUILibrary } from '@/lib/flags';
+import { getUILibrary } from '@/lib/flags';
 
 interface UIProviderProps {
   children: React.ReactNode;
-  variant?: 'A' | 'B';
 }
 
-export function UIProvider({ children, variant: serverVariant }: UIProviderProps) {
+export function UIProvider({ children }: UIProviderProps) {
   const [UIComponents, setUIComponents] = useState<typeof import('@voai/ui-v2') | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [currentVariant, setCurrentVariant] = useState<'A' | 'B'>('A');
 
   useEffect(() => {
-    // Get client-side variant
-    const clientVariant = getVariantClient();
-    const variantToUse = clientVariant;
-    setCurrentVariant(variantToUse);
-    
-    const uiLibrary = getUILibrary(variantToUse);
+    const uiLibrary = getUILibrary();
     
     // Dynamically import the appropriate UI library
     const loadUI = async () => {
       try {
         const ui = await import('@voai/ui-v2');
-        
         setUIComponents(ui);
-        
-        // Log variant for analytics
-        if (typeof window !== 'undefined' && window.gtag) {
-          window.gtag('event', 'ab_test_variant_assigned', {
-            variant: variantToUse,
-            ui_library: uiLibrary,
-            page_path: window.location.pathname,
-          });
-        }
       } catch (error) {
         console.error('Failed to load UI library:', error);
         console.error('UI Library:', uiLibrary);
-        console.error('Variant:', variantToUse);
-        // Kein Fallback nötig im Circula-only Modus
       } finally {
         setIsLoading(false);
       }
     };
 
     loadUI();
-  }, [serverVariant]);
+  }, []);
 
   // Show loading state while UI library loads
   if (isLoading || !UIComponents) {
@@ -60,22 +41,22 @@ export function UIProvider({ children, variant: serverVariant }: UIProviderProps
 
   // Create a context provider if the UI library has one
   const ThemeProvider = UIComponents && 'ThemeProvider' in UIComponents 
-    ? (UIComponents as { ThemeProvider?: React.ComponentType<{ defaultTheme?: string; variant?: string; children: React.ReactNode }> }).ThemeProvider
+    ? (UIComponents as { ThemeProvider?: React.ComponentType<{ defaultTheme?: string; children: React.ReactNode }> }).ThemeProvider
     : undefined;
   
   if (ThemeProvider) {
     return (
-      <ThemeProvider defaultTheme="system" variant={currentVariant}>
-        <div data-ui-variant={currentVariant} data-ui-library={getUILibrary(currentVariant)}>
+      <ThemeProvider defaultTheme="system">
+        <div data-ui-library={getUILibrary()}>
           {children}
         </div>
       </ThemeProvider>
     );
   }
 
-  // If no ThemeProvider, just wrap with variant data
+  // If no ThemeProvider, just wrap with library data
   return (
-    <div data-ui-variant={currentVariant} data-ui-library={getUILibrary(currentVariant)}>
+    <div data-ui-library={getUILibrary()}>
       {children}
     </div>
   );
@@ -84,8 +65,7 @@ export function UIProvider({ children, variant: serverVariant }: UIProviderProps
 // Export a hook to access UI components in child components
 export function useUIComponents() {
   const [components, setComponents] = useState<typeof import('@voai/ui-v2') | null>(null);
-  const variant = getVariantClient();
-  const uiLibrary = getUILibrary(variant);
+  const uiLibrary = getUILibrary();
 
   useEffect(() => {
     const loadComponents = async () => {
