@@ -60,7 +60,7 @@
   "build": {
     "env": {
       "NODE_VERSION": "20",
-      "PNPM_VERSION": "9.15.2"
+      "PNPM_VERSION": "8.15.1"
     }
   }
 }
