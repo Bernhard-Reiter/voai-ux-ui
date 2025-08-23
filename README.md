@@ -4,7 +4,9 @@
 ![Coverage](https://img.shields.io/badge/coverage-85%25-green)
 ![License](https://img.shields.io/badge/license-proprietary-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
-![Next.js](https://img.shields.io/badge/Next.js-14-black)
+![Next.js](https://img.shields.io/badge/Next.js-15-black)
+![npm](https://img.shields.io/badge/npm-10-red)
+![Node.js](https://img.shields.io/badge/Node.js-22-green)
 
 ## 🚀 Quick Start
 
@@ -14,14 +16,14 @@ git clone https://github.com/voai/frontend.git
 cd voai-frontend
 
 # Install dependencies
-pnpm install
+npm ci
 
 # Setup environment variables
 cp .env.example .env.local
 # Edit .env.local with your configuration
 
 # Start development server
-pnpm dev
+npm run dev
 
 # Open http://localhost:3000
 ```
@@ -30,25 +32,25 @@ pnpm dev
 
 | Script | Description |
 |--------|-------------|
-| `pnpm dev` | Start all apps in development mode |
-| `pnpm build` | Build all apps for production |
-| `pnpm test` | Run unit tests |
-| `pnpm test:turbo` | Run tests using Turbo |
-| `pnpm lint` | Run ESLint on all packages |
-| `pnpm format` | Format code with Prettier |
-| `pnpm type-check` | Run TypeScript type checking |
-| `pnpm clean` | Clean all build artifacts and node_modules |
-| `pnpm sb:dev` | Start Storybook development server |
-| `pnpm sb:build` | Build Storybook for production |
-| `pnpm visual:test` | Run visual regression tests |
-| `pnpm visual:update` | Update visual regression snapshots |
+| `npm run dev` | Start all apps in development mode |
+| `npm run build` | Build all apps for production |
+| `npm run test` | Run unit tests |
+| `npm run test:turbo` | Run tests using Turbo |
+| `npm run lint` | Run ESLint on all packages |
+| `npm run format` | Format code with Prettier |
+| `npm run type-check` | Run TypeScript type checking |
+| `npm run clean` | Clean all build artifacts and node_modules |
+| `npm run storybook` | Start Storybook development server |
+| `npm run build-storybook` | Build Storybook for production |
+| `npm run test:e2e` | Run E2E tests |
+| `npm run test:e2e:variant` | Run E2E variant tests |
 
 ## 🏗️ Architecture Overview
 
 VOAI Frontend is built as a modern monorepo using:
 
 - **Turborepo** - High-performance build system for JavaScript/TypeScript monorepos
-- **Next.js 14** - React framework with App Router and Server Components
+- **Next.js 15** - React framework with App Router and Server Components
 - **TypeScript** - Type-safe development with strict mode
 - **Tailwind CSS** - Utility-first CSS framework
 - **Supabase** - Backend as a Service for authentication and data
@@ -67,7 +69,7 @@ voai-frontend/
 ├── docs/                 # Documentation
 ├── .github/              # GitHub Actions workflows
 ├── turbo.json           # Turborepo configuration
-└── pnpm-workspace.yaml  # PNPM workspace configuration
+└── package.json         # npm workspace configuration
 ```
 
 ## 🔒 Quality Gates
