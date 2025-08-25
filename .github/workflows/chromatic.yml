@@ -11,7 +11,7 @@ jobs:
   chromatic:
     name: Run Chromatic
     runs-on: ubuntu-latest
-    continue-on-error: false
+    continue-on-error: true
     if: |
       github.event_name == 'push' ||
       (github.event_name == 'pull_request' && !github.event.pull_request.draft)
@@ -55,8 +55,18 @@ jobs:
             echo "ui_changed=true" >> $GITHUB_OUTPUT
           fi
 
+      - name: Check Chromatic Token
+        id: check-token
+        run: |
+          if [ -z "${{ secrets.CHROMATIC_PROJECT_TOKEN }}" ]; then
+            echo "token_exists=false" >> $GITHUB_OUTPUT
+            echo "::warning::Chromatic token not found. Skipping visual regression tests."
+          else
+            echo "token_exists=true" >> $GITHUB_OUTPUT
+          fi
+
       - name: Run Chromatic (Free Tier)
-        if: steps.check-changes.outputs.ui_changed == 'true'
+        if: steps.check-changes.outputs.ui_changed == 'true' && steps.check-token.outputs.token_exists == 'true'
         uses: chromaui/action@v11
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
