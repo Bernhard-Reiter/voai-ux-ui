@@ -1,0 +1,34 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "pnpm build",
+  "outputDirectory": "apps/frontend/.next",
+  "installCommand": "pnpm install",
+  "env": {
+    "NEXT_PUBLIC_SUPABASE_URL": "@supabase_url",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@supabase_anon_key",
+    "SUPABASE_SERVICE_ROLE_KEY": "@supabase_service_role_key",
+    "DATABASE_URL": "@database_url",
+    "OPENAI_API_KEY": "@openai_api_key",
+    "GOOGLE_APPLICATION_CREDENTIALS": "@google_credentials_path",
+    "VAPI_API_KEY": "@vapi_api_key",
+    "VOICE_WEBHOOK_SECRET": "@voice_webhook_secret",
+    "STRIPE_SECRET_KEY": "@stripe_secret_key",
+    "STRIPE_WEBHOOK_SECRET": "@stripe_webhook_secret",
+    "WEBHOOK_SECRET": "@webhook_secret"
+  },
+  "functions": {
+    "apps/frontend/app/api/upload/route.ts": {
+      "maxDuration": 60
+    },
+    "apps/frontend/app/api/voice/callback/route.ts": {
+      "maxDuration": 30
+    }
+  },
+  "regions": ["fra1"],
+  "crons": [
+    {
+      "path": "/api/cron/retention",
+      "schedule": "0 2 * * *"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+# Claude Flow Configuration for VoAI
+
+monitoring:
+  enabled: true
+  interval: 15m
+  
+auto_merge:
+  enabled: true
+  require_all_checks: true
+  require_approval: false # Set to true in production
+  merge_method: squash
+  delete_branch_after_merge: true
+  
+  # Conditions for auto-merge
+  conditions:
+    - all_checks_passing: true
+    - no_conflicts: true
+    - not_draft: true
+    - no_requested_changes: true
+    
+  # Labels that prevent auto-merge
+  block_labels:
+    - "do-not-merge"
+    - "work-in-progress"
+    - "needs-review"
+    
+  # Labels that enable auto-merge
+  required_labels:
+    - "ready-to-merge"
+
+code_review:
+  enabled: true
+  check_security: true
+  check_performance: true
+  check_best_practices: true
+  check_test_coverage: true
+  min_test_coverage: 80
+  
+deployment:
+  auto_deploy_on_merge: true
+  environments:
+    - name: production
+      branch: main
+      provider: vercel
+      
+notifications:
+  slack:
+    enabled: false
+    webhook_url: ""
+  email:
+    enabled: true
+    recipients:
+      - "bernhard@voai.de"
+      
+alerts:
+  - name: "CI Failures"
+    condition: "failed_workflows > 3"
+    severity: high
+    
+  - name: "Stale PRs"
+    condition: "pr_age_days > 7"
+    severity: medium
+    
+  - name: "Deploy Failures"
+    condition: "deploy_failed"
+    severity: critical
+
+performance:
+  track_metrics: true
+  metrics:
+    - build_time
+    - test_duration
+    - deploy_duration
+    - pr_merge_time
