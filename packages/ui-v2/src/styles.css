@@ -1,3 +1,4 @@
-/* Circula Design System - Combined Styles */
-@import './styles/circula-tokens.css';
-@import './styles/circula-globals.css';
+/* Circula Design System - Combined Styles 
+ * This file will be replaced by the build process with the combined styles
+ * See scripts/copy-styles.js
+ */
