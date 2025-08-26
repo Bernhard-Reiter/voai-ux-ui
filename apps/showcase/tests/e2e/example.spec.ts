@@ -3,7 +3,7 @@ import { test, expect } from '@chromatic-com/playwright'
 test.describe('Showcase App', () => {
   test('should display homepage @critical', async ({ page }) => {
     await page.goto('/')
-    await expect(page).toHaveTitle(/VOAI/)
+    await expect(page).toHaveTitle('voai - AI-Powered Negotiation Platform')
     
     // Visual snapshot für Chromatic
     await expect(page).toHaveScreenshot('homepage.png')
