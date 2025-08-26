@@ -25,6 +25,13 @@ function copyRecursiveSync(src, dest) {
 // Copy all style files
 copyRecursiveSync(stylesDir, path.join(distDir, 'styles'));
 
+// Also copy circula-tokens.css to dist root for backward compatibility
+const circulaTokensSource = path.join(stylesDir, 'circula-tokens.css');
+if (fs.existsSync(circulaTokensSource)) {
+  fs.copyFileSync(circulaTokensSource, path.join(distDir, 'circula-tokens.css'));
+  console.log('Copied circula-tokens.css to dist root');
+}
+
 // Create a concatenated styles.css file that includes all imports inline
 const circulaTokensPath = path.join(stylesDir, 'circula-tokens.css');
 const circulaGlobalsPath = path.join(stylesDir, 'circula-globals.css');
