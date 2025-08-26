@@ -57,10 +57,10 @@ jobs:
         run: pnpm install --no-frozen-lockfile
         
       - name: Build packages
-        run: pnpm run build --workspace=@voai/${{ matrix.variant }}
+        run: pnpm --filter=@voai/${{ matrix.variant }} build
         
       - name: Run tests for ${{ matrix.variant }}
-        run: pnpm run test --workspace=@voai/${{ matrix.variant }}
+        run: pnpm --filter=@voai/${{ matrix.variant }} test
 
   e2e-test-variants:
     name: E2E Tests (Circula)
@@ -127,7 +127,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile
         
       - name: Build showcase app
-        run: pnpm run build --workspace=showcase
+        run: pnpm --filter=showcase build
         
       - name: Run Lighthouse CI for ${{ matrix.variant }}
         uses: treosh/lighthouse-ci-action@v10
