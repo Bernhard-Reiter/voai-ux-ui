@@ -41,7 +41,7 @@ test.describe('CSS & UI smoke tests', () => {
       return {
         black: style.getPropertyValue('--circula-black'),
         white: style.getPropertyValue('--circula-white'),
-        green: style.getPropertyValue('--circula-green'),
+        green: style.getPropertyValue('--circula-success'),
       }
     })
     
