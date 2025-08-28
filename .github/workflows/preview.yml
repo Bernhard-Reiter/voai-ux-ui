@@ -18,7 +18,7 @@ jobs:
           cache: 'npm'
 
       - name: Install (npm workspaces)
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Pull (preview)
         run: npx vercel pull --yes --environment=preview

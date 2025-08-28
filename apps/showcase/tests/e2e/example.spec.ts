@@ -1,12 +1,15 @@
-import { test, expect } from '@chromatic-com/playwright'
+import { test, expect } from '@playwright/test'
 
 test.describe('Showcase App', () => {
   test('should display homepage @critical', async ({ page }) => {
     await page.goto('/')
     await expect(page).toHaveTitle('voai - AI-Powered Negotiation Platform')
     
-    // Visual snapshot für Chromatic
-    await expect(page).toHaveScreenshot('homepage.png')
+    // Visual snapshot with tolerance for minor differences
+    await expect(page).toHaveScreenshot('homepage.png', {
+      maxDiffPixelRatio: 0.10, // 10% tolerance for cross-platform differences
+      animations: 'disabled'
+    })
   })
 
   test('should navigate to components page', async ({ page }) => {
