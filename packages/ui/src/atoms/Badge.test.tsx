@@ -42,6 +42,6 @@ describe('Badge', () => {
   it('maintains default classes with custom className', () => {
     render(<Badge className="mt-4">Spaced Badge</Badge>);
     const badge = screen.getByText('Spaced Badge');
-    expect(badge).toHaveClass('inline-flex', 'items-center', 'rounded-full', 'mt-4');
+    expect(badge).toHaveClass('inline-flex', 'items-center', 'rounded-xl', 'mt-4');
   });
 });

@@ -22,7 +22,7 @@ export const CirculaCard = React.forwardRef<HTMLDivElement, CirculaCardProps>(
     
     const hoverStyles = {
       default: hover ? 'hover:border-[var(--circula-gray-200)] hover:shadow-[var(--circula-shadow-sm)]' : '',
-      borderless: hover ? 'hover:shadow-[var(--circula-shadow-md)]' : '',
+      borderless: hover ? 'hover:shadow-[var(--circula-shadow-sm)]' : '',
       highlight: '',
     };
     

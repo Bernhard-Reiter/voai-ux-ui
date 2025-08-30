@@ -133,10 +133,6 @@
 
 @layer utilities {
   /* Cosmic Utilities */
-  .cosmic-glow {
-    box-shadow: 0 0 40px rgba(79, 70, 229, 0.1);
-  }
-
   .cosmic-gradient {
     background: linear-gradient(135deg, var(--c-bg) 0%, var(--c-surface) 100%);
   }

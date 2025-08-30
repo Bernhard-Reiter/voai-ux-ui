@@ -14,7 +14,7 @@ export interface CirculaCheckListProps {
 
 /**
  * CheckIcon - Green checkmark icon for success states
- * Uses Apple green (#41a344) - the ONLY place where green is used
+ * Uses Apple green (#16A34A) - the ONLY place where green is used
  */
 const CheckIcon: React.FC<{ className?: string; size?: 'sm' | 'md' | 'lg' }> = ({ 
   className, 
@@ -30,7 +30,7 @@ const CheckIcon: React.FC<{ className?: string; size?: 'sm' | 'md' | 'lg' }> = (
     return (
       <div
         className={cn(
-          'w-4 h-4 rounded-full bg-[var(--circula-success)] flex items-center justify-center flex-shrink-0',
+          'w-4 h-4 rounded-xl bg-[var(--circula-success)] flex items-center justify-center flex-shrink-0',
           className
         )}
       >

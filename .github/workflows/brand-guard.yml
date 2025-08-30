@@ -10,6 +10,6 @@ jobs:
           node-version: 20
       - run: corepack enable
       - run: pnpm i --frozen-lockfile
-      - run: pnpm brand:guard || echo "Brand guard temporarily disabled for migration"
+      - run: pnpm brand:guard
       - run: pnpm lint
       - run: pnpm -w -r build

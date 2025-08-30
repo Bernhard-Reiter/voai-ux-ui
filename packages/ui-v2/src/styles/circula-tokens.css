@@ -1,43 +1,36 @@
 /* ================================================================
-   Circula-Inspired Design Tokens for voai
+   Brand-Compliant Design Tokens for voai
    ================================================================
-   Radical minimalism with black/white base and green for success only
+   Monochrome design with green for success only
    ================================================================ */
 
 :root {
   /* ================ Core Colors ================ */
   
   /* Primary Palette - Monochrome Foundation */
-  --circula-black: #0F172A;          /* Near-black for primary actions */
-  --circula-white: #FFFFFF;          /* Pure white backgrounds */
+  --circula-black: #0a0a0a;          /* Near-black for primary actions */
+  --circula-white: #ffffff;          /* Pure white backgrounds */
   
-  /* Success Color - Apple Green (ONLY for checkmarks/success) */
-  --circula-success: #41a344;        /* Apple-500 */
-  --circula-success-light: #e2f6e2;  /* Apple-100 for subtle backgrounds */
-  --circula-success-dark: #328734;   /* Apple-600 for hover states */
+  /* Success Color - Green (ONLY for checkmarks/success) */
+  --circula-success: #16A34A;        /* Brand green */
   
-  /* Grayscale - Precise Gradations */
-  --circula-gray-900: #0F172A;       /* Near-black for main text */
-  --circula-gray-800: #1E293B;       /* Dark gray */
-  --circula-gray-700: #334155;       /* Content text */
-  --circula-gray-600: #475569;       /* Secondary text */
-  --circula-gray-500: #64748B;       /* Meta text */
-  --circula-gray-400: #94A3B8;       /* Disabled states */
-  --circula-gray-300: #CBD5E1;       /* Borders */
-  --circula-gray-200: #E2E8F0;       /* Subtle backgrounds */
-  --circula-gray-100: #F1F5F9;       /* Very light backgrounds */
-  --circula-gray-50: #F8FAFC;        /* Minimal tint */
-  
-  /* Semantic Colors - Minimal Usage */
-  --circula-error: #DC2626;          /* Red for errors only */
-  --circula-error-light: #FEF2F2;    /* Error background */
-  --circula-warning: #F59E0B;        /* Orange - use sparingly */
-  --circula-warning-light: #FFFBEB;  /* Warning background */
+  /* Grayscale - Brand Approved */
+  --circula-gray-900: #0a0a0a;       /* Same as black */
+  --circula-gray-800: #1f2937;       /* Dark gray */
+  --circula-gray-700: #374151;       /* Content text */
+  --circula-gray-600: #4b5563;       /* Secondary text */
+  --circula-gray-500: #6b7280;       /* Meta text */
+  --circula-gray-400: #9ca3af;       /* Disabled states */
+  --circula-gray-300: #d1d5db;       /* Borders */
+  --circula-gray-200: #e5e7eb;       /* Subtle backgrounds */
+  --circula-gray-100: #f5f5f5;       /* Very light backgrounds */
+  --circula-gray-50: #fafafa;        /* Minimal tint */
   
   /* ================ Typography ================ */
   
   /* Font Families */
   --circula-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --circula-font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --circula-font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
   
   /* Font Sizes - Precise Scale */
@@ -63,82 +56,51 @@
   --circula-leading-relaxed: 1.75;
   
   /* Letter Spacing */
-  --circula-tracking-tight: -0.02em;
+  --circula-tracking-tight: -0.025em;
   --circula-tracking-normal: 0;
-  --circula-tracking-wide: 0.01em;
+  --circula-tracking-wide: 0.05em;
   
-  /* ================ Spacing ================ */
+  /* ================ Layout ================ */
   
-  /* Spacing Scale - 8px Base */
-  --circula-space-0: 0;
+  /* Spacing Scale */
   --circula-space-1: 0.25rem;        /* 4px */
   --circula-space-2: 0.5rem;         /* 8px */
   --circula-space-3: 0.75rem;        /* 12px */
   --circula-space-4: 1rem;           /* 16px */
-  --circula-space-5: 1.5rem;         /* 24px */
-  --circula-space-6: 2rem;           /* 32px */
-  --circula-space-8: 3rem;           /* 48px */
-  --circula-space-10: 4rem;          /* 64px */
-  --circula-space-12: 6rem;          /* 96px */
-  --circula-space-16: 8rem;          /* 128px */
+  --circula-space-5: 1.25rem;        /* 20px */
+  --circula-space-6: 1.5rem;         /* 24px */
+  --circula-space-8: 2rem;           /* 32px */
+  --circula-space-10: 2.5rem;        /* 40px */
+  --circula-space-12: 3rem;          /* 48px */
+  --circula-space-16: 4rem;          /* 64px */
+  --circula-space-20: 5rem;          /* 80px */
+  --circula-space-24: 6rem;          /* 96px */
   
-  /* ================ Layout ================ */
+  /* Border Radius - Brand Compliant */
+  --circula-radius-sm: 0.5rem;       /* 8px */
+  --circula-radius-md: 0.625rem;     /* 10px */
+  --circula-radius-lg: 0.75rem;      /* 12px */
+  --circula-radius-xl: 1rem;         /* 16px */
   
-  /* Container */
-  --circula-container-max: 1280px;
-  --circula-container-padding: var(--circula-space-5);
-  
-  /* Border Radius */
-  --circula-radius-sm: 8px;
-  --circula-radius-md: 12px;
-  --circula-radius-lg: 16px;
-  --circula-radius-xl: 24px;
-  --circula-radius-full: 999px;
-  
-  /* Border Width */
-  --circula-border-thin: 1px;
-  --circula-border-medium: 2px;
+  /* Borders */
+  --circula-border-width: 1px;
+  --circula-border-color: var(--circula-gray-200);
   
   /* ================ Effects ================ */
   
-  /* Shadows - Very Subtle */
-  --circula-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --circula-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --circula-shadow-md: 0 4px 20px rgba(0, 0, 0, 0.06);
-  --circula-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.08);
-  --circula-shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.1);
+  /* Shadows - Minimal Only */
+  --circula-shadow-none: none;
+  --circula-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  
+  /* ================ Animation ================ */
   
   /* Transitions */
-  --circula-transition-fast: 150ms ease;
-  --circula-transition-base: 200ms ease;
-  --circula-transition-slow: 300ms ease;
+  --circula-transition-fast: 150ms;
+  --circula-transition-base: 200ms;
+  --circula-transition-slow: 300ms;
   
-  /* Z-Index Scale */
-  --circula-z-dropdown: 1000;
-  --circula-z-sticky: 1020;
-  --circula-z-fixed: 1030;
-  --circula-z-modal-backdrop: 1040;
-  --circula-z-modal: 1050;
-  --circula-z-popover: 1060;
-  --circula-z-tooltip: 1070;
-
-  /* ================================================================
-     Tailwind v4 shorthand tokens (shadcn-style aliases)
-     Maps Circula tokens to --c-* variables used by utilities like
-     bg-[var(--c-bg)], text-[var(--c-text-secondary)], etc.
-     ================================================================ */
-  --c-bg: var(--circula-black);
-  --c-foreground: var(--circula-white);
-  --c-surface: var(--circula-gray-900);
-  --c-accent: var(--circula-gray-900);
-  --c-success: var(--circula-success);
-  --c-error: var(--circula-error);
-  --c-text-secondary: var(--circula-gray-600);
-
-  /* Radius + Spacing aliases for utility usage */
-  --radius-md: var(--circula-radius-md);
-  --radius-lg: var(--circula-radius-lg);
-  --space-3: var(--circula-space-3);
-  --space-4: var(--circula-space-4);
-  --space-6: var(--circula-space-6);
+  /* Timing Functions */
+  --circula-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --circula-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --circula-ease-in: cubic-bezier(0.4, 0, 1, 1);
 }
