@@ -1,11 +1,22 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
-  "globalEnv": ["NODE_ENV"],
+  "globalEnv": [
+    "NODE_ENV",
+    "NEXT_PUBLIC_*",
+    "STRIPE_*",
+    "GITHUB_TOKEN",
+    "FILE_MAX_SIZE_MB",
+    "ENABLE_EXPERIMENTAL_COREPACK"
+  ],
+  "globalPassThroughEnv": ["COREPACK_HOME"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**"],
+      "outputs": [
+        "apps/**/.next/**",
+        "packages/**/dist/**"
+      ],
       "env": ["NODE_ENV", "NEXT_PUBLIC_*"]
     },
     "dev": {
@@ -32,6 +43,10 @@
       "env": ["NODE_ENV", "TEST_VARIANT"]
     },
     "type-check": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "typecheck": {
       "dependsOn": ["^build"],
       "outputs": []
     }

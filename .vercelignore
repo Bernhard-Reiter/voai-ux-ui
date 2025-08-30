@@ -1,0 +1,12 @@
+**/__tests__/**
+**/__image_snapshots__/**
+**/*.spec.ts
+**/*.spec.tsx
+**/*.test.ts
+**/*.test.tsx
+**/.vscode/**
+**/.idea/**
+**/node_modules/**
+
+# Build outputs that Vercel doesn't need
+packages/**/dist/**

@@ -13,7 +13,9 @@
     "test:e2e:variant": "turbo test:e2e:variant",
     "storybook": "turbo storybook",
     "build-storybook": "turbo build-storybook",
-    "brand:guard": "node scripts/brand-guard.mjs"
+    "brand:guard": "node scripts/brand-guard.mjs",
+    "typecheck": "turbo run typecheck",
+    "preinstall": "node -e \"process.exit(0)\""
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
@@ -22,7 +24,7 @@
     "@playwright/test": "^1.40.0",
     "@voai/eslint-config": "file:./packages/eslint-config",
     "@voai/tsconfig": "file:./packages/tsconfig",
-    "turbo": "^2.0.0",
+    "turbo": "^2.1.3",
     "@chromatic-com/playwright": "0.12.7",
     "globby": "^14.0.2"
   },
@@ -30,7 +32,7 @@
     "@babel/core": "^7.25.0"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=20.11.1 <21"
   },
   "workspaces": [
     "apps/*",
