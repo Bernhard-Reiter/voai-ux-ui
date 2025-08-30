@@ -13,7 +13,13 @@ const disallowedClassPatterns = [
   /\brounded-(2xl|3xl|full)\b(?!:)/i // nur wenn nicht ausdrücklich gewünscht
 ];
 
-const fileGlobs = ["packages/**/*.{ts,tsx,css}", "src/**/*.{ts,tsx,css}"];
+const fileGlobs = [
+  "packages/**/*.{ts,tsx,css}", 
+  "src/**/*.{ts,tsx,css}",
+  "!packages/**/dist/**",
+  "!packages/**/_archive/**",
+  "!packages/**/node_modules/**"
+];
 const files = await globby(fileGlobs);
 
 let errors = [];
