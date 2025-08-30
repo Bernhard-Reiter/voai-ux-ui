@@ -160,7 +160,7 @@ CirculaSideNav.displayName = 'CirculaSideNav';
 export const CirculaLogo: React.FC<{ collapsed?: boolean }> = ({ collapsed = false }) => {
   return (
     <div className="flex items-center gap-[var(--circula-space-2)]">
-      <div className="w-2 h-2 bg-[var(--circula-gray-900)] rounded-full" />
+      <div className="w-2 h-2 bg-[var(--circula-gray-900)] rounded-xl" />
       {!collapsed && (
         <span className="text-[var(--circula-text-xl)] font-[var(--circula-font-bold)] text-[var(--circula-gray-900)]">
           voai

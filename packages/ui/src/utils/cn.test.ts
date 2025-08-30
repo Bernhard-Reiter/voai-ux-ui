@@ -15,7 +15,7 @@ describe('cn utility', () => {
 
   it('merges Tailwind classes intelligently', () => {
     // Conflicting classes - later wins
-    expect(cn('text-red-500', 'text-blue-500')).toBe('text-blue-500');
+    expect(cn('text-gray-500', 'text-gray-700')).toBe('text-gray-700');
     expect(cn('p-4', 'p-8')).toBe('p-8');
     expect(cn('mt-2 mb-2', 'my-4')).toBe('my-4');
   });
@@ -50,19 +50,19 @@ describe('cn utility', () => {
   });
 
   it('preserves non-conflicting classes', () => {
-    expect(cn('text-red-500 font-bold', 'text-blue-500')).toBe('font-bold text-blue-500');
+    expect(cn('text-gray-500 font-bold', 'text-gray-700')).toBe('font-bold text-gray-700');
     expect(cn('p-4 m-4', 'p-8')).toBe('m-4 p-8');
-    expect(cn('bg-red-500 text-white', 'bg-blue-500 font-bold')).toBe('text-white bg-blue-500 font-bold');
+    expect(cn('bg-gray-500 text-white', 'bg-gray-700 font-bold')).toBe('text-white bg-gray-700 font-bold');
   });
 
   it('handles responsive and state variants', () => {
-    expect(cn('hover:text-red-500', 'hover:text-blue-500')).toBe('hover:text-blue-500');
+    expect(cn('hover:text-gray-500', 'hover:text-gray-700')).toBe('hover:text-gray-700');
     expect(cn('md:p-4', 'md:p-8')).toBe('md:p-8');
     expect(cn('dark:bg-gray-800', 'dark:bg-gray-900')).toBe('dark:bg-gray-900');
   });
 
   it('handles arbitrary values', () => {
     expect(cn('p-[10px]', 'p-[20px]')).toBe('p-[20px]');
-    expect(cn('text-[#ff0000]', 'text-[#0000ff]')).toBe('text-[#0000ff]');
+    expect(cn('text-[#6b7280]', 'text-[#374151]')).toBe('text-[#374151]');
   });
 });

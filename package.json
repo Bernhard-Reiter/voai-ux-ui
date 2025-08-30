@@ -12,7 +12,8 @@
     "test:e2e": "turbo test:e2e",
     "test:e2e:variant": "turbo test:e2e:variant",
     "storybook": "turbo storybook",
-    "build-storybook": "turbo build-storybook"
+    "build-storybook": "turbo build-storybook",
+    "brand:guard": "node scripts/brand-guard.mjs"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
@@ -22,7 +23,8 @@
     "@voai/eslint-config": "file:./packages/eslint-config",
     "@voai/tsconfig": "file:./packages/tsconfig",
     "turbo": "^2.0.0",
-    "@chromatic-com/playwright": "0.12.7"
+    "@chromatic-com/playwright": "0.12.7",
+    "globby": "^14.0.2"
   },
   "overrides": {
     "@babel/core": "^7.25.0"

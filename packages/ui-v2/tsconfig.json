@@ -1,5 +1,8 @@
 {
   "extends": "@voai/tsconfig/react-library.json",
   "include": ["."],
-  "exclude": ["dist", "build", "node_modules"]
+  "exclude": ["dist", "build", "node_modules"],
+  "compilerOptions": {
+    "typeRoots": ["./node_modules/@types"]
+  }
 }

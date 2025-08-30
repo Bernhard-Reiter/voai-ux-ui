@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../Button';
+import { Button } from './Button';
 
 const meta = {
-  title: 'Atoms/Button',
+  title: 'Components/Button',
   component: Button,
   parameters: {
     layout: 'centered',
@@ -11,11 +11,11 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'ghost', 'danger'],
+      options: ['primary', 'secondary', 'outline', 'ghost', 'destructive', 'link'],
     },
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg', 'icon'],
+      options: ['sm', 'default', 'lg'],
     },
   },
 } satisfies Meta<typeof Button>;
@@ -25,62 +25,42 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    children: 'Primary Button',
+    children: 'Button',
     variant: 'primary',
   },
 };
 
 export const Secondary: Story = {
   args: {
-    children: 'Secondary Button',
+    children: 'Button',
     variant: 'secondary',
+  },
+};
+
+export const Outline: Story = {
+  args: {
+    children: 'Button',
+    variant: 'outline',
   },
 };
 
 export const Ghost: Story = {
   args: {
-    children: 'Ghost Button',
+    children: 'Button',
     variant: 'ghost',
   },
 };
 
-export const Danger: Story = {
+export const Destructive: Story = {
   args: {
-    children: 'Danger Button',
-    variant: 'danger',
+    children: 'Button',
+    variant: 'destructive',
   },
 };
 
-export const Small: Story = {
+export const Link: Story = {
   args: {
-    children: 'Small Button',
-    size: 'sm',
+    children: 'Button',
+    variant: 'link',
   },
-};
-
-export const Large: Story = {
-  args: {
-    children: 'Large Button',
-    size: 'lg',
-  },
-};
-
-export const AllVariants: Story = {
-  args: {},
-  render: () => (
-    <div className="flex flex-col gap-4">
-      <div className="flex gap-4">
-        <Button variant="primary">Primary</Button>
-        <Button variant="secondary">Secondary</Button>
-        <Button variant="ghost">Ghost</Button>
-        <Button variant="danger">Danger</Button>
-      </div>
-      <div className="flex gap-4 items-center">
-        <Button size="sm">Small</Button>
-        <Button size="md">Medium</Button>
-        <Button size="lg">Large</Button>
-        <Button size="icon">🚀</Button>
-      </div>
-    </div>
-  ),
 };

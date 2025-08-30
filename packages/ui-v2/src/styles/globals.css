@@ -36,7 +36,7 @@
   }
 
   .circula-card {
-    @apply p-6 rounded-2xl border border-g2 bg-g1;
+    @apply p-6 rounded-xl border border-g2 bg-g1;
   }
 
   .circula-input {
@@ -52,10 +52,6 @@
   }
 
   .glass {
-    @apply bg-g1/80 backdrop-blur-lg;
-  }
-
-  .glow {
-    box-shadow: 0 0 20px rgba(65, 163, 68, 0.3);
+    @apply bg-g1/80;
   }
 }

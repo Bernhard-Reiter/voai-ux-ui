@@ -108,7 +108,7 @@ export function CommandPalette({
       <div className="fixed inset-x-0 top-[20vh] z-50 mx-auto max-w-2xl px-4">
         <div
           className={cn(
-            "overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/5 animate-scale-in",
+            "overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-black/5 animate-scale-in",
             className
           )}
         >

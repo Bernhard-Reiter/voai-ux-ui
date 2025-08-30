@@ -1,0 +1,55 @@
+:root{
+  /* Farben */
+  --bg:#ffffff; 
+  --fg:#0a0a0a; 
+  --muted:#6b7280; 
+  --line:#e5e7eb; 
+  --accent:#16A34A;
+
+  /* Grautöne (Feintuning) */
+  --gray-50:#FAFAFA; 
+  --gray-100:#F5F5F5; 
+  --gray-200:#E5E7EB; 
+  --gray-300:#D1D5DB;
+  --gray-400:#9CA3AF; 
+  --gray-500:#6B7280; 
+  --gray-600:#4B5563; 
+  --gray-700:#374151;
+  --gray-800:#1F2937; 
+  --gray-900:#0A0A0A;
+
+  /* Radius */
+  --radius-xs:6px; 
+  --radius-sm:8px; 
+  --radius-md:10px; 
+  --radius-lg:12px; 
+  --radius-xl:16px; 
+  --radius-full:9999px;
+
+  /* Shadow (minimal) */
+  --shadow-none:none; 
+  --shadow-sm:0 1px 2px rgba(0,0,0,.06);
+
+  /* Fokus */
+  --focus-ring:2px solid #0a0a0a; 
+  --focus-offset:3px;
+
+  /* Layout */
+  --container-max:72rem; 
+  --section-py:6rem; 
+  --section-py-md:4rem;
+
+  /* Typo (per next/font gesetzt) */
+  --font-display:"Space Grotesk"; 
+  --font-sans:"Inter";
+}
+
+/* Global focus styles for accessibility */
+*:focus {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}

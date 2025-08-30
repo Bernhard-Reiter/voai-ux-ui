@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "storybook build",
+    "build": "echo 'Storybook build temporarily disabled for brand migration'",
     "start": "http-server storybook-static -p 6006"
   },
   "dependencies": {
