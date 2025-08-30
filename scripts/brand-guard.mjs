@@ -18,7 +18,9 @@ const fileGlobs = [
   "src/**/*.{ts,tsx,css}",
   "!packages/**/dist/**",
   "!packages/**/_archive/**",
-  "!packages/**/node_modules/**"
+  "!packages/**/node_modules/**",
+  "!packages/**/generated/**",
+  "!packages/**/src/styles/generated/**"
 ];
 const files = await globby(fileGlobs);
 
