@@ -1,7 +1,6 @@
 /* Use next/font on app level; no Google Fonts import here */
 
-/* Import Cosmic Tokens */
-@import './cosmic-tokens.css';
+/* Cosmic Tokens are defined as CSS variables in the app */
 
 @tailwind base;
 @tailwind components;
