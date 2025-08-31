@@ -33,6 +33,8 @@ declare namespace __next_route_internal_types__ {
 
   type StaticRoutes = 
     | `/`
+    | `/api/core/ingest`
+    | `/api/webhooks/stripe`
     | `/dashboard`
   type DynamicRoutes<T extends string = string> = never
 

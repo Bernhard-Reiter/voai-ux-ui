@@ -1,6 +1,8 @@
 {
   "/_not-found/page": "/_not-found",
   "/favicon.ico/route": "/favicon.ico",
+  "/api/core/ingest/route": "/api/core/ingest",
+  "/api/webhooks/stripe/route": "/api/webhooks/stripe",
   "/(app)/dashboard/page": "/dashboard",
   "/(marketing)/page": "/"
 }

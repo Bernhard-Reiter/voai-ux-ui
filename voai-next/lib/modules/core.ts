@@ -29,7 +29,7 @@ export const IngestRequest = z.object({
   type: z.enum(['text','document','url','audio','video']).default('document'),
   content: z.string().optional(), // optional bei storage
   format: z.string().optional(),
-  metadata: z.record(z.any()).optional()
+  metadata: z.record(z.string(), z.any()).optional()
 })
 export type IngestRequest = z.infer<typeof IngestRequest>
 

@@ -11,7 +11,7 @@ type CreateInvoiceDTO = {
   amount: number
   currency: string
   description?: string
-  metadata?: Record<string, any>
+  metadata?: Record<string, string | number | boolean>
 }
 
 type Invoice = {
@@ -21,7 +21,7 @@ type Invoice = {
   total: number
   currency: string
   paid: boolean
-  items: any[]
+  items: Array<{id: string; amount: number; description: string}>
   hostedInvoiceUrl?: string
 }
 

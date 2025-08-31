@@ -1,5 +1,5 @@
 const TOKEN = 'dt0tf16jSilxTukDdpTd6m4Q';
-const DEPLOYMENT_ID = 'dpl_GFCt9HPkcntfZn55jG39xRiDwcwo';
+const DEPLOYMENT_ID = 'dpl_4d4NsDDWhPcu2T11KeRLRDgD9LbY';
 
 async function getDeploymentLogs() {
   try {

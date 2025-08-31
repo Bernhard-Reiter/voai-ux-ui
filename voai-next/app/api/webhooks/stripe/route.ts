@@ -11,13 +11,15 @@ export async function POST(req: NextRequest) {
     // Roh-Body und Signatur extrahieren
     const sig = req.headers.get('stripe-signature') || ''
     const buf = Buffer.from(await req.arrayBuffer())
+    // TODO: Use buf for webhook verification when module is available
+    void buf // Suppress unused variable warning
 
     // TODO: Implement webhook verification when module is available
     console.log('Mock Stripe webhook received', { sig: sig.slice(0, 20) + '...' })
 
     // Mock response
     return new Response('ok', { status: 200 })
-  } catch (e: any) {
+  } catch (e: unknown) {
     console.error('stripe webhook error', e)
     return new Response('bad request', { status: 400 })
   }

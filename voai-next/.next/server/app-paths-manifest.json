@@ -1,6 +1,8 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/api/core/ingest/route": "app/api/core/ingest/route.js",
+  "/api/webhooks/stripe/route": "app/api/webhooks/stripe/route.js",
   "/(app)/dashboard/page": "app/(app)/dashboard/page.js",
   "/(marketing)/page": "app/(marketing)/page.js"
 }
