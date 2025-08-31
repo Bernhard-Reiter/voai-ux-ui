@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "declaration-property-value-disallowed-list": {
+      "font-family": ["/^(?!.*(Sharp|Epilogue)).*$/i"]
+    }
+  }
+}
