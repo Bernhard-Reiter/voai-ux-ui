@@ -5,7 +5,7 @@ const CSP = [
   "script-src 'self' 'unsafe-inline' https://js.stripe.com https://vitals.vercel-insights.com",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
-  "connect-src 'self' https://*.supabase.co https://api.voai.me https://vitals.vercel-insights.com https://o450*ingest.sentry.io",
+  "connect-src 'self' https://*.supabase.co https://api.voai.me https://core.voai.me https://vitals.vercel-insights.com https://o450*ingest.sentry.io",
   "frame-src https://js.stripe.com",
   "font-src 'self' data:",
 ].join("; ");
