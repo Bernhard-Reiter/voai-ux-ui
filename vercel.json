@@ -1,0 +1,54 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "cd voai-next && npm install && npm run build",
+  "outputDirectory": "voai-next/.next",
+  "installCommand": "cd voai-next && npm install",
+  "devCommand": "cd voai-next && npm run dev",
+  "ignoreCommand": "git diff HEAD^ HEAD --quiet .",
+  "regions": ["fra1"],
+  "functions": {
+    "app/api/**/*": {
+      "maxDuration": 30
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/voai-next/$1"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_SUPABASE_URL": "@supabase_url",
+      "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@supabase_anon_key",
+      "NEXT_PUBLIC_CORE_API_BASE": "@core_api_base",
+      "SENTRY_DSN": "@sentry_dsn"
+    }
+  }
+}
