@@ -6,7 +6,7 @@ const MAX = 60;
 const mem = new Map<string, { count: number; ts: number }>();
 
 export function middleware(req: NextRequest) {
-  const ip = req.ip ?? req.headers.get("x-forwarded-for") ?? "unknown";
+  const ip = req.headers.get("x-forwarded-for") ?? req.headers.get("x-real-ip") ?? "unknown";
   const now = Date.now();
   const item = mem.get(ip);
   if (!item || now - item.ts > WINDOW_MS) mem.set(ip, { count: 1, ts: now });
