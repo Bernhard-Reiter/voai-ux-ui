@@ -3,7 +3,7 @@
 ## Brand Tokens
 - Only use color tokens from globals.css (#16A34A for brand, var(--bg), var(--fg), etc.)
 - Never use raw hex colors except #16A34A, #000000, #FFFFFF
-- Typography: Sharp Grotesk for headlines, Epilogue for body text
+- Typography: San Francisco (SF Pro) for headlines, Epilogue for body text
 - Border radius: 12px (md), 16px (lg), 24px (xl)
 - Shadow: Only use shadow-card (0 6px 18px rgba(0,0,0,.08))
 

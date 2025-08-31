@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { sharpBook20, sharpMedium20, epilogue } from './fonts'
+import { sfProDisplay, sfProText, epilogue } from './fonts'
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }:{ children: React.ReactNode }) {
   return (
-    <html lang="de" className={`${sharpBook20.variable} ${sharpMedium20.variable} ${epilogue.variable}`}>
+    <html lang="de" className={`${sfProDisplay.variable} ${sfProText.variable} ${epilogue.variable}`}>
       <body className="bg-bg text-fg">{children}</body>
     </html>
   )

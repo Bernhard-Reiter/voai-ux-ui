@@ -1,7 +1,7 @@
 {
   "rules": {
     "declaration-property-value-disallowed-list": {
-      "font-family": ["/^(?!.*(Sharp|Epilogue)).*$/i"]
+      "font-family": ["/^(?!.*(-apple-system|BlinkMacSystemFont|SF Pro|Epilogue|system-ui)).*$/i"]
     }
   }
 }

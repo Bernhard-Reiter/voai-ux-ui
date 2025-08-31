@@ -12,7 +12,7 @@ const CSP = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  experimental: { typedRoutes: true },
+  typedRoutes: true,
   headers: async () => ([
     {
       source: "/(.*)",
