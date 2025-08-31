@@ -2,17 +2,20 @@
   "name": "voai-next",
   "version": "0.1.0",
   "private": true,
-  "engines": { "node": ">=20.17.0 <21" },
+  "packageManager": "pnpm@8.15.5",
+  "workspaces": ["modules/*"],
+  "engines": { "node": ">=20.17.0 <21", "pnpm": ">=8.0.0" },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "echo 'No tests yet'",
-    "e2e": "echo 'No e2e tests yet'",
+    "test": "echo 'Tests temporarily disabled until modules are available'",
+    "e2e": "playwright test",
     "predeploy": "vercel build --prod",
-    "deploy:prod": "vercel deploy --prebuilt --prod --yes"
+    "deploy:prod": "vercel deploy --prebuilt --prod --yes",
+    "build:modules": "echo 'Module build placeholder - add modules to modules/ directory'"
   },
   "dependencies": {
     "@supabase/ssr": "^0.7.0",
@@ -21,6 +24,7 @@
     "next": "15.5.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "server-only": "^0.0.1",
     "zod": "^4.1.5"
   },
   "devDependencies": {
@@ -29,9 +33,12 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitest/ui": "^1.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
+    "playwright": "^1.40.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^1.0.0"
   }
 }
