@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "declaration-property-value-disallowed-list": {
+      "font-family": ["/^(?!.*(-apple-system|BlinkMacSystemFont|SF Pro|Epilogue|system-ui)).*$/i"]
+    }
+  }
+}

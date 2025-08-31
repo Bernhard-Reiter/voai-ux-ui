@@ -1,0 +1,33 @@
+{
+  "pages": {
+    "/_not-found/page": [
+      "static/chunks/webpack-9cf8c5def542af5b.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-e3bf15caf1f1e0f9.js",
+      "static/chunks/main-app-03aa994a7219f4a7.js",
+      "static/chunks/app/_not-found/page-7775b2f499a44d1a.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-9cf8c5def542af5b.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-e3bf15caf1f1e0f9.js",
+      "static/chunks/main-app-03aa994a7219f4a7.js",
+      "static/css/55a112a97285535d.css",
+      "static/chunks/app/layout-9eec8512dcd48674.js"
+    ],
+    "/(app)/dashboard/page": [
+      "static/chunks/webpack-9cf8c5def542af5b.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-e3bf15caf1f1e0f9.js",
+      "static/chunks/main-app-03aa994a7219f4a7.js",
+      "static/chunks/app/(app)/dashboard/page-c083db56e3c550e1.js"
+    ],
+    "/(marketing)/page": [
+      "static/chunks/webpack-9cf8c5def542af5b.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-e3bf15caf1f1e0f9.js",
+      "static/chunks/main-app-03aa994a7219f4a7.js",
+      "static/chunks/app/(marketing)/page-c083db56e3c550e1.js"
+    ]
+  }
+}

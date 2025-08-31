@@ -1,0 +1,21 @@
+# VOAI Design System Rules
+
+## Brand Tokens
+- Only use color tokens from globals.css (#16A34A for brand, var(--bg), var(--fg), etc.)
+- Never use raw hex colors except #16A34A, #000000, #FFFFFF
+- Typography: San Francisco (SF Pro) for headlines, Epilogue for body text
+- Border radius: 12px (md), 16px (lg), 24px (xl)
+- Shadow: Only use shadow-card (0 6px 18px rgba(0,0,0,.08))
+
+## Code Style
+- Use Server Components by default
+- Server Actions over Route Handlers
+- Prefer editing existing files over creating new ones
+- Never create documentation files unless explicitly requested
+- No comments unless asked
+
+## Performance & Security
+- ISR with revalidate: 3600 for static pages
+- CSP headers configured in next.config.ts
+- Rate limiting via middleware.ts
+- Always use Supabase SSR for auth
