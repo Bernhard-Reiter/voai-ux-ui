@@ -1,6 +1,6 @@
 {
   "regions": ["fra1"],
   "buildCommand": "pnpm build",
-  "installCommand": "rm -rf node_modules .next && pnpm store prune && pnpm install",
+  "installCommand": "rm -rf node_modules .next && pnpm install",
   "framework": "nextjs"
 }
