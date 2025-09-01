@@ -1,36 +1,136 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VOAI Website - Next.js
 
-## Getting Started
+## 🚀 Quick Deployment - WICHTIG!
 
-First, run the development server:
+**⚠️ VOR JEDEM DEPLOYMENT DIESE SCHRITTE BEFOLGEN:**
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd voai-next
+./scripts/deploy-safe.sh  # Führt ALLE notwendigen Checks durch
+git push origin main      # NUR wenn alle Checks grün sind!
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📖 Deployment Dokumentation - BITTE LESEN!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **[DEPLOYMENT_GUIDE.md](voai-next/DEPLOYMENT_GUIDE.md)** ⭐ - **PFLICHTLEKTÜRE vor dem ersten Deployment**
+- **[VERCEL_DEPLOYMENT_ANALYSIS.md](voai-next/VERCEL_DEPLOYMENT_ANALYSIS.md)** - Erklärt warum Deployments fehlschlagen
+- **[deploy-safe.sh](voai-next/scripts/deploy-safe.sh)** - Automatisches Check-Script
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚡ Deployment Checkliste - JEDEN PUNKT PRÜFEN!
 
-## Learn More
+```bash
+# 1. IMMER im richtigen Verzeichnis:
+cd voai-next
 
-To learn more about Next.js, take a look at the following resources:
+# 2. DIESE BEFEHLE MÜSSEN ERFOLGREICH SEIN:
+npm run lint        # ❌ Bei Fehlern: npm run lint -- --fix
+npm run typecheck   # ❌ Bei Fehlern: TypeScript Fehler beheben
+npm run build       # ❌ Bei Fehlern: NICHT deployen!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# 3. NUR bei Erfolg:
+git push origin main
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚨 Häufige Fehler die Deployments verhindern
 
-## Deploy on Vercel
+1. **ESLint Fehler** - `any` types, unused variables
+2. **TypeScript Fehler** - Falsche types, fehlende imports
+3. **Build Fehler** - Syntax errors, fehlende dependencies
+4. **Package Manager Konflikte** - Kein pnpm verwenden!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Projekt Setup
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+# Repository klonen
+git clone https://github.com/Bernhard-Reiter/voai-website-NEW.git
+cd voai-website-NEW/voai-next
+
+# Dependencies installieren (NUR npm!)
+npm install
+
+# Entwicklungsserver starten
+npm run dev
+```
+
+## 📋 Scripts Übersicht
+
+```bash
+npm run dev         # Entwicklungsserver
+npm run build       # Production Build (MUSS vor Deployment funktionieren!)
+npm run lint        # ESLint Check (MUSS fehlerfrei sein!)
+npm run typecheck   # TypeScript Check (MUSS fehlerfrei sein!)
+./scripts/deploy-safe.sh  # Alle Checks automatisch
+```
+
+## 🔐 Environment Variables
+
+**In Vercel Dashboard setzen:**
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `NEXT_PUBLIC_CORE_API_BASE`
+- `VERCEL_FORCE_NO_BUILD_CACHE` (bei Cache-Problemen auf `1`)
+
+**Lokal in `.env.local`:**
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_key
+NEXT_PUBLIC_CORE_API_BASE=your_api_base
+```
+
+## 📁 Wichtige Dateien
+
+```
+voai-next/
+├── vercel.json       # Deployment Config - NICHT mit pnpm commands!
+├── package.json      # KEIN packageManager field!
+├── scripts/
+│   └── deploy-safe.sh  # Deployment Checker - IMMER verwenden!
+└── DEPLOYMENT_GUIDE.md # Anleitung - LESEN!
+```
+
+## ❌ Was NIEMALS tun
+
+1. **NIEMALS** deployen ohne lokale Tests
+2. **NIEMALS** `packageManager` in package.json
+3. **NIEMALS** `pnpm` commands in vercel.json
+4. **NIEMALS** `any` types im Code
+5. **NIEMALS** git commands in vercel.json
+
+## ✅ Was IMMER tun
+
+1. **IMMER** `./scripts/deploy-safe.sh` vor Deployment
+2. **IMMER** lokalen Build testen
+3. **IMMER** ESLint Fehler beheben
+4. **IMMER** TypeScript Fehler beheben
+5. **IMMER** npm statt pnpm verwenden
+
+## 🆘 Wenn Deployment fehlschlägt
+
+1. **Vercel Dashboard** öffnen: https://vercel.com/vi4/voai-website-new
+2. **Build Logs** genau lesen
+3. **Fehler lokal reproduzieren**: `npm run build`
+4. **Problem beheben**
+5. **Erneut mit `./scripts/deploy-safe.sh` prüfen**
+
+## 📞 Support & Debugging
+
+```bash
+# Bei ESLint Fehlern:
+npm run lint -- --fix
+
+# Bei Build Fehlern:
+rm -rf .next node_modules
+npm install
+npm run build
+
+# Bei Vercel Cache Problemen:
+# In Vercel Dashboard: VERCEL_FORCE_NO_BUILD_CACHE = 1
+```
+
+---
+
+**⚡ GOLDENE REGEL**: Wenn `npm run build` lokal nicht funktioniert, wird es auch auf Vercel nicht funktionieren!
+
+**📌 Live Site**: https://voai-website-new.vercel.app
+
+**🔗 Vercel Dashboard**: https://vercel.com/vi4/voai-website-new
