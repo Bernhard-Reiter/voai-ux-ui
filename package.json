@@ -10,7 +10,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "echo 'Tests temporarily disabled until modules are available'",
+    "test": "echo 'No tests configured yet' && exit 0",
     "e2e": "playwright test",
     "predeploy": "vercel build --prod",
     "deploy:prod": "vercel deploy --prebuilt --prod --yes",
