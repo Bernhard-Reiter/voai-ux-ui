@@ -37,10 +37,10 @@ export default function Hero() {
             {t.subheadline}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Link href="/register" className="btn-primary text-lg px-8 py-4">
+            <Link href="/" className="btn-primary text-lg px-8 py-4">
               {t.cta}
             </Link>
-            <Link href="/demo" className="btn-secondary text-lg px-8 py-4">
+            <Link href="/" className="btn-secondary text-lg px-8 py-4">
               {t.ctaSecondary}
             </Link>
           </div>

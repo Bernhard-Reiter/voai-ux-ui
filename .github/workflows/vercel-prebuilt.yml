@@ -1,0 +1,19 @@
+name: Vercel Prebuilt
+on: { push: { branches: [main] }, pull_request: {} }
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20.17.0' }
+      - uses: pnpm/action-setup@v2
+        with: { version: 8 }
+      - run: pnpm i --frozen-lockfile
+      - run: pnpm build:modules
+      - run: pnpm typecheck && pnpm lint && pnpm test
+      - run: npx vercel build --prod --token ${{ secrets.VERCEL_TOKEN }}
+      - if: github.ref == 'refs/heads/main'
+        run: npx vercel deploy --prebuilt --prod --yes --token ${{ secrets.VERCEL_TOKEN }}
+      - if: github.event_name == 'pull_request'
+        run: npx vercel deploy --prebuilt --yes --token ${{ secrets.VERCEL_TOKEN }}

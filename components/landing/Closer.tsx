@@ -37,10 +37,10 @@ export default function Closer() {
             {t.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Link href="/register" className="btn-primary text-lg px-8 py-4">
+            <Link href="/" className="btn-primary text-lg px-8 py-4">
               {t.cta}
             </Link>
-            <Link href="/demo" className="btn-secondary text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-gray-900">
+            <Link href="/" className="btn-secondary text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-gray-900">
               {t.ctaSecondary}
             </Link>
           </div>

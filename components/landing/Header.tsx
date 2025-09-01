@@ -35,23 +35,23 @@ export default function Header() {
       <nav className="container-width">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link href={`/?lang=${currentLang}`} className="text-2xl font-bold text-gray-900">
+            <Link href="/" className="text-2xl font-bold text-gray-900">
               voai
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href={`#features?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900 transition-colors">
+            <Link href="/#features" className="text-gray-600 hover:text-gray-900 transition-colors">
               {t.features}
             </Link>
-            <Link href={`#pricing?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900 transition-colors">
+            <Link href="/#pricing" className="text-gray-600 hover:text-gray-900 transition-colors">
               {t.pricing}
             </Link>
-            <Link href={`#about?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900 transition-colors">
+            <Link href="/#about" className="text-gray-600 hover:text-gray-900 transition-colors">
               {t.about}
             </Link>
-            <Link href={`#contact?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900 transition-colors">
+            <Link href="/#contact" className="text-gray-600 hover:text-gray-900 transition-colors">
               {t.contact}
             </Link>
           </div>
@@ -74,10 +74,10 @@ export default function Header() {
               </Link>
             </div>
             
-            <Link href="/login" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors">
               {t.login}
             </Link>
-            <Link href="/register" className="btn-primary">
+            <Link href="/" className="btn-primary">
               {t.startFree}
             </Link>
           </div>
@@ -104,22 +104,22 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <Link href={`#features?lang=${currentLang}`} className="block px-3 py-2 text-gray-600 hover:text-gray-900">
+              <Link href="/#features" className="block px-3 py-2 text-gray-600 hover:text-gray-900">
                 {t.features}
               </Link>
-              <Link href={`#pricing?lang=${currentLang}`} className="block px-3 py-2 text-gray-600 hover:text-gray-900">
+              <Link href="/#pricing" className="block px-3 py-2 text-gray-600 hover:text-gray-900">
                 {t.pricing}
               </Link>
-              <Link href={`#about?lang=${currentLang}`} className="block px-3 py-2 text-gray-600 hover:text-gray-900">
+              <Link href="/#about" className="block px-3 py-2 text-gray-600 hover:text-gray-900">
                 {t.about}
               </Link>
-              <Link href={`#contact?lang=${currentLang}`} className="block px-3 py-2 text-gray-600 hover:text-gray-900">
+              <Link href="/#contact" className="block px-3 py-2 text-gray-600 hover:text-gray-900">
                 {t.contact}
               </Link>
-              <Link href="/login" className="block px-3 py-2 text-gray-600 hover:text-gray-900">
+              <Link href="/" className="block px-3 py-2 text-gray-600 hover:text-gray-900">
                 {t.login}
               </Link>
-              <Link href="/register" className="block px-3 py-2 mt-2">
+              <Link href="/" className="block px-3 py-2 mt-2">
                 <span className="btn-primary w-full">{t.startFree}</span>
               </Link>
             </div>
