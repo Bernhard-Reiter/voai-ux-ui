@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
+import Link from 'next/link'
 
 export default function SavingsCalculator() {
   const searchParams = useSearchParams()
@@ -131,9 +132,9 @@ export default function SavingsCalculator() {
             </div>
             
             <div className="text-center mt-8">
-              <a href="/register" className="btn-primary text-lg px-8 py-4">
+              <Link href="/" className="btn-primary text-lg px-8 py-4">
                 {t.cta}
-              </a>
+              </Link>
             </div>
           </div>
         </div>

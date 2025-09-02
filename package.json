@@ -1,33 +1,43 @@
 {
-  "name": "voai-website-new",
+  "name": "voai-next",
   "version": "0.1.0",
   "private": true,
+  "workspaces": ["modules/*"],
+  "engines": { "node": ">=20.17.0 <21" },
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "echo 'No tests configured yet' && exit 0",
+    "e2e": "playwright test",
+    "predeploy": "vercel build --prod",
+    "deploy:prod": "vercel deploy --prebuilt --prod --yes",
+    "build:modules": "echo 'Module build placeholder - add modules to modules/ directory'"
   },
   "dependencies": {
-    "next": "15.5.0",
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.56.1",
+    "nanoid": "^5.1.5",
+    "next": "15.5.2",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "server-only": "^0.0.1",
+    "zod": "^4.1.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
-    "@types/aria-query": "^5.0.4",
-    "@types/babel__core": "^7.20.5",
-    "@types/body-parser": "^1.19.6",
-    "@types/express": "^5.0.3",
-    "@types/express-serve-static-core": "^5.0.7",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@types/serve-static": "^1.15.8",
+    "@vitest/ui": "^1.0.0",
     "eslint": "^9",
-    "eslint-config-next": "15.5.0",
+    "eslint-config-next": "15.5.2",
+    "playwright": "^1.40.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^1.0.0"
   }
 }

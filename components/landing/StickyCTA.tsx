@@ -34,7 +34,7 @@ export default function StickyCTA() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white border-t border-gray-200 md:hidden">
-      <Link href="/register" className="btn-primary w-full text-center">
+      <Link href="/" className="btn-primary w-full text-center">
         {t.cta}
       </Link>
     </div>

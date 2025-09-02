@@ -65,40 +65,40 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-gray-900 mb-4">{t.company}</h3>
             <ul className="space-y-2">
-              <li><Link href={`/about?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900">{t.about}</Link></li>
-              <li><Link href={`/careers?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900">{t.careers}</Link></li>
-              <li><Link href={`/press?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900">{t.press}</Link></li>
-              <li><Link href={`/contact?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900">{t.contact}</Link></li>
+              <li><Link href="/" className="text-gray-600 hover:text-gray-900">{t.about}</Link></li>
+              <li><Link href="/" className="text-gray-600 hover:text-gray-900">{t.careers}</Link></li>
+              <li><Link href="/" className="text-gray-600 hover:text-gray-900">{t.press}</Link></li>
+              <li><Link href="/" className="text-gray-600 hover:text-gray-900">{t.contact}</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="font-semibold text-gray-900 mb-4">{t.product}</h3>
             <ul className="space-y-2">
-              <li><Link href={`/features?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900">{t.features}</Link></li>
-              <li><Link href={`/pricing?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900">{t.pricing}</Link></li>
-              <li><Link href={`/integrations?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900">{t.integrations}</Link></li>
-              <li><Link href={`/security?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900">{t.security}</Link></li>
+              <li><Link href="/" className="text-gray-600 hover:text-gray-900">{t.features}</Link></li>
+              <li><Link href="/" className="text-gray-600 hover:text-gray-900">{t.pricing}</Link></li>
+              <li><Link href="/" className="text-gray-600 hover:text-gray-900">{t.integrations}</Link></li>
+              <li><Link href="/" className="text-gray-600 hover:text-gray-900">{t.security}</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="font-semibold text-gray-900 mb-4">{t.resources}</h3>
             <ul className="space-y-2">
-              <li><Link href={`/blog?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900">{t.blog}</Link></li>
-              <li><Link href={`/help?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900">{t.help}</Link></li>
-              <li><Link href={`/api?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900">{t.api}</Link></li>
-              <li><Link href={`/status?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900">{t.status}</Link></li>
+              <li><Link href="/" className="text-gray-600 hover:text-gray-900">{t.blog}</Link></li>
+              <li><Link href="/" className="text-gray-600 hover:text-gray-900">{t.help}</Link></li>
+              <li><Link href="/" className="text-gray-600 hover:text-gray-900">{t.api}</Link></li>
+              <li><Link href="/" className="text-gray-600 hover:text-gray-900">{t.status}</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="font-semibold text-gray-900 mb-4">{t.legal}</h3>
             <ul className="space-y-2">
-              <li><Link href={`/privacy?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900">{t.privacy}</Link></li>
-              <li><Link href={`/terms?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900">{t.terms}</Link></li>
-              <li><Link href={`/imprint?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900">{t.imprint}</Link></li>
-              <li><Link href={`/gdpr?lang=${currentLang}`} className="text-gray-600 hover:text-gray-900">{t.gdpr}</Link></li>
+              <li><Link href="/" className="text-gray-600 hover:text-gray-900">{t.privacy}</Link></li>
+              <li><Link href="/" className="text-gray-600 hover:text-gray-900">{t.terms}</Link></li>
+              <li><Link href="/" className="text-gray-600 hover:text-gray-900">{t.imprint}</Link></li>
+              <li><Link href="/" className="text-gray-600 hover:text-gray-900">{t.gdpr}</Link></li>
             </ul>
           </div>
         </div>
