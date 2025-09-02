@@ -8,3 +8,23 @@
 node_modules
 coverage
 .DS_Store
+
+# Ignore any leftover voai-next directory
+voai-next/
+voai-next/**
+
+# Scripts
+setup-*.js
+deploy-*.js
+check-*.js
+cleanup-*.js
+consolidate-*.js
+trigger-*.js
+
+# Documentation
+DEPLOYMENT_*.md
+CI_CD_*.md
+FINAL_*.md
+SIMPLIFIED_*.md
+SUPABASE_*.md
+VERCEL_*.md
