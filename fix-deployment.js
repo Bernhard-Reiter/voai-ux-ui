@@ -56,4 +56,3 @@ async function createCorrectDeployment() {
 }
 
 createCorrectDeployment().catch(console.error);
-EOF && node fix-deployment.js < /dev/null
