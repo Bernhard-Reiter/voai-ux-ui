@@ -1,6 +1,7 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
+import { useReveal } from '@/components/useReveal'
 
 export default function USPGrid() {
   const searchParams = useSearchParams()
@@ -8,83 +9,36 @@ export default function USPGrid() {
   
   const content = {
     de: {
-      title: 'Alle Vorteile auf einen Blick',
-      subtitle: 'Warum sich über 1.000 Unternehmen für voai entscheiden',
+      title: 'Vorteile auf einen Blick',
+      subtitle: 'Warum voai für dich verhandeln sollte',
       features: [
-        {
-          icon: '⏱',
-          title: '80% Zeitersparnis',
-          description: 'Reduzieren Sie den Aufwand für Spesenabrechnungen von Stunden auf Minuten',
-        },
-        {
-          icon: '✓',
-          title: 'GoBD-konform',
-          description: 'Vollständig rechtssicher und finanzamtkonform nach deutschen Standards',
-        },
-        {
-          icon: '🔄',
-          title: 'Nahtlose Integration',
-          description: 'Verbindet sich automatisch mit Ihrer bestehenden Buchhaltungssoftware',
-        },
-        {
-          icon: '📱',
-          title: 'Mobile App',
-          description: 'Belege unterwegs erfassen - verfügbar für iOS und Android',
-        },
-        {
-          icon: '🔒',
-          title: 'DSGVO-konform',
-          description: 'Ihre Daten sind sicher bei uns - gehostet in Deutschland',
-        },
-        {
-          icon: '📊',
-          title: 'Echtzeit-Reporting',
-          description: 'Behalten Sie Ihre Ausgaben immer im Blick mit Live-Dashboards',
-        },
+        { icon: '✓', title: 'Null Risiko', description: 'Du zahlst nur bei Ersparnis.' },
+        { icon: '✓', title: 'Schnell & einfach', description: '1 Minute Upload, wir machen den Rest.' },
+        { icon: '✓', title: 'Maximaler Gewinn', description: 'Wir kämpfen härter, weil wir mitverdienen.' },
+        { icon: '✓', title: 'Transparent', description: 'Keine versteckten Händlerkosten.' },
+        { icon: '✓', title: 'Unabhängig', description: 'Wir arbeiten für dich, nicht für den Verkäufer.' },
+        { icon: '✓', title: 'Psychologisch optimiert', description: 'KI + Profi‑Verhandlungstaktiken.' },
       ],
     },
     en: {
-      title: 'All benefits at a glance',
-      subtitle: 'Why over 1,000 companies choose voai',
+      title: 'Benefits at a glance',
+      subtitle: 'Why voai should negotiate for you',
       features: [
-        {
-          icon: '⏱',
-          title: '80% time savings',
-          description: 'Reduce expense report processing from hours to minutes',
-        },
-        {
-          icon: '✓',
-          title: 'Tax compliant',
-          description: 'Fully compliant with German tax regulations and standards',
-        },
-        {
-          icon: '🔄',
-          title: 'Seamless integration',
-          description: 'Automatically connects with your existing accounting software',
-        },
-        {
-          icon: '📱',
-          title: 'Mobile app',
-          description: 'Capture receipts on the go - available for iOS and Android',
-        },
-        {
-          icon: '🔒',
-          title: 'GDPR compliant',
-          description: 'Your data is secure - hosted in Germany',
-        },
-        {
-          icon: '📊',
-          title: 'Real-time reporting',
-          description: 'Keep track of expenses with live dashboards',
-        },
+        { icon: '✓', title: 'Zero risk', description: 'You only pay if you save.' },
+        { icon: '✓', title: 'Fast & simple', description: '1‑minute upload; we handle the rest.' },
+        { icon: '✓', title: 'Maximum gain', description: 'We fight harder because we share success.' },
+        { icon: '✓', title: 'Transparent', description: 'No hidden seller fees.' },
+        { icon: '✓', title: 'Independent', description: 'We work for you, not the seller.' },
+        { icon: '✓', title: 'Psychology‑optimized', description: 'AI + pro negotiation tactics.' },
       ],
     }
   }
 
   const t = content[currentLang as keyof typeof content]
+  useReveal()
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section id="vorteile" className="py-16 md:py-24 bg-white">
       <div className="container-width">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -97,8 +51,8 @@ export default function USPGrid() {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {t.features.map((feature, index) => (
-            <div key={index} className="card hover:shadow-md transition-shadow">
-              <div className="text-4xl mb-4">{feature.icon}</div>
+            <div key={index} className="card hover:shadow-md transition-shadow" data-reveal>
+              <div className="text-2xl mb-2 text-green-600">{feature.icon}</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
                 {feature.title}
               </h3>

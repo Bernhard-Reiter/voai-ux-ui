@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "voai - Automatisierte Spesenabrechnungen für Unternehmen",
@@ -14,6 +11,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "de_DE",
     siteName: "voai",
+    images: [
+      {
+        url: "/hero.jpg",
+        width: 1200,
+        height: 630,
+        alt: "voai – Angebot verhandelt und gespart",
+      },
+    ],
   },
 };
 
@@ -24,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
-      <body className={`${inter.className} antialiased`}>
+      <body className={`antialiased`}>
         {children}
       </body>
     </html>

@@ -11,48 +11,48 @@ export default function Header() {
   
   const content = {
     de: {
-      features: 'Funktionen',
+      how: 'Wie es funktioniert',
+      benefits: 'Vorteile',
       pricing: 'Preise',
       about: 'Über uns',
-      contact: 'Kontakt',
-      login: 'Anmelden',
-      startFree: 'Kostenlos starten',
+      login: 'Login',
+      upload: 'Jetzt Angebot hochladen',
     },
     en: {
-      features: 'Features',
+      how: 'How it works',
+      benefits: 'Benefits',
       pricing: 'Pricing',
       about: 'About',
-      contact: 'Contact',
       login: 'Login',
-      startFree: 'Start for free',
+      upload: 'Upload offer now',
     }
   }
 
   const t = content[currentLang as keyof typeof content]
 
   return (
-    <header className="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+    <header className="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100 transition-all">
       <nav className="container-width">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold text-gray-900">
-              voai
+            <Link href="/" className="text-2xl font-semibold text-gray-900">
+              voai – einfach gespart
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/#features" className="text-gray-600 hover:text-gray-900 transition-colors">
-              {t.features}
+            <Link href="/#wie-es-funktioniert" className="text-gray-600 hover:text-gray-900 transition-colors">
+              {t.how}
             </Link>
-            <Link href="/#pricing" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <Link href="/#vorteile" className="text-gray-600 hover:text-gray-900 transition-colors">
+              {t.benefits}
+            </Link>
+            <Link href="/#preise" className="text-gray-600 hover:text-gray-900 transition-colors">
               {t.pricing}
             </Link>
-            <Link href="/#about" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <Link href="/#ueber-uns" className="text-gray-600 hover:text-gray-900 transition-colors">
               {t.about}
-            </Link>
-            <Link href="/#contact" className="text-gray-600 hover:text-gray-900 transition-colors">
-              {t.contact}
             </Link>
           </div>
 
@@ -77,8 +77,8 @@ export default function Header() {
             <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors">
               {t.login}
             </Link>
-            <Link href="/" className="btn-primary">
-              {t.startFree}
+            <Link href="/#upload" className="btn-primary bg-green-600 hover:bg-green-700">
+              {t.upload}
             </Link>
           </div>
 
@@ -104,23 +104,23 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <Link href="/#features" className="block px-3 py-2 text-gray-600 hover:text-gray-900">
-                {t.features}
+              <Link href="/#wie-es-funktioniert" className="block px-3 py-2 text-gray-600 hover:text-gray-900">
+                {t.how}
               </Link>
-              <Link href="/#pricing" className="block px-3 py-2 text-gray-600 hover:text-gray-900">
+              <Link href="/#vorteile" className="block px-3 py-2 text-gray-600 hover:text-gray-900">
+                {t.benefits}
+              </Link>
+              <Link href="/#preise" className="block px-3 py-2 text-gray-600 hover:text-gray-900">
                 {t.pricing}
               </Link>
-              <Link href="/#about" className="block px-3 py-2 text-gray-600 hover:text-gray-900">
+              <Link href="/#ueber-uns" className="block px-3 py-2 text-gray-600 hover:text-gray-900">
                 {t.about}
-              </Link>
-              <Link href="/#contact" className="block px-3 py-2 text-gray-600 hover:text-gray-900">
-                {t.contact}
               </Link>
               <Link href="/" className="block px-3 py-2 text-gray-600 hover:text-gray-900">
                 {t.login}
               </Link>
-              <Link href="/" className="block px-3 py-2 mt-2">
-                <span className="btn-primary w-full">{t.startFree}</span>
+              <Link href="/#upload" className="block px-3 py-2 mt-2">
+                <span className="btn-primary w-full">{t.upload}</span>
               </Link>
             </div>
           </div>

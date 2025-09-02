@@ -11,10 +11,10 @@ export default function StickyCTA() {
   
   const content = {
     de: {
-      cta: 'Jetzt kostenlos testen',
+      cta: 'Jetzt Angebot hochladen',
     },
     en: {
-      cta: 'Try for free',
+      cta: 'Upload quote now',
     }
   }
 
@@ -34,7 +34,7 @@ export default function StickyCTA() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white border-t border-gray-200 md:hidden">
-      <Link href="/" className="btn-primary w-full text-center">
+      <Link href="/#upload" className="btn-primary w-full text-center">
         {t.cta}
       </Link>
     </div>

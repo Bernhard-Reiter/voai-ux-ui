@@ -1,0 +1,62 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mockup: Angebots-Upload auf Smartphone">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#16A34A" stop-opacity=".12"/>
+      <stop offset="100%" stop-color="#16A34A" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <!-- subtle glow line -->
+  <ellipse cx="420" cy="620" rx="360" ry="60" fill="url(#glow)"/>
+
+  <!-- phone -->
+  <g transform="translate(300,120)">
+    <rect x="0" y="0" width="360" height="660" rx="36" fill="#0f172a"/>
+    <rect x="8" y="8" width="344" height="644" rx="30" fill="#111827"/>
+    <rect x="24" y="56" width="312" height="560" rx="20" fill="#ffffff"/>
+    <rect x="140" y="20" width="80" height="8" rx="4" fill="#1f2937"/>
+
+    <!-- app header -->
+    <rect x="40" y="84" width="280" height="20" rx="10" fill="#e5e7eb"/>
+    <rect x="40" y="116" width="200" height="12" rx="6" fill="#e5e7eb"/>
+
+    <!-- upload card -->
+    <rect x="40" y="160" width="280" height="140" rx="12" fill="#f9fafb" stroke="#e5e7eb"/>
+    <rect x="80" y="196" width="200" height="12" rx="6" fill="#d1d5db"/>
+    <rect x="80" y="216" width="160" height="10" rx="5" fill="#e5e7eb"/>
+    <rect x="120" y="236" width="80" height="10" rx="5" fill="#e5e7eb"/>
+    <rect x="120" y="264" width="120" height="32" rx="8" fill="#16A34A"/>
+
+    <!-- savings card -->
+    <rect x="40" y="320" width="280" height="120" rx="12" fill="#ecfdf5" stroke="#bbf7d0"/>
+    <rect x="60" y="348" width="120" height="12" rx="6" fill="#16A34A" opacity=".9"/>
+    <rect x="60" y="372" width="180" height="10" rx="5" fill="#86efac"/>
+    <rect x="60" y="394" width="100" height="22" rx="6" fill="#16A34A"/>
+
+    <!-- list items -->
+    <g fill="#e5e7eb">
+      <rect x="40" y="460" width="240" height="10" rx="5"/>
+      <rect x="40" y="480" width="200" height="10" rx="5"/>
+      <rect x="40" y="500" width="220" height="10" rx="5"/>
+      <rect x="40" y="520" width="160" height="10" rx="5"/>
+    </g>
+  </g>
+
+  <!-- right side decorative blocks -->
+  <g transform="translate(720,200)">
+    <rect x="0" y="0" width="380" height="120" rx="16" fill="#f8fafc" stroke="#e5e7eb"/>
+    <rect x="24" y="28" width="220" height="16" rx="8" fill="#111827" opacity=".12"/>
+    <rect x="24" y="56" width="280" height="12" rx="6" fill="#9ca3af" opacity=".4"/>
+    <rect x="24" y="80" width="180" height="12" rx="6" fill="#d1d5db"/>
+
+    <rect x="0" y="160" width="380" height="120" rx="16" fill="#ffffff" stroke="#e5e7eb"/>
+    <rect x="24" y="188" width="260" height="12" rx="6" fill="#9ca3af" opacity=".5"/>
+    <rect x="24" y="212" width="200" height="12" rx="6" fill="#e5e7eb"/>
+    <rect x="24" y="236" width="120" height="32" rx="8" fill="#16A34A"/>
+  </g>
+</svg>
+

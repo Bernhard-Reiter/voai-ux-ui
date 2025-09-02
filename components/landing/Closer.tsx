@@ -9,18 +9,18 @@ export default function Closer() {
   
   const content = {
     de: {
-      title: 'Bereit, Ihre Spesenabrechnung zu revolutionieren?',
-      subtitle: 'Schließen Sie sich über 1.000 Unternehmen an, die bereits Zeit und Geld sparen',
-      cta: 'Jetzt kostenlos starten',
-      ctaSecondary: 'Demo vereinbaren',
-      guarantee: '30 Tage kostenlos testen • Keine Kreditkarte erforderlich • Jederzeit kündbar',
+      title: 'Jetzt dein Angebot hochladen & sofort sparen',
+      subtitle: 'Kein Risiko. Du zahlst nur, wenn du sparst.',
+      cta: 'Angebot hochladen',
+      ctaSecondary: 'Wie es funktioniert',
+      guarantee: 'Geld‑zurück‑Garantie • 100 % unabhängig • DSGVO‑konform',
     },
     en: {
-      title: 'Ready to revolutionize your expense management?',
-      subtitle: 'Join over 1,000 companies already saving time and money',
-      cta: 'Start for free',
-      ctaSecondary: 'Book a demo',
-      guarantee: '30-day free trial • No credit card required • Cancel anytime',
+      title: 'Upload your quote now & start saving',
+      subtitle: 'No risk. You only pay if you save.',
+      cta: 'Upload quote',
+      ctaSecondary: 'How it works',
+      guarantee: 'Money‑back guarantee • 100% independent • GDPR‑compliant',
     }
   }
 
@@ -37,10 +37,10 @@ export default function Closer() {
             {t.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Link href="/" className="btn-primary text-lg px-8 py-4">
+            <Link href="/#upload" className="btn-primary text-lg px-8 py-4">
               {t.cta}
             </Link>
-            <Link href="/" className="btn-secondary text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-gray-900">
+            <Link href="/#wie-es-funktioniert" className="btn-secondary text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-gray-900">
               {t.ctaSecondary}
             </Link>
           </div>

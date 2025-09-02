@@ -1,6 +1,7 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
+import { useReveal } from '@/components/useReveal'
 
 export default function Promises() {
   const searchParams = useSearchParams()
@@ -8,60 +9,29 @@ export default function Promises() {
   
   const content = {
     de: {
-      title: 'Das voai Versprechen',
-      subtitle: 'Wir stehen für Qualität und Kundenzufriedenheit',
+      title: 'Versprechen & Garantien',
+      subtitle: 'Kein Risiko, kein Aufwand – 100 % vertraulich.',
       promises: [
-        {
-          icon: '🚀',
-          title: 'Schnelle Einrichtung',
-          description: 'In weniger als 24 Stunden einsatzbereit - garantiert',
-        },
-        {
-          icon: '💬',
-          title: 'Persönlicher Support',
-          description: 'Deutschsprachiger Kundensupport per Telefon, E-Mail und Chat',
-        },
-        {
-          icon: '💰',
-          title: 'Transparente Preise',
-          description: 'Keine versteckten Kosten, keine Überraschungen',
-        },
-        {
-          icon: '🔄',
-          title: '30 Tage Geld-zurück',
-          description: 'Testen Sie voai risikofrei - bei Nichtgefallen erstatten wir den vollen Betrag',
-        },
+        { icon: '✓', title: 'Geld‑zurück‑Garantie', description: 'Wenn keine Ersparnis, dann volle Erstattung.' },
+        { icon: '✓', title: '100 % vertraulich', description: 'DSGVO‑konform, sichere Verarbeitung.' },
+        { icon: '✓', title: 'Kein Aufwand', description: 'Upload reicht – wir übernehmen den Rest.' },
+        { icon: '✓', title: 'Unabhängig', description: 'Wir verhandeln in deinem Interesse, nicht im Händler‑Interesse.' },
       ],
     },
     en: {
-      title: 'The voai Promise',
-      subtitle: 'We stand for quality and customer satisfaction',
+      title: 'Promises & guarantees',
+      subtitle: 'No risk, no effort – fully confidential.',
       promises: [
-        {
-          icon: '🚀',
-          title: 'Quick setup',
-          description: 'Ready to use in less than 24 hours - guaranteed',
-        },
-        {
-          icon: '💬',
-          title: 'Personal support',
-          description: 'German-speaking customer support via phone, email and chat',
-        },
-        {
-          icon: '💰',
-          title: 'Transparent pricing',
-          description: 'No hidden costs, no surprises',
-        },
-        {
-          icon: '🔄',
-          title: '30-day money-back',
-          description: 'Try voai risk-free - full refund if not satisfied',
-        },
+        { icon: '✓', title: 'Money‑back guarantee', description: 'Full refund if no savings.' },
+        { icon: '✓', title: '100% confidential', description: 'GDPR‑compliant, secure processing.' },
+        { icon: '✓', title: 'No effort', description: 'Upload is enough – we handle the rest.' },
+        { icon: '✓', title: 'Independent', description: 'We negotiate in your interest, not the seller’s.' },
       ],
     }
   }
 
   const t = content[currentLang as keyof typeof content]
+  useReveal()
 
   return (
     <section className="py-16 md:py-24 bg-gray-50">
@@ -77,8 +47,8 @@ export default function Promises() {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
           {t.promises.map((promise, index) => (
-            <div key={index} className="text-center">
-              <div className="text-5xl mb-4">{promise.icon}</div>
+            <div key={index} className="text-center" data-reveal>
+              <div className="text-2xl mb-2 text-green-600">{promise.icon}</div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 {promise.title}
               </h3>

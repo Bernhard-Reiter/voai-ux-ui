@@ -1,6 +1,7 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
+import { useReveal } from '@/components/useReveal'
 
 export default function Steps() {
   const searchParams = useSearchParams()
@@ -8,53 +9,32 @@ export default function Steps() {
   
   const content = {
     de: {
-      title: 'So einfach funktioniert voai',
-      subtitle: 'In nur 3 Schritten zur automatisierten Spesenabrechnung',
+      title: 'Wie es funktioniert',
+      subtitle: 'In 4 klaren Schritten zu deinem besseren Angebot',
       steps: [
-        {
-          number: '1',
-          title: 'Beleg fotografieren',
-          description: 'Einfach Foto machen oder PDF hochladen - voai erkennt alle relevanten Daten automatisch',
-        },
-        {
-          number: '2',
-          title: 'Automatische Verarbeitung',
-          description: 'voai kategorisiert, prüft und ordnet Ihre Belege den richtigen Kostenstellen zu',
-        },
-        {
-          number: '3',
-          title: 'Fertige Abrechnung',
-          description: 'Exportieren Sie die komplette Abrechnung direkt in Ihr Buchhaltungssystem',
-        },
+        { number: '1', title: 'Angebot hochladen', description: 'Foto oder PDF – fertig.' },
+        { number: '2', title: 'voai verhandelt', description: 'Automatisch & professionell.' },
+        { number: '3', title: 'Ergebnis erhalten', description: 'Neues Angebot mit Preisnachlass.' },
+        { number: '4', title: 'Nur bei Erfolg zahlen', description: '10 % Erfolgsprovision.' },
       ],
     },
     en: {
-      title: 'How voai works',
-      subtitle: 'Automated expense management in just 3 steps',
+      title: 'How it works',
+      subtitle: '4 clear steps to a better quote',
       steps: [
-        {
-          number: '1',
-          title: 'Capture receipt',
-          description: 'Simply take a photo or upload PDF - voai automatically recognizes all relevant data',
-        },
-        {
-          number: '2',
-          title: 'Automatic processing',
-          description: 'voai categorizes, verifies and assigns your receipts to the correct cost centers',
-        },
-        {
-          number: '3',
-          title: 'Ready report',
-          description: 'Export the complete report directly to your accounting system',
-        },
+        { number: '1', title: 'Upload quote', description: 'Photo or PDF.' },
+        { number: '2', title: 'voai negotiates', description: 'Automatic & professional.' },
+        { number: '3', title: 'Get result', description: 'New discounted quote.' },
+        { number: '4', title: 'Pay on success', description: '10% success fee.' },
       ],
     }
   }
 
   const t = content[currentLang as keyof typeof content]
+  useReveal()
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section id="wie-es-funktioniert" className="py-16 md:py-24 bg-gray-50">
       <div className="container-width">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -65,9 +45,9 @@ export default function Steps() {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
           {t.steps.map((step, index) => (
-            <div key={index} className="relative">
+            <div key={index} className="relative" data-reveal>
               <div className="text-center">
                 <div className="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                   {step.number}

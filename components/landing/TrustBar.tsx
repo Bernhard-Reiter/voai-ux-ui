@@ -14,9 +14,7 @@ export default function TrustBar() {
     <section className="py-12 bg-white border-y border-gray-100">
       <div className="container-width">
         <div className="flex flex-col items-center">
-          <p className="text-sm text-gray-500 mb-8 text-center">
-            Nahtlose Integration mit Ihren bestehenden Tools
-          </p>
+          <p className="text-sm text-gray-500 mb-8 text-center">2.800+ Teams automatisieren mit voai</p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
             {partners.map((partner) => (
               <div key={partner.name} className="flex items-center justify-center">
