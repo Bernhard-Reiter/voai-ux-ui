@@ -28,16 +28,16 @@ function formatEuro(n: number) {
 // =====================
 // Primitives
 // =====================
-export function Container({ className = "", ...props }: HTMLAttributes<HTMLDivElement>) {
+function Container({ className = "", ...props }: HTMLAttributes<HTMLDivElement>) {
   return <div className={clsx("mx-auto max-w-[1200px] px-4 md:px-6 lg:px-8", className)} {...props} />;
 }
-export function Section({ className = "", ...props }: HTMLAttributes<HTMLElement>) {
+function Section({ className = "", ...props }: HTMLAttributes<HTMLElement>) {
   return <section className={clsx("py-20 md:py-28", className)} {...props} />;
 }
-export function Card({ className = "", ...props }: HTMLAttributes<HTMLDivElement>) {
+function Card({ className = "", ...props }: HTMLAttributes<HTMLDivElement>) {
   return <div className={clsx("rounded-3xl border border-gray-200 bg-white shadow-sm transition", className)} {...props} />;
 }
-export function Button({ variant = "primary", className = "", ...props }: ButtonHTMLAttributes<HTMLButtonElement> & { variant?: "primary" | "secondary" | "inverse" }) {
+function Button({ variant = "primary", className = "", ...props }: ButtonHTMLAttributes<HTMLButtonElement> & { variant?: "primary" | "secondary" | "inverse" }) {
   const base = "inline-flex items-center justify-center gap-2 rounded-2xl px-6 md:px-8 py-4 md:py-5 text-base md:text-lg font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black disabled:opacity-50 disabled:pointer-events-none";
   const styles: Record<string, string> = {
     primary: `${base} bg-black text-white hover:opacity-90`,
@@ -113,6 +113,7 @@ function Hero() {
     <div className="px-4 md:px-6 lg:px-8">
       <section id="hero" className="relative mx-auto mt-4 h-[72vh] w-full max-w-[1400px] overflow-hidden rounded-[32px]">
         <div className="absolute inset-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={HERO_SOURCES[heroIdx]}
             alt="voai hero"
@@ -399,7 +400,7 @@ function Testimonials() {
         <div className="grid gap-6 md:grid-cols-3">
           {items.map((x, i) => (
             <Card key={i} className="p-8">
-              <p className="mb-3 text-lg text-gray-800">"{x.q}"</p>
+              <p className="mb-3 text-lg text-gray-800">&ldquo;{x.q}&rdquo;</p>
               <div className="text-sm text-gray-600">{x.a}</div>
             </Card>
           ))}
@@ -466,7 +467,7 @@ function Closer() {
     <Section id="closer">
       <Container>
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Probier's aus – du hast nichts zu verlieren.</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Probier&rsquo;s aus – du hast nichts zu verlieren.</h2>
           <p className="mt-3 text-lg text-gray-700">Lade dein Angebot hoch und wir zeigen dir, wie viel drin ist.</p>
           <div className="mt-6"><Button>Jetzt kostenlos starten</Button></div>
           <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-sm text-gray-600">
