@@ -1,5 +1,5 @@
 {
-  "installCommand": "pnpm install --frozen-lockfile",
+  "installCommand": "pnpm install",
   "buildCommand": "pnpm build --filter=@voai/ui --filter=@voai/ui-v2 --filter=showcase",
   "outputDirectory": "apps/showcase/.next",
   "framework": "nextjs",
