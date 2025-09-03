@@ -2,23 +2,28 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "voai - Automatisierte Spesenabrechnungen für Unternehmen",
-  description: "Reduzieren Sie Ihren Verwaltungsaufwand um 80% mit voai. Automatisierte Spesenabrechnung, die Zeit und Geld spart.",
-  keywords: "Spesenabrechnung, Automatisierung, Unternehmenssoftware, Buchhaltung, Digitalisierung",
+  title: "voai – Lass für dich verhandeln und spare ohne Risiko",
+  description: "Du lädst dein Angebot hoch. Wir verhandeln. Du zahlst nur, wenn du wirklich sparst. 100% erfolgsbasiert, transparent & fair.",
+  keywords: "Angebot verhandeln, Preisverhandlung, sparen, Rabatt, voai, erfolgsbasiert, fair, transparent",
   openGraph: {
-    title: "voai - Automatisierte Spesenabrechnungen",
-    description: "Reduzieren Sie Ihren Verwaltungsaufwand um 80% mit voai",
+    title: "voai – einfach sparen!",
+    description: "Wir verhandeln fair, professionell und ohne Risiko. Keine Ersparnis = keine Kosten. Garantiert.",
     type: "website",
     locale: "de_DE",
     siteName: "voai",
     images: [
       {
-        url: "/hero.jpg",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "voai – Angebot verhandelt und gespart",
+        alt: "voai – Dein Angebot ist zu teuer? Wir verhandeln für dich!",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "voai – einfach sparen!",
+    description: "Wir verhandeln fair, professionell und ohne Risiko. Keine Ersparnis = keine Kosten.",
   },
 };
 
